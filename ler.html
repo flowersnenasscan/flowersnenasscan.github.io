@@ -224,7 +224,7 @@
 
         .secao-reamoes {
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
             margin: 40px auto 20px auto;
             padding: 20px;
             background: #111111;
@@ -243,26 +243,27 @@
             text-shadow: 0 0 6px var(--primary-pink);
         }
         .grid-reamoes {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            justify-items: center;
         }
         .item-reacao {
             background: #000000;
             border: 2px solid rgba(255, 153, 221, 0.4);
             border-radius: 12px;
-            padding: 8px 12px;
+            padding: 10px 8px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
             transition: all 0.2s ease;
-            width: 75px;
+            width: 100%;
+            max-width: 110px;
         }
         .item-reacao:hover {
             border-color: var(--primary-pink);
-            transform: scale(1.08);
+            transform: scale(1.05);
             box-shadow: 0 0 10px rgba(255, 153, 221, 0.5);
         }
         .item-reacao.votado {
@@ -271,20 +272,21 @@
             box-shadow: 0 0 12px var(--primary-pink);
         }
         .item-reacao img {
-            width: 38px;
-            height: 38px;
+            width: 50px;
+            height: 50px;
             object-fit: contain;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
         .item-reacao .texto-reacao {
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             color: #ffffff;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
             font-weight: 600;
-            white-space: nowrap;
+            text-align: center;
+            line-height: 1.1;
         }
         .item-reacao .contador-reacao {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--primary-pink);
             font-weight: bold;
         }
@@ -339,7 +341,7 @@
         }
         .caixa-regras.ativa .regras-conteudo {
             padding: 12px 16px;
-            max-height: 250px;
+            max-height: 300px;
         }
         .regras-conteudo ul { padding-left: 20px; }
         .regras-conteudo li { margin-bottom: 6px; }
@@ -368,7 +370,6 @@
             filter: drop-shadow(0 0 8px rgba(255, 153, 221, 0.7)) drop-shadow(0 0 3px rgba(255, 153, 221, 0.5));
         }
 
-        /* Forçando o tema escuro/rosa via CSS injection no iframe do Giscus */
         #giscus-container {
             color-scheme: dark;
         }
@@ -413,25 +414,35 @@
     <div class="secao-reamoes" id="secaoReacoes">
         <div class="titulo-secao">O que achou deste capítulo?</div>
         <div class="grid-reamoes" id="gridReacoes">
-            <div class="item-reacao" id="reacao-amei" onclick="votarReacao('amei')">
-                <img src="https://files.catbox.moe/fjfbc8.png" alt="Amei">
-                <span class="texto-reacao">ameei</span>
-                <span class="contador-reacao" id="cnt-amei">0</span>
+            <div class="item-reacao" id="reacao-ameei" onclick="votarReacao('ameei')">
+                <img src="https://files.catbox.moe/sljgd1.png" alt="Ameeii">
+                <span class="texto-reacao">Ameeii</span>
+                <span class="contador-reacao" id="cnt-ameei">0</span>
             </div>
-            <div class="item-reacao" id="reacao-surpresa" onclick="votarReacao('surpresa')">
-                <img src="https://files.catbox.moe/fjfbc8.png" alt="Meu Deus">
-                <span class="texto-reacao">meu deus</span>
-                <span class="contador-reacao" id="cnt-surpresa">0</span>
+            <div class="item-reacao" id="reacao-perfeito" onclick="votarReacao('perfeito')">
+                <img src="https://files.catbox.moe/hvxeim.png" alt="Perfeito 🌸">
+                <span class="texto-reacao">Perfeito 🌸</span>
+                <span class="contador-reacao" id="cnt-perfeito">0</span>
             </div>
-            <div class="item-reacao" id="reacao-chorando" onclick="votarReacao('chorando')">
-                <img src="https://files.catbox.moe/fjfbc8.png" alt="Chorei">
-                <span class="texto-reacao">chorei</span>
-                <span class="contador-reacao" id="cnt-chorando">0</span>
+            <div class="item-reacao" id="reacao-chorei" onclick="votarReacao('chorei')">
+                <img src="https://files.catbox.moe/lerr0o.png" alt="Chorei">
+                <span class="texto-reacao">Chorei</span>
+                <span class="contador-reacao" id="cnt-chorei">0</span>
+            </div>
+            <div class="item-reacao" id="reacao-raiva" onclick="votarReacao('raiva')">
+                <img src="https://files.catbox.moe/cywq8m.png" alt="Que raivaa">
+                <span class="texto-reacao">Que raivaa</span>
+                <span class="contador-reacao" id="cnt-raiva">0</span>
             </div>
             <div class="item-reacao" id="reacao-fogo" onclick="votarReacao('fogo')">
-                <img src="https://files.catbox.moe/fjfbc8.png" alt="Perfeito">
-                <span class="texto-reacao">perfeito</span>
+                <img src="https://files.catbox.moe/pw797l.png" alt="Pega fogo🔥!!">
+                <span class="texto-reacao">Pega fogo🔥!!</span>
                 <span class="contador-reacao" id="cnt-fogo">0</span>
+            </div>
+            <div class="item-reacao" id="reacao-passada" onclick="votarReacao('passada')">
+                <img src="https://files.catbox.moe/72eja3.png" alt="Passada/chocada">
+                <span class="texto-reacao">Passada/chocada</span>
+                <span class="contador-reacao" id="cnt-passada">0</span>
             </div>
         </div>
     </div>
@@ -441,7 +452,7 @@
 
         <div class="caixa-regras" id="caixaRegras">
             <div class="regras-cabecalho" id="btnToggleRegras">
-                <span>🌸 Regras dos Comentários</span>
+                <span>🌸 Regras para comentar</span>
                 <span id="iconeSeta">▼</span>
             </div>
             <div class="regras-conteudo">
@@ -450,11 +461,11 @@
                     <li>Seja gentil e respeitoso com os tradutores e outros leitores.</li>
                     <li>Sem spoilers de capítulos futuros ou de outras obras.</li>
                     <li>Proibido qualquer tipo de ofensa, preconceito ou spam.</li>
+                    <li>Quaisquer comentários ofensivos ou links suspeitos serão deletados.</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Área onde o Giscus será injetado dinamicamente -->
         <div id="giscus-container"></div>
     </div>
 
@@ -603,10 +614,9 @@
             }
         }
 
-        // Função para carregar o Giscus dinamicamente com base no capítulo atual
         function carregarGiscus(termId) {
             const container = document.getElementById('giscus-container');
-            container.innerHTML = ''; // Limpa anterior se houver troca de capítulo
+            container.innerHTML = '';
 
             const script = document.createElement('script');
             script.src = 'https://giscus.app/client.js';
@@ -620,14 +630,11 @@
             script.setAttribute('data-reactions-enabled', '0');
             script.setAttribute('data-emit-metadata', '0');
             script.setAttribute('data-input-position', 'bottom');
-            
-            // Usando o tema dark nativo que se ajusta melhor e forçando variáveis customizadas via evento do Giscus se necessário
             script.setAttribute('data-theme', 'dark');
             script.setAttribute('data-lang', 'pt');
             script.crossOrigin = 'anonymous';
             script.async = true;
 
-            // Script para injetar CSS customizado dentro do iframe do Giscus assim que ele carregar
             script.addEventListener('load', function() {
                 const iframe = container.querySelector('iframe');
                 if (iframe) {
@@ -645,9 +652,7 @@
                                 .timeline-comment { background-color: #111111 !important; border-color: rgba(255, 153, 221, 0.2) !important; }
                             `;
                             iframeDoc.head.appendChild(styleCustom);
-                        } catch (e) {
-                            console.log("Não foi possível aplicar estilos internos devido à política de mesma origem (CORS), mas o tema dark base foi aplicado.");
-                        }
+                        } catch (e) {}
                     });
                 }
             });
