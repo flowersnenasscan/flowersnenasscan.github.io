@@ -253,7 +253,7 @@
             background: #000000;
             border: 2px solid rgba(255, 153, 221, 0.4);
             border-radius: 12px;
-            padding: 8px;
+            padding: 10px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -261,8 +261,8 @@
             justify-content: space-between;
             transition: all 0.2s ease;
             width: 100%;
-            max-width: 110px;
-            height: 155px; /* Altura fixa para manter todas iguais */
+            max-width: 125px;
+            height: 175px; /* Altura fixa grande e igual para todos */
         }
         .item-reacao:hover {
             border-color: var(--primary-pink);
@@ -275,29 +275,32 @@
             box-shadow: 0 0 12px var(--primary-pink);
         }
         .item-reacao img {
-            width: 100%;
-            height: 75px;
-            object-fit: cover;
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
             border-radius: 8px;
             flex-shrink: 0;
+            margin-top: 4px;
         }
         .item-reacao .texto-reacao {
             font-size: 0.65rem;
             color: #ffffff;
             font-weight: 600;
             text-align: center;
-            line-height: 1.1;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 32px; /* Caixa de texto uniforme para 1 ou 2 linhas */
             overflow: hidden;
             margin: auto 0;
         }
         .item-reacao .contador-reacao {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--primary-pink);
             font-weight: bold;
             flex-shrink: 0;
+            margin-bottom: 2px;
         }
 
         .secao-comentarios-container {
