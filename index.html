@@ -25,13 +25,13 @@
         #netlify-badge, div[id*="netlify-badge"] { display: none !important; }
 
         :root {
-            --bg-color: #0b0b0e;
-            --card-bg: #14141a;
+            --bg-color: #000000;
+            --card-bg: #0b0b0f;
             --primary-pink: #FF99DD; 
             --neon-glow: 0 0 12px rgba(255, 153, 221, 0.7), 0 0 25px rgba(255, 153, 221, 0.35);
             --text-main: #FF99DD;
             --text-muted: #e69ac5;
-            --shadow: 0 4px 22px rgba(0, 0, 0, 0.7);
+            --shadow: 0 4px 22px rgba(0, 0, 0, 0.9);
         }
 
         * {
@@ -63,14 +63,14 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* TÍTULO DE ÚLTIMAS ATUALIZAÇÕES COM A FONTE E ESTILO PADRÃO ANTIGO */
+        /* TÍTULO DE ÚLTIMAS ATUALIZAÇÕES EM ROSINHA CLARO */
         #titulo-ultimas-atualizacoes {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 1.15rem;
             font-weight: 800;
             letter-spacing: 0.5px;
-            color: var(--primary-pink);
-            text-shadow: var(--neon-glow);
+            color: #ffc2eb;
+            text-shadow: 0 0 10px rgba(255, 194, 235, 0.8);
             background: none;
             -webkit-background-clip: initial;
             -webkit-text-fill-color: initial;
@@ -81,7 +81,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 18px;
-            background-color: rgba(11, 11, 14, 0.96);
+            background-color: rgba(0, 0, 0, 0.96);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -102,7 +102,7 @@
         }
 
         .icon-btn {
-            background: #181822;
+            background: #121218;
             border: 1px solid rgba(255, 153, 221, 0.5);
             color: var(--primary-pink);
             width: 44px;
@@ -127,15 +127,15 @@
 
         .icon-btn:hover {
             background: var(--primary-pink);
-            color: #0b0b0e;
+            color: #000000;
             box-shadow: 0 0 15px var(--primary-pink);
         }
 
         #search-container {
             display: none;
             padding: 12px 18px;
-            background: #121218;
-            border-bottom: 1px solid #222;
+            background: #050508;
+            border-bottom: 1px solid #1a1a22;
         }
 
         #search-input {
@@ -143,7 +143,7 @@
             padding: 12px 16px;
             border-radius: 22px;
             border: 1px solid var(--primary-pink);
-            background: #0b0b0e;
+            background: #000000;
             color: var(--primary-pink);
             outline: none;
             font-size: 0.95rem;
@@ -162,7 +162,7 @@
             right: -100%;
             width: 310px;
             height: 100%;
-            background: #121219;
+            background: #000000;
             box-shadow: -15px 0 40px rgba(0,0,0,0.95);
             z-index: 1000;
             transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -195,7 +195,7 @@
         }
 
         .close-menu {
-            background: #1a1a26;
+            background: #11111a;
             border: 1px solid rgba(255, 153, 221, 0.4);
             color: var(--primary-pink);
             width: 36px;
@@ -212,7 +212,7 @@
 
         .close-menu:hover {
             background: var(--primary-pink);
-            color: #0b0b0e;
+            color: #000000;
         }
 
         .sidebar-links {
@@ -234,7 +234,7 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            background: #171722;
+            background: #0d0d14;
             border: 1px solid rgba(255, 153, 221, 0.2);
             text-shadow: var(--neon-glow);
             cursor: pointer;
@@ -281,7 +281,7 @@
             left: 0;
             width: 100%;
             height: 75%;
-            background: linear-gradient(to top, rgba(11,11,14,0.98), rgba(11,11,14,0.4), transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.98), rgba(0,0,0,0.4), transparent);
             z-index: 1;
         }
 
@@ -290,10 +290,10 @@
             z-index: 2;
         }
 
-        /* ESTILO DE COR NO TÍTULO DO CARROSSEL (COM A MESMA FONTE ORIGINAL) */
+        /* TÍTULOS DO CARROSSEL LEVEMENTE MENORES E ESTILIZADOS */
         .hero-title {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 4px;
@@ -304,7 +304,7 @@
         }
 
         .hero-synopsis {
-            font-size: 0.83rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -347,28 +347,29 @@
             gap: 14px;
         }
 
+        /* CARTÃO DE OBRA: FUNDO ESCURO E SOMBRA NEON ROSA */
         .manga-card {
             background: var(--card-bg);
             border-radius: 12px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(255, 153, 221, 0.3);
-            box-shadow: var(--shadow);
-            transition: transform 0.2s;
+            border: 1px solid rgba(255, 153, 221, 0.4);
+            box-shadow: 0 0 12px rgba(255, 153, 221, 0.25), 0 4px 20px rgba(0, 0, 0, 0.9);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .manga-card:hover {
             transform: translateY(-3px);
             border-color: var(--primary-pink);
-            box-shadow: var(--neon-glow);
+            box-shadow: 0 0 20px rgba(255, 153, 221, 0.6), 0 6px 25px rgba(0, 0, 0, 0.95);
         }
 
         .manga-capa-box {
             width: 100%;
             height: 275px;
             position: relative;
-            background: #1a1a22;
+            background: #000;
             cursor: pointer;
             text-decoration: none;
             display: block;
@@ -380,24 +381,44 @@
             object-fit: cover;
         }
 
-        /* ETIQUETAS SOBRE A CAPA DA OBRA */
+        /* ETIQUETA DE STATUS (ESTILO DA IMAGEM: RETÂNGULO FINO INFERIOR ESQUERDO) */
         .badge-status {
             position: absolute;
             bottom: 8px;
             left: 8px;
-            padding: 3px 8px;
+            background: rgba(18, 18, 24, 0.85);
+            backdrop-filter: blur(4px);
+            padding: 4px 10px;
             border-radius: 4px;
             font-size: 0.65rem;
             font-weight: 800;
             text-transform: uppercase;
             z-index: 3;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.8);
             letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(255, 153, 221, 0.2);
         }
-        .status-andamento { background-color: #2e7d32; color: #e8f5e9; border: 1px solid #4caf50; }
-        .status-completo { background-color: #ad1457; color: #fce4ec; border: 1px solid #f06292; }
-        .status-hiatus { background-color: #512da8; color: #ede7f6; border: 1px solid #9575cd; }
 
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-andamento .status-dot { background-color: #4caf50; box-shadow: 0 0 6px #4caf50; }
+        .status-andamento { color: #e8f5e9; }
+
+        .status-completo .status-dot { background-color: #f06292; box-shadow: 0 0 6px #f06292; }
+        .status-completo { color: #fce4ec; }
+
+        .status-hiatus .status-dot { background-color: #9575cd; box-shadow: 0 0 6px #9575cd; }
+        .status-hiatus { color: #ede7f6; }
+
+        /* ETIQUETA DE CLASSIFICADA +18 (CAIXINHA COR DE VINHO NO CANTO SUPERIOR DIREITO) */
         .badge-nsfw {
             position: absolute;
             top: 8px;
@@ -405,12 +426,12 @@
             background-color: #581845;
             color: #ffcccc;
             border: 1px solid #900C3F;
-            padding: 2px 6px;
+            padding: 2px 7px;
             border-radius: 4px;
             font-size: 0.65rem;
             font-weight: 800;
             z-index: 3;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.8);
         }
 
         .manga-info {
@@ -442,15 +463,15 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: rgba(255, 153, 221, 0.05);
-            border: 1px solid rgba(255, 153, 221, 0.3);
+            background: rgba(255, 153, 221, 0.04);
+            border: 1px solid rgba(255, 153, 221, 0.25);
             padding: 6px 10px;
             border-radius: 8px;
             text-decoration: none;
             transition: 0.2s;
         }
         .retangulo-capitulo:hover {
-            background: rgba(255, 153, 221, 0.15);
+            background: rgba(255, 153, 221, 0.12);
             border-color: var(--primary-pink);
             transform: translateX(2px);
         }
@@ -507,7 +528,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: #111116;
+            background: #000000;
             border-top: 1px solid rgba(255, 153, 221, 0.3);
             display: flex;
             justify-content: space-around;
@@ -704,12 +725,12 @@
             return diasPassados >= 0 && diasPassados <= 4;
         }
 
-        // Função para gerar as tags visuais de status (andamento, completo, hiatus) e +18 (NSFW)
+        // Função para gerar as tags visuais de status específico da obra e o selo +18 (NSFW) baseado nos dados reais
         function gerarBadgesObra(obra) {
             let htmlBadges = '';
             
-            // Status (andamento = verde, completo = rosa, hiatus = roxo)
-            let statusRaw = String(obra.status || 'andamento').toLowerCase().trim();
+            // Status dinâmico da obra (Em Andamento, Completo, Hiatus)
+            let statusRaw = String(obra.status || 'Andamento').toLowerCase().trim();
             let statusClass = 'status-andamento';
             let statusText = 'Em Andamento';
 
@@ -722,17 +743,25 @@
             } else if (statusRaw.includes('andamento') || statusRaw.includes('lancamento')) {
                 statusClass = 'status-andamento';
                 statusText = 'Em Andamento';
+            } else {
+                // Caso venha o texto exato digitado no JSON da obra
+                statusText = obra.status;
             }
 
-            htmlBadges += `<span class="badge-status ${statusClass}">${statusText}</span>`;
+            htmlBadges += `
+                <span class="badge-status ${statusClass}">
+                    <span class="status-dot"></span>
+                    ${statusText}
+                </span>
+            `;
 
-            // Verificação +18 / NSFW
+            // Verificação de classificação +18 / NSFW real da obra
             let ehNsfw = false;
             if (obra.nsfw === true || obra.mais18 === true || obra.adulto === true) {
                 ehNsfw = true;
             } else if (obra.tags && Array.isArray(obra.tags)) {
                 ehNsfw = obra.tags.some(t => String(t).toLowerCase().includes('+18') || String(t).toLowerCase().includes('nsfw') || String(t).toLowerCase().includes('adulto'));
-            } else if (typeof obra.classificacao === 'string' && (obra.classificacao.includes('18') || obra.classificacao.toLowerCase().includes('nsfw'))) {
+            } else if (typeof obra.classificacao === 'string' && (obra.classificacao.includes('18') || obra.classificacao.toLowerCase().includes('nsfw') || obra.classificacao.toLowerCase().includes('adulto'))) {
                 ehNsfw = true;
             }
 
@@ -973,7 +1002,7 @@
 
                 let badgesHtml = gerarBadgesObra(obra);
 
-                grid.innerHTML += `
+-> grid.innerHTML += `
                     <div class="manga-card">
                         <a href="obra.html?nome=${slugObra}" class="manga-capa-box">
                             <img src="${obra.capa}" class="manga-capa">
