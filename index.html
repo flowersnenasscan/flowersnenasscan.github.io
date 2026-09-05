@@ -290,7 +290,6 @@
             z-index: 2;
         }
 
-        /* TÍTULOS DO CARROSSEL LEVEMENTE MENORES E ESTILIZADOS */
         .hero-title {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 1.25rem;
@@ -347,7 +346,6 @@
             gap: 14px;
         }
 
-        /* CARTÃO DE OBRA: FUNDO ESCURO E SOMBRA NEON ROSA */
         .manga-card {
             background: var(--card-bg);
             border-radius: 12px;
@@ -381,7 +379,6 @@
             object-fit: cover;
         }
 
-        /* ETIQUETA DE STATUS (ESTILO DA IMAGEM: RETÂNGULO FINO INFERIOR ESQUERDO) */
         .badge-status {
             position: absolute;
             bottom: 8px;
@@ -418,7 +415,6 @@
         .status-hiatus .status-dot { background-color: #9575cd; box-shadow: 0 0 6px #9575cd; }
         .status-hiatus { color: #ede7f6; }
 
-        /* ETIQUETA DE CLASSIFICADA +18 (CAIXINHA COR DE VINHO NO CANTO SUPERIOR DIREITO) */
         .badge-nsfw {
             position: absolute;
             top: 8px;
@@ -458,7 +454,6 @@
             text-decoration: underline;
         }
 
-        /* RETÂNGULO FINO PARA O CAPÍTULO RECENTE NAS ATUALIZAÇÕES */
         .retangulo-capitulo {
             display: flex;
             align-items: center;
@@ -725,11 +720,8 @@
             return diasPassados >= 0 && diasPassados <= 4;
         }
 
-        // Função para gerar as tags visuais de status específico da obra e o selo +18 (NSFW) baseado nos dados reais
         function gerarBadgesObra(obra) {
             let htmlBadges = '';
-            
-            // Status dinâmico da obra (Em Andamento, Completo, Hiatus)
             let statusRaw = String(obra.status || 'Andamento').toLowerCase().trim();
             let statusClass = 'status-andamento';
             let statusText = 'Em Andamento';
@@ -744,7 +736,6 @@
                 statusClass = 'status-andamento';
                 statusText = 'Em Andamento';
             } else {
-                // Caso venha o texto exato digitado no JSON da obra
                 statusText = obra.status;
             }
 
@@ -755,7 +746,6 @@
                 </span>
             `;
 
-            // Verificação de classificação +18 / NSFW real da obra
             let ehNsfw = false;
             if (obra.nsfw === true || obra.mais18 === true || obra.adulto === true) {
                 ehNsfw = true;
@@ -772,14 +762,32 @@
             return htmlBadges;
         }
 
+        // Tenta carregar do arquivo externo; se falhar (ex: rodando direto do celular sem servidor local), usa dados de contingência
         fetch('obras.json?v=' + new Date().getTime())
-            .then(res => res.json())
+            .then(res => {
+                if (!res.ok) throw new Error("Erro HTTP");
+                return res.json();
+            })
             .then(data => {
                 listaObras = data;
                 inicializarHome();
                 verificarParametroUrl();
             })
-            .catch(err => console.error("Erro ao carregar obras:", err));
+            .catch(err => {
+                console.warn("Aviso: Falha ao carregar obras.json via fetch, usando dados de fallback.", err);
+                // Dados de emergência caso o arquivo não carregue
+                listaObras = [
+                    {
+                        titulo: "Exemplo de Obra",
+                        capa: "https://via.placeholder.com/300x450/111/FF99DD?text=Flower's+Nenasscan",
+                        sinopse: "Esta é uma obra de exemplo exibida porque o arquivo obras.json não pôde ser lido diretamente pelo navegador.",
+                        status: "Em Andamento",
+                        capitulos: [{ numero: "1", data: "01/09/2026" }]
+                    }
+                ];
+                inicializarHome();
+                verificarParametroUrl();
+            });
 
         function inicializarHome() {
             if (listaObras.length === 0) return;
@@ -1002,7 +1010,7 @@
 
                 let badgesHtml = gerarBadgesObra(obra);
 
--> grid.innerHTML += `
+                grid.innerHTML += `
                     <div class="manga-card">
                         <a href="obra.html?nome=${slugObra}" class="manga-capa-box">
                             <img src="${obra.capa}" class="manga-capa">
