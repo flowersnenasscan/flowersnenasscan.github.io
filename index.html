@@ -15,7 +15,7 @@
       gtag('config', 'G-5HHMHEDSD0');
     </script>
 
-    <!-- Fonte estilizada para os títulos -->
+    <!-- Fonte estilizada para títulos gerais -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
     <!-- Supabase -->
@@ -52,8 +52,8 @@
             text-shadow: var(--neon-glow);
         }
 
-        /* ESTILO DOS TÍTULOS COM DEGRADÊ (BRANCO PARA ROSA) E BRILHO */
-        h1, h2, h3, .section-title {
+        /* TÍTULOS GERAIS COM DEGRADÊ (BRANCO PARA ROSA) E BRILHO (EXCETO O CARROSSEL E ÚLTIMAS ATUALIZAÇÕES) */
+        h1, h2, h3, .section-title:not(#titulo-ultimas-atualizacoes) {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             color: #ffffff;
@@ -61,6 +61,19 @@
             background: linear-gradient(135deg, #ffffff 30%, var(--primary-pink) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* TÍTULO DE ÚLTIMAS ATUALIZAÇÕES COM A FONTE E ESTILO PADRÃO ANTIGO */
+        #titulo-ultimas-atualizacoes {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: var(--primary-pink);
+            text-shadow: var(--neon-glow);
+            background: none;
+            -webkit-background-clip: initial;
+            -webkit-text-fill-color: initial;
         }
 
         header {
@@ -277,12 +290,17 @@
             z-index: 2;
         }
 
+        /* ESTILO DE COR NO TÍTULO DO CARROSSEL (COM A MESMA FONTE ORIGINAL) */
         .hero-title {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 1.5rem;
             font-weight: 800;
-            color: var(--primary-pink);
+            color: #ffffff;
             margin-bottom: 4px;
-            text-shadow: var(--neon-glow);
+            text-shadow: 0 0 10px var(--primary-pink);
+            background: linear-gradient(135deg, #ffffff 30%, var(--primary-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-synopsis {
@@ -362,6 +380,39 @@
             object-fit: cover;
         }
 
+        /* ETIQUETAS SOBRE A CAPA DA OBRA */
+        .badge-status {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            z-index: 3;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            letter-spacing: 0.5px;
+        }
+        .status-andamento { background-color: #2e7d32; color: #e8f5e9; border: 1px solid #4caf50; }
+        .status-completo { background-color: #ad1457; color: #fce4ec; border: 1px solid #f06292; }
+        .status-hiatus { background-color: #512da8; color: #ede7f6; border: 1px solid #9575cd; }
+
+        .badge-nsfw {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: #581845;
+            color: #ffcccc;
+            border: 1px solid #900C3F;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            z-index: 3;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+        }
+
         .manga-info {
             padding: 12px;
             display: flex;
@@ -419,7 +470,6 @@
             color: var(--text-muted);
         }
 
-        /* SELO NOVO PERSONALIZADO BONITO (FADE APÓS 4 DIAS) */
         .selo-novo-cap {
             background: rgba(255, 153, 221, 0.2);
             color: var(--primary-pink);
@@ -432,7 +482,6 @@
             box-shadow: 0 0 6px rgba(255, 153, 221, 0.3);
         }
 
-        /* Para as demais abas (Obras/Biblioteca) onde mantém o estilo antigo do link simples */
         .capitulo-recente-row {
             display: flex;
             align-items: center;
@@ -555,7 +604,7 @@
             <div class="section-container">
                 <div class="section-header">
                     <div class="section-bar"></div>
-                    <h2 class="section-title">ÚLTIMAS ATUALIZAÇÕES</h2>
+                    <h2 id="titulo-ultimas-atualizacoes" class="section-title">ÚLTIMAS ATUALIZAÇÕES</h2>
                 </div>
                 <div id="grid-atualizacoes" class="manga-grid">
                     <p style="color: var(--text-muted); grid-column: span 2;">Carregando atualizações...</p>
@@ -639,7 +688,6 @@
             return String(texto || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-').replace(/[^\w-]/g, '');
         }
 
-        // Função para verificar se o capítulo tem até 4 dias
         function ehCapituloNovo(dataStr) {
             if (!dataStr) return false;
             let partes = dataStr.split('/');
@@ -654,6 +702,45 @@
             let diferencaEmMilissegundos = agora - dataCap;
             let diasPassados = diferencaEmMilissegundos / (1000 * 60 * 60 * 24);
             return diasPassados >= 0 && diasPassados <= 4;
+        }
+
+        // Função para gerar as tags visuais de status (andamento, completo, hiatus) e +18 (NSFW)
+        function gerarBadgesObra(obra) {
+            let htmlBadges = '';
+            
+            // Status (andamento = verde, completo = rosa, hiatus = roxo)
+            let statusRaw = String(obra.status || 'andamento').toLowerCase().trim();
+            let statusClass = 'status-andamento';
+            let statusText = 'Em Andamento';
+
+            if (statusRaw.includes('completo') || statusRaw.includes('concluido') || statusRaw.includes('finalizado')) {
+                statusClass = 'status-completo';
+                statusText = 'Completo';
+            } else if (statusRaw.includes('hiatus') || statusRaw.includes('pausa')) {
+                statusClass = 'status-hiatus';
+                statusText = 'Hiatus';
+            } else if (statusRaw.includes('andamento') || statusRaw.includes('lancamento')) {
+                statusClass = 'status-andamento';
+                statusText = 'Em Andamento';
+            }
+
+            htmlBadges += `<span class="badge-status ${statusClass}">${statusText}</span>`;
+
+            // Verificação +18 / NSFW
+            let ehNsfw = false;
+            if (obra.nsfw === true || obra.mais18 === true || obra.adulto === true) {
+                ehNsfw = true;
+            } else if (obra.tags && Array.isArray(obra.tags)) {
+                ehNsfw = obra.tags.some(t => String(t).toLowerCase().includes('+18') || String(t).toLowerCase().includes('nsfw') || String(t).toLowerCase().includes('adulto'));
+            } else if (typeof obra.classificacao === 'string' && (obra.classificacao.includes('18') || obra.classificacao.toLowerCase().includes('nsfw'))) {
+                ehNsfw = true;
+            }
+
+            if (ehNsfw) {
+                htmlBadges += `<span class="badge-nsfw">+18</span>`;
+            }
+
+            return htmlBadges;
         }
 
         fetch('obras.json?v=' + new Date().getTime())
@@ -756,16 +843,17 @@
 
                 let exibirSelo = ehCapituloNovo(dataCap);
                 let seloHtml = exibirSelo ? `<span class="selo-novo-cap">NOVO</span>` : '';
+                let badgesHtml = gerarBadgesObra(obra);
                 
                 grid.innerHTML += `
                     <div class="manga-card">
                         <a href="obra.html?nome=${slugObra}" class="manga-capa-box">
                             <img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa">
+                            ${badgesHtml}
                         </a>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
                             
-                            <!-- Retângulo fino clicável para o capítulo recente com selo dinâmico -->
                             <a href="${linkLeitor}" class="retangulo-capitulo">
                                 <div class="info-cap-recente">
                                     <span>Capítulo ${ultimoCapNum}</span>
@@ -795,10 +883,13 @@
                     linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`;
                 }
 
+                let badgesHtml = gerarBadgesObra(obra);
+
                 grid.innerHTML += `
                     <div class="manga-card">
                         <a href="obra.html?nome=${slugObra}" class="manga-capa-box">
                             <img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa">
+                            ${badgesHtml}
                         </a>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
@@ -832,10 +923,13 @@
 
             obrasFavs.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
+                let badgesHtml = gerarBadgesObra(obra);
+
                 container.innerHTML += `
                     <div class="manga-card">
                         <a href="obra.html?nome=${slugObra}" class="manga-capa-box">
                             <img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa">
+                            ${badgesHtml}
                         </a>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
@@ -877,9 +971,14 @@
                     linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`;
                 }
 
+                let badgesHtml = gerarBadgesObra(obra);
+
                 grid.innerHTML += `
                     <div class="manga-card">
-                        <a href="obra.html?nome=${slugObra}" class="manga-capa-box"><img src="${obra.capa}" class="manga-capa"></a>
+                        <a href="obra.html?nome=${slugObra}" class="manga-capa-box">
+                            <img src="${obra.capa}" class="manga-capa">
+                            ${badgesHtml}
+                        </a>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo">${obra.titulo}</a>
                             <div class="capitulo-recente-row">
