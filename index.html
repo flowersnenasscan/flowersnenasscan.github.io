@@ -15,6 +15,9 @@
       gtag('config', 'G-5HHMHEDSD0');
     </script>
 
+    <!-- Fonte estilizada para os títulos -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
     <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -44,9 +47,20 @@
             padding-bottom: 85px;
         }
 
-        p, span, a, h1, h2, h3, h4, div, button {
+        p, span, a, h3, h4, div, button {
             color: var(--primary-pink);
             text-shadow: var(--neon-glow);
+        }
+
+        /* ESTILO DOS TÍTULOS COM DEGRADÊ (BRANCO PARA ROSA) E BRILHO */
+        h1, h2, h3, .section-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 0 10px var(--primary-pink);
+            background: linear-gradient(135deg, #ffffff 30%, var(--primary-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         header {
@@ -307,8 +321,6 @@
             font-size: 1.15rem;
             font-weight: 800;
             letter-spacing: 0.5px;
-            color: var(--primary-pink);
-            text-shadow: var(--neon-glow);
         }
 
         .manga-grid {
@@ -354,7 +366,7 @@
             padding: 12px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
         }
 
         .manga-titulo {
@@ -374,6 +386,53 @@
             text-decoration: underline;
         }
 
+        /* RETÂNGULO FINO PARA O CAPÍTULO RECENTE NAS ATUALIZAÇÕES */
+        .retangulo-capitulo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 153, 221, 0.05);
+            border: 1px solid rgba(255, 153, 221, 0.3);
+            padding: 6px 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .retangulo-capitulo:hover {
+            background: rgba(255, 153, 221, 0.15);
+            border-color: var(--primary-pink);
+            transform: translateX(2px);
+        }
+
+        .info-cap-recente {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--primary-pink);
+            text-shadow: var(--neon-glow);
+        }
+
+        .data-cap-recente {
+            font-size: 0.73rem;
+            color: var(--text-muted);
+        }
+
+        /* SELO NOVO PERSONALIZADO BONITO (FADE APÓS 4 DIAS) */
+        .selo-novo-cap {
+            background: rgba(255, 153, 221, 0.2);
+            color: var(--primary-pink);
+            font-size: 0.6rem;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 153, 221, 0.5);
+            box-shadow: 0 0 6px rgba(255, 153, 221, 0.3);
+        }
+
+        /* Para as demais abas (Obras/Biblioteca) onde mantém o estilo antigo do link simples */
         .capitulo-recente-row {
             display: flex;
             align-items: center;
@@ -392,24 +451,6 @@
         .capitulo-link:hover {
             color: white;
             text-decoration: underline;
-        }
-
-        .selo-novo {
-            background-color: var(--primary-pink);
-            color: #0b0b0e;
-            font-size: 0.65rem;
-            font-weight: 800;
-            padding: 2px 7px;
-            border-radius: 4px;
-            animation: pulsar 1.5s infinite ease-in-out;
-            letter-spacing: 0.5px;
-            box-shadow: var(--neon-glow);
-        }
-
-        @keyframes pulsar {
-            0% { opacity: 0.7; transform: scale(0.95); }
-            50% { opacity: 1; transform: scale(1.06); box-shadow: 0 0 15px var(--primary-pink); }
-            100% { opacity: 0.7; transform: scale(0.95); }
         }
 
         .bottom-nav {
@@ -462,7 +503,7 @@
     <!-- TOPO -->
     <header>
         <a href="./" class="logo-img-container">
-            <span style="font-size:1.15rem; font-weight:800; color:var(--primary-pink);">flower's nenasscan 🌸</span>
+            <span style="font-size:1.15rem; font-weight:800; color:var(--primary-pink); text-shadow:var(--neon-glow);">flower's nenasscan 🌸</span>
         </a>
         
         <div class="top-actions">
@@ -598,6 +639,23 @@
             return String(texto || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-').replace(/[^\w-]/g, '');
         }
 
+        // Função para verificar se o capítulo tem até 4 dias
+        function ehCapituloNovo(dataStr) {
+            if (!dataStr) return false;
+            let partes = dataStr.split('/');
+            let dataCap;
+            if (partes.length === 3) {
+                dataCap = new Date(`${partes[2]}-${partes[1]}-${partes[0]}`);
+            } else {
+                dataCap = new Date(dataStr);
+            }
+            if (isNaN(dataCap.getTime())) return false;
+            let agora = new Date();
+            let diferencaEmMilissegundos = agora - dataCap;
+            let diasPassados = diferencaEmMilissegundos / (1000 * 60 * 60 * 24);
+            return diasPassados >= 0 && diasPassados <= 4;
+        }
+
         fetch('obras.json?v=' + new Date().getTime())
             .then(res => res.json())
             .then(data => {
@@ -684,15 +742,20 @@
             recentes.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
                 let ultimoCapNum = 'Em breve';
+                let dataCap = '';
                 let slugCap = '';
                 let linkLeitor = '#';
 
                 if (obra.capitulos && obra.capitulos.length > 0) {
                     let capObj = obra.capitulos[0];
                     ultimoCapNum = typeof capObj === 'object' ? capObj.numero : capObj;
+                    dataCap = typeof capObj === 'object' ? (capObj.data || '') : '';
                     slugCap = String(ultimoCapNum).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
                     linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`;
                 }
+
+                let exibirSelo = ehCapituloNovo(dataCap);
+                let seloHtml = exibirSelo ? `<span class="selo-novo-cap">NOVO</span>` : '';
                 
                 grid.innerHTML += `
                     <div class="manga-card">
@@ -701,10 +764,15 @@
                         </a>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
-                            <div class="capitulo-recente-row">
-                                <a href="${linkLeitor}" class="capitulo-link">${ultimoCapNum}</a>
-                                <span class="selo-novo">NOVO</span>
-                            </div>
+                            
+                            <!-- Retângulo fino clicável para o capítulo recente com selo dinâmico -->
+                            <a href="${linkLeitor}" class="retangulo-capitulo">
+                                <div class="info-cap-recente">
+                                    <span>Capítulo ${ultimoCapNum}</span>
+                                    ${seloHtml}
+                                </div>
+                                <span class="data-cap-recente">${dataCap}</span>
+                            </a>
                         </div>
                     </div>
                 `;
@@ -735,7 +803,7 @@
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
                             <div class="capitulo-recente-row">
-                                <a href="${linkLeitor}" class="capitulo-link">${ultimoCapNum}</a>
+                                <a href="${linkLeitor}" class="capitulo-link">Capítulo ${ultimoCapNum}</a>
                             </div>
                         </div>
                     </div>
@@ -815,7 +883,7 @@
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo">${obra.titulo}</a>
                             <div class="capitulo-recente-row">
-                                <a href="${linkLeitor}" class="capitulo-link">${ultimoCapNum}</a>
+                                <a href="${linkLeitor}" class="capitulo-link">Capítulo ${ultimoCapNum}</a>
                             </div>
                         </div>
                     </div>
