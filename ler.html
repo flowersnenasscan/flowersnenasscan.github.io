@@ -368,11 +368,8 @@
             filter: drop-shadow(0 0 8px rgba(255, 153, 221, 0.7)) drop-shadow(0 0 3px rgba(255, 153, 221, 0.5));
         }
 
-        /* Customizações Rosa para o Giscus */
+        /* Forçando o tema escuro/rosa via CSS injection no iframe do Giscus */
         #giscus-container {
-            color-scheme: dark;
-        }
-        #giscus-container iframe {
             color-scheme: dark;
         }
     </style>
@@ -623,10 +620,37 @@
             script.setAttribute('data-reactions-enabled', '0');
             script.setAttribute('data-emit-metadata', '0');
             script.setAttribute('data-input-position', 'bottom');
-            script.setAttribute('data-theme', 'https://flowersnenasscan.github.io/giscus-pink.css');
+            
+            // Usando o tema dark nativo que se ajusta melhor e forçando variáveis customizadas via evento do Giscus se necessário
+            script.setAttribute('data-theme', 'dark');
             script.setAttribute('data-lang', 'pt');
             script.crossOrigin = 'anonymous';
             script.async = true;
+
+            // Script para injetar CSS customizado dentro do iframe do Giscus assim que ele carregar
+            script.addEventListener('load', function() {
+                const iframe = container.querySelector('iframe');
+                if (iframe) {
+                    iframe.addEventListener('load', function() {
+                        try {
+                            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                            const styleCustom = iframeDoc.createElement('style');
+                            styleCustom.textContent = `
+                                main { color-scheme: dark; }
+                                body { background-color: #000000 !important; color: #FF99DD !important; }
+                                .gsc-header { border-bottom-color: rgba(255, 153, 221, 0.2) !important; }
+                                a { color: #FF99DD !important; }
+                                .btn-primary, button[type="submit"] { background-color: #FF99DD !important; color: #000000 !important; border-color: #FF99DD !important; }
+                                .form-control, textarea, input { background-color: #111111 !important; color: #FF99DD !important; border-color: rgba(255, 153, 221, 0.4) !important; }
+                                .timeline-comment { background-color: #111111 !important; border-color: rgba(255, 153, 221, 0.2) !important; }
+                            `;
+                            iframeDoc.head.appendChild(styleCustom);
+                        } catch (e) {
+                            console.log("Não foi possível aplicar estilos internos devido à política de mesma origem (CORS), mas o tema dark base foi aplicado.");
+                        }
+                    });
+                }
+            });
 
             container.appendChild(script);
         }
