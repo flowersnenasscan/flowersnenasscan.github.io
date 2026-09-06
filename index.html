@@ -959,15 +959,11 @@
                     <p class="library-subtitle">Aqui estão suas obras favoritas. Continue lendo quando quiser! ♡</p>
                 </div>
 
-                <!-- ABAS DA BIBLIOTECA (COM HIATUS E SEM BOTÃO RECENTES) -->
+                <!-- ABAS DA BIBLIOTECA (SEM O BOTÃO 'TODOS', COM FAVORITOS, ANDAMENTO, CONCLUÍDOS E HIATUS) -->
                 <div class="library-tabs-row" id="lib-tabs-container">
                     <button class="lib-tab active" onclick="mudarSubAbaBiblioteca('favoritos')">
                         <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                         Favoritos <span class="tab-badge" id="badge-fav-count">0</span>
-                    </button>
-                    <button class="lib-tab" onclick="mudarSubAbaBiblioteca('todos')">
-                        <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0-2-.9-2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
-                        Todos
                     </button>
                     <button class="lib-tab" onclick="mudarSubAbaBiblioteca('andamento')">
                         <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/></svg>
@@ -983,7 +979,7 @@
                     </button>
                 </div>
 
-                <!-- LINHA DE ORDENAÇÃO (COM BOTÃO +18 NO LUGAR DE A-Z E BOTÃO DE GÊNEROS DE VOLTA) -->
+                <!-- LINHA DE ORDENAÇÃO (COM BOTÃO +18 E GÊNEROS) -->
                 <div class="library-sort-row" id="library-sort-bar">
                     <span>Filtros:</span>
                     <button class="sort-btn-pill" onclick="mudarSubAbaBiblioteca('adulto')">
@@ -1070,7 +1066,24 @@
             return diasPassados >= 0 && diasPassados <= 4;
         }
 
-        function gerarBadgesObra(obra, slugObra) {
+        // Função de badges gerada APENAS para a tela de favoritos/biblioteca conforme solicitado
+        function gerarBadgesObraBiblioteca(obra, slugObra) {
+            let htmlBadges = '';
+            let favoritos = [];
+            try { favoritos = JSON.parse(localStorage.getItem('flowers_favoritos')) || []; } catch(e){}
+            let isFav = favoritos.includes(obra.titulo);
+            let corCoracao = isFav ? '#ff99dd' : 'rgba(255,153,221,0.5)';
+
+            htmlBadges += `
+                <button class="card-fav-btn" onclick="event.preventDefault(); event.stopPropagation(); alternarFavoritoCard('${obra.titulo.replace(/'/g, "\\'")}')" title="Favoritar">
+                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" style="fill: ${corCoracao};"/></svg>
+                </button>
+            `;
+            return htmlBadges;
+        }
+
+        // Função padrão para Home e Catálogo (SEM CORAÇÃO)
+        function gerarBadgesObraComum(obra, slugObra) {
             let htmlBadges = '';
             let statusRaw = String(obra.status || 'Andamento').toLowerCase().trim();
             let statusClass = 'status-andamento';
@@ -1082,9 +1095,6 @@
             } else if (statusRaw.includes('hiatus') || statusRaw.includes('pausa')) {
                 statusClass = 'status-hiatus';
                 statusText = 'Hiatus';
-            } else if (statusRaw.includes('andamento') || statusRaw.includes('lancamento')) {
-                statusClass = 'status-andamento';
-                statusText = 'Em Andamento';
             } else {
                 statusText = obra.status;
             }
@@ -1101,25 +1111,11 @@
                 ehNsfw = true;
             } else if (obra.tags && Array.isArray(obra.tags)) {
                 ehNsfw = obra.tags.some(t => String(t).toLowerCase().includes('+18') || String(t).toLowerCase().includes('nsfw') || String(t).toLowerCase().includes('adulto'));
-            } else if (typeof obra.classificacao === 'string' && (obra.classificacao.includes('18') || obra.classificacao.toLowerCase().includes('nsfw') || obra.classificacao.toLowerCase().includes('adulto'))) {
-                ehNsfw = true;
             }
 
             if (ehNsfw) {
                 htmlBadges += `<span class="badge-nsfw">+18</span>`;
             }
-
-            let favoritos = [];
-            try { favoritos = JSON.parse(localStorage.getItem('flowers_favoritos')) || []; } catch(e){}
-            let isFav = favoritos.includes(obra.titulo);
-            let corCoracao = isFav ? '#ff99dd' : 'rgba(255,153,221,0.5)';
-
-            htmlBadges += `
-                <button class="card-fav-btn" onclick="event.preventDefault(); event.stopPropagation(); alternarFavoritoCard('${obra.titulo.replace(/'/g, "\\'")}')" title="Favoritar">
-                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" style="fill: ${corCoracao};"/></svg>
-                </button>
-            `;
-
             return htmlBadges;
         }
 
@@ -1271,7 +1267,7 @@
 
                 let exibirSelo = ehCapituloNovo(dataCap);
                 let seloHtml = exibirSelo ? `<span class="selo-novo-cap">NOVO</span>` : '';
-                let badgesHtml = gerarBadgesObra(obra, slugObra);
+                let badgesHtml = gerarBadgesObraComum(obra, slugObra);
                 
                 grid.innerHTML += `
                     <div class="manga-card">
@@ -1311,7 +1307,7 @@
                     linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`;
                 }
 
-                let badgesHtml = gerarBadgesObra(obra, slugObra);
+                let badgesHtml = gerarBadgesObraComum(obra, slugObra);
 
                 grid.innerHTML += `
                     <div class="manga-card">
@@ -1343,8 +1339,6 @@
 
             let obrasFiltradas = [];
             if (subAbaBibliotecaAtual === 'favoritos') {
-                obrasFiltradas = obrasFavoritas;
-            } else if (subAbaBibliotecaAtual === 'todos') {
                 obrasFiltradas = obrasFavoritas;
             } else if (subAbaBibliotecaAtual === 'andamento') {
                 obrasFiltradas = obrasFavoritas.filter(o => {
@@ -1395,7 +1389,7 @@
 
             obrasFiltradas.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
-                let badgesHtml = gerarBadgesObra(obra, slugObra);
+                let badgesHtml = gerarBadgesObraBiblioteca(obra, slugObra);
                 let ultimoCapNum = '1';
                 if (obra.capitulos && obra.capitulos.length > 0) {
                     let capObj = obra.capitulos[0];
@@ -1464,7 +1458,7 @@
                     linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`;
                 }
 
-                let badgesHtml = gerarBadgesObra(obra, slugObra);
+                let badgesHtml = gerarBadgesObraComum(obra, slugObra);
 
                 grid.innerHTML += `
                     <div class="manga-card">
