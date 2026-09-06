@@ -703,7 +703,7 @@
             transform: translateY(-2px);
         }
 
-        /* ESTILOS DA PÁGINA DE GÊNEROS / FILTROS ESTILO SEU PRINT */
+        /* ESTILOS DA PÁGINA DE GÊNEROS / FILTROS */
         .filtro-categoria-titulo {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 0.85rem;
@@ -932,7 +932,7 @@
             </div>
         </div>
 
-        <!-- GÊNEROS / FILTROS COMPLETOS (ESTILO SEU PRINT) -->
+        <!-- GÊNEROS / FILTROS COMPLETOS -->
         <div id="generos" class="view-section">
             <div class="section-container">
                 <div class="section-header">
@@ -940,14 +940,14 @@
                     <h2 class="section-title">EXPLORAR OBRAS</h2>
                 </div>
 
-                <!-- GRUPO 1: GÊNEROS -->
+                <!-- GRUPO 1: GÊNEROS (Com o botão "Todos" exclusivo aqui) -->
                 <div class="filtro-categoria-titulo">Gêneros</div>
                 <div id="generos-botoes-container" class="filtro-grupo-botoes"></div>
 
                 <!-- GRUPO 2: STATUS -->
                 <div class="filtro-categoria-titulo">Status</div>
                 <div id="status-botoes-container" class="filtro-grupo-botoes">
-                    <button class="genre-pill-btn active" onclick="filtrarMultiplo('status', 'todos', this)">Todos</button>
+                    <button class="genre-pill-btn active" onclick="filtrarMultiplo('status', 'todos', this)">Em Andamento</button> <!-- Ajustado para padrão sem 'Todos' duplicado, exceto se desejado, mas aqui segue o pedido -->
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('status', 'andamento', this)">Em Andamento</button>
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('status', 'completo', this)">Completo</button>
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('status', 'hiatus', this)">Hiatus</button>
@@ -1286,6 +1286,7 @@
 
             let listaGenerosUnicos = Array.from(conjuntoGeneros).sort();
 
+            // Botão "Todos" fica exclusivo na categoria Gêneros conforme solicitado
             let htmlBotoesGen = `
                 <button class="genre-pill-btn ${filtrosAtivos.genero === 'todos' ? 'active' : ''}" onclick="filtrarMultiplo('genero', 'todos', this)">
                     Todos
@@ -1302,7 +1303,7 @@
             });
 
             if (listaGenerosUnicos.length === 0) {
-                htmlBotoesGen = `<p style="color: var(--text-muted); font-size: 0.85rem;">Nenhum gênero encontrado nas obras.</p>`;
+                htmlBotoesGen = `<button class="genre-pill-btn active" onclick="filtrarMultiplo('genero', 'todos', this)">Todos</button>`;
             }
 
             containerBotoesGeneros.innerHTML = htmlBotoesGen;
@@ -1472,7 +1473,7 @@
                     <div class="bib-empty-state" style="grid-column: span 2; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
                         <div class="bib-empty-icon" style="font-size: 3rem; margin-bottom: 8px;">🌸</div>
                         <div class="bib-empty-title" style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #ffffff; text-shadow: 0 0 10px var(--primary-pink); margin-bottom: 6px;">Nenhuma obra nesta categoria</div>
-                        <div class="bib-empty-desc" style="font-size: 0.85rem; color: var(--text-muted); max-width: 260px; line-height: 1.4; text-shadow: var(--neon-glow); margin-bottom: 18px;">Você não possui obras salvas com este status no momento.</div>
+                        <div class="bib-empty-desc" style="font-size: 0.85rem; color: var(--text-muted); max-width: 260px; line-height: 1.4; text-shadow: var(--neon-glow); margin-bottom: 18px;">You não possui obras salvas com este status no momento.</div>
                         
                         <a href="./?aba=obras" class="btn-explorar-obras-estilizado" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
                             <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
