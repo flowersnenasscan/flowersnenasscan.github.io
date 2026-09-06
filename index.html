@@ -1231,13 +1231,11 @@
             const containerBotoes = document.getElementById('generos-botoes-container');
             if (!containerBotoes) return;
 
-            // Coletar todos os gêneros únicos das obras
             let conjuntoGeneros = new Set();
             listaObras.forEach(obra => {
                 if (obra.tags && Array.isArray(obra.tags)) {
                     obra.tags.forEach(t => {
                         let tagLimpa = String(t).trim();
-                        // Ignorar tags internas de idade ou nsfw se desejar, ou manter
                         if (tagLimpa) conjuntoGeneros.add(tagLimpa);
                     });
                 }
@@ -1245,7 +1243,6 @@
 
             let listaGenerosUnicos = Array.from(conjuntoGeneros).sort();
 
-            // Montar os botões de gêneros
             let htmlBotoes = `
                 <button class="genre-pill-btn ${generoSelecionadoAtual === 'todos' ? 'active' : ''}" onclick="filtrarPorGenero('todos', this)">
                     ✨ Todos
@@ -1272,13 +1269,11 @@
         function filtrarPorGenero(genero, elemento) {
             generoSelecionadoAtual = genero;
             
-            // Atualizar classes active dos botões
             document.querySelectorAll('.genre-pill-btn').forEach(b => b.classList.remove('active'));
             if (elemento) {
                 elemento.classList.add('active');
             }
 
-            // Atualizar título da seção
             const tituloSecao = document.getElementById('titulo-genero-selecionado');
             if (tituloSecao) {
                 tituloSecao.innerText = genero === 'todos' ? 'TODAS AS OBRAS' : `GÊNERO: ${genero.toUpperCase()}`;
