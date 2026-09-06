@@ -932,7 +932,7 @@
             </div>
         </div>
 
-        <!-- GÊNEROS / FILTROS COMPLETOS -->
+        <!-- GÊNEROS / FILTROS COMPLETOS (SEM NENHUM BOTÃO "TODOS") -->
         <div id="generos" class="view-section">
             <div class="section-container">
                 <div class="section-header">
@@ -940,35 +940,32 @@
                     <h2 class="section-title">EXPLORAR OBRAS</h2>
                 </div>
 
-                <!-- GRUPO 1: GÊNEROS (Único lugar com o botão "Todos") -->
+                <!-- GRUPO 1: GÊNEROS (Puxados do JSON dinamicamente, sem "Todos") -->
                 <div class="filtro-categoria-titulo">Gêneros</div>
                 <div id="generos-botoes-container" class="filtro-grupo-botoes">
-                    <button class="genre-pill-btn active" onclick="filtrarMultiplo('genero', 'todos', this)">Todos</button>
+                    <span style="color: var(--text-muted); font-size: 0.85rem;">Carregando gêneros...</span>
                 </div>
 
-                <!-- GRUPO 2: STATUS (Sem "Todos" e sem duplicação) -->
+                <!-- GRUPO 2: STATUS (Sem "Todos") -->
                 <div class="filtro-categoria-titulo">Status</div>
                 <div id="status-botoes-container" class="filtro-grupo-botoes">
-                    <button class="genre-pill-btn active" onclick="filtrarMultiplo('status', 'todos', this)">Todos</button>
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('status', 'andamento', this)">Em Andamento</button>
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('status', 'completo', this)">Completo</button>
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('status', 'hiatus', this)">Hiatus</button>
                 </div>
 
-                <!-- GRUPO 3: TIPO -->
+                <!-- GRUPO 3: TIPO (Sem "Todos") -->
                 <div class="filtro-categoria-titulo">Tipo</div>
                 <div id="tipo-botoes-container" class="filtro-grupo-botoes">
-                    <button class="genre-pill-btn active" onclick="filtrarMultiplo('tipo', 'todos', this)">Todos</button>
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('tipo', 'manhwa', this)">Manhwa</button>
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('tipo', 'manhua', this)">Manhua</button>
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('tipo', 'manga', this)">Mangá</button>
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('tipo', 'webtoon', this)">Webtoon</button>
                 </div>
 
-                <!-- GRUPO 4: CLASSIFICAÇÃO -->
+                <!-- GRUPO 4: CLASSIFICAÇÃO (Sem "Todos") -->
                 <div class="filtro-categoria-titulo">Classificação</div>
                 <div id="classificacao-botoes-container" class="filtro-grupo-botoes">
-                    <button class="genre-pill-btn active" onclick="filtrarMultiplo('classificacao', 'todos', this)">Todos</button>
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('classificacao', 'livre', this)">Livre</button>
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('classificacao', '18', this)">+18</button>
                 </div>
@@ -1010,12 +1007,12 @@
         let obraCarrosselAtualSlug = '';
         let filtroBibAtual = 'todos';
 
-        // Estado atual dos filtros múltiplos da aba Gêneros
+        // Estado atual dos filtros múltiplos (sem "todos" por padrão, iniciam vazios ou null)
         let filtrosAtivos = {
-            genero: 'todos',
-            status: 'todos',
-            tipo: 'todos',
-            classificacao: 'todos'
+            genero: null,
+            status: null,
+            tipo: null,
+            classificacao: null
         };
 
         function criarSlug(texto) {
@@ -1271,7 +1268,7 @@
             });
         }
 
-        /* RENDERIZAR FILTROS COMPLETOS (GÊNEROS) */
+        /* RENDERIZAR GÊNEROS REAIS DO JSON (SEM NENHUM BOTÃO "TODOS") */
         function renderizarPaginaGeneros() {
             const containerBotoesGeneros = document.getElementById('generos-botoes-container');
             if (!containerBotoesGeneros) return;
@@ -1281,20 +1278,22 @@
                 if (obra.tags && Array.isArray(obra.tags)) {
                     obra.tags.forEach(t => {
                         let tagLimpa = String(t).trim();
-                        if (tagLimpa) conjuntoGeneros.add(tagLimpa);
+                        // Ignorar tags que sejam +18 ou NSFW para não misturar com classificação
+                        if (tagLimpa && !tagLimpa.toLowerCase().includes('+18') && !tagLimpa.toLowerCase().includes('nsfw')) {
+                            conjuntoGeneros.add(tagLimpa);
+                        }
                     });
                 }
             });
 
             let listaGenerosUnicos = Array.from(conjuntoGeneros).sort();
 
-            // Botão "Todos" exclusivo no início do bloco de Gêneros
-            let htmlBotoesGen = `
-                <button class="genre-pill-btn ${filtrosAtivos.genero === 'todos' ? 'active' : ''}" onclick="filtrarMultiplo('genero', 'todos', this)">
-                    Todos
-                </button>
-            `;
+            if (listaGenerosUnicos.length === 0) {
+                containerBotoesGeneros.innerHTML = `<span style="color: var(--text-muted); font-size: 0.85rem;">Nenhum gênero encontrado nas obras.</span>`;
+                return;
+            }
 
+            let htmlBotoesGen = '';
             listaGenerosUnicos.forEach(gen => {
                 let ativoClass = filtrosAtivos.genero === gen ? 'active' : '';
                 htmlBotoesGen += `
@@ -1309,11 +1308,16 @@
         }
 
         function filtrarMultiplo(categoria, valor, elemento) {
-            filtrosAtivos[categoria] = valor;
-
-            let containerPai = elemento.parentElement;
-            containerPai.querySelectorAll('.genre-pill-btn').forEach(b => b.classList.remove('active'));
-            elemento.classList.add('active');
+            // Se clicar no botão que já está ativo, desativa ele (permite desselecionar)
+            if (filtrosAtivos[categoria] === valor) {
+                filtrosAtivos[categoria] = null;
+                elemento.classList.remove('active');
+            } else {
+                filtrosAtivos[categoria] = valor;
+                let containerPai = elemento.parentElement;
+                containerPai.querySelectorAll('.genre-pill-btn').forEach(b => b.classList.remove('active'));
+                elemento.classList.add('active');
+            }
 
             aplicarFiltrosMultiplos();
         }
@@ -1325,30 +1329,30 @@
             grid.innerHTML = '';
 
             let obrasFiltradas = listaObras.filter(obra => {
-                // 1. Gênero
-                if (filtrosAtivos.genero !== 'todos') {
+                // 1. Gênero (se houver algum selecionado)
+                if (filtrosAtivos.genero) {
                     if (!obra.tags || !Array.isArray(obra.tags)) return false;
                     let temTag = obra.tags.some(t => String(t).trim().toLowerCase() === filtrosAtivos.genero.toLowerCase());
                     if (!temTag) return false;
                 }
 
-                // 2. Status
-                if (filtrosAtivos.status !== 'todos') {
+                // 2. Status (se houver algum selecionado)
+                if (filtrosAtivos.status) {
                     let st = String(obra.status || '').toLowerCase();
                     if (filtrosAtivos.status === 'andamento' && !st.includes('andamento')) return false;
                     if (filtrosAtivos.status === 'completo' && !st.includes('completo') && !st.includes('concluido') && !st.includes('finalizado')) return false;
                     if (filtrosAtivos.status === 'hiatus' && !st.includes('hiatus') && !st.includes('pausa')) return false;
                 }
 
-                // 3. Tipo
-                if (filtrosAtivos.tipo !== 'todos') {
+                // 3. Tipo (se houver algum selecionado)
+                if (filtrosAtivos.tipo) {
                     let tp = String(obra.tipo || obra.formato || '').toLowerCase();
                     let temTpTag = obra.tags && Array.isArray(obra.tags) && obra.tags.some(t => String(t).toLowerCase() === filtrosAtivos.tipo.toLowerCase());
                     if (!tp.includes(filtrosAtivos.tipo.toLowerCase()) && !temTpTag) return false;
                 }
 
-                // 4. Classificação
-                if (filtrosAtivos.classificacao !== 'todos') {
+                // 4. Classificação (se houver alguma selecionada)
+                if (filtrosAtivos.classificacao) {
                     let ehNsfw = obra.nsfw === true || obra.mais18 === true || obra.adulto === true;
                     if (obra.tags && Array.isArray(obra.tags)) {
                         if (obra.tags.some(t => String(t).toLowerCase().includes('+18') || String(t).toLowerCase().includes('nsfw'))) ehNsfw = true;
