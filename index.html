@@ -932,7 +932,7 @@
             </div>
         </div>
 
-        <!-- GÊNEROS / FILTROS COMPLETOS (SEM NENHUM BOTÃO "TODOS") -->
+        <!-- GÊNEROS / FILTROS COMPLETOS -->
         <div id="generos" class="view-section">
             <div class="section-container">
                 <div class="section-header">
@@ -940,13 +940,13 @@
                     <h2 class="section-title">EXPLORAR OBRAS</h2>
                 </div>
 
-                <!-- GRUPO 1: GÊNEROS (Puxados do JSON dinamicamente, sem "Todos") -->
+                <!-- GRUPO 1: GÊNEROS -->
                 <div class="filtro-categoria-titulo">Gêneros</div>
                 <div id="generos-botoes-container" class="filtro-grupo-botoes">
                     <span style="color: var(--text-muted); font-size: 0.85rem;">Carregando gêneros...</span>
                 </div>
 
-                <!-- GRUPO 2: STATUS (Sem "Todos") -->
+                <!-- GRUPO 2: STATUS -->
                 <div class="filtro-categoria-titulo">Status</div>
                 <div id="status-botoes-container" class="filtro-grupo-botoes">
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('status', 'andamento', this)">Em Andamento</button>
@@ -954,7 +954,7 @@
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('status', 'hiatus', this)">Hiatus</button>
                 </div>
 
-                <!-- GRUPO 3: TIPO (Sem "Todos") -->
+                <!-- GRUPO 3: TIPO -->
                 <div class="filtro-categoria-titulo">Tipo</div>
                 <div id="tipo-botoes-container" class="filtro-grupo-botoes">
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('tipo', 'manhwa', this)">Manhwa</button>
@@ -963,7 +963,7 @@
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('tipo', 'webtoon', this)">Webtoon</button>
                 </div>
 
-                <!-- GRUPO 4: CLASSIFICAÇÃO (Sem "Todos") -->
+                <!-- GRUPO 4: CLASSIFICAÇÃO -->
                 <div class="filtro-categoria-titulo">Classificação</div>
                 <div id="classificacao-botoes-container" class="filtro-grupo-botoes">
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('classificacao', 'livre', this)">Livre</button>
@@ -1046,9 +1046,6 @@
             } else if (statusRaw.includes('hiatus') || statusRaw.includes('pausa')) {
                 statusClass = 'status-hiatus';
                 statusText = 'Hiatus';
-            } else if (statusRaw.includes('andamento') || statusRaw.includes('lancamento')) {
-                statusClass = 'status-andamento';
-                statusText = 'Em Andamento';
             } else {
                 statusText = obra.status;
             }
@@ -1060,13 +1057,11 @@
                 </span>
             `;
 
-            let ehNsfw = false;
-            if (obra.nsfw === true || obra.mais18 === true || obra.adulto === true) {
-                ehNsfw = true;
-            } else if (obra.tags && Array.isArray(obra.tags)) {
-                ehNsfw = obra.tags.some(t => String(t).toLowerCase().includes('+18') || String(t).toLowerCase().includes('nsfw') || String(t).toLowerCase().includes('adulto'));
-            } else if (typeof obra.classificacao === 'string' && (obra.classificacao.includes('18') || obra.classificacao.toLowerCase().includes('nsfw') || obra.classificacao.toLowerCase().includes('adulto'))) {
-                ehNsfw = true;
+            let ehNsfw = obra.nsfw === true || obra.mais18 === true || obra.adulto === true;
+            if (obra.tags && Array.isArray(obra.tags)) {
+                if (obra.tags.some(t => String(t).toLowerCase().includes('+18') || String(t).toLowerCase().includes('nsfw') || String(t).toLowerCase().includes('adulto'))) {
+                    ehNsfw = true;
+                }
             }
 
             if (ehNsfw) {
@@ -1087,7 +1082,7 @@
                 verificarParametroUrl();
             })
             .catch(err => {
-                console.warn("Aviso: Falha ao carregar obras.json via fetch, usando dados de fallback.", err);
+                console.warn("Aviso: Falha ao carregar obras.json via fetch, usando dados vazios.", err);
                 listaObras = [];
                 inicializarHome();
                 verificarParametroUrl();
@@ -1287,6 +1282,7 @@
 
             if (listaGenerosUnicos.length === 0) {
                 containerBotoesGeneros.innerHTML = `<span style="color: var(--text-muted); font-size: 0.85rem;">Nenhum gênero encontrado nas obras.</span>`;
+                aplicarFiltrosMultiplos();
                 return;
             }
 
