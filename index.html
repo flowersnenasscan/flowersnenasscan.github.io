@@ -377,9 +377,10 @@
             object-fit: cover;
         }
 
+        /* Página inicial / Obras: Selo de status em BAIXO e +18 em CIMA */
         .badge-status {
             position: absolute;
-            top: 8px;
+            bottom: 8px;
             left: 8px;
             background: rgba(12, 12, 16, 0.85);
             backdrop-filter: blur(4px);
@@ -413,7 +414,23 @@
         .status-hiatus .status-dot { background-color: #9575cd; box-shadow: 0 0 4px #9575cd; }
         .status-hiatus { color: #ede7f6; }
 
-        /* Botão de favorito no card (canto superior direito) */
+        .badge-nsfw {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: linear-gradient(135deg, #2c0b22, #4a1538);
+            color: #ff99dd;
+            border: 1px solid rgba(255, 153, 221, 0.6);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.58rem;
+            font-weight: 800;
+            z-index: 3;
+            box-shadow: 0 0 8px rgba(255, 153, 221, 0.4);
+            letter-spacing: 0.5px;
+        }
+
+        /* Botão de favorito nos cards da home/obras (canto superior direito) com ícone desenhado */
         .card-fav-btn {
             position: absolute;
             top: 8px;
@@ -429,29 +446,21 @@
             justify-content: center;
             cursor: pointer;
             z-index: 4;
-            font-size: 0.9rem;
             transition: 0.2s;
             box-shadow: 0 2px 6px rgba(0,0,0,0.8);
+        }
+        .card-fav-btn svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+            filter: drop-shadow(0 0 4px rgba(255, 153, 221, 0.6));
         }
         .card-fav-btn:hover {
             background: var(--primary-pink);
             color: #000;
         }
-
-        .badge-nsfw {
-            position: absolute;
-            bottom: 8px;
-            right: 8px;
-            background: linear-gradient(135deg, #2c0b22, #4a1538);
-            color: #ff99dd;
-            border: 1px solid rgba(255, 153, 221, 0.6);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.58rem;
-            font-weight: 800;
-            z-index: 3;
-            box-shadow: 0 0 8px rgba(255, 153, 221, 0.4);
-            letter-spacing: 0.5px;
+        .card-fav-btn:hover svg {
+            fill: #000;
         }
 
         .manga-info {
@@ -478,7 +487,6 @@
             text-decoration: underline;
         }
 
-        /* Gêneros nos cards da biblioteca estilo imagem */
         .card-tags-row {
             display: flex;
             flex-wrap: wrap;
@@ -509,7 +517,6 @@
             fill: currentColor;
         }
 
-        /* Botão "Continuar lendo" e barra de progresso estilo imagem */
         .btn-continuar-lendo {
             display: flex;
             align-items: center;
@@ -535,31 +542,6 @@
         .btn-continuar-lendo:hover {
             background: rgba(255, 153, 221, 0.15);
             border-color: var(--primary-pink);
-        }
-
-        .progress-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 6px;
-        }
-        .progress-text {
-            font-size: 0.68rem;
-            color: var(--text-muted);
-        }
-        .progress-bar-bg {
-            flex-grow: 1;
-            height: 4px;
-            background: #221a20;
-            border-radius: 2px;
-            margin-left: 8px;
-            overflow: hidden;
-        }
-        .progress-bar-fill {
-            height: 100%;
-            background: var(--primary-pink);
-            box-shadow: var(--neon-glow);
-            border-radius: 2px;
         }
 
         .retangulo-capitulo {
@@ -651,7 +633,6 @@
             margin-bottom: 14px;
         }
 
-        /* Abas de filtro da biblioteca */
         .bib-tabs-container {
             display: flex;
             gap: 8px;
@@ -679,6 +660,11 @@
             transition: 0.2s;
             text-shadow: var(--neon-glow);
         }
+        .bib-tab svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
         .bib-tab.active {
             background: var(--primary-pink);
             color: #000000;
@@ -686,8 +672,9 @@
             box-shadow: 0 0 12px rgba(255, 153, 221, 0.6);
             text-shadow: none;
         }
-        .bib-tab.active span, .bib-tab.active div {
+        .bib-tab.active span, .bib-tab.active div, .bib-tab.active svg {
             color: #000000;
+            fill: #000000;
             text-shadow: none;
         }
         .bib-tab-badge {
@@ -702,11 +689,12 @@
             color: #000;
         }
 
-        /* Ordenação e Filtro Gêneros */
+        /* Ordenação e Filtro Gêneros coladinhos conforme pedido */
         .bib-filter-row {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
+            gap: 12px;
             margin-bottom: 20px;
             font-size: 0.85rem;
             color: var(--text-muted);
@@ -725,12 +713,17 @@
             text-shadow: var(--neon-glow);
             transition: 0.2s;
         }
+        .bib-filter-btn svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
         .bib-filter-btn:hover {
             background: rgba(255, 153, 221, 0.15);
             border-color: var(--primary-pink);
         }
 
-        /* Estado Vazio da Biblioteca (conforme imagem 1) */
+        /* Estado Vazio da Biblioteca com o botão logo abaixo */
         .bib-empty-state {
             display: flex;
             flex-direction: column;
@@ -758,7 +751,7 @@
             max-width: 260px;
             line-height: 1.4;
             text-shadow: var(--neon-glow);
-            margin-bottom: 10px;
+            margin-bottom: 4px;
         }
         .bib-empty-btn {
             background: var(--primary-pink);
@@ -770,11 +763,17 @@
             font-weight: 700;
             cursor: pointer;
             box-shadow: 0 0 15px rgba(255, 153, 221, 0.6);
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 6px;
             text-decoration: none;
             transition: 0.2s;
+            margin-top: 6px;
+        }
+        .bib-empty-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
         }
         .bib-empty-btn:hover {
             transform: scale(1.05);
@@ -902,7 +901,7 @@
             </div>
         </div>
 
-        <!-- TELA BIBLIOTECA (FAVORITOS) - PERSONALIZADA EXATAMENTE COMO NAS IMAGENS -->
+        <!-- TELA BIBLIOTECA (FAVORITOS) - SEM CORAÇÃO, SEM SELOS, COM BOTÃO LOGO ABAIXO DO TEXTO VAZIO E GÊNEROS COLADINHO -->
         <div id="favoritos" class="view-section">
             <div class="section-container">
                 <div class="biblioteca-header-area">
@@ -915,25 +914,29 @@
                     <!-- ABAS DE FILTRO DA BIBLIOTECA -->
                     <div class="bib-tabs-container">
                         <button class="bib-tab active" onclick="filtrarBibTab('todos', this)">
-                            <span>❤️ Favoritos</span>
+                            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                            <span>Favoritos</span>
                             <div class="bib-tab-badge" id="count-todos">0</div>
                         </button>
                         <button class="bib-tab" onclick="filtrarBibTab('andamento', this)">
-                            <span>📖 Em andamento</span>
+                            <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0-2-.9-2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+                            <span>Em andamento</span>
                         </button>
                         <button class="bib-tab" onclick="filtrarBibTab('concluidas', this)">
-                            <span>✓ Concluídas</span>
+                            <svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+                            <span>Concluídas</span>
                         </button>
                         <button class="bib-tab" onclick="filtrarBibTab('hiatus', this)">
-                            <span>⏸️ Hiatus</span>
+                            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            <span>Hiatus</span>
                         </button>
                     </div>
 
-                    <!-- ORDENAR E GÊNEROS -->
+                    <!-- ORDENAR E GÊNEROS COLADINHOS -->
                     <div class="bib-filter-row">
                         <span>Ordenar por:</span>
                         <button class="bib-filter-btn" onclick="alert('Filtro de Gêneros da Biblioteca em breve!')">
-                            <svg viewBox="0 0 24 24" style="width:14px; height:14px; fill:currentColor;"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v5z"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v5z"/></svg>
                             Gêneros
                         </button>
                     </div>
@@ -1034,6 +1037,7 @@
                 statusText = obra.status;
             }
 
+            // Selo de status em BAIXO
             htmlBadges += `
                 <span class="badge-status ${statusClass}">
                     <span class="status-dot"></span>
@@ -1050,11 +1054,38 @@
                 ehNsfw = true;
             }
 
+            // Selo +18 em CIMA
             if (ehNsfw) {
                 htmlBadges += `<span class="badge-nsfw">+18</span>`;
             }
 
             return htmlBadges;
+        }
+
+        function verificarFavorito(tituloObra) {
+            try {
+                let favs = JSON.parse(localStorage.getItem('flowers_favoritos')) || [];
+                return favs.includes(tituloObra);
+            } catch(e) { return false; }
+        }
+
+        function toggleFavoritoCard(tituloObra) {
+            let favs = [];
+            try {
+                favs = JSON.parse(localStorage.getItem('flowers_favoritos')) || [];
+            } catch(e) { favs = []; }
+
+            if (favs.includes(tituloObra)) {
+                favs = favs.filter(t => t !== tituloObra);
+            } else {
+                favs.push(tituloObra);
+            }
+            localStorage.setItem('flowers_favoritos', JSON.stringify(favs));
+            
+            // Re-renderiza para atualizar contadores e estados
+            renderizarAtualizacoes();
+            renderizarTodasObras();
+            renderizarBiblioteca();
         }
 
         fetch('obras.json?v=' + new Date().getTime())
@@ -1184,11 +1215,18 @@
                 let seloHtml = exibirSelo ? `<span class="selo-novo-cap">NOVO</span>` : '';
                 let badgesHtml = gerarBadgesObra(obra);
                 
+                let isFav = verificarFavorito(obra.titulo);
+                let coracaoSvg = isFav 
+                    ? '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>' 
+                    : '<path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/>';
+                let btnFavHtml = `<button class="card-fav-btn" onclick="event.stopPropagation(); event.preventDefault(); toggleFavoritoCard('${obra.titulo}')" title="Favoritar"><svg viewBox="0 0 24 24">${coracaoSvg}</svg></button>`;
+
                 grid.innerHTML += `
                     <div class="manga-card">
                         <a href="obra.html?nome=${slugObra}" class="manga-capa-box">
                             <img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa">
                             ${badgesHtml}
+                            ${btnFavHtml}
                         </a>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
@@ -1223,12 +1261,18 @@
                 }
 
                 let badgesHtml = gerarBadgesObra(obra);
+                let isFav = verificarFavorito(obra.titulo);
+                let coracaoSvg = isFav 
+                    ? '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>' 
+                    : '<path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/>';
+                let btnFavHtml = `<button class="card-fav-btn" onclick="event.stopPropagation(); event.preventDefault(); toggleFavoritoCard('${obra.titulo}')" title="Favoritar"><svg viewBox="0 0 24 24">${coracaoSvg}</svg></button>`;
 
                 grid.innerHTML += `
                     <div class="manga-card">
                         <a href="obra.html?nome=${slugObra}" class="manga-capa-box">
                             <img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa">
                             ${badgesHtml}
+                            ${btnFavHtml}
                         </a>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
@@ -1255,7 +1299,7 @@
                 favoritos = JSON.parse(localStorage.getItem('flowers_favoritos')) || [];
             } catch(e) { favoritos = []; }
 
-            // Atualizar contador na aba
+            // Atualiza contagem correta real dos salvos
             const badgeCount = document.getElementById('count-todos');
             if(badgeCount) badgeCount.innerText = favoritos.length;
 
@@ -1267,7 +1311,8 @@
                         <div class="bib-empty-title">Ainda não há nada por aqui...</div>
                         <div class="bib-empty-desc">Adicione suas obras favoritas para acessá-las sempre que quiser!</div>
                         <a href="./?aba=obras" class="bib-empty-btn" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
-                            <span>+</span> Explorar obras &rarr;
+                            <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                            Explorar obras &rarr;
                         </a>
                     </div>
                 `;
@@ -1276,7 +1321,6 @@
 
             let obrasFavs = listaObras.filter(o => favoritos.includes(o.titulo));
 
-            // Filtrar pelas abas (andamento, concluidas, hiatus)
             if (filtroBibAtual === 'andamento') {
                 obrasFavs = obrasFavs.filter(o => String(o.status || '').toLowerCase().includes('andamento'));
             } else if (filtroBibAtual === 'concluidas') {
@@ -1308,27 +1352,18 @@
 
             obrasFavs.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
-                let badgesHtml = gerarBadgesObra(obra);
 
-                // Botão de favoritar (coração preenchido para remover ou desfavoritar)
-                let btnFavHtml = `<button class="card-fav-btn" onclick="event.stopPropagation(); event.preventDefault(); removerFavorito('${obra.titulo}')" title="Remover dos favoritos">❤️</button>`;
-
-                // Tags / Gêneros da obra
+                // Na página de favoritos: sem coração, sem selos de andamento e +18 conforme solicitado
                 let tagsHtml = '';
                 if (obra.tags && Array.isArray(obra.tags)) {
                     let tagsFiltradas = obra.tags.filter(t => !String(t).toLowerCase().includes('+18') && !String(t).toLowerCase().includes('nsfw'));
                     tagsHtml = tagsFiltradas.slice(0, 3).map(t => `<span class="card-tag">${t}</span>`).join('');
                 }
 
-                // Capítulo mais recente e botão continuar lendo
                 let ultimoCapNum = '1';
-                let totalCaps = '10';
-                let progressoPercentual = '50%';
                 if (obra.capitulos && obra.capitulos.length > 0) {
                     let capObj = obra.capitulos[0];
                     ultimoCapNum = typeof capObj === 'object' ? capObj.numero : capObj;
-                    totalCaps = obra.capitulos.length * 5; // Simulação de total se não houver
-                    if(obra.totalCapitulos) totalCaps = obra.totalCapitulos;
                 }
                 let slugCap = String(ultimoCapNum).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
                 let linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`;
@@ -1337,8 +1372,6 @@
                     <div class="manga-card">
                         <a href="obra.html?nome=${slugObra}" class="manga-capa-box">
                             <img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa">
-                            ${badgesHtml}
-                            ${btnFavHtml}
                         </a>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
@@ -1356,28 +1389,10 @@
                                 <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 Continuar lendo
                             </a>
-
-                            <div class="progress-container">
-                                <span class="progress-text">${ultimoCapNum}/${totalCaps}</span>
-                                <div class="progress-bar-bg">
-                                    <div class="progress-bar-fill" style="width: 75%;"></div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 `;
             });
-        }
-
-        function removerFavorito(tituloObra) {
-            let favoritos = [];
-            try {
-                favoritos = JSON.parse(localStorage.getItem('flowers_favoritos')) || [];
-            } catch(e) { favoritos = []; }
-            
-            favoritos = favoritos.filter(t => t !== tituloObra);
-            localStorage.setItem('flowers_favoritos', JSON.stringify(favoritos));
-            renderizarBiblioteca();
         }
 
         function toggleMenu() {
@@ -1413,12 +1428,18 @@
                 }
 
                 let badgesHtml = gerarBadgesObra(obra);
+                let isFav = verificarFavorito(obra.titulo);
+                let coracaoSvg = isFav 
+                    ? '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>' 
+                    : '<path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/>';
+                let btnFavHtml = `<button class="card-fav-btn" onclick="event.stopPropagation(); event.preventDefault(); toggleFavoritoCard('${obra.titulo}')" title="Favoritar"><svg viewBox="0 0 24 24">${coracaoSvg}</svg></button>`;
 
                 grid.innerHTML += `
                     <div class="manga-card">
                         <a href="obra.html?nome=${slugObra}" class="manga-capa-box">
                             <img src="${obra.capa}" class="manga-capa">
                             ${badgesHtml}
+                            ${btnFavHtml}
                         </a>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo">${obra.titulo}</a>
