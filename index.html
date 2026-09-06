@@ -572,7 +572,6 @@
             text-decoration: underline;
         }
 
-        /* Estilos específicos da página de Favoritos */
         .biblioteca-header-area {
             margin-bottom: 16px;
         }
@@ -679,7 +678,6 @@
             border-color: var(--primary-pink);
         }
 
-        /* Botão estilizado com o padrão exato da interface */
         .btn-explorar-obras-estilizado {
             display: inline-flex;
             align-items: center;
@@ -703,36 +701,6 @@
             color: #000000;
             box-shadow: 0 0 20px rgba(255, 153, 221, 0.85);
             transform: translateY(-2px);
-        }
-
-        .bib-empty-state {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 20px;
-            gap: 14px;
-        }
-        .bib-empty-icon {
-            font-size: 3rem;
-            margin-bottom: 4px;
-            filter: drop-shadow(0 0 10px rgba(255,153,221,0.5));
-        }
-        .bib-empty-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #ffffff;
-            text-shadow: 0 0 10px var(--primary-pink);
-        }
-        .bib-empty-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            max-width: 260px;
-            line-height: 1.4;
-            text-shadow: var(--neon-glow);
-            margin-bottom: 4px;
         }
 
         .bottom-nav {
@@ -868,7 +836,7 @@
 
                     <!-- ABAS DE FILTRO DA BIBLIOTECA -->
                     <div class="bib-tabs-container">
-                        <button class="bib-tab" onclick="filtrarBibTab('todos', this)">
+                        <button class="bib-tab active" onclick="filtrarBibTab('todos', this)">
                             <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
                             <span>Favoritos</span>
                             <div class="bib-tab-badge" id="count-todos">0</div>
@@ -1029,30 +997,12 @@
             })
             .catch(err => {
                 console.warn("Aviso: Falha ao carregar obras.json via fetch, usando dados de fallback.", err);
-                listaObras = [
-                    {
-                        titulo: "Alfa Trauma",
-                        capa: "https://via.placeholder.com/300x450/111/FF99DD?text=Alfa+Trauma",
-                        sinopse: "Obra de exemplo.",
-                        status: "Em Andamento",
-                        tags: ["BL", "Drama", "Romance", "+18"],
-                        capitulos: [{ numero: "48", data: "01/09/2026" }]
-                    },
-                    {
-                        titulo: "Meu Dono",
-                        capa: "https://via.placeholder.com/300x450/111/FF99DD?text=Meu+Dono",
-                        sinopse: "Obra de exemplo.",
-                        status: "Completo",
-                        tags: ["BL", "Yaoi", "Romance"],
-                        capitulos: [{ numero: "22", data: "01/09/2026" }]
-                    }
-                ];
+                listaObras = [];
                 inicializarHome();
                 verificarParametroUrl();
             });
 
         function inicializarHome() {
-            if (listaObras.length === 0) return;
             renderizarCarrosselAleatorio();
             renderizarAtualizacoes();
             renderizarTodasObras();
@@ -1080,10 +1030,22 @@
         }
 
         function renderizarCarrosselAleatorio() {
+            const carousel = document.getElementById('hero-carousel');
+            if (!listaObras || listaObras.length === 0) {
+                carousel.innerHTML = `
+                    <div class="hero-slide active" style="background-image: url('');">
+                        <div class="hero-content">
+                            <div class="hero-title">Nenhuma obra cadastrada</div>
+                            <div class="hero-synopsis">Adicione obras ao seu obras.json</div>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
             const copia = [...listaObras].sort(() => 0.5 - Math.random());
             const destaques = copia.slice(0, 5);
             
-            const carousel = document.getElementById('hero-carousel');
             carousel.innerHTML = '';
 
             destaques.forEach((obra, index) => {
@@ -1122,6 +1084,11 @@
         function renderizarAtualizacoes() {
             const grid = document.getElementById('grid-atualizacoes');
             grid.innerHTML = '';
+
+            if (!listaObras || listaObras.length === 0) {
+                grid.innerHTML = `<p style="color: var(--text-muted); grid-column: span 2;">Nenhuma atualização recente.</p>`;
+                return;
+            }
 
             const recentes = listaObras.slice(0, 10);
 
@@ -1169,6 +1136,12 @@
         function renderizarTodasObras() {
             const grid = document.getElementById('grid-todas-obras');
             grid.innerHTML = '';
+
+            if (!listaObras || listaObras.length === 0) {
+                grid.innerHTML = `<p style="color: var(--text-muted); grid-column: span 2;">Nenhuma obra cadastrada.</p>`;
+                return;
+            }
+
             listaObras.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
                 let ultimoCapNum = 'Em breve';
@@ -1223,7 +1196,6 @@
 
             if (!Array.isArray(favoritosSalvos)) favoritosSalvos = [];
 
-            // Apenas obras que o usuário salvou conscientemente
             let obrasFavs = listaObras.filter(o => favoritosSalvos.includes(o.titulo) || favoritosSalvos.includes(o.id));
 
             const badgeCount = document.getElementById('count-todos');
