@@ -430,39 +430,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Botão de favorito nos cards da home/obras (canto superior direito) com ícone desenhado */
-        .card-fav-btn {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: rgba(12, 12, 16, 0.85);
-            border: 1px solid rgba(255, 153, 221, 0.3);
-            color: var(--primary-pink);
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 4;
-            transition: 0.2s;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.8);
-        }
-        .card-fav-btn svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-            filter: drop-shadow(0 0 4px rgba(255, 153, 221, 0.6));
-        }
-        .card-fav-btn:hover {
-            background: var(--primary-pink);
-            color: #000;
-        }
-        .card-fav-btn:hover svg {
-            fill: #000;
-        }
-
         .manga-info {
             padding: 10px;
             display: flex;
@@ -608,7 +575,7 @@
             text-decoration: underline;
         }
 
-        /* Estilos específicos da página de Favoritos baseados nas imagens */
+        /* Estilos específicos da página de Favoritos */
         .biblioteca-header-area {
             margin-bottom: 16px;
         }
@@ -665,17 +632,10 @@
             height: 14px;
             fill: currentColor;
         }
-        .bib-tab.active {
-            background: var(--primary-pink);
-            color: #000000;
+        /* BOTÃO DE FAVORITOS SEMPRE ESTILIZADO NORMALMENTE (SEM O ROSA SÓLIDO CHATO, IGUAL AOS OUTROS) */
+        .bib-tab:hover {
+            background: rgba(255, 153, 221, 0.15);
             border-color: var(--primary-pink);
-            box-shadow: 0 0 12px rgba(255, 153, 221, 0.6);
-            text-shadow: none;
-        }
-        .bib-tab.active span, .bib-tab.active div, .bib-tab.active svg {
-            color: #000000;
-            fill: #000000;
-            text-shadow: none;
         }
         .bib-tab-badge {
             background: rgba(255, 153, 221, 0.25);
@@ -684,12 +644,8 @@
             font-size: 0.7rem;
             font-weight: 700;
         }
-        .bib-tab.active .bib-tab-badge {
-            background: rgba(0, 0, 0, 0.2);
-            color: #000;
-        }
 
-        /* Ordenação e Filtro Gêneros coladinhos conforme pedido */
+        /* Ordenação e Filtro Gêneros coladinhos */
         .bib-filter-row {
             display: flex;
             align-items: center;
@@ -901,7 +857,7 @@
             </div>
         </div>
 
-        <!-- TELA BIBLIOTECA (FAVORITOS) - SEM CORAÇÃO, SEM SELOS, COM BOTÃO LOGO ABAIXO DO TEXTO VAZIO E GÊNEROS COLADINHO -->
+        <!-- TELA BIBLIOTECA (FAVORITOS) - SEM CORAÇÃO NOS CARDS, CONTADOR CERTO E BOTÃO EXPLORAR OBRAS ABAIXO DO TEXTO VAZIO -->
         <div id="favoritos" class="view-section">
             <div class="section-container">
                 <div class="biblioteca-header-area">
@@ -913,8 +869,8 @@
 
                     <!-- ABAS DE FILTRO DA BIBLIOTECA -->
                     <div class="bib-tabs-container">
-                        <button class="bib-tab active" onclick="filtrarBibTab('todos', this)">
-                            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        <button class="bib-tab" onclick="filtrarBibTab('todos', this)">
+                            <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
                             <span>Favoritos</span>
                             <div class="bib-tab-badge" id="count-todos">0</div>
                         </button>
@@ -984,7 +940,7 @@
             Obras
         </a>
         <a href="./?aba=favoritos" class="nav-item" id="nav-favoritos" onclick="event.preventDefault(); mudarAbaVisual('favoritos'); history.pushState({}, '', './?aba=favoritos'); renderizarBiblioteca();">
-            <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6  12V4z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
             Biblioteca
         </a>
         <a href="./?aba=avisos" class="nav-item" id="nav-avisos" onclick="event.preventDefault(); mudarAbaVisual('avisos'); history.pushState({}, '', './?aba=avisos');">
@@ -1214,24 +1170,17 @@
                 let exibirSelo = ehCapituloNovo(dataCap);
                 let seloHtml = exibirSelo ? `<span class="selo-novo-cap">NOVO</span>` : '';
                 let badgesHtml = gerarBadgesObra(obra);
-                
-                let isFav = verificarFavorito(obra.titulo);
-                let coracaoSvg = isFav 
-                    ? '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>' 
-                    : '<path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/>';
-                let btnFavHtml = `<button class="card-fav-btn" onclick="event.stopPropagation(); event.preventDefault(); toggleFavoritoCard('${obra.titulo}')" title="Favoritar"><svg viewBox="0 0 24 24">${coracaoSvg}</svg></button>`;
 
                 grid.innerHTML += `
-                    <div class="manga-card">
-                        <a href="obra.html?nome=${slugObra}" class="manga-capa-box">
+                    <div class="manga-card" onclick="window.location.href='obra.html?nome=${slugObra}'" style="cursor: pointer;">
+                        <div class="manga-capa-box">
                             <img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa">
                             ${badgesHtml}
-                            ${btnFavHtml}
-                        </a>
+                        </div>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
                             
-                            <a href="${linkLeitor}" class="retangulo-capitulo">
+                            <a href="${linkLeitor}" class="retangulo-capitulo" onclick="event.stopPropagation()">
                                 <div class="info-cap-recente">
                                     <span>Capítulo ${ultimoCapNum}</span>
                                     ${seloHtml}
@@ -1261,23 +1210,17 @@
                 }
 
                 let badgesHtml = gerarBadgesObra(obra);
-                let isFav = verificarFavorito(obra.titulo);
-                let coracaoSvg = isFav 
-                    ? '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>' 
-                    : '<path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/>';
-                let btnFavHtml = `<button class="card-fav-btn" onclick="event.stopPropagation(); event.preventDefault(); toggleFavoritoCard('${obra.titulo}')" title="Favoritar"><svg viewBox="0 0 24 24">${coracaoSvg}</svg></button>`;
 
                 grid.innerHTML += `
-                    <div class="manga-card">
-                        <a href="obra.html?nome=${slugObra}" class="manga-capa-box">
+                    <div class="manga-card" onclick="window.location.href='obra.html?nome=${slugObra}'" style="cursor: pointer;">
+                        <div class="manga-capa-box">
                             <img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa">
                             ${badgesHtml}
-                            ${btnFavHtml}
-                        </a>
+                        </div>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
                             <div class="capitulo-recente-row">
-                                <a href="${linkLeitor}" class="capitulo-link">Capítulo ${ultimoCapNum}</a>
+                                <a href="${linkLeitor}" class="capitulo-link" onclick="event.stopPropagation()">Capítulo ${ultimoCapNum}</a>
                             </div>
                         </div>
                     </div>
@@ -1299,7 +1242,7 @@
                 favoritos = JSON.parse(localStorage.getItem('flowers_favoritos')) || [];
             } catch(e) { favoritos = []; }
 
-            // Atualiza contagem correta real dos salvos
+            // CORREÇÃO DO CONTADOR: Conta exatamente quantas obras estão salvas no localStorage
             const badgeCount = document.getElementById('count-todos');
             if(badgeCount) badgeCount.innerText = favoritos.length;
 
@@ -1308,7 +1251,7 @@
                 container.innerHTML = `
                     <div class="bib-empty-state" style="grid-column: span 2;">
                         <div class="bib-empty-icon">📚</div>
-                        <div class="bib-empty-title">Ainda não há nada por aqui...</div>
+                        <div class="bib-empty-title">Sua biblioteca está vazia</div>
                         <div class="bib-empty-desc">Adicione suas obras favoritas para acessá-las sempre que quiser!</div>
                         <a href="./?aba=obras" class="bib-empty-btn" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
                             <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
@@ -1353,7 +1296,6 @@
             obrasFavs.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
 
-                // Na página de favoritos: sem coração, sem selos de andamento e +18 conforme solicitado
                 let tagsHtml = '';
                 if (obra.tags && Array.isArray(obra.tags)) {
                     let tagsFiltradas = obra.tags.filter(t => !String(t).toLowerCase().includes('+18') && !String(t).toLowerCase().includes('nsfw'));
@@ -1369,10 +1311,10 @@
                 let linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`;
 
                 container.innerHTML += `
-                    <div class="manga-card">
-                        <a href="obra.html?nome=${slugObra}" class="manga-capa-box">
+                    <div class="manga-card" onclick="window.location.href='obra.html?nome=${slugObra}'" style="cursor: pointer;">
+                        <div class="manga-capa-box">
                             <img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa">
-                        </a>
+                        </div>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
                             
@@ -1385,7 +1327,7 @@
                                 <span>Capítulo mais recente: ${ultimoCapNum}</span>
                             </div>
 
-                            <a href="${linkLeitor}" class="btn-continuar-lendo">
+                            <a href="${linkLeitor}" class="btn-continuar-lendo" onclick="event.stopPropagation()">
                                 <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                 Continuar lendo
                             </a>
@@ -1428,23 +1370,17 @@
                 }
 
                 let badgesHtml = gerarBadgesObra(obra);
-                let isFav = verificarFavorito(obra.titulo);
-                let coracaoSvg = isFav 
-                    ? '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>' 
-                    : '<path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"/>';
-                let btnFavHtml = `<button class="card-fav-btn" onclick="event.stopPropagation(); event.preventDefault(); toggleFavoritoCard('${obra.titulo}')" title="Favoritar"><svg viewBox="0 0 24 24">${coracaoSvg}</svg></button>`;
 
                 grid.innerHTML += `
-                    <div class="manga-card">
-                        <a href="obra.html?nome=${slugObra}" class="manga-capa-box">
+                    <div class="manga-card" onclick="window.location.href='obra.html?nome=${slugObra}'" style="cursor: pointer;">
+                        <div class="manga-capa-box">
                             <img src="${obra.capa}" class="manga-capa">
                             ${badgesHtml}
-                            ${btnFavHtml}
-                        </a>
+                        </div>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo">${obra.titulo}</a>
                             <div class="capitulo-recente-row">
-                                <a href="${linkLeitor}" class="capitulo-link">Capítulo ${ultimoCapNum}</a>
+                                <a href="${linkLeitor}" class="capitulo-link" onclick="event.stopPropagation()">Capítulo ${ultimoCapNum}</a>
                             </div>
                         </div>
                     </div>
