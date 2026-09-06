@@ -363,7 +363,7 @@
 
         .manga-capa-box {
             width: 100%;
-            height: 310px; /* Aumentado ainda mais o tamanho da capa da obra conforme pedido */
+            height: 310px; 
             position: relative;
             background: #000;
             cursor: pointer;
@@ -379,13 +379,13 @@
 
         .badge-status {
             position: absolute;
-            bottom: 6px;
-            left: 6px;
-            background: rgba(12, 12, 16, 0.9);
+            top: 8px;
+            left: 8px;
+            background: rgba(12, 12, 16, 0.85);
             backdrop-filter: blur(4px);
-            padding: 2px 7px;
-            border-radius: 4px;
-            font-size: 0.58rem; /* Selo de status menor */
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.65rem;
             font-weight: 700;
             text-transform: uppercase;
             z-index: 3;
@@ -394,7 +394,7 @@
             display: flex;
             align-items: center;
             gap: 4px;
-            border: 1px solid rgba(255, 153, 221, 0.25);
+            border: 1px solid rgba(255, 153, 221, 0.3);
         }
 
         .status-dot {
@@ -413,16 +413,41 @@
         .status-hiatus .status-dot { background-color: #9575cd; box-shadow: 0 0 4px #9575cd; }
         .status-hiatus { color: #ede7f6; }
 
+        /* Botão de favorito no card (canto superior direito) */
+        .card-fav-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(12, 12, 16, 0.85);
+            border: 1px solid rgba(255, 153, 221, 0.3);
+            color: var(--primary-pink);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 4;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.8);
+        }
+        .card-fav-btn:hover {
+            background: var(--primary-pink);
+            color: #000;
+        }
+
         .badge-nsfw {
             position: absolute;
-            top: 6px;
-            right: 6px;
+            bottom: 8px;
+            right: 8px;
             background: linear-gradient(135deg, #2c0b22, #4a1538);
             color: #ff99dd;
             border: 1px solid rgba(255, 153, 221, 0.6);
             padding: 2px 6px;
             border-radius: 4px;
-            font-size: 0.58rem; /* Selo +18 menor e estilizado */
+            font-size: 0.58rem;
             font-weight: 800;
             z-index: 3;
             box-shadow: 0 0 8px rgba(255, 153, 221, 0.4);
@@ -451,6 +476,90 @@
 
         .manga-titulo:hover {
             text-decoration: underline;
+        }
+
+        /* Gêneros nos cards da biblioteca estilo imagem */
+        .card-tags-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 2px;
+        }
+        .card-tag {
+            background: transparent;
+            border: 1px solid rgba(255, 153, 221, 0.4);
+            color: var(--primary-pink);
+            font-size: 0.65rem;
+            padding: 1px 6px;
+            border-radius: 10px;
+            text-shadow: var(--neon-glow);
+        }
+
+        .card-recent-chapter {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .card-recent-chapter svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+
+        /* Botão "Continuar lendo" e barra de progresso estilo imagem */
+        .btn-continuar-lendo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: #15151c;
+            border: 1px solid rgba(255, 153, 221, 0.4);
+            color: var(--primary-pink);
+            padding: 6px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 4px;
+            transition: 0.2s;
+            text-shadow: var(--neon-glow);
+        }
+        .btn-continuar-lendo svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+        .btn-continuar-lendo:hover {
+            background: rgba(255, 153, 221, 0.15);
+            border-color: var(--primary-pink);
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 6px;
+        }
+        .progress-text {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+        }
+        .progress-bar-bg {
+            flex-grow: 1;
+            height: 4px;
+            background: #221a20;
+            border-radius: 2px;
+            margin-left: 8px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--primary-pink);
+            box-shadow: var(--neon-glow);
+            border-radius: 2px;
         }
 
         .retangulo-capitulo {
@@ -515,6 +624,161 @@
         .capitulo-link:hover {
             color: white;
             text-decoration: underline;
+        }
+
+        /* Estilos específicos da página de Favoritos baseados nas imagens */
+        .biblioteca-header-area {
+            margin-bottom: 16px;
+        }
+        .biblioteca-title-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 0 10px var(--primary-pink);
+            background: linear-gradient(135deg, #ffffff 30%, var(--primary-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+        .biblioteca-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-shadow: var(--neon-glow);
+            margin-bottom: 14px;
+        }
+
+        /* Abas de filtro da biblioteca */
+        .bib-tabs-container {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            margin-bottom: 14px;
+            scrollbar-width: none;
+        }
+        .bib-tabs-container::-webkit-scrollbar {
+            display: none;
+        }
+        .bib-tab {
+            background: #0b0b0f;
+            border: 1px solid rgba(255, 153, 221, 0.35);
+            color: var(--primary-pink);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            transition: 0.2s;
+            text-shadow: var(--neon-glow);
+        }
+        .bib-tab.active {
+            background: var(--primary-pink);
+            color: #000000;
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 12px rgba(255, 153, 221, 0.6);
+            text-shadow: none;
+        }
+        .bib-tab.active span, .bib-tab.active div {
+            color: #000000;
+            text-shadow: none;
+        }
+        .bib-tab-badge {
+            background: rgba(255, 153, 221, 0.25);
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        .bib-tab.active .bib-tab-badge {
+            background: rgba(0, 0, 0, 0.2);
+            color: #000;
+        }
+
+        /* Ordenação e Filtro Gêneros */
+        .bib-filter-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .bib-filter-btn {
+            background: #0b0b0f;
+            border: 1px solid rgba(255, 153, 221, 0.35);
+            color: var(--primary-pink);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-shadow: var(--neon-glow);
+            transition: 0.2s;
+        }
+        .bib-filter-btn:hover {
+            background: rgba(255, 153, 221, 0.15);
+            border-color: var(--primary-pink);
+        }
+
+        /* Estado Vazio da Biblioteca (conforme imagem 1) */
+        .bib-empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            gap: 14px;
+        }
+        .bib-empty-icon {
+            font-size: 3rem;
+            margin-bottom: 4px;
+            filter: drop-shadow(0 0 10px rgba(255,153,221,0.5));
+        }
+        .bib-empty-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 0 10px var(--primary-pink);
+        }
+        .bib-empty-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            max-width: 260px;
+            line-height: 1.4;
+            text-shadow: var(--neon-glow);
+            margin-bottom: 10px;
+        }
+        .bib-empty-btn {
+            background: var(--primary-pink);
+            color: #000000;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(255, 153, 221, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .bib-empty-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 22px rgba(255, 153, 221, 0.9);
         }
 
         .bottom-nav {
@@ -638,15 +902,46 @@
             </div>
         </div>
 
-        <!-- TELA BIBLIOTECA -->
+        <!-- TELA BIBLIOTECA (FAVORITOS) - PERSONALIZADA EXATAMENTE COMO NAS IMAGENS -->
         <div id="favoritos" class="view-section">
             <div class="section-container">
-                <div class="section-header">
-                    <div class="section-bar"></div>
-                    <h2 class="section-title">SUA BIBLIOTECA</h2>
+                <div class="biblioteca-header-area">
+                    <div class="biblioteca-title-row">
+                        <svg viewBox="0 0 24 24" style="width:24px; height:24px; fill:currentColor;"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+                        MINHA BIBLIOTECA
+                    </div>
+                    <div class="biblioteca-subtitle">Aqui estão suas obras favoritas. Continue lendo quando quiser! ♡</div>
+
+                    <!-- ABAS DE FILTRO DA BIBLIOTECA -->
+                    <div class="bib-tabs-container">
+                        <button class="bib-tab active" onclick="filtrarBibTab('todos', this)">
+                            <span>❤️ Favoritos</span>
+                            <div class="bib-tab-badge" id="count-todos">0</div>
+                        </button>
+                        <button class="bib-tab" onclick="filtrarBibTab('andamento', this)">
+                            <span>📖 Em andamento</span>
+                        </button>
+                        <button class="bib-tab" onclick="filtrarBibTab('concluidas', this)">
+                            <span>✓ Concluídas</span>
+                        </button>
+                        <button class="bib-tab" onclick="filtrarBibTab('hiatus', this)">
+                            <span>⏸️ Hiatus</span>
+                        </button>
+                    </div>
+
+                    <!-- ORDENAR E GÊNEROS -->
+                    <div class="bib-filter-row">
+                        <span>Ordenar por:</span>
+                        <button class="bib-filter-btn" onclick="alert('Filtro de Gêneros da Biblioteca em breve!')">
+                            <svg viewBox="0 0 24 24" style="width:14px; height:14px; fill:currentColor;"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v5z"/></svg>
+                            Gêneros
+                        </button>
+                    </div>
                 </div>
+
+                <!-- CONTAINER DO GRID / ESTADO VAZIO -->
                 <div id="lista-favoritos" class="manga-grid">
-                    <p style="color: var(--text-muted); grid-column: span 2;">Sua biblioteca está vazia. Favorite obras para acompanhar aqui!</p>
+                    <!-- Preenchido dinamicamente pelo JS -->
                 </div>
             </div>
         </div>
@@ -698,6 +993,7 @@
     <script>
         let listaObras = [];
         let obraCarrosselAtualSlug = '';
+        let filtroBibAtual = 'todos';
 
         function criarSlug(texto) {
             return String(texto || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-').replace(/[^\w-]/g, '');
@@ -775,11 +1071,20 @@
                 console.warn("Aviso: Falha ao carregar obras.json via fetch, usando dados de fallback.", err);
                 listaObras = [
                     {
-                        titulo: "Exemplo de Obra",
-                        capa: "https://via.placeholder.com/300x450/111/FF99DD?text=Flower's+Nenasscan",
-                        sinopse: "Esta é uma obra de exemplo exibida porque o arquivo obras.json não pôde ser lido diretamente pelo navegador.",
+                        titulo: "Alfa Trauma",
+                        capa: "https://via.placeholder.com/300x450/111/FF99DD?text=Alfa+Trauma",
+                        sinopse: "Obra de exemplo.",
                         status: "Em Andamento",
-                        capitulos: [{ numero: "1", data: "01/09/2026" }]
+                        tags: ["BL", "Drama", "Romance", "+18"],
+                        capitulos: [{ numero: "48", data: "01/09/2026" }]
+                    },
+                    {
+                        titulo: "Meu Dono",
+                        capa: "https://via.placeholder.com/300x450/111/FF99DD?text=Meu+Dono",
+                        sinopse: "Obra de exemplo.",
+                        status: "Completo",
+                        tags: ["BL", "Yaoi", "Romance"],
+                        capitulos: [{ numero: "22", data: "01/09/2026" }]
                     }
                 ];
                 inicializarHome();
@@ -936,6 +1241,13 @@
             });
         }
 
+        function filtrarBibTab(tipo, elemento) {
+            filtroBibAtual = tipo;
+            document.querySelectorAll('.bib-tab').forEach(b => b.classList.remove('active'));
+            if(elemento) elemento.classList.add('active');
+            renderizarBiblioteca();
+        }
+
         function renderizarBiblioteca() {
             const container = document.getElementById('lista-favoritos');
             let favoritos = [];
@@ -943,34 +1255,129 @@
                 favoritos = JSON.parse(localStorage.getItem('flowers_favoritos')) || [];
             } catch(e) { favoritos = []; }
 
-            container.innerHTML = '';
+            // Atualizar contador na aba
+            const badgeCount = document.getElementById('count-todos');
+            if(badgeCount) badgeCount.innerText = favoritos.length;
+
             if (favoritos.length === 0) {
-                container.innerHTML = `<p style="color: var(--text-muted); grid-column: span 2;">Sua biblioteca está vazia. Favorite obras para acompanhar aqui!</p>`;
+                container.style.gridTemplateColumns = '1fr';
+                container.innerHTML = `
+                    <div class="bib-empty-state" style="grid-column: span 2;">
+                        <div class="bib-empty-icon">📚</div>
+                        <div class="bib-empty-title">Ainda não há nada por aqui...</div>
+                        <div class="bib-empty-desc">Adicione suas obras favoritas para acessá-las sempre que quiser!</div>
+                        <a href="./?aba=obras" class="bib-empty-btn" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
+                            <span>+</span> Explorar obras &rarr;
+                        </a>
+                    </div>
+                `;
                 return;
             }
 
-            const obrasFavs = listaObras.filter(o => favoritos.includes(o.titulo));
+            let obrasFavs = listaObras.filter(o => favoritos.includes(o.titulo));
+
+            // Filtrar pelas abas (andamento, concluidas, hiatus)
+            if (filtroBibAtual === 'andamento') {
+                obrasFavs = obrasFavs.filter(o => String(o.status || '').toLowerCase().includes('andamento'));
+            } else if (filtroBibAtual === 'concluidas') {
+                obrasFavs = obrasFavs.filter(o => {
+                    let st = String(o.status || '').toLowerCase();
+                    return st.includes('completo') || st.includes('concluido') || st.includes('finalizado');
+                });
+            } else if (filtroBibAtual === 'hiatus') {
+                obrasFavs = obrasFavs.filter(o => {
+                    let st = String(o.status || '').toLowerCase();
+                    return st.includes('hiatus') || st.includes('pausa');
+                });
+            }
+
             if (obrasFavs.length === 0) {
-                container.innerHTML = `<p style="color: var(--text-muted); grid-column: span 2;">Nenhuma obra favoritada encontrada no catálogo.</p>`;
+                container.style.gridTemplateColumns = '1fr';
+                container.innerHTML = `
+                    <div class="bib-empty-state" style="grid-column: span 2;">
+                        <div class="bib-empty-icon">🌸</div>
+                        <div class="bib-empty-title">Nenhuma obra nesta categoria</div>
+                        <div class="bib-empty-desc">Você não possui obras salvas com este status no momento.</div>
+                    </div>
+                `;
                 return;
             }
+
+            container.style.gridTemplateColumns = 'repeat(2, 1fr)';
+            container.innerHTML = '';
 
             obrasFavs.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
                 let badgesHtml = gerarBadgesObra(obra);
+
+                // Botão de favoritar (coração preenchido para remover ou desfavoritar)
+                let btnFavHtml = `<button class="card-fav-btn" onclick="event.stopPropagation(); event.preventDefault(); removerFavorito('${obra.titulo}')" title="Remover dos favoritos">❤️</button>`;
+
+                // Tags / Gêneros da obra
+                let tagsHtml = '';
+                if (obra.tags && Array.isArray(obra.tags)) {
+                    let tagsFiltradas = obra.tags.filter(t => !String(t).toLowerCase().includes('+18') && !String(t).toLowerCase().includes('nsfw'));
+                    tagsHtml = tagsFiltradas.slice(0, 3).map(t => `<span class="card-tag">${t}</span>`).join('');
+                }
+
+                // Capítulo mais recente e botão continuar lendo
+                let ultimoCapNum = '1';
+                let totalCaps = '10';
+                let progressoPercentual = '50%';
+                if (obra.capitulos && obra.capitulos.length > 0) {
+                    let capObj = obra.capitulos[0];
+                    ultimoCapNum = typeof capObj === 'object' ? capObj.numero : capObj;
+                    totalCaps = obra.capitulos.length * 5; // Simulação de total se não houver
+                    if(obra.totalCapitulos) totalCaps = obra.totalCapitulos;
+                }
+                let slugCap = String(ultimoCapNum).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
+                let linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`;
 
                 container.innerHTML += `
                     <div class="manga-card">
                         <a href="obra.html?nome=${slugObra}" class="manga-capa-box">
                             <img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa">
                             ${badgesHtml}
+                            ${btnFavHtml}
                         </a>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
+                            
+                            <div class="card-tags-row">
+                                ${tagsHtml}
+                            </div>
+
+                            <div class="card-recent-chapter">
+                                <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0-2-.9-2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+                                <span>Capítulo mais recente: ${ultimoCapNum}</span>
+                            </div>
+
+                            <a href="${linkLeitor}" class="btn-continuar-lendo">
+                                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                Continuar lendo
+                            </a>
+
+                            <div class="progress-container">
+                                <span class="progress-text">${ultimoCapNum}/${totalCaps}</span>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 `;
             });
+        }
+
+        function removerFavorito(tituloObra) {
+            let favoritos = [];
+            try {
+                favoritos = JSON.parse(localStorage.getItem('flowers_favoritos')) || [];
+            } catch(e) { favoritos = []; }
+            
+            favoritos = favoritos.filter(t => t !== tituloObra);
+            localStorage.setItem('flowers_favoritos', JSON.stringify(favoritos));
+            renderizarBiblioteca();
         }
 
         function toggleMenu() {
