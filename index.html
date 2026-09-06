@@ -1007,7 +1007,6 @@
         let obraCarrosselAtualSlug = '';
         let filtroBibAtual = 'todos';
 
-        // Estado atual dos filtros múltiplos (sem "todos" por padrão, iniciam vazios ou null)
         let filtrosAtivos = {
             genero: null,
             status: null,
@@ -1268,7 +1267,6 @@
             });
         }
 
-        /* RENDERIZAR GÊNEROS REAIS DO JSON (SEM NENHUM BOTÃO "TODOS") */
         function renderizarPaginaGeneros() {
             const containerBotoesGeneros = document.getElementById('generos-botoes-container');
             if (!containerBotoesGeneros) return;
@@ -1278,7 +1276,6 @@
                 if (obra.tags && Array.isArray(obra.tags)) {
                     obra.tags.forEach(t => {
                         let tagLimpa = String(t).trim();
-                        // Ignorar tags que sejam +18 ou NSFW para não misturar com classificação
                         if (tagLimpa && !tagLimpa.toLowerCase().includes('+18') && !tagLimpa.toLowerCase().includes('nsfw')) {
                             conjuntoGeneros.add(tagLimpa);
                         }
@@ -1308,7 +1305,6 @@
         }
 
         function filtrarMultiplo(categoria, valor, elemento) {
-            // Se clicar no botão que já está ativo, desativa ele (permite desselecionar)
             if (filtrosAtivos[categoria] === valor) {
                 filtrosAtivos[categoria] = null;
                 elemento.classList.remove('active');
@@ -1329,14 +1325,12 @@
             grid.innerHTML = '';
 
             let obrasFiltradas = listaObras.filter(obra => {
-                // 1. Gênero (se houver algum selecionado)
                 if (filtrosAtivos.genero) {
                     if (!obra.tags || !Array.isArray(obra.tags)) return false;
                     let temTag = obra.tags.some(t => String(t).trim().toLowerCase() === filtrosAtivos.genero.toLowerCase());
                     if (!temTag) return false;
                 }
 
-                // 2. Status (se houver algum selecionado)
                 if (filtrosAtivos.status) {
                     let st = String(obra.status || '').toLowerCase();
                     if (filtrosAtivos.status === 'andamento' && !st.includes('andamento')) return false;
@@ -1344,14 +1338,12 @@
                     if (filtrosAtivos.status === 'hiatus' && !st.includes('hiatus') && !st.includes('pausa')) return false;
                 }
 
-                // 3. Tipo (se houver algum selecionado)
                 if (filtrosAtivos.tipo) {
                     let tp = String(obra.tipo || obra.formato || '').toLowerCase();
                     let temTpTag = obra.tags && Array.isArray(obra.tags) && obra.tags.some(t => String(t).toLowerCase() === filtrosAtivos.tipo.toLowerCase());
                     if (!tp.includes(filtrosAtivos.tipo.toLowerCase()) && !temTpTag) return false;
                 }
 
-                // 4. Classificação (se houver alguma selecionada)
                 if (filtrosAtivos.classificacao) {
                     let ehNsfw = obra.nsfw === true || obra.mais18 === true || obra.adulto === true;
                     if (obra.tags && Array.isArray(obra.tags)) {
