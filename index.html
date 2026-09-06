@@ -6,19 +6,7 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Flower's Nenascan 🌸</title>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HHMHEDSD0"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-5HHMHEDSD0');
-    </script>
-
-    <!-- Fonte estilizada para títulos gerais -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
-    <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
@@ -451,63 +439,6 @@
             text-decoration: underline;
         }
 
-        .card-tags-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-            margin-top: 2px;
-        }
-        .card-tag {
-            background: transparent;
-            border: 1px solid rgba(255, 153, 221, 0.4);
-            color: var(--primary-pink);
-            font-size: 0.65rem;
-            padding: 1px 6px;
-            border-radius: 10px;
-            text-shadow: var(--neon-glow);
-        }
-
-        .card-recent-chapter {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-        .card-recent-chapter svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-        }
-
-        .btn-continuar-lendo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            background: #15151c;
-            border: 1px solid rgba(255, 153, 221, 0.4);
-            color: var(--primary-pink);
-            padding: 6px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-decoration: none;
-            margin-top: 4px;
-            transition: 0.2s;
-            text-shadow: var(--neon-glow);
-        }
-        .btn-continuar-lendo svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-        }
-        .btn-continuar-lendo:hover {
-            background: rgba(255, 153, 221, 0.15);
-            border-color: var(--primary-pink);
-        }
-
         .retangulo-capitulo {
             display: flex;
             align-items: center;
@@ -570,137 +501,6 @@
         .capitulo-link:hover {
             color: white;
             text-decoration: underline;
-        }
-
-        .biblioteca-header-area {
-            margin-bottom: 16px;
-        }
-        .biblioteca-title-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #ffffff;
-            text-shadow: 0 0 10px var(--primary-pink);
-            background: linear-gradient(135deg, #ffffff 30%, var(--primary-pink) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 6px;
-        }
-        .biblioteca-subtitle {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            text-shadow: var(--neon-glow);
-            margin-bottom: 14px;
-        }
-
-        .bib-tabs-container {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 4px;
-            margin-bottom: 14px;
-            scrollbar-width: none;
-        }
-        .bib-tabs-container::-webkit-scrollbar {
-            display: none;
-        }
-        .bib-tab {
-            background: #0b0b0f;
-            border: 1px solid rgba(255, 153, 221, 0.35);
-            color: var(--primary-pink);
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            white-space: nowrap;
-            transition: 0.2s;
-            text-shadow: var(--neon-glow);
-        }
-        .bib-tab svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-        }
-        .bib-tab:hover {
-            background: rgba(255, 153, 221, 0.15);
-            border-color: var(--primary-pink);
-        }
-        .bib-tab-badge {
-            background: rgba(255, 153, 221, 0.25);
-            padding: 1px 6px;
-            border-radius: 10px;
-            font-size: 0.7rem;
-            font-weight: 700;
-        }
-
-        .bib-filter-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            margin-bottom: 20px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-        .bib-filter-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .bib-filter-btn {
-            background: #0b0b0f;
-            border: 1px solid rgba(255, 153, 221, 0.35);
-            color: var(--primary-pink);
-            padding: 6px 12px;
-            border-radius: 16px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            text-shadow: var(--neon-glow);
-            transition: 0.2s;
-        }
-        .bib-filter-btn svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-        }
-        .bib-filter-btn:hover {
-            background: rgba(255, 153, 221, 0.15);
-            border-color: var(--primary-pink);
-        }
-
-        .btn-explorar-obras-estilizado {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: #0d0d14;
-            color: var(--primary-pink);
-            border: 1px solid var(--primary-pink);
-            padding: 10px 22px;
-            border-radius: 20px;
-            font-size: 0.88rem;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: var(--neon-glow);
-            transition: all 0.25s ease;
-            cursor: pointer;
-        }
-
-        .btn-explorar-obras-estilizado:hover {
-            background: var(--primary-pink);
-            color: #000000;
-            box-shadow: 0 0 20px rgba(255, 153, 221, 0.85);
-            transform: translateY(-2px);
         }
 
         /* ESTILOS DA PÁGINA DE GÊNEROS / FILTROS */
@@ -822,13 +622,10 @@
             <button class="close-menu" onclick="toggleMenu()">✕</button>
         </div>
         <div class="sidebar-links">
-            <a href="./" onclick="event.preventDefault(); toggleMenu(); mudarAbaVisual('inicio'); history.pushState({}, '', './');">Início</a>
-            <a href="./?aba=obras" onclick="event.preventDefault(); toggleMenu(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">Obras</a>
-            <a href="./?aba=favoritos" onclick="event.preventDefault(); toggleMenu(); mudarAbaVisual('favoritos'); history.pushState({}, '', './?aba=favoritos'); renderizarBiblioteca();">Biblioteca</a>
-            <a href="./?aba=avisos" onclick="event.preventDefault(); toggleMenu(); mudarAbaVisual('avisos'); history.pushState({}, '', './?aba=avisos');">Avisos</a>
-            <a href="./?aba=generos" onclick="event.preventDefault(); toggleMenu(); mudarAbaVisual('generos'); history.pushState({}, '', './?aba=generos'); renderizarPaginaGeneros();">Gêneros</a>
-            <a href="javascript:void(0)" onclick="alert('Chave Pix / Apoio em breve!'); toggleMenu();">Apoie a Scan</a>
-            <a href="javascript:void(0)" onclick="alert('Pedidos abertos no Discord/Telegram!'); toggleMenu();">Pedidos</a>
+            <a href="./" onclick="event.preventDefault(); toggleMenu(); mudarAbaVisual('inicio');">Início</a>
+            <a href="./?aba=obras" onclick="event.preventDefault(); toggleMenu(); mudarAbaVisual('obras');">Obras</a>
+            <a href="./?aba=generos" onclick="event.preventDefault(); toggleMenu(); mudarAbaVisual('generos'); renderizarPaginaGeneros();">Gêneros</a>
+            <a href="./?aba=avisos" onclick="event.preventDefault(); toggleMenu(); mudarAbaVisual('avisos');">Avisos</a>
         </div>
     </div>
 
@@ -837,7 +634,6 @@
 
         <!-- TELA INÍCIO -->
         <div id="inicio" class="view-section active">
-            <!-- CARROSSEL DE DESTAQUE -->
             <div class="hero-carousel" id="hero-carousel" onclick="abrirObraDoCarrossel()">
                 <div class="hero-slide active" style="background-image: url('');">
                     <div class="hero-content">
@@ -847,7 +643,6 @@
                 </div>
             </div>
 
-            <!-- SEÇÃO ÚLTIMAS ATUALIZAÇÕES -->
             <div class="section-container">
                 <div class="section-header">
                     <div class="section-bar"></div>
@@ -870,54 +665,6 @@
             </div>
         </div>
 
-        <!-- TELA BIBLIOTECA (FAVORITOS) -->
-        <div id="favoritos" class="view-section">
-            <div class="section-container">
-                <div class="biblioteca-header-area">
-                    <div class="biblioteca-title-row">
-                        <svg viewBox="0 0 24 24" style="width:24px; height:24px; fill:currentColor;"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
-                        MINHA BIBLIOTECA
-                    </div>
-                    <div class="biblioteca-subtitle">Aqui estão suas obras favoritas. Continue lendo quando quiser! ♡</div>
-
-                    <!-- ABAS DE FILTRO DA BIBLIOTECA -->
-                    <div class="bib-tabs-container">
-                        <button class="bib-tab active" onclick="filtrarBibTab('todos', this)">
-                            <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
-                            <span>Favoritos</span>
-                            <div class="bib-tab-badge" id="count-todos">0</div>
-                        </button>
-                        <button class="bib-tab" onclick="filtrarBibTab('andamento', this)">
-                            <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0-2-.9-2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
-                            <span>Em andamento</span>
-                        </button>
-                        <button class="bib-tab" onclick="filtrarBibTab('concluidas', this)">
-                            <svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
-                            <span>Concluídas</span>
-                        </button>
-                        <button class="bib-tab" onclick="filtrarBibTab('hiatus', this)">
-                            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                            <span>Hiatus</span>
-                        </button>
-                    </div>
-
-                    <!-- ORDENAR E GÊNEROS -->
-                    <div class="bib-filter-row">
-                        <div class="bib-filter-left">
-                            <span>Ordenar por:</span>
-                            <button class="bib-filter-btn" onclick="mudarAbaVisual('generos'); history.pushState({}, '', './?aba=generos'); renderizarPaginaGeneros();">
-                                <svg viewBox="0 0 24 24"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v5z"/></svg>
-                                Gêneros
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CONTAINER DO GRID / ESTADO VAZIO -->
-                <div id="lista-favoritos" class="manga-grid"></div>
-            </div>
-        </div>
-
         <!-- AVISOS -->
         <div id="avisos" class="view-section">
             <div class="section-container">
@@ -927,7 +674,7 @@
                 </div>
                 <div style="background: var(--card-bg); border: 1px solid rgba(255,153,221,0.3); padding: 18px; border-radius: 12px; margin-top: 10px;">
                     <h3 style="font-size: 1rem; margin-bottom: 6px;">🌸 Bem-vindos à Flower's Nenasscan!</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">Nenhum aviso importante no momento. Aproveitem as traduções e boa leitura!</p>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">Nenhum aviso importante no momento.</p>
                 </div>
             </div>
         </div>
@@ -975,8 +722,10 @@
                     <h2 class="section-title" id="titulo-resultados-filtro">RESULTADOS</h2>
                 </div>
 
-                <!-- Grid de Obras Filtradas -->
-                <div id="grid-generos-obras" class="manga-grid" style="margin-top: 15px;"></div>
+                <!-- Grid de Obras Filtradas (Inicia Vazio até o usuário clicar ou carregar explicitamente) -->
+                <div id="grid-generos-obras" class="manga-grid" style="margin-top: 15px;">
+                    <p style="color: var(--text-muted); grid-column: span 2;">Selecione um filtro acima para ver as obras correspondentes.</p>
+                </div>
             </div>
         </div>
 
@@ -984,19 +733,19 @@
 
     <!-- BARRA INFERIOR FIXA -->
     <nav class="bottom-nav">
-        <a href="./" class="nav-item active" id="nav-inicio" onclick="event.preventDefault(); mudarAbaVisual('inicio'); history.pushState({}, '', './');">
+        <a href="./" class="nav-item active" id="nav-inicio" onclick="event.preventDefault(); mudarAbaVisual('inicio');">
             <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
             Início
         </a>
-        <a href="./?aba=obras" class="nav-item" id="nav-obras" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
+        <a href="./?aba=obras" class="nav-item" id="nav-obras" onclick="event.preventDefault(); mudarAbaVisual('obras');">
             <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0-2-.9-2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
             Obras
         </a>
-        <a href="./?aba=favoritos" class="nav-item" id="nav-favoritos" onclick="event.preventDefault(); mudarAbaVisual('favoritos'); history.pushState({}, '', './?aba=favoritos'); renderizarBiblioteca();">
-            <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
-            Biblioteca
+        <a href="./?aba=generos" class="nav-item" id="nav-generos" onclick="event.preventDefault(); mudarAbaVisual('generos'); renderizarPaginaGeneros();">
+            <svg viewBox="0 0 24 24"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v5z"/></svg>
+            Gêneros
         </a>
-        <a href="./?aba=avisos" class="nav-item" id="nav-avisos" onclick="event.preventDefault(); mudarAbaVisual('avisos'); history.pushState({}, '', './?aba=avisos');">
+        <a href="./?aba=avisos" class="nav-item" id="nav-avisos" onclick="event.preventDefault(); mudarAbaVisual('avisos');">
             <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg>
             Avisos
         </a>
@@ -1005,7 +754,6 @@
     <script>
         let listaObras = [];
         let obraCarrosselAtualSlug = '';
-        let filtroBibAtual = 'todos';
 
         let filtrosAtivos = {
             genero: null,
@@ -1059,7 +807,10 @@
 
             let ehNsfw = obra.nsfw === true || obra.mais18 === true || obra.adulto === true;
             if (obra.tags && Array.isArray(obra.tags)) {
-                if (obra.tags.some(t => String(t).toLowerCase().includes('+18') || String(t).toLowerCase().includes('nsfw') || String(t).toLowerCase().includes('adulto'))) {
+                if (obra.tags.some(t => {
+                    let str = String(t).toLowerCase();
+                    return str.includes('+18') || str.includes('nsfw') || str.includes('adulto') || str === '18';
+                })) {
                     ehNsfw = true;
                 }
             }
@@ -1082,7 +833,7 @@
                 verificarParametroUrl();
             })
             .catch(err => {
-                console.warn("Aviso: Falha ao carregar obras.json via fetch, usando dados vazios.", err);
+                console.warn("Aviso: Falha ao carregar obras.json via fetch.", err);
                 listaObras = [];
                 inicializarHome();
                 verificarParametroUrl();
@@ -1092,8 +843,6 @@
             renderizarCarrosselAleatorio();
             renderizarAtualizacoes();
             renderizarTodasObras();
-            renderizarBiblioteca();
-            renderizarPaginaGeneros();
         }
 
         function verificarParametroUrl() {
@@ -1101,7 +850,6 @@
             const aba = urlParams.get('aba');
             if (aba && document.getElementById(aba)) {
                 mudarAbaVisual(aba);
-                if (aba === 'favoritos') renderizarBiblioteca();
                 if (aba === 'generos') renderizarPaginaGeneros();
             }
         }
@@ -1271,7 +1019,9 @@
                 if (obra.tags && Array.isArray(obra.tags)) {
                     obra.tags.forEach(t => {
                         let tagLimpa = String(t).trim();
-                        if (tagLimpa && !tagLimpa.toLowerCase().includes('+18') && !tagLimpa.toLowerCase().includes('nsfw')) {
+                        let tLower = tagLimpa.toLowerCase();
+                        // Ignora tags adultas do grupo comum de gêneros, pois elas ficam na Classificação
+                        if (tagLimpa && !tLower.includes('+18') && !tLower.includes('nsfw') && !tLower.includes('adulto')) {
                             conjuntoGeneros.add(tagLimpa);
                         }
                     });
@@ -1282,7 +1032,6 @@
 
             if (listaGenerosUnicos.length === 0) {
                 containerBotoesGeneros.innerHTML = `<span style="color: var(--text-muted); font-size: 0.85rem;">Nenhum gênero encontrado nas obras.</span>`;
-                aplicarFiltrosMultiplos();
                 return;
             }
 
@@ -1297,7 +1046,6 @@
             });
 
             containerBotoesGeneros.innerHTML = htmlBotoesGen;
-            aplicarFiltrosMultiplos();
         }
 
         function filtrarMultiplo(categoria, valor, elemento) {
@@ -1318,7 +1066,12 @@
             const grid = document.getElementById('grid-generos-obras');
             if (!grid) return;
 
-            grid.innerHTML = '';
+            // Se nenhum filtro estiver ativo, limpa os resultados e avisa o usuário
+            if (!filtrosAtivos.genero && !filtrosAtivos.status && !filtrosAtivos.tipo && !filtrosAtivos.classificacao) {
+                grid.style.gridTemplateColumns = '1fr';
+                grid.innerHTML = `<p style="color: var(--text-muted); grid-column: span 2;">Selecione um filtro acima para ver as obras correspondentes.</p>`;
+                return;
+            }
 
             let obrasFiltradas = listaObras.filter(obra => {
                 if (filtrosAtivos.genero) {
@@ -1343,7 +1096,12 @@
                 if (filtrosAtivos.classificacao) {
                     let ehNsfw = obra.nsfw === true || obra.mais18 === true || obra.adulto === true;
                     if (obra.tags && Array.isArray(obra.tags)) {
-                        if (obra.tags.some(t => String(t).toLowerCase().includes('+18') || String(t).toLowerCase().includes('nsfw'))) ehNsfw = true;
+                        if (obra.tags.some(t => {
+                            let str = String(t).toLowerCase();
+                            return str.includes('+18') || str.includes('nsfw') || str.includes('adulto') || str === '18';
+                        })) {
+                            ehNsfw = true;
+                        }
                     }
                     if (filtrosAtivos.classificacao === '18' && !ehNsfw) return false;
                     if (filtrosAtivos.classificacao === 'livre' && ehNsfw) return false;
@@ -1363,6 +1121,7 @@
             }
 
             grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+            grid.innerHTML = '';
 
             obrasFiltradas.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
@@ -1390,130 +1149,6 @@
                             <div class="capitulo-recente-row">
                                 <a href="${linkLeitor}" class="capitulo-link" onclick="event.stopPropagation()">Capítulo ${ultimoCapNum}</a>
                             </div>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function filtrarBibTab(tipo, elemento) {
-            filtroBibAtual = tipo;
-            document.querySelectorAll('.bib-tab').forEach(b => b.classList.remove('active'));
-            if(elemento) elemento.classList.add('active');
-            renderizarBiblioteca();
-        }
-
-        function renderizarBiblioteca() {
-            const container = document.getElementById('lista-favoritos');
-            let favoritosSalvos = [];
-            
-            try {
-                const itemBruto = localStorage.getItem('flowers_favoritos');
-                if (itemBruto && itemBruto !== "undefined" && itemBruto !== "null") {
-                    favoritosSalvos = JSON.parse(itemBruto);
-                }
-            } catch(e) { 
-                favoritosSalvos = []; 
-            }
-
-            if (!Array.isArray(favoritosSalvos)) favoritosSalvos = [];
-
-            let obrasFavs = listaObras.filter(o => favoritosSalvos.includes(o.titulo) || favoritosSalvos.includes(o.id));
-
-            const badgeCount = document.getElementById('count-todos');
-            if (badgeCount) {
-                badgeCount.innerText = obrasFavs.length;
-            }
-
-            if (obrasFavs.length === 0) {
-                container.style.gridTemplateColumns = '1fr';
-                container.innerHTML = `
-                    <div class="bib-empty-state" style="grid-column: span 2; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-                        <div class="bib-empty-icon" style="font-size: 3.5rem; margin-bottom: 10px; filter: drop-shadow(0 0 12px rgba(255,153,221,0.6));">🌸</div>
-                        <div class="bib-empty-title" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #ffffff; text-shadow: 0 0 10px var(--primary-pink); margin-bottom: 6px;">Sua biblioteca está vazia</div>
-                        <div class="bib-empty-desc" style="font-size: 0.88rem; color: var(--text-muted); max-width: 280px; line-height: 1.4; text-shadow: var(--neon-glow); margin-bottom: 20px;">Você não possui nenhuma obra favoritada no momento.</div>
-                        
-                        <a href="./?aba=obras" class="btn-explorar-obras-estilizado" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
-                            <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                            Explorar Obras
-                        </a>
-                    </div>
-                `;
-                return;
-            }
-
-            if (filtroBibAtual === 'andamento') {
-                obrasFavs = obrasFavs.filter(o => String(o.status || '').toLowerCase().includes('andamento'));
-            } else if (filtroBibAtual === 'concluidas') {
-                obrasFavs = obrasFavs.filter(o => {
-                    let st = String(o.status || '').toLowerCase();
-                    return st.includes('completo') || st.includes('concluido') || st.includes('finalizado');
-                });
-            } else if (filtroBibAtual === 'hiatus') {
-                obrasFavs = obrasFavs.filter(o => {
-                    let st = String(o.status || '').toLowerCase();
-                    return st.includes('hiatus') || st.includes('pausa');
-                });
-            }
-
-            if (obrasFavs.length === 0) {
-                container.style.gridTemplateColumns = '1fr';
-                container.innerHTML = `
-                    <div class="bib-empty-state" style="grid-column: span 2; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-                        <div class="bib-empty-icon" style="font-size: 3rem; margin-bottom: 8px;">🌸</div>
-                        <div class="bib-empty-title" style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #ffffff; text-shadow: 0 0 10px var(--primary-pink); margin-bottom: 6px;">Nenhuma obra nesta categoria</div>
-                        <div class="bib-empty-desc" style="font-size: 0.85rem; color: var(--text-muted); max-width: 260px; line-height: 1.4; text-shadow: var(--neon-glow); margin-bottom: 18px;">Você não possui obras salvas com este status no momento.</div>
-                        
-                        <a href="./?aba=obras" class="btn-explorar-obras-estilizado" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
-                            <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                            Explorar Obras
-                        </a>
-                    </div>
-                `;
-                return;
-            }
-
-            container.style.gridTemplateColumns = 'repeat(2, 1fr)';
-            container.innerHTML = '';
-
-            obrasFavs.forEach(obra => {
-                const slugObra = obra.id || criarSlug(obra.titulo);
-
-                let tagsHtml = '';
-                if (obra.tags && Array.isArray(obra.tags)) {
-                    let tagsFiltradas = obra.tags.filter(t => !String(t).toLowerCase().includes('+18') && !String(t).toLowerCase().includes('nsfw'));
-                    tagsHtml = tagsFiltradas.slice(0, 3).map(t => `<span class="card-tag">${t}</span>`).join('');
-                }
-
-                let ultimoCapNum = '1';
-                if (obra.capitulos && obra.capitulos.length > 0) {
-                    let capObj = obra.capitulos[0];
-                    ultimoCapNum = typeof capObj === 'object' ? capObj.numero : capObj;
-                }
-                let slugCap = String(ultimoCapNum).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
-                let linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`;
-
-                container.innerHTML += `
-                    <div class="manga-card" onclick="window.location.href='obra.html?nome=${slugObra}'" style="cursor: pointer;">
-                        <div class="manga-capa-box">
-                            <img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa">
-                        </div>
-                        <div class="manga-info">
-                            <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
-                            
-                            <div class="card-tags-row">
-                                ${tagsHtml}
-                            </div>
-
-                            <div class="card-recent-chapter">
-                                <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0-2-.9-2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
-                                <span>Capítulo mais recente: ${ultimoCapNum}</span>
-                            </div>
-
-                            <a href="${linkLeitor}" class="btn-continuar-lendo" onclick="event.stopPropagation()">
-                                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                Continuar lendo
-                            </a>
                         </div>
                     </div>
                 `;
