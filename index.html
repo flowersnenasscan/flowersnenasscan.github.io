@@ -679,27 +679,30 @@
             border-color: var(--primary-pink);
         }
 
-        /* Botão fixo de Explorar Obras na Biblioteca (visível sempre ou quando vazio) */
-        .btn-explorar-topo {
-            background: rgba(255, 153, 221, 0.15);
-            border: 1px solid var(--primary-pink);
-            color: var(--primary-pink);
-            padding: 6px 14px;
-            border-radius: 16px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            cursor: pointer;
+        /* Botão estilizado com o padrão exato da interface */
+        .btn-explorar-obras-estilizado {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            gap: 8px;
+            background: #0d0d14;
+            color: var(--primary-pink);
+            border: 1px solid var(--primary-pink);
+            padding: 10px 22px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            font-weight: 700;
             text-decoration: none;
-            transition: 0.2s;
-            text-shadow: var(--neon-glow);
+            box-shadow: var(--neon-glow);
+            transition: all 0.25s ease;
+            cursor: pointer;
         }
-        .btn-explorar-topo:hover {
+
+        .btn-explorar-obras-estilizado:hover {
             background: var(--primary-pink);
             color: #000000;
-            box-shadow: 0 0 12px var(--primary-pink);
+            box-shadow: 0 0 20px rgba(255, 153, 221, 0.85);
+            transform: translateY(-2px);
         }
 
         .bib-empty-state {
@@ -730,32 +733,6 @@
             line-height: 1.4;
             text-shadow: var(--neon-glow);
             margin-bottom: 4px;
-        }
-        .bib-empty-btn {
-            background: var(--primary-pink);
-            color: #000000;
-            border: none;
-            padding: 10px 22px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(255, 153, 221, 0.6);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
-            transition: 0.2s;
-            margin-top: 6px;
-        }
-        .bib-empty-btn svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-        }
-        .bib-empty-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 22px rgba(255, 153, 221, 0.9);
         }
 
         .bottom-nav {
@@ -910,7 +887,7 @@
                         </button>
                     </div>
 
-                    <!-- ORDENAR, GÊNEROS E BOTÃO EXPLORAR OBRAS -->
+                    <!-- ORDENAR E GÊNEROS -->
                     <div class="bib-filter-row">
                         <div class="bib-filter-left">
                             <span>Ordenar por:</span>
@@ -919,10 +896,6 @@
                                 Gêneros
                             </button>
                         </div>
-                        <a href="./?aba=obras" class="btn-explorar-topo" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
-                            <svg viewBox="0 0 24 24" style="width:14px; height:14px; fill:currentColor;"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-                            Explorar obras
-                        </a>
                     </div>
                 </div>
 
@@ -1237,32 +1210,34 @@
 
         function renderizarBiblioteca() {
             const container = document.getElementById('lista-favoritos');
-            let favoritos = [];
+            let favoritosSalvos = [];
             try {
-                favoritos = JSON.parse(localStorage.getItem('flowers_favoritos')) || [];
-            } catch(e) { favoritos = []; }
+                favoritosSalvos = JSON.parse(localStorage.getItem('flowers_favoritos')) || [];
+            } catch(e) { favoritosSalvos = []; }
 
-            // Conta apenas o comprimento real do array armazenado no localStorage
+            // Filtra exclusivamente o que existe de fato no array do obras.json
+            let obrasFavs = listaObras.filter(o => favoritosSalvos.includes(o.titulo) || favoritosSalvos.includes(o.id));
+
+            // Sincroniza o contador exatamente com a quantidade real de obras existentes
             const badgeCount = document.getElementById('count-todos');
-            if(badgeCount) badgeCount.innerText = favoritos.length;
+            if(badgeCount) badgeCount.innerText = obrasFavs.length;
 
-            if (favoritos.length === 0) {
+            if (obrasFavs.length === 0) {
                 container.style.gridTemplateColumns = '1fr';
                 container.innerHTML = `
-                    <div class="bib-empty-state" style="grid-column: span 2;">
-                        <div class="bib-empty-icon">📚</div>
-                        <div class="bib-empty-title">Sua biblioteca está vazia</div>
-                        <div class="bib-empty-desc">Adicione suas obras favoritas para acessá-las sempre que quiser!</div>
-                        <a href="./?aba=obras" class="bib-empty-btn" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
-                            <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-                            Explorar obras &rarr;
+                    <div class="bib-empty-state" style="grid-column: span 2; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                        <div class="bib-empty-icon" style="font-size: 3.5rem; margin-bottom: 10px; filter: drop-shadow(0 0 12px rgba(255,153,221,0.6));">🌸</div>
+                        <div class="bib-empty-title" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #ffffff; text-shadow: 0 0 10px var(--primary-pink); margin-bottom: 6px;">Sua biblioteca está vazia</div>
+                        <div class="bib-empty-desc" style="font-size: 0.88rem; color: var(--text-muted); max-width: 280px; line-height: 1.4; text-shadow: var(--neon-glow); margin-bottom: 20px;">Você não possui nenhuma obra favoritada no momento.</div>
+                        
+                        <a href="./?aba=obras" class="btn-explorar-obras-estilizado" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
+                            <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                            Explorar Obras
                         </a>
                     </div>
                 `;
                 return;
             }
-
-            let obrasFavs = listaObras.filter(o => favoritos.includes(o.titulo));
 
             if (filtroBibAtual === 'andamento') {
                 obrasFavs = obrasFavs.filter(o => String(o.status || '').toLowerCase().includes('andamento'));
@@ -1281,10 +1256,15 @@
             if (obrasFavs.length === 0) {
                 container.style.gridTemplateColumns = '1fr';
                 container.innerHTML = `
-                    <div class="bib-empty-state" style="grid-column: span 2;">
-                        <div class="bib-empty-icon">🌸</div>
-                        <div class="bib-empty-title">Nenhuma obra nesta categoria</div>
-                        <div class="bib-empty-desc">Você não possui obras salvas com este status no momento.</div>
+                    <div class="bib-empty-state" style="grid-column: span 2; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                        <div class="bib-empty-icon" style="font-size: 3rem; margin-bottom: 8px;">🌸</div>
+                        <div class="bib-empty-title" style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #ffffff; text-shadow: 0 0 10px var(--primary-pink); margin-bottom: 6px;">Nenhuma obra nesta categoria</div>
+                        <div class="bib-empty-desc" style="font-size: 0.85rem; color: var(--text-muted); max-width: 260px; line-height: 1.4; text-shadow: var(--neon-glow); margin-bottom: 18px;">Você não possui obras salvas com este status no momento.</div>
+                        
+                        <a href="./?aba=obras" class="btn-explorar-obras-estilizado" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
+                            <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                            Explorar Obras
+                        </a>
                     </div>
                 `;
                 return;
