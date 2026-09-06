@@ -940,14 +940,16 @@
                     <h2 class="section-title">EXPLORAR OBRAS</h2>
                 </div>
 
-                <!-- GRUPO 1: GÊNEROS (Com o botão "Todos" exclusivo aqui) -->
+                <!-- GRUPO 1: GÊNEROS (Único lugar com o botão "Todos") -->
                 <div class="filtro-categoria-titulo">Gêneros</div>
-                <div id="generos-botoes-container" class="filtro-grupo-botoes"></div>
+                <div id="generos-botoes-container" class="filtro-grupo-botoes">
+                    <button class="genre-pill-btn active" onclick="filtrarMultiplo('genero', 'todos', this)">Todos</button>
+                </div>
 
-                <!-- GRUPO 2: STATUS -->
+                <!-- GRUPO 2: STATUS (Sem "Todos" e sem duplicação) -->
                 <div class="filtro-categoria-titulo">Status</div>
                 <div id="status-botoes-container" class="filtro-grupo-botoes">
-                    <button class="genre-pill-btn active" onclick="filtrarMultiplo('status', 'todos', this)">Em Andamento</button> <!-- Ajustado para padrão sem 'Todos' duplicado, exceto se desejado, mas aqui segue o pedido -->
+                    <button class="genre-pill-btn active" onclick="filtrarMultiplo('status', 'todos', this)">Todos</button>
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('status', 'andamento', this)">Em Andamento</button>
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('status', 'completo', this)">Completo</button>
                     <button class="genre-pill-btn" onclick="filtrarMultiplo('status', 'hiatus', this)">Hiatus</button>
@@ -1286,7 +1288,7 @@
 
             let listaGenerosUnicos = Array.from(conjuntoGeneros).sort();
 
-            // Botão "Todos" fica exclusivo na categoria Gêneros conforme solicitado
+            // Botão "Todos" exclusivo no início do bloco de Gêneros
             let htmlBotoesGen = `
                 <button class="genre-pill-btn ${filtrosAtivos.genero === 'todos' ? 'active' : ''}" onclick="filtrarMultiplo('genero', 'todos', this)">
                     Todos
@@ -1302,10 +1304,6 @@
                 `;
             });
 
-            if (listaGenerosUnicos.length === 0) {
-                htmlBotoesGen = `<button class="genre-pill-btn active" onclick="filtrarMultiplo('genero', 'todos', this)">Todos</button>`;
-            }
-
             containerBotoesGeneros.innerHTML = htmlBotoesGen;
             aplicarFiltrosMultiplos();
         }
@@ -1313,7 +1311,6 @@
         function filtrarMultiplo(categoria, valor, elemento) {
             filtrosAtivos[categoria] = valor;
 
-            // Atualiza classes active dentro do container específico da categoria
             let containerPai = elemento.parentElement;
             containerPai.querySelectorAll('.genre-pill-btn').forEach(b => b.classList.remove('active'));
             elemento.classList.add('active');
@@ -1328,14 +1325,14 @@
             grid.innerHTML = '';
 
             let obrasFiltradas = listaObras.filter(obra => {
-                // 1. Filtro por Gênero
+                // 1. Gênero
                 if (filtrosAtivos.genero !== 'todos') {
                     if (!obra.tags || !Array.isArray(obra.tags)) return false;
                     let temTag = obra.tags.some(t => String(t).trim().toLowerCase() === filtrosAtivos.genero.toLowerCase());
                     if (!temTag) return false;
                 }
 
-                // 2. Filtro por Status
+                // 2. Status
                 if (filtrosAtivos.status !== 'todos') {
                     let st = String(obra.status || '').toLowerCase();
                     if (filtrosAtivos.status === 'andamento' && !st.includes('andamento')) return false;
@@ -1343,14 +1340,14 @@
                     if (filtrosAtivos.status === 'hiatus' && !st.includes('hiatus') && !st.includes('pausa')) return false;
                 }
 
-                // 3. Filtro por Tipo
+                // 3. Tipo
                 if (filtrosAtivos.tipo !== 'todos') {
                     let tp = String(obra.tipo || obra.formato || '').toLowerCase();
                     let temTpTag = obra.tags && Array.isArray(obra.tags) && obra.tags.some(t => String(t).toLowerCase() === filtrosAtivos.tipo.toLowerCase());
                     if (!tp.includes(filtrosAtivos.tipo.toLowerCase()) && !temTpTag) return false;
                 }
 
-                // 4. Filtro por Classificação
+                // 4. Classificação
                 if (filtrosAtivos.classificacao !== 'todos') {
                     let ehNsfw = obra.nsfw === true || obra.mais18 === true || obra.adulto === true;
                     if (obra.tags && Array.isArray(obra.tags)) {
@@ -1473,7 +1470,7 @@
                     <div class="bib-empty-state" style="grid-column: span 2; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
                         <div class="bib-empty-icon" style="font-size: 3rem; margin-bottom: 8px;">🌸</div>
                         <div class="bib-empty-title" style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #ffffff; text-shadow: 0 0 10px var(--primary-pink); margin-bottom: 6px;">Nenhuma obra nesta categoria</div>
-                        <div class="bib-empty-desc" style="font-size: 0.85rem; color: var(--text-muted); max-width: 260px; line-height: 1.4; text-shadow: var(--neon-glow); margin-bottom: 18px;">You não possui obras salvas com este status no momento.</div>
+                        <div class="bib-empty-desc" style="font-size: 0.85rem; color: var(--text-muted); max-width: 260px; line-height: 1.4; text-shadow: var(--neon-glow); margin-bottom: 18px;">Você não possui obras salvas com este status no momento.</div>
                         
                         <a href="./?aba=obras" class="btn-explorar-obras-estilizado" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
                             <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
