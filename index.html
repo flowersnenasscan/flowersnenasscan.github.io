@@ -1211,16 +1211,25 @@
         function renderizarBiblioteca() {
             const container = document.getElementById('lista-favoritos');
             let favoritosSalvos = [];
+            
             try {
-                favoritosSalvos = JSON.parse(localStorage.getItem('flowers_favoritos')) || [];
-            } catch(e) { favoritosSalvos = []; }
+                const itemBruto = localStorage.getItem('flowers_favoritos');
+                if (itemBruto && itemBruto !== "undefined" && itemBruto !== "null") {
+                    favoritosSalvos = JSON.parse(itemBruto);
+                }
+            } catch(e) { 
+                favoritosSalvos = []; 
+            }
 
-            // Filtra exclusivamente o que existe de fato no array do obras.json
+            if (!Array.isArray(favoritosSalvos)) favoritosSalvos = [];
+
+            // Apenas obras que o usuário salvou conscientemente
             let obrasFavs = listaObras.filter(o => favoritosSalvos.includes(o.titulo) || favoritosSalvos.includes(o.id));
 
-            // Sincroniza o contador exatamente com a quantidade real de obras existentes
             const badgeCount = document.getElementById('count-todos');
-            if(badgeCount) badgeCount.innerText = obrasFavs.length;
+            if (badgeCount) {
+                badgeCount.innerText = obrasFavs.length;
+            }
 
             if (obrasFavs.length === 0) {
                 container.style.gridTemplateColumns = '1fr';
