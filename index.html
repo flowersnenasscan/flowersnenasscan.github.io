@@ -451,107 +451,6 @@
             text-decoration: underline;
         }
 
-        .card-tags-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-            margin-top: 2px;
-        }
-        .card-tag {
-            background: transparent;
-            border: 1px solid rgba(255, 153, 221, 0.4);
-            color: var(--primary-pink);
-            font-size: 0.65rem;
-            padding: 1px 6px;
-            border-radius: 10px;
-            text-shadow: var(--neon-glow);
-        }
-
-        .card-recent-chapter {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-        .card-recent-chapter svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-        }
-
-        .btn-continuar-lendo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            background: #15151c;
-            border: 1px solid rgba(255, 153, 221, 0.4);
-            color: var(--primary-pink);
-            padding: 6px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-decoration: none;
-            margin-top: 4px;
-            transition: 0.2s;
-            text-shadow: var(--neon-glow);
-        }
-        .btn-continuar-lendo svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-        }
-        .btn-continuar-lendo:hover {
-            background: rgba(255, 153, 221, 0.15);
-            border-color: var(--primary-pink);
-        }
-
-        .retangulo-capitulo {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(255, 153, 221, 0.04);
-            border: 1px solid rgba(255, 153, 221, 0.25);
-            padding: 5px 8px;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-        .retangulo-capitulo:hover {
-            background: rgba(255, 153, 221, 0.12);
-            border-color: var(--primary-pink);
-            transform: translateX(2px);
-        }
-
-        .info-cap-recente {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--primary-pink);
-            text-shadow: var(--neon-glow);
-        }
-
-        .data-cap-recente {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-        }
-
-        .selo-novo-cap {
-            background: rgba(255, 153, 221, 0.2);
-            color: var(--primary-pink);
-            font-size: 0.55rem;
-            font-weight: 800;
-            padding: 1px 4px;
-            border-radius: 3px;
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(255, 153, 221, 0.5);
-            box-shadow: 0 0 6px rgba(255, 153, 221, 0.3);
-        }
-
         .capitulo-recente-row {
             display: flex;
             align-items: center;
@@ -572,7 +471,7 @@
             text-decoration: underline;
         }
 
-        /* --- ESTILOS DE EXPLORAR (GÊNEROS, STATUS, ETC) --- */
+        /* --- ESTILOS DE EXPLORAR --- */
         .filtro-section-title {
             color: #ff99dd;
             font-size: 0.9rem;
@@ -729,9 +628,8 @@
             </div>
         </div>
 
-        <!-- TELA BIBLIOTECA (FAVORITOS) -->
+        <!-- TELA BIBLIOTECA -->
         <div id="favoritos" class="view-section">
-            <!-- Seu código de Biblioteca original -->
             <div class="section-container">
                 <div class="biblioteca-header-area">
                     <div class="biblioteca-title-row">
@@ -758,7 +656,7 @@
             </div>
         </div>
 
-        <!-- SEÇÃO EXPLORAR (GÊNEROS, STATUS, TIPO, CLASSIFICAÇÃO) -->
+        <!-- SEÇÃO EXPLORAR -->
         <div id="generos" class="view-section">
             <div class="section-container">
                 <div class="section-header">
@@ -766,34 +664,31 @@
                     <h2 class="section-title">EXPLORAR OBRAS</h2>
                 </div>
                 
-                <!-- GÊNEROS (Gerado Dinamicamente) -->
+                <!-- GÊNEROS (Possui o botão "Todos") -->
                 <h3 class="filtro-section-title">GÊNEROS</h3>
                 <div id="filtros-generos" class="generos-grid-botoes"></div>
 
-                <!-- STATUS -->
+                <!-- STATUS (Sem botão "Todos") -->
                 <h3 class="filtro-section-title">STATUS</h3>
                 <div class="generos-grid-botoes" id="filtros-status">
-                    <button class="genre-pill-btn active" onclick="aplicarFiltroCruzado('status', 'todos', this)">Todos</button>
-                    <button class="genre-pill-btn" onclick="aplicarFiltroCruzado('status', 'Em Andamento', this)">Em Andamento</button>
+                    <button class="genre-pill-btn active" onclick="aplicarFiltroCruzado('status', 'Em Andamento', this)">Em Andamento</button>
                     <button class="genre-pill-btn" onclick="aplicarFiltroCruzado('status', 'Completo', this)">Completo</button>
                     <button class="genre-pill-btn" onclick="aplicarFiltroCruzado('status', 'Hiatus', this)">Hiatus</button>
                 </div>
 
-                <!-- TIPO -->
+                <!-- TIPO (Sem botão "Todos") -->
                 <h3 class="filtro-section-title">TIPO</h3>
                 <div class="generos-grid-botoes" id="filtros-tipo">
-                    <button class="genre-pill-btn active" onclick="aplicarFiltroCruzado('tipo', 'todos', this)">Todos</button>
-                    <button class="genre-pill-btn" onclick="aplicarFiltroCruzado('tipo', 'Manhwa', this)">Manhwa</button>
+                    <button class="genre-pill-btn active" onclick="aplicarFiltroCruzado('tipo', 'Manhwa', this)">Manhwa</button>
                     <button class="genre-pill-btn" onclick="aplicarFiltroCruzado('tipo', 'Manhua', this)">Manhua</button>
                     <button class="genre-pill-btn" onclick="aplicarFiltroCruzado('tipo', 'Mangá', this)">Mangá</button>
                     <button class="genre-pill-btn" onclick="aplicarFiltroCruzado('tipo', 'Webtoon', this)">Webtoon</button>
                 </div>
 
-                <!-- CLASSIFICAÇÃO -->
+                <!-- CLASSIFICAÇÃO (Sem botão "Todos") -->
                 <h3 class="filtro-section-title">CLASSIFICAÇÃO</h3>
                 <div class="generos-grid-botoes" id="filtros-classificacao">
-                    <button class="genre-pill-btn active" onclick="aplicarFiltroCruzado('classificacao', 'todos', this)">Todos</button>
-                    <button class="genre-pill-btn" onclick="aplicarFiltroCruzado('classificacao', 'Livre', this)">Livre</button>
+                    <button class="genre-pill-btn active" onclick="aplicarFiltroCruzado('classificacao', 'Livre', this)">Livre</button>
                     <button class="genre-pill-btn" onclick="aplicarFiltroCruzado('classificacao', '+18', this)">+18</button>
                 </div>
 
@@ -802,9 +697,7 @@
                     <div class="section-bar"></div>
                     <h2 class="section-title">RESULTADOS</h2>
                 </div>
-                <div id="grid-explorar-obras" class="manga-grid">
-                    <!-- Obras preenchidas via JS -->
-                </div>
+                <div id="grid-explorar-obras" class="manga-grid"></div>
             </div>
         </div>
 
@@ -834,25 +727,16 @@
         let listaObras = [];
         let obraCarrosselAtualSlug = '';
 
-        // Objeto que armazena os filtros ativos da tela Explorar
+        // Filtros ativos iniciais ajustados para a primeira opção válida de cada categoria
         let filtrosAtivos = {
             genero: 'todos',
-            status: 'todos',
-            tipo: 'todos',
-            classificacao: 'todos'
+            status: 'Em Andamento',
+            tipo: 'Manhwa',
+            classificacao: 'Livre'
         };
 
         function criarSlug(texto) {
             return String(texto || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-').replace(/[^\w-]/g, '');
-        }
-
-        function ehCapituloNovo(dataStr) {
-            if (!dataStr) return false;
-            let partes = dataStr.split('/');
-            let dataCap = partes.length === 3 ? new Date(`${partes[2]}-${partes[1]}-${partes[0]}`) : new Date(dataStr);
-            if (isNaN(dataCap.getTime())) return false;
-            let diasPassados = (new Date() - dataCap) / (1000 * 60 * 60 * 24);
-            return diasPassados >= 0 && diasPassados <= 4;
         }
 
         function gerarBadgesObra(obra) {
@@ -926,11 +810,11 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function renderizarCarrosselAleatorio() { /* Logica idêntica mantida compactada para espaço */ }
+        function renderizarCarrosselAleatorio() {}
         function abrirObraDoCarrossel() { if (obraCarrosselAtualSlug) window.location.href = `obra.html?nome=${obraCarrosselAtualSlug}`; }
-        function renderizarAtualizacoes() { /* Logica idêntica */ }
-        function renderizarTodasObras() { /* Logica idêntica */ }
-        function renderizarBiblioteca() { /* Logica idêntica */ }
+        function renderizarAtualizacoes() {}
+        function renderizarTodasObras() {}
+        function renderizarBiblioteca() {}
         
         function toggleMenu() { document.getElementById('sidebar-menu').classList.toggle('open'); }
         function togglePesquisa() {
@@ -939,9 +823,8 @@
             if(sb.style.display === 'block') document.getElementById('search-input').focus();
         }
 
-        /* ----- SISTEMA NOVO DE FILTROS DA ABA EXPLORAR ----- */
+        /* ----- SISTEMA DE FILTROS DA ABA EXPLORAR ----- */
 
-        // Renderiza os botões dinâmicos de gêneros baseado no JSON e depois renderiza a grade
         function renderizarFiltrosEGrid() {
             const containerG = document.getElementById('filtros-generos');
             if (!containerG) return;
@@ -951,6 +834,7 @@
                 if (o.tags && Array.isArray(o.tags)) o.tags.forEach(t => { if(t.trim()) conjuntoG.add(t.trim()); });
             });
 
+            // Único lugar com botão "Todos"
             let btnHtml = `<button class="genre-pill-btn ${filtrosAtivos.genero === 'todos' ? 'active' : ''}" onclick="aplicarFiltroCruzado('genero', 'todos', this)">Todos</button>`;
             Array.from(conjuntoG).sort().forEach(gen => {
                 let ativo = filtrosAtivos.genero === gen ? 'active' : '';
@@ -961,11 +845,9 @@
             processarFiltrosEAtualizarGrid();
         }
 
-        // Atualiza a seleção visual do botão e o objeto de filtros
         function aplicarFiltroCruzado(categoria, valor, elemento) {
             filtrosAtivos[categoria] = valor;
             
-            // Remove 'active' de todos os irmãos
             const container = elemento.parentElement;
             container.querySelectorAll('.genre-pill-btn').forEach(b => b.classList.remove('active'));
             elemento.classList.add('active');
@@ -973,7 +855,6 @@
             processarFiltrosEAtualizarGrid();
         }
 
-        // Cruza as informações dos 4 filtros e renderiza o resultado
         function processarFiltrosEAtualizarGrid() {
             const grid = document.getElementById('grid-explorar-obras');
             if (!grid) return;
@@ -989,43 +870,35 @@
 
                 // 2. Checa Status
                 let mStatus = true;
-                if (filtrosAtivos.status !== 'todos') {
-                    let st = String(obra.status || 'andamento').toLowerCase();
-                    if (filtrosAtivos.status === 'Completo' && !st.includes('completo') && !st.includes('concluido')) mStatus = false;
-                    if (filtrosAtivos.status === 'Hiatus' && !st.includes('hiatus') && !st.includes('pausa')) mStatus = false;
-                    if (filtrosAtivos.status === 'Em Andamento' && !st.includes('andamento') && !st.includes('lancamento')) mStatus = false;
-                }
+                let st = String(obra.status || 'andamento').toLowerCase();
+                if (filtrosAtivos.status === 'Completo' && !st.includes('completo') && !st.includes('concluido')) mStatus = false;
+                if (filtrosAtivos.status === 'Hiatus' && !st.includes('hiatus') && !st.includes('pausa')) mStatus = false;
+                if (filtrosAtivos.status === 'Em Andamento' && !st.includes('andamento') && !st.includes('lancamento')) mStatus = false;
 
-                // 3. Checa Tipo (Mangá, Manhwa...)
+                // 3. Checa Tipo
                 let mTipo = true;
-                if (filtrosAtivos.tipo !== 'todos') {
-                    let tp = String(obra.tipo || '').toLowerCase();
-                    if (tp !== filtrosAtivos.tipo.toLowerCase()) mTipo = false;
-                }
+                let tp = String(obra.tipo || '').toLowerCase();
+                if (tp !== filtrosAtivos.tipo.toLowerCase()) mTipo = false;
 
-                // 4. Checa Classificação (+18 ou Livre)
+                // 4. Checa Classificação
                 let mClass = true;
-                if (filtrosAtivos.classificacao !== 'todos') {
-                    let isAdult = false;
-                    if (obra.nsfw || obra.mais18) isAdult = true;
-                    else if (obra.tags && obra.tags.some(t => String(t).toLowerCase().includes('+18'))) isAdult = true;
-                    else if (String(obra.classificacao).includes('18')) isAdult = true;
+                let isAdult = false;
+                if (obra.nsfw || obra.mais18) isAdult = true;
+                else if (obra.tags && obra.tags.some(t => String(t).toLowerCase().includes('+18'))) isAdult = true;
+                else if (String(obra.classificacao).includes('18')) isAdult = true;
 
-                    if (filtrosAtivos.classificacao === '+18' && !isAdult) mClass = false;
-                    if (filtrosAtivos.classificacao === 'Livre' && isAdult) mClass = false;
-                }
+                if (filtrosAtivos.classificacao === '+18' && !isAdult) mClass = false;
+                if (filtrosAtivos.classificacao === 'Livre' && isAdult) mClass = false;
 
                 return mGen && mStatus && mTipo && mClass;
             });
 
-            // Renderizando mensagem se vazio
             if (obrasFiltradas.length === 0) {
                 grid.style.gridTemplateColumns = '1fr';
                 grid.innerHTML = `<p style="padding:40px; text-align:center; color:var(--text-muted);">Nenhuma obra encontrada para essa combinação de filtros.</p>`;
                 return;
             }
 
-            // Renderizando cards normais
             grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
             obrasFiltradas.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
