@@ -703,6 +703,37 @@
             transform: translateY(-2px);
         }
 
+        /* ESTILOS DA PÁGINA DE GÊNEROS */
+        .generos-grid-botoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .genre-pill-btn {
+            background: #0b0b0f;
+            border: 1px solid rgba(255, 153, 221, 0.4);
+            color: var(--primary-pink);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-shadow: var(--neon-glow);
+            box-shadow: 0 0 8px rgba(255, 153, 221, 0.15);
+        }
+
+        .genre-pill-btn:hover, .genre-pill-btn.active {
+            background: var(--primary-pink);
+            color: #000000;
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 15px rgba(255, 153, 221, 0.8);
+            transform: translateY(-2px);
+            text-shadow: none;
+        }
+
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -780,7 +811,7 @@
             <a href="./?aba=obras">Obras</a>
             <a href="./?aba=favoritos">Biblioteca</a>
             <a href="./?aba=avisos">Avisos</a>
-            <a href="./?aba=generos">Gêneros</a>
+            <a href="./?aba=generos" onclick="event.preventDefault(); toggleMenu(); mudarAbaVisual('generos'); history.pushState({}, '', './?aba=generos'); renderizarPaginaGeneros();">Gêneros</a>
             <a href="javascript:void(0)" onclick="alert('Chave Pix / Apoio em breve!'); toggleMenu();">Apoie a Scan</a>
             <a href="javascript:void(0)" onclick="alert('Pedidos abertos no Discord/Telegram!'); toggleMenu();">Pedidos</a>
         </div>
@@ -859,7 +890,7 @@
                     <div class="bib-filter-row">
                         <div class="bib-filter-left">
                             <span>Ordenar por:</span>
-                            <button class="bib-filter-btn" onclick="alert('Filtro de Gêneros da Biblioteca em breve!')">
+                            <button class="bib-filter-btn" onclick="mudarAbaVisual('generos'); history.pushState({}, '', './?aba=generos'); renderizarPaginaGeneros();">
                                 <svg viewBox="0 0 24 24"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v5z"/></svg>
                                 Gêneros
                             </button>
@@ -888,11 +919,29 @@
             </div>
         </div>
 
-        <!-- GÊNEROS -->
+        <!-- GÊNEROS (NOVA PÁGINA INTERATIVA) -->
         <div id="generos" class="view-section">
             <div class="section-container">
-                <div class="section-header"><div class="section-bar"></div><h2 class="section-title">GÊNEROS</h2></div>
-                <p style="color: var(--text-muted); padding: 10px 0;">Filtros de gêneros em breve!</p>
+                <div class="section-header">
+                    <div class="section-bar"></div>
+                    <h2 class="section-title">EXPLORAR POR GÊNEROS</h2>
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px; text-shadow: var(--neon-glow);">Selecione um gênero abaixo para filtrar as obras instantaneamente:</p>
+                
+                <!-- Botões de Gêneros Gerados Dinamicamente -->
+                <div id="generos-botoes-container" class="generos-grid-botoes">
+                    <!-- Preenchido pelo JS -->
+                </div>
+
+                <div class="section-header" style="margin-top: 30px;">
+                    <div class="section-bar"></div>
+                    <h2 class="section-title" id="titulo-genero-selecionado">TODAS AS OBRAS</h2>
+                </div>
+
+                <!-- Grid de Obras Filtradas por Gênero -->
+                <div id="grid-generos-obras" class="manga-grid">
+                    <!-- Preenchido pelo JS -->
+                </div>
             </div>
         </div>
 
@@ -922,6 +971,7 @@
         let listaObras = [];
         let obraCarrosselAtualSlug = '';
         let filtroBibAtual = 'todos';
+        let generoSelecionadoAtual = 'todos';
 
         function criarSlug(texto) {
             return String(texto || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-').replace(/[^\w-]/g, '');
@@ -1007,6 +1057,7 @@
             renderizarAtualizacoes();
             renderizarTodasObras();
             renderizarBiblioteca();
+            renderizarPaginaGeneros();
         }
 
         function verificarParametroUrl() {
@@ -1015,6 +1066,7 @@
             if (aba && document.getElementById(aba)) {
                 mudarAbaVisual(aba);
                 if (aba === 'favoritos') renderizarBiblioteca();
+                if (aba === 'generos') renderizarPaginaGeneros();
             }
         }
 
@@ -1143,6 +1195,125 @@
             }
 
             listaObras.forEach(obra => {
+                const slugObra = obra.id || criarSlug(obra.titulo);
+                let ultimoCapNum = 'Em breve';
+                let slugCap = '';
+                let linkLeitor = '#';
+
+                if (obra.capitulos && obra.capitulos.length > 0) {
+                    let capObj = obra.capitulos[0];
+                    ultimoCapNum = typeof capObj === 'object' ? capObj.numero : capObj;
+                    slugCap = String(ultimoCapNum).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
+                    linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`;
+                }
+
+                let badgesHtml = gerarBadgesObra(obra);
+
+                grid.innerHTML += `
+                    <div class="manga-card" onclick="window.location.href='obra.html?nome=${slugObra}'" style="cursor: pointer;">
+                        <div class="manga-capa-box">
+                            <img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa">
+                            ${badgesHtml}
+                        </div>
+                        <div class="manga-info">
+                            <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
+                            <div class="capitulo-recente-row">
+                                <a href="${linkLeitor}" class="capitulo-link" onclick="event.stopPropagation()">Capítulo ${ultimoCapNum}</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        /* SISTEMA DA PÁGINA DE GÊNEROS */
+        function renderizarPaginaGeneros() {
+            const containerBotoes = document.getElementById('generos-botoes-container');
+            if (!containerBotoes) return;
+
+            // Coletar todos os gêneros únicos das obras
+            let conjuntoGeneros = new Set();
+            listaObras.forEach(obra => {
+                if (obra.tags && Array.isArray(obra.tags)) {
+                    obra.tags.forEach(t => {
+                        let tagLimpa = String(t).trim();
+                        // Ignorar tags internas de idade ou nsfw se desejar, ou manter
+                        if (tagLimpa) conjuntoGeneros.add(tagLimpa);
+                    });
+                }
+            });
+
+            let listaGenerosUnicos = Array.from(conjuntoGeneros).sort();
+
+            // Montar os botões de gêneros
+            let htmlBotoes = `
+                <button class="genre-pill-btn ${generoSelecionadoAtual === 'todos' ? 'active' : ''}" onclick="filtrarPorGenero('todos', this)">
+                    ✨ Todos
+                </button>
+            `;
+
+            listaGenerosUnicos.forEach(gen => {
+                let ativoClass = generoSelecionadoAtual === gen ? 'active' : '';
+                htmlBotoes += `
+                    <button class="genre-pill-btn ${ativoClass}" onclick="filtrarPorGenero('${gen.replace(/'/g, "\\'")}', this)">
+                        ${gen}
+                    </button>
+                `;
+            });
+
+            if (listaGenerosUnicos.length === 0) {
+                htmlBotoes = `<p style="color: var(--text-muted); font-size: 0.85rem;">Nenhum gênero/tag encontrado nas obras cadastradas.</p>`;
+            }
+
+            containerBotoes.innerHTML = htmlBotoes;
+            renderizarGridGenerosFiltrados();
+        }
+
+        function filtrarPorGenero(genero, elemento) {
+            generoSelecionadoAtual = genero;
+            
+            // Atualizar classes active dos botões
+            document.querySelectorAll('.genre-pill-btn').forEach(b => b.classList.remove('active'));
+            if (elemento) {
+                elemento.classList.add('active');
+            }
+
+            // Atualizar título da seção
+            const tituloSecao = document.getElementById('titulo-genero-selecionado');
+            if (tituloSecao) {
+                tituloSecao.innerText = genero === 'todos' ? 'TODAS AS OBRAS' : `GÊNERO: ${genero.toUpperCase()}`;
+            }
+
+            renderizarGridGenerosFiltrados();
+        }
+
+        function renderizarGridGenerosFiltrados() {
+            const grid = document.getElementById('grid-generos-obras');
+            if (!grid) return;
+
+            grid.innerHTML = '';
+
+            let obrasFiltradas = listaObras;
+            if (generoSelecionadoAtual !== 'todos') {
+                obrasFiltradas = listaObras.filter(o => {
+                    if (!o.tags || !Array.isArray(o.tags)) return false;
+                    return o.tags.some(t => String(t).trim().toLowerCase() === generoSelecionadoAtual.toLowerCase());
+                });
+            }
+
+            if (obrasFiltradas.length === 0) {
+                grid.style.gridTemplateColumns = '1fr';
+                grid.innerHTML = `
+                    <div style="padding: 40px 20px; text-align: center; grid-column: span 2;">
+                        <p style="color: var(--text-muted); font-size: 0.9rem; text-shadow: var(--neon-glow);">Nenhuma obra encontrada com o gênero selecionado.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+
+            obrasFiltradas.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
                 let ultimoCapNum = 'Em breve';
                 let slugCap = '';
