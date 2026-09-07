@@ -1310,6 +1310,7 @@
         }
 
         function alternarFiltro(categoria, valor, elemento) {
+            // CORREÇÃO DO DUPLO CLIQUE: Se o botão já estava ativo, desativa completamente o filtro da categoria
             if (filtrosAtivos[categoria] === valor) {
                 filtrosAtivos[categoria] = null;
                 elemento.classList.remove('active');
@@ -1330,12 +1331,14 @@
             grid.innerHTML = '';
 
             let obrasFiltradas = listaObras.filter(obra => {
+                // Filtro de Gênero
                 if (filtrosAtivos.genero) {
                     if (!obra.tags || !Array.isArray(obra.tags)) return false;
                     let temTag = obra.tags.some(t => String(t).trim().toLowerCase() === filtrosAtivos.genero.toLowerCase());
                     if (!temTag) return false;
                 }
 
+                // Filtro de Status
                 if (filtrosAtivos.status) {
                     let st = String(obra.status || '').toLowerCase();
                     if (filtrosAtivos.status === 'andamento' && !st.includes('andamento')) return false;
@@ -1343,12 +1346,18 @@
                     if (filtrosAtivos.status === 'hiatus' && !st.includes('hiatus') && !st.includes('pausa')) return false;
                 }
 
+                // CORREÇÃO DO FILTRO DE TIPO (Manhwa, Mangá, etc.)
                 if (filtrosAtivos.tipo) {
-                    let tp = String(obra.tipo || obra.formato || '').toLowerCase();
-                    let temTpTag = obra.tags && Array.isArray(obra.tags) && obra.tags.some(t => String(t).toLowerCase() === filtrosAtivos.tipo.toLowerCase());
-                    if (!tp.includes(filtrosAtivos.tipo.toLowerCase()) && !temTpTag) return false;
+                    let tipoFiltro = filtrosAtivos.tipo.toLowerCase();
+                    let tipoObra = String(obra.tipo || obra.formato || '').toLowerCase();
+                    
+                    // Verifica se bate com a propriedade "tipo"/"formato" OU se está presente nas "tags"
+                    let temTipoNasTags = obra.tags && Array.isArray(obra.tags) && obra.tags.some(t => String(t).toLowerCase() === tipoFiltro);
+                    
+                    if (!tipoObra.includes(tipoFiltro) && !temTipoNasTags) return false;
                 }
 
+                // Filtro de Classificação
                 if (filtrosAtivos.classificacao) {
                     let ehNsfw = checarSeEObraNsfw(obra);
                     if (filtrosAtivos.classificacao === '18' && !ehNsfw) return false;
