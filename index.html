@@ -411,7 +411,6 @@
         .status-hiatus .status-dot { background-color: #9575cd; box-shadow: 0 0 4px #9575cd; }
         .status-hiatus { color: #ede7f6; }
 
-        /* Selo +18 posicionado no canto superior direito */
         .badge-nsfw {
             position: absolute;
             top: 8px;
@@ -704,7 +703,6 @@
             transform: translateY(-2px);
         }
 
-        /* ESTILOS DA PÁGINA DE GÊNEROS / FILTROS */
         .filtro-categoria-titulo {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 0.85rem;
@@ -838,7 +836,6 @@
 
         <!-- TELA INÍCIO -->
         <div id="inicio" class="view-section active">
-            <!-- CARROSSEL DE DESTAQUE -->
             <div class="hero-carousel" id="hero-carousel" onclick="abrirObraDoCarrossel()">
                 <div class="hero-slide active" style="background-image: url('');">
                     <div class="hero-content">
@@ -848,7 +845,6 @@
                 </div>
             </div>
 
-            <!-- SEÇÃO ÚLTIMAS ATUALIZAÇÕES -->
             <div class="section-container">
                 <div class="section-header">
                     <div class="section-bar"></div>
@@ -881,7 +877,6 @@
                     </div>
                     <div class="biblioteca-subtitle">Aqui estão suas obras favoritas. Continue lendo quando quiser! ♡</div>
 
-                    <!-- ABAS DE FILTRO DA BIBLIOTECA -->
                     <div class="bib-tabs-container">
                         <button class="bib-tab active" onclick="filtrarBibTab('todos', this)">
                             <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
@@ -902,7 +897,6 @@
                         </button>
                     </div>
 
-                    <!-- ORDENAR E GÊNEROS -->
                     <div class="bib-filter-row">
                         <div class="bib-filter-left">
                             <span>Ordenar por:</span>
@@ -914,7 +908,6 @@
                     </div>
                 </div>
 
-                <!-- CONTAINER DO GRID / ESTADO VAZIO -->
                 <div id="lista-favoritos" class="manga-grid"></div>
             </div>
         </div>
@@ -941,13 +934,11 @@
                     <h2 class="section-title">EXPLORAR OBRAS</h2>
                 </div>
 
-                <!-- GRUPO 1: GÊNEROS -->
                 <div class="filtro-categoria-titulo">Gêneros</div>
                 <div id="generos-botoes-container" class="filtro-grupo-botoes">
                     <span style="color: var(--text-muted); font-size: 0.85rem;">Carregando gêneros...</span>
                 </div>
 
-                <!-- GRUPO 2: STATUS -->
                 <div class="filtro-categoria-titulo">Status</div>
                 <div id="status-botoes-container" class="filtro-grupo-botoes">
                     <button class="genre-pill-btn" onclick="alternarFiltro('status', 'andamento', this)">Em Andamento</button>
@@ -955,7 +946,6 @@
                     <button class="genre-pill-btn" onclick="alternarFiltro('status', 'hiatus', this)">Hiatus</button>
                 </div>
 
-                <!-- GRUPO 3: TIPO -->
                 <div class="filtro-categoria-titulo">Tipo</div>
                 <div id="tipo-botoes-container" class="filtro-grupo-botoes">
                     <button class="genre-pill-btn" onclick="alternarFiltro('tipo', 'manhwa', this)">Manhwa</button>
@@ -964,7 +954,6 @@
                     <button class="genre-pill-btn" onclick="alternarFiltro('tipo', 'webtoon', this)">Webtoon</button>
                 </div>
 
-                <!-- GRUPO 4: CLASSIFICAÇÃO -->
                 <div class="filtro-categoria-titulo">Classificação</div>
                 <div id="classificacao-botoes-container" class="filtro-grupo-botoes">
                     <button class="genre-pill-btn" onclick="alternarFiltro('classificacao', 'livre', this)">Livre</button>
@@ -976,7 +965,6 @@
                     <h2 class="section-title" id="titulo-resultados-filtro">RESULTADOS</h2>
                 </div>
 
-                <!-- Grid de Obras Filtradas -->
                 <div id="grid-generos-obras" class="manga-grid" style="margin-top: 15px;"></div>
             </div>
         </div>
@@ -1310,14 +1298,14 @@
         }
 
         function alternarFiltro(categoria, valor, elemento) {
-            // CORREÇÃO DO DUPLO CLIQUE: Se o botão já estava ativo, desativa completamente o filtro da categoria
+            let containerPai = elemento.parentElement;
+
             if (filtrosAtivos[categoria] === valor) {
                 filtrosAtivos[categoria] = null;
                 elemento.classList.remove('active');
             } else {
-                filtrosAtivos[categoria] = valor;
-                let containerPai = elemento.parentElement;
                 containerPai.querySelectorAll('.genre-pill-btn').forEach(b => b.classList.remove('active'));
+                filtrosAtivos[categoria] = valor;
                 elemento.classList.add('active');
             }
 
@@ -1346,13 +1334,15 @@
                     if (filtrosAtivos.status === 'hiatus' && !st.includes('hiatus') && !st.includes('pausa')) return false;
                 }
 
-                // CORREÇÃO DO FILTRO DE TIPO (Manhwa, Mangá, etc.)
+                // Filtro de Tipo (Manhwa, Mangá, etc.)
                 if (filtrosAtivos.tipo) {
                     let tipoFiltro = filtrosAtivos.tipo.toLowerCase();
-                    let tipoObra = String(obra.tipo || obra.formato || '').toLowerCase();
+                    let tipoObra = String(obra.tipo || obra.formato || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                     
-                    // Verifica se bate com a propriedade "tipo"/"formato" OU se está presente nas "tags"
-                    let temTipoNasTags = obra.tags && Array.isArray(obra.tags) && obra.tags.some(t => String(t).toLowerCase() === tipoFiltro);
+                    let temTipoNasTags = obra.tags && Array.isArray(obra.tags) && obra.tags.some(t => {
+                        let tNorm = String(t).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                        return tNorm === tipoFiltro;
+                    });
                     
                     if (!tipoObra.includes(tipoFiltro) && !temTipoNasTags) return false;
                 }
@@ -1576,7 +1566,7 @@
                             ${badgesHtml}
                         </div>
                         <div class="manga-info">
-                            <a href="window.location.href='obra.html?nome=${slugObra}'" class="manga-titulo">${obra.titulo}</a>
+                            <a href="obra.html?nome=${slugObra}" class="manga-titulo">${obra.titulo}</a>
                             <div class="capitulo-recente-row">
                                 <a href="${linkLeitor}" class="capitulo-link" onclick="event.stopPropagation()">Capítulo ${ultimoCapNum}</a>
                             </div>
