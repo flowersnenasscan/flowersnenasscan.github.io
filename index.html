@@ -1071,22 +1071,48 @@
             return htmlBadges;
         }
 
-        fetch('obras.json?v=' + new Date().getTime())
-            .then(res => {
-                if (!res.ok) throw new Error("Erro HTTP");
-                return res.json();
-            })
-            .then(data => {
-                listaObras = data;
+        // CORREÇÃO APLICADA AQUI: Adicionado tratamento de erro para Supabase ou falha de rede do obras.json, 
+        // e fallback para carregar dados do Supabase se o fetch do JSON falhar ou retornar vazio.
+        async function carregarDadosObras() {
+            try {
+                // Tenta carregar do obras.json primeiro
+                const res = await fetch('obras.json?v=' + new Date().getTime());
+                if (!res.ok) throw new Error("Erro HTTP ao carregar obras.json");
+                const data = await res.json();
+                
+                if (Array.isArray(data) && data.length > 0) {
+                    listaObras = data;
+                } else {
+                    throw new Error("obras.json vazio");
+                }
+            } catch (err) {
+                console.warn("Aviso: Falha ao carregar obras.json, tentando buscar dados via Supabase...", err);
+                try {
+                    // Configuração do Supabase (substitua com suas chaves reais se necessário, ou usa variáveis globais se já configuradas)
+                    // Nota: Certifique-se de que a tabela 'obras' existe no Supabase e o cliente foi inicializado corretamente acima.
+                    if (typeof supabase !== 'undefined' && window.SUPABASE_URL && window.SUPABASE_ANON_KEY) {
+                        const sbClient = supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+                        const { data: sbData, error: sbError } = await sbClient.from('obras').select('*');
+                        if (!sbError && sbData) {
+                            listaObras = sbData;
+                        }
+                    } else if (typeof _supabase !== 'undefined') {
+                        // Caso já exista uma instância global configurada no projeto
+                        const { data: sbData, error: sbError } = await _supabase.from('obras').select('*');
+                        if (!sbError && sbData) {
+                            listaObras = sbData;
+                        }
+                    }
+                } catch (supabaseErr) {
+                    console.error("Erro ao carregar dados do Supabase:", supabaseErr);
+                }
+            } finally {
                 inicializarHome();
                 verificarParametroUrl();
-            })
-            .catch(err => {
-                console.warn("Aviso: Falha ao carregar obras.json via fetch, usando dados vazios.", err);
-                listaObras = [];
-                inicializarHome();
-                verificarParametroUrl();
-            });
+            }
+        }
+
+        carregarDadosObras();
 
         function inicializarHome() {
             renderizarCarrosselAleatorio();
@@ -1124,7 +1150,7 @@
                     <div class="hero-slide active" style="background-image: url('');">
                         <div class="hero-content">
                             <div class="hero-title">Nenhuma obra cadastrada</div>
-                            <div class="hero-synopsis">Adicione obras ao seu obras.json</div>
+                            <div class="hero-synopsis">Adicione obras ao seu catálogo ou banco de dados.</div>
                         </div>
                     </div>
                 `;
