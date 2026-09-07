@@ -950,25 +950,25 @@
                 <!-- GRUPO 2: STATUS -->
                 <div class="filtro-categoria-titulo">Status</div>
                 <div id="status-botoes-container" class="filtro-grupo-botoes">
-                    <button class="genre-pill-btn" onclick="filtrarMultiplo('status', 'andamento', this)">Em Andamento</button>
-                    <button class="genre-pill-btn" onclick="filtrarMultiplo('status', 'completo', this)">Completo</button>
-                    <button class="genre-pill-btn" onclick="filtrarMultiplo('status', 'hiatus', this)">Hiatus</button>
+                    <button class="genre-pill-btn" onclick="alternarFiltro('status', 'andamento', this)">Em Andamento</button>
+                    <button class="genre-pill-btn" onclick="alternarFiltro('status', 'completo', this)">Completo</button>
+                    <button class="genre-pill-btn" onclick="alternarFiltro('status', 'hiatus', this)">Hiatus</button>
                 </div>
 
                 <!-- GRUPO 3: TIPO -->
                 <div class="filtro-categoria-titulo">Tipo</div>
                 <div id="tipo-botoes-container" class="filtro-grupo-botoes">
-                    <button class="genre-pill-btn" onclick="filtrarMultiplo('tipo', 'manhwa', this)">Manhwa</button>
-                    <button class="genre-pill-btn" onclick="filtrarMultiplo('tipo', 'manhua', this)">Manhua</button>
-                    <button class="genre-pill-btn" onclick="filtrarMultiplo('tipo', 'manga', this)">Mangá</button>
-                    <button class="genre-pill-btn" onclick="filtrarMultiplo('tipo', 'webtoon', this)">Webtoon</button>
+                    <button class="genre-pill-btn" onclick="alternarFiltro('tipo', 'manhwa', this)">Manhwa</button>
+                    <button class="genre-pill-btn" onclick="alternarFiltro('tipo', 'manhua', this)">Manhua</button>
+                    <button class="genre-pill-btn" onclick="alternarFiltro('tipo', 'manga', this)">Mangá</button>
+                    <button class="genre-pill-btn" onclick="alternarFiltro('tipo', 'webtoon', this)">Webtoon</button>
                 </div>
 
                 <!-- GRUPO 4: CLASSIFICAÇÃO -->
                 <div class="filtro-categoria-titulo">Classificação</div>
                 <div id="classificacao-botoes-container" class="filtro-grupo-botoes">
-                    <button class="genre-pill-btn" onclick="filtrarMultiplo('classificacao', 'livre', this)">Livre</button>
-                    <button class="genre-pill-btn" onclick="filtrarMultiplo('classificacao', '18', this)">+18</button>
+                    <button class="genre-pill-btn" onclick="alternarFiltro('classificacao', 'livre', this)">Livre</button>
+                    <button class="genre-pill-btn" onclick="alternarFiltro('classificacao', '18', this)">+18</button>
                 </div>
 
                 <div class="section-header" style="margin-top: 30px;">
@@ -1035,6 +1035,18 @@
             return diasPassados >= 0 && diasPassados <= 4;
         }
 
+        function checarSeEObraNsfw(obra) {
+            if (obra.nsfw === true || obra.mais18 === true || obra.adulto === true) return true;
+            if (obra.classificacao && String(obra.classificacao).trim() === '+18') return true;
+            if (obra.tags && Array.isArray(obra.tags)) {
+                return obra.tags.some(t => {
+                    let st = String(t).toLowerCase().trim();
+                    return st === '+18' || st === '18' || st === 'nsfw' || st === 'adulto' || st === '+18 anos';
+                });
+            }
+            return false;
+        }
+
         function gerarBadgesObra(obra) {
             let htmlBadges = '';
             let statusRaw = String(obra.status || 'Andamento').toLowerCase().trim();
@@ -1058,14 +1070,7 @@
                 </span>
             `;
 
-            let ehNsfw = obra.nsfw === true || obra.mais18 === true || obra.adulto === true;
-            if (obra.tags && Array.isArray(obra.tags)) {
-                if (obra.tags.some(t => String(t).toLowerCase().includes('+18') || String(t).toLowerCase().includes('nsfw') || String(t).toLowerCase().includes('adulto'))) {
-                    ehNsfw = true;
-                }
-            }
-
-            if (ehNsfw) {
+            if (checarSeEObraNsfw(obra)) {
                 htmlBadges += `<span class="badge-nsfw">+18</span>`;
             }
 
@@ -1272,8 +1277,11 @@
                 if (obra.tags && Array.isArray(obra.tags)) {
                     obra.tags.forEach(t => {
                         let tagLimpa = String(t).trim();
-                        if (tagLimpa && !tagLimpa.toLowerCase().includes('+18') && !tagLimpa.toLowerCase().includes('nsfw')) {
-                            conjuntoGeneros.add(tagLimpa);
+                        if (tagLimpa) {
+                            let tLower = tagLimpa.toLowerCase();
+                            if (tLower !== '+18' && tLower !== '18' && tLower !== 'nsfw' && tLower !== 'adulto' && tLower !== '+18 anos') {
+                                conjuntoGeneros.add(tagLimpa);
+                            }
                         }
                     });
                 }
@@ -1291,7 +1299,7 @@
             listaGenerosUnicos.forEach(gen => {
                 let ativoClass = filtrosAtivos.genero === gen ? 'active' : '';
                 htmlBotoesGen += `
-                    <button class="genre-pill-btn ${ativoClass}" onclick="filtrarMultiplo('genero', '${gen.replace(/'/g, "\\'")}', this)">
+                    <button class="genre-pill-btn ${ativoClass}" onclick="alternarFiltro('genero', '${gen.replace(/'/g, "\\'")}', this)">
                         ${gen}
                     </button>
                 `;
@@ -1301,7 +1309,7 @@
             aplicarFiltrosMultiplos();
         }
 
-        function filtrarMultiplo(categoria, valor, elemento) {
+        function alternarFiltro(categoria, valor, elemento) {
             if (filtrosAtivos[categoria] === valor) {
                 filtrosAtivos[categoria] = null;
                 elemento.classList.remove('active');
@@ -1342,10 +1350,7 @@
                 }
 
                 if (filtrosAtivos.classificacao) {
-                    let ehNsfw = obra.nsfw === true || obra.mais18 === true || obra.adulto === true;
-                    if (obra.tags && Array.isArray(obra.tags)) {
-                        if (obra.tags.some(t => String(t).toLowerCase().includes('+18') || String(t).toLowerCase().includes('nsfw'))) ehNsfw = true;
-                    }
+                    let ehNsfw = checarSeEObraNsfw(obra);
                     if (filtrosAtivos.classificacao === '18' && !ehNsfw) return false;
                     if (filtrosAtivos.classificacao === 'livre' && ehNsfw) return false;
                 }
@@ -1562,7 +1567,7 @@
                             ${badgesHtml}
                         </div>
                         <div class="manga-info">
-                            <a href="obra.html?nome=${slugObra}" class="manga-titulo">${obra.titulo}</a>
+                            <a href="window.location.href='obra.html?nome=${slugObra}'" class="manga-titulo">${obra.titulo}</a>
                             <div class="capitulo-recente-row">
                                 <a href="${linkLeitor}" class="capitulo-link" onclick="event.stopPropagation()">Capítulo ${ultimoCapNum}</a>
                             </div>
