@@ -1032,6 +1032,12 @@
                     return st === '+18' || st === '18' || st === 'nsfw' || st === 'adulto' || st === '+18 anos';
                 });
             }
+            if (obra.generos && Array.isArray(obra.generos)) {
+                return obra.generos.some(g => {
+                    let st = String(g).toLowerCase().trim();
+                    return st === '+18' || st === '18' || st === 'nsfw' || st === 'adulto' || st === '+18 anos';
+                });
+            }
             return false;
         }
 
@@ -1262,17 +1268,20 @@
 
             let conjuntoGeneros = new Set();
             listaObras.forEach(obra => {
-                if (obra.tags && Array.isArray(obra.tags)) {
-                    obra.tags.forEach(t => {
-                        let tagLimpa = String(t).trim();
-                        if (tagLimpa) {
-                            let tLower = tagLimpa.toLowerCase();
-                            if (tLower !== '+18' && tLower !== '18' && tLower !== 'nsfw' && tLower !== 'adulto' && tLower !== '+18 anos') {
-                                conjuntoGeneros.add(tagLimpa);
-                            }
+                // Coleta de 'generos' (principal) e 'tags' (segundário)
+                let fontesGeneros = [];
+                if (obra.generos && Array.isArray(obra.generos)) fontesGeneros.push(...obra.generos);
+                if (obra.tags && Array.isArray(obra.tags)) fontesGeneros.push(...obra.tags);
+
+                fontesGeneros.forEach(g => {
+                    let genLimpo = String(g).trim();
+                    if (genLimpo) {
+                        let gLower = genLimpo.toLowerCase();
+                        if (gLower !== '+18' && gLower !== '18' && gLower !== 'nsfw' && gLower !== 'adulto' && gLower !== '+18 anos') {
+                            conjuntoGeneros.add(genLimpo);
                         }
-                    });
-                }
+                    }
+                });
             });
 
             let listaGenerosUnicos = Array.from(conjuntoGeneros).sort();
@@ -1300,9 +1309,11 @@
         function alternarFiltro(categoria, valor, elemento) {
             let containerPai = elemento.parentElement;
 
+            // Se o botão clicado já está ativo, desmarca ele (volta a null). 
+            // Se for diferente, remove o 'active' de todos os outros deste grupo e ativa só o novo.
             if (filtrosAtivos[categoria] === valor) {
                 filtrosAtivos[categoria] = null;
-                elemento.classList.remove('active');
+                containerPai.querySelectorAll('.genre-pill-btn').forEach(b => b.classList.remove('active'));
             } else {
                 containerPai.querySelectorAll('.genre-pill-btn').forEach(b => b.classList.remove('active'));
                 filtrosAtivos[categoria] = valor;
@@ -1319,11 +1330,22 @@
             grid.innerHTML = '';
 
             let obrasFiltradas = listaObras.filter(obra => {
-                // Filtro de Gênero
+                // Filtro de Gênero (checa tanto em obra.generos quanto em obra.tags)
                 if (filtrosAtivos.genero) {
-                    if (!obra.tags || !Array.isArray(obra.tags)) return false;
-                    let temTag = obra.tags.some(t => String(t).trim().toLowerCase() === filtrosAtivos.genero.toLowerCase());
-                    if (!temTag) return false;
+                    let temGen = false;
+                    let filtroGenLower = filtrosAtivos.genero.toLowerCase().trim();
+
+                    if (obra.generos && Array.isArray(obra.generos)) {
+                        if (obra.generos.some(g => String(g).trim().toLowerCase() === filtroGenLower)) {
+                            temGen = true;
+                        }
+                    }
+                    if (!temGen && obra.tags && Array.isArray(obra.tags)) {
+                        if (obra.tags.some(t => String(t).trim().toLowerCase() === filtroGenLower)) {
+                            temGen = true;
+                        }
+                    }
+                    if (!temGen) return false;
                 }
 
                 // Filtro de Status
@@ -1339,12 +1361,19 @@
                     let tipoFiltro = filtrosAtivos.tipo.toLowerCase();
                     let tipoObra = String(obra.tipo || obra.formato || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                     
-                    let temTipoNasTags = obra.tags && Array.isArray(obra.tags) && obra.tags.some(t => {
-                        let tNorm = String(t).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-                        return tNorm === tipoFiltro;
-                    });
+                    let temTipoNasFontes = false;
+                    if (obra.generos && Array.isArray(obra.generos)) {
+                        if (obra.generos.some(g => String(g).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(tipoFiltro))) {
+                            temTipoNasFontes = true;
+                        }
+                    }
+                    if (!temTipoNasFontes && obra.tags && Array.isArray(obra.tags)) {
+                        if (obra.tags.some(t => String(t).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(tipoFiltro))) {
+                            temTipoNasFontes = true;
+                        }
+                    }
                     
-                    if (!tipoObra.includes(tipoFiltro) && !temTipoNasTags) return false;
+                    if (!tipoObra.includes(tipoFiltro) && !temTipoNasFontes) return false;
                 }
 
                 // Filtro de Classificação
@@ -1485,8 +1514,9 @@
                 const slugObra = obra.id || criarSlug(obra.titulo);
 
                 let tagsHtml = '';
-                if (obra.tags && Array.isArray(obra.tags)) {
-                    let tagsFiltradas = obra.tags.filter(t => !String(t).toLowerCase().includes('+18') && !String(t).toLowerCase().includes('nsfw'));
+                let fonteTags = obra.generos || obra.tags;
+                if (fonteTags && Array.isArray(fonteTags)) {
+                    let tagsFiltradas = fonteTags.filter(t => !String(t).toLowerCase().includes('+18') && !String(t).toLowerCase().includes('nsfw'));
                     tagsHtml = tagsFiltradas.slice(0, 3).map(t => `<span class="card-tag">${t}</span>`).join('');
                 }
 
