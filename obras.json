@@ -8,9 +8,9 @@
     "tipo": "manga" , 
     "autor": "",
     "artista": "",
-    "classificação": "+18",
+    "classificacao": "+18",
     "ano": "2026",
-    "Gêneros": ["Romance", "Drama"],
+    "gêneros": ["Romance", "Drama"],
     "sinopse": "Uma história incrível de mistério e romance.",
     "capitulos": [
       {
