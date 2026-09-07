@@ -1308,14 +1308,11 @@
         function alternarFiltro(categoria, valor, elemento) {
             let containerPai = elemento.parentElement;
 
-            // Se o botão clicado já estava ativo, desmarca ele.
             if (elemento.classList.contains('active')) {
                 elemento.classList.remove('active');
                 filtrosAtivos[categoria] = null;
             } else {
-                // Remove o active de todos os outros botões do MESMO grupo/seção
                 containerPai.querySelectorAll('.genre-pill-btn').forEach(b => b.classList.remove('active'));
-                // Ativa apenas o botão clicado
                 elemento.classList.add('active');
                 filtrosAtivos[categoria] = valor;
             }
@@ -1329,7 +1326,6 @@
 
             grid.innerHTML = '';
 
-            // Verifica se absolutamente nenhum filtro está selecionado
             let nenhumFiltroAtivo = !filtrosAtivos.genero && !filtrosAtivos.status && !filtrosAtivos.tipo && !filtrosAtivos.classificacao;
 
             if (nenhumFiltroAtivo) {
@@ -1343,7 +1339,6 @@
             }
 
             let obrasFiltradas = listaObras.filter(obra => {
-                // Filtro de Gênero
                 if (filtrosAtivos.genero) {
                     let temGen = false;
                     let filtroGenLower = filtrosAtivos.genero.toLowerCase().trim();
@@ -1361,7 +1356,6 @@
                     if (!temGen) return false;
                 }
 
-                // Filtro de Status
                 if (filtrosAtivos.status) {
                     let st = String(obra.status || '').toLowerCase();
                     if (filtrosAtivos.status === 'andamento' && !st.includes('andamento')) return false;
@@ -1369,7 +1363,6 @@
                     if (filtrosAtivos.status === 'hiatus' && !st.includes('hiatus') && !st.includes('pausa')) return false;
                 }
 
-                // Filtro de Tipo
                 if (filtrosAtivos.tipo) {
                     let tipoFiltro = filtrosAtivos.tipo.toLowerCase();
                     let tipoObra = String(obra.tipo || obra.formato || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -1389,7 +1382,6 @@
                     if (!tipoObra.includes(tipoFiltro) && !temTipoNasFontes) return false;
                 }
 
-                // Filtro de Classificação
                 if (filtrosAtivos.classificacao) {
                     let ehNsfw = checarSeEObraNsfw(obra);
                     if (filtrosAtivos.classificacao === '18' && !ehNsfw) return false;
