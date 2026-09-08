@@ -1592,7 +1592,7 @@
                 return;
             }
 
-            let limiteExibicao = 8; // Ajustado estritamente para 8 botões iniciais conforme pedido
+            let limiteExibicao = 8;
 
             let htmlBotoesGen = '';
             listaGenerosUnicos.forEach((gen, index) => {
@@ -1633,13 +1633,11 @@
             renderizarPaginaGeneros();
         }
 
-        // Lógica estrita para cada categoria funcionar individualmente (limpa as outras categorias ao selecionar uma nova)
         function alternarFiltroIndependente(categoria, valor, elemento) {
             if (elemento.classList.contains('active')) {
                 elemento.classList.remove('active');
                 filtrosAtivos[categoria] = null;
             } else {
-                // Limpa todos os botões de TODAS as categorias para focar individualmente na nova seleção
                 Object.keys(filtrosAtivos).forEach(cat => {
                     filtrosAtivos[cat] = null;
                 });
