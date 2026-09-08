@@ -632,12 +632,25 @@
             background: rgba(255, 153, 221, 0.15);
             border-color: var(--primary-pink);
         }
+        .bib-tab.active {
+            background: var(--primary-pink);
+            color: #000000;
+            border-color: var(--primary-pink);
+            text-shadow: none;
+        }
+        .bib-tab.active svg {
+            fill: #000000;
+        }
         .bib-tab-badge {
             background: rgba(255, 153, 221, 0.25);
             padding: 1px 6px;
             border-radius: 10px;
             font-size: 0.7rem;
             font-weight: 700;
+        }
+        .bib-tab.active .bib-tab-badge {
+            background: rgba(0, 0, 0, 0.2);
+            color: #000000;
         }
 
         .bib-filter-row {
@@ -703,7 +716,7 @@
             transform: translateY(-2px);
         }
 
-        /* ESTILOS ESPECÍFICOS DA PÁGINA DE TODAS AS OBRAS (CONFORME PRINT) */
+        /* ESTILOS DA PÁGINA DE TODAS AS OBRAS */
         .todas-obras-header {
             margin-bottom: 20px;
         }
@@ -838,6 +851,62 @@
             text-shadow: var(--neon-glow);
         }
 
+        /* ESTILOS DA PÁGINA DE GÊNEROS / EXPLORAR */
+        .filtro-categoria-titulo {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-top: 18px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 8px var(--primary-pink);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .filtro-grupo-botoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .genre-pill-btn {
+            background: #0b0b0f;
+            border: 1px solid rgba(255, 153, 221, 0.35);
+            color: var(--primary-pink);
+            padding: 6px 14px;
+            border-radius: 18px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            text-shadow: var(--neon-glow);
+        }
+
+        .genre-pill-btn:hover, .genre-pill-btn.active {
+            background: var(--primary-pink);
+            color: #000000;
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 12px rgba(255, 153, 221, 0.8);
+            text-shadow: none;
+        }
+
+        .btn-ver-mais-generos {
+            background: transparent;
+            border: none;
+            color: var(--primary-pink);
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 4px 0;
+            margin-top: 4px;
+            text-shadow: var(--neon-glow);
+            display: inline-block;
+        }
+        .btn-ver-mais-generos:hover {
+            text-decoration: underline;
+        }
+
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -946,7 +1015,7 @@
             </div>
         </div>
 
-        <!-- TELA DE OBRAS (REFEITA EXATAMENTE CONFORME O PRINT) -->
+        <!-- TELA DE OBRAS -->
         <div id="obras" class="view-section">
             <div class="section-container">
                 <div class="todas-obras-header">
@@ -1661,7 +1730,7 @@
                             ${badgesHtml}
                         </div>
                         <div class="manga-info">
-                            <a href="obra.html?nome=${obra.titulo}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
+                            <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
                             <div class="capitulo-recente-row">
                                 <a href="${linkLeitor}" class="capitulo-link" onclick="event.stopPropagation()">Capítulo ${ultimoCapNum}</a>
                             </div>
@@ -1737,7 +1806,7 @@
                     <div class="bib-empty-state" style="grid-column: span 2; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
                         <div class="bib-empty-icon" style="font-size: 3rem; margin-bottom: 8px;">🌸</div>
                         <div class="bib-empty-title" style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #ffffff; text-shadow: 0 0 10px var(--primary-pink); margin-bottom: 6px;">Nenhuma obra nesta categoria</div>
-                        <div class="bib-empty-desc" style="font-size: 0.85rem; color: var(--text-muted); max-width: 260px; line-height: 1.4; text-shadow: var(--neon-glow); margin-bottom: 18px;">You don't have saved works with this status right now.</div>
+                        <div class="bib-empty-desc" style="font-size: 0.85rem; color: var(--text-muted); max-width: 260px; line-height: 1.4; text-shadow: var(--neon-glow); margin-bottom: 18px;">Você não possui obras salvas com este status no momento.</div>
                         
                         <a href="./?aba=obras" class="btn-explorar-obras-estilizado" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
                             <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
