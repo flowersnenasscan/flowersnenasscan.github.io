@@ -17,6 +17,7 @@
 
     <!-- Fonte estilizada para títulos gerais -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
     <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -52,7 +53,7 @@
             text-shadow: var(--neon-glow);
         }
 
-        h1, h2, h3, .section-title:not(#titulo-ultimas-atualizacoes), .sidebar-title-area {
+        h1, h3, h4, .section-title:not(#titulo-ultimas-atualizacoes), .sidebar-title-area {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             color: #ffffff;
@@ -60,6 +61,32 @@
             background: linear-gradient(135deg, #ffffff 30%, var(--primary-pink) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* Estilo limpo e moderno para o título "TODAS AS OBRAS" (sem emojis e nova fonte) */
+        .todas-obras-titulo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: #ff2a85;
+            letter-spacing: 2px;
+            margin: 25px 0 15px 0;
+            text-transform: uppercase;
+            background: none;
+            -webkit-background-clip: initial;
+            -webkit-text-fill-color: initial;
+            text-shadow: 0 0 10px rgba(255, 42, 133, 0.6);
+        }
+
+        /* Linhazinha divisoria no meio */
+        .section-divider-line {
+            width: 60px;
+            height: 3px;
+            background-color: #ff2a85;
+            margin: 20px auto;
+            border-radius: 2px;
+            box-shadow: 0 0 8px rgba(255, 42, 133, 0.8);
         }
 
         #titulo-ultimas-atualizacoes {
@@ -721,19 +748,6 @@
             margin-bottom: 20px;
         }
 
-        .todas-obras-titulo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #ffffff;
-            text-shadow: 0 0 14px var(--primary-pink);
-            background: linear-gradient(135deg, #ffffff 30%, var(--primary-pink) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 6px;
-            letter-spacing: 0.5px;
-        }
-
         .todas-obras-sub {
             font-size: 0.9rem;
             color: var(--text-muted);
@@ -741,7 +755,9 @@
             margin-bottom: 14px;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 4px;
+            text-align: center;
         }
 
         .todas-obras-counter-pill {
@@ -891,6 +907,10 @@
             text-shadow: none;
         }
 
+        .genre-hidden {
+            display: none !important;
+        }
+
         .btn-ver-mais-generos {
             background: transparent;
             border: none;
@@ -902,9 +922,10 @@
             margin-top: 4px;
             text-shadow: var(--neon-glow);
             display: inline-block;
+            text-decoration: underline;
         }
         .btn-ver-mais-generos:hover {
-            text-decoration: underline;
+            color: #ffffff;
         }
 
         .bottom-nav {
@@ -1020,13 +1041,16 @@
             <div class="section-container">
                 <div class="todas-obras-header">
                     <h1 class="todas-obras-titulo">TODAS AS OBRAS</h1>
+                    <div class="section-divider-line"></div>
                     <div class="todas-obras-sub">
                         Todas as nossas obras em um só lugar <span>✦</span>
                     </div>
 
-                    <div class="todas-obras-counter-pill">
-                        <span>💗</span>
-                        <span id="contador-total-obras">0 obras</span>
+                    <div style="text-align: center;">
+                        <div class="todas-obras-counter-pill">
+                            <span>💗</span>
+                            <span id="contador-total-obras">0 obras</span>
+                        </div>
                     </div>
 
                     <div class="todas-obras-filtros-card">
@@ -1134,23 +1158,23 @@
 
                 <div class="filtro-categoria-titulo">Status</div>
                 <div id="status-botoes-container" class="filtro-grupo-botoes">
-                    <button class="genre-pill-btn" data-cat="status" data-val="andamento" onclick="alternarFiltro('status', 'andamento', this)">Em Andamento</button>
-                    <button class="genre-pill-btn" data-cat="status" data-val="completo" onclick="alternarFiltro('status', 'completo', this)">Completo</button>
-                    <button class="genre-pill-btn" data-cat="status" data-val="hiatus" onclick="alternarFiltro('status', 'hiatus', this)">Hiatus</button>
+                    <button class="genre-pill-btn" data-cat="status" data-val="andamento" onclick="alternarFiltroIndependente('status', 'andamento', this)">Em Andamento</button>
+                    <button class="genre-pill-btn" data-cat="status" data-val="completo" onclick="alternarFiltroIndependente('status', 'completo', this)">Completo</button>
+                    <button class="genre-pill-btn" data-cat="status" data-val="hiatus" onclick="alternarFiltroIndependente('status', 'hiatus', this)">Hiatus</button>
                 </div>
 
                 <div class="filtro-categoria-titulo">Tipo</div>
                 <div id="tipo-botoes-container" class="filtro-grupo-botoes">
-                    <button class="genre-pill-btn" data-cat="tipo" data-val="manhwa" onclick="alternarFiltro('tipo', 'manhwa', this)">Manhwa</button>
-                    <button class="genre-pill-btn" data-cat="tipo" data-val="manhua" onclick="alternarFiltro('tipo', 'manhua', this)">Manhua</button>
-                    <button class="genre-pill-btn" data-cat="tipo" data-val="manga" onclick="alternarFiltro('tipo', 'manga', this)">Mangá</button>
-                    <button class="genre-pill-btn" data-cat="tipo" data-val="webtoon" onclick="alternarFiltro('tipo', 'webtoon', this)">Webtoon</button>
+                    <button class="genre-pill-btn" data-cat="tipo" data-val="manhwa" onclick="alternarFiltroIndependente('tipo', 'manhwa', this)">Manhwa</button>
+                    <button class="genre-pill-btn" data-cat="tipo" data-val="manhua" onclick="alternarFiltroIndependente('tipo', 'manhua', this)">Manhua</button>
+                    <button class="genre-pill-btn" data-cat="tipo" data-val="manga" onclick="alternarFiltroIndependente('tipo', 'manga', this)">Mangá</button>
+                    <button class="genre-pill-btn" data-cat="tipo" data-val="webtoon" onclick="alternarFiltroIndependente('tipo', 'webtoon', this)">Webtoon</button>
                 </div>
 
                 <div class="filtro-categoria-titulo">Classificação</div>
                 <div id="classificacao-botoes-container" class="filtro-grupo-botoes">
-                    <button class="genre-pill-btn" data-cat="classificacao" data-val="livre" onclick="alternarFiltro('classificacao', 'livre', this)">Livre</button>
-                    <button class="genre-pill-btn" data-cat="classificacao" data-val="18" onclick="alternarFiltro('classificacao', '18', this)">+18</button>
+                    <button class="genre-pill-btn" data-cat="classificacao" data-val="livre" onclick="alternarFiltroIndependente('classificacao', 'livre', this)">Livre</button>
+                    <button class="genre-pill-btn" data-cat="classificacao" data-val="18" onclick="alternarFiltroIndependente('classificacao', '18', this)">+18</button>
                 </div>
 
                 <div class="section-header" style="margin-top: 30px;">
@@ -1568,14 +1592,14 @@
                 return;
             }
 
-            let limiteExibicao = 6;
-            let generosParaMostrar = generosExpandidos ? listaGenerosUnicos : listaGenerosUnicos.slice(0, limiteExibicao);
+            let limiteExibicao = 8; // Ajustado estritamente para 8 botões iniciais conforme pedido
 
             let htmlBotoesGen = '';
-            generosParaMostrar.forEach(gen => {
+            listaGenerosUnicos.forEach((gen, index) => {
                 let ativoClass = filtrosAtivos.genero === gen ? 'active' : '';
+                let hiddenClass = (!generosExpandidos && index >= limiteExibicao) ? 'genre-hidden' : '';
                 htmlBotoesGen += `
-                    <button class="genre-pill-btn ${ativoClass}" data-cat="genero" data-val="${gen}" onclick="alternarFiltro('genero', '${gen.replace(/'/g, "\\'")}', this)">
+                    <button class="genre-pill-btn ${ativoClass} ${hiddenClass}" data-cat="genero" data-val="${gen}" onclick="alternarFiltroIndependente('genero', '${gen.replace(/'/g, "\\'")}', this)">
                         ${gen}
                     </button>
                 `;
@@ -1587,13 +1611,13 @@
                 if (!generosExpandidos) {
                     containerVerMais.innerHTML = `
                         <button class="btn-ver-mais-generos" onclick="alternarExpandirGeneros()">
-                            Ver mais (+)
+                            Ver mais
                         </button>
                     `;
                 } else {
                     containerVerMais.innerHTML = `
                         <button class="btn-ver-mais-generos" onclick="alternarExpandirGeneros()">
-                            Ver menos (-)
+                            Ver menos
                         </button>
                     `;
                 }
@@ -1609,12 +1633,17 @@
             renderizarPaginaGeneros();
         }
 
-        function alternarFiltro(categoria, valor, elemento) {
+        // Lógica estrita para cada categoria funcionar individualmente (limpa as outras categorias ao selecionar uma nova)
+        function alternarFiltroIndependente(categoria, valor, elemento) {
             if (elemento.classList.contains('active')) {
                 elemento.classList.remove('active');
                 filtrosAtivos[categoria] = null;
             } else {
-                document.querySelectorAll(`.genre-pill-btn[data-cat="${categoria}"]`).forEach(b => {
+                // Limpa todos os botões de TODAS as categorias para focar individualmente na nova seleção
+                Object.keys(filtrosAtivos).forEach(cat => {
+                    filtrosAtivos[cat] = null;
+                });
+                document.querySelectorAll('.genre-pill-btn').forEach(b => {
                     b.classList.remove('active');
                 });
                 
@@ -1637,7 +1666,7 @@
                 grid.style.gridTemplateColumns = '1fr';
                 grid.innerHTML = `
                     <div style="padding: 40px 20px; text-align: center; grid-column: span 2;">
-                        <p style="color: var(--text-muted); font-size: 0.9rem; text-shadow: var(--neon-glow);">Selecione ao menos um filtro acima para exibir as obras.</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; text-shadow: var(--neon-glow);">Selecione um filtro acima para exibir as obras.</p>
                     </div>
                 `;
                 return;
