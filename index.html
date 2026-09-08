@@ -1341,7 +1341,7 @@
                 return;
             }
 
-            let limiteExibicao = 8;
+            let limiteExibicao = 6;
             let generosParaMostrar = generosExpandidos ? listaGenerosUnicos : listaGenerosUnicos.slice(0, limiteExibicao);
 
             let htmlBotoesGen = '';
@@ -1382,19 +1382,15 @@
             renderizarPaginaGeneros();
         }
 
-        // LÓGICA BLINDADA DE SELEÇÃO EXCLUSIVA DE FILTROS
         function alternarFiltro(categoria, valor, elemento) {
-            // Se o botão clicado já estiver ativo, ele se desmarca (limpa o filtro da categoria)
             if (elemento.classList.contains('active')) {
                 elemento.classList.remove('active');
                 filtrosAtivos[categoria] = null;
             } else {
-                // Remove a classe 'active' de TODOS os botões da mesma categoria globalmente
                 document.querySelectorAll(`.genre-pill-btn[data-cat="${categoria}"]`).forEach(b => {
                     b.classList.remove('active');
                 });
                 
-                // Ativa apenas o botão clicado
                 elemento.classList.add('active');
                 filtrosAtivos[categoria] = valor;
             }
@@ -1507,7 +1503,7 @@
                             ${badgesHtml}
                         </div>
                         <div class="manga-info">
-                            <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
+                            <a href="obra.html?nome=${obra.titulo}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
                             <div class="capitulo-recente-row">
                                 <a href="${linkLeitor}" class="capitulo-link" onclick="event.stopPropagation()">Capítulo ${ultimoCapNum}</a>
                             </div>
