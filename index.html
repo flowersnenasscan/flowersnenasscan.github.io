@@ -1383,7 +1383,6 @@
         }
 
         function alternarFiltro(categoria, valor, elemento) {
-            // SEÇÃO CORRIGIDA: Lógica de seleção única por categoria (limpa o anterior e foca só no atual)
             if (elemento.classList.contains('active')) {
                 elemento.classList.remove('active');
                 filtrosAtivos[categoria] = null;
