@@ -748,6 +748,28 @@
             text-shadow: none;
         }
 
+        /* Estilo do botão Ver Mais / Ver Menos */
+        .btn-ver-mais-generos {
+            background: transparent;
+            border: 1px dashed var(--primary-pink);
+            color: var(--primary-pink);
+            padding: 6px 14px;
+            border-radius: 16px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 4px;
+            transition: 0.2s;
+            text-shadow: var(--neon-glow);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn-ver-mais-generos:hover {
+            background: rgba(255, 153, 221, 0.15);
+            border-style: solid;
+        }
+
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -938,6 +960,7 @@
                 <div id="generos-botoes-container" class="filtro-grupo-botoes">
                     <span style="color: var(--text-muted); font-size: 0.85rem;">Carregando gêneros...</span>
                 </div>
+                <div id="container-ver-mais-generos"></div>
 
                 <div class="filtro-categoria-titulo">Status</div>
                 <div id="status-botoes-container" class="filtro-grupo-botoes">
@@ -995,6 +1018,7 @@
         let listaObras = [];
         let obraCarrosselAtualSlug = '';
         let filtroBibAtual = 'todos';
+        let generosExpandidos = false; // Estado do Ver Mais/Ver Menos
 
         let filtrosAtivos = {
             genero: null,
@@ -1071,44 +1095,43 @@
             return htmlBadges;
         }
 
-        // CORREÇÃO APLICADA AQUI: Adicionado tratamento de erro para Supabase ou falha de rede do obras.json, 
-        // e fallback para carregar dados do Supabase se o fetch do JSON falhar ou retornar vazio.
         async function carregarDadosObras() {
             try {
-                // Tenta carregar do obras.json primeiro
                 const res = await fetch('obras.json?v=' + new Date().getTime());
-                if (!res.ok) throw new Error("Erro HTTP ao carregar obras.json");
-                const data = await res.json();
-                
-                if (Array.isArray(data) && data.length > 0) {
-                    listaObras = data;
-                } else {
-                    throw new Error("obras.json vazio");
+                if (res.ok) {
+                    const data = await res.json();
+                    if (Array.isArray(data) && data.length > 0) {
+                        listaObras = data;
+                        inicializarHome();
+                        verificarParametroUrl();
+                        return;
+                    }
                 }
+                throw new Error("obras.json falhou ou vazio, buscando direto do Supabase...");
             } catch (err) {
-                console.warn("Aviso: Falha ao carregar obras.json, tentando buscar dados via Supabase...", err);
+                console.warn(err.message);
                 try {
-                    // Configuração do Supabase (substitua com suas chaves reais se necessário, ou usa variáveis globais se já configuradas)
-                    // Nota: Certifique-se de que a tabela 'obras' existe no Supabase e o cliente foi inicializado corretamente acima.
-                    if (typeof supabase !== 'undefined' && window.SUPABASE_URL && window.SUPABASE_ANON_KEY) {
-                        const sbClient = supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+                    const sUrl = window.SUPABASE_URL || 'SUA_SUPABASE_URL';
+                    const sKey = window.SUPABASE_ANON_KEY || 'SUA_SUPABASE_ANON_KEY';
+                    
+                    if (typeof supabase !== 'undefined' && sUrl && sUrl !== 'SUA_SUPABASE_URL') {
+                        const sbClient = supabase.createClient(sUrl, sKey);
                         const { data: sbData, error: sbError } = await sbClient.from('obras').select('*');
                         if (!sbError && sbData) {
                             listaObras = sbData;
                         }
                     } else if (typeof _supabase !== 'undefined') {
-                        // Caso já exista uma instância global configurada no projeto
                         const { data: sbData, error: sbError } = await _supabase.from('obras').select('*');
                         if (!sbError && sbData) {
                             listaObras = sbData;
                         }
                     }
                 } catch (supabaseErr) {
-                    console.error("Erro ao carregar dados do Supabase:", supabaseErr);
+                    console.error("Erro crítico ao carregar dados do Supabase:", supabaseErr);
+                } finally {
+                    inicializarHome();
+                    verificarParametroUrl();
                 }
-            } finally {
-                inicializarHome();
-                verificarParametroUrl();
             }
         }
 
@@ -1290,6 +1313,7 @@
 
         function renderizarPaginaGeneros() {
             const containerBotoesGeneros = document.getElementById('generos-botoes-container');
+            const containerVerMais = document.getElementById('container-ver-mais-generos');
             if (!containerBotoesGeneros) return;
 
             let conjuntoGeneros = new Set();
@@ -1313,12 +1337,17 @@
 
             if (listaGenerosUnicos.length === 0) {
                 containerBotoesGeneros.innerHTML = `<span style="color: var(--text-muted); font-size: 0.85rem;">Nenhum gênero encontrado nas obras.</span>`;
+                containerVerMais.innerHTML = '';
                 aplicarFiltrosMultiplos();
                 return;
             }
 
+            // Limite padrão exibido antes de clicar em "Ver mais" (ex: 8 gêneros)
+            let limiteExibicao = 8;
+            let generosParaMostrar = generosExpandidos ? listaGenerosUnicos : listaGenerosUnicos.slice(0, limiteExibicao);
+
             let htmlBotoesGen = '';
-            listaGenerosUnicos.forEach(gen => {
+            generosParaMostrar.forEach(gen => {
                 let ativoClass = filtrosAtivos.genero === gen ? 'active' : '';
                 htmlBotoesGen += `
                     <button class="genre-pill-btn ${ativoClass}" onclick="alternarFiltro('genero', '${gen.replace(/'/g, "\\'")}', this)">
@@ -1328,18 +1357,49 @@
             });
 
             containerBotoesGeneros.innerHTML = htmlBotoesGen;
+
+            // Gerenciar botão Ver Mais / Ver Menos caso haja mais gêneros que o limite
+            if (listaGenerosUnicos.length > limiteExibicao) {
+                if (!generosExpandidos) {
+                    containerVerMais.innerHTML = `
+                        <button class="btn-ver-mais-generos" onclick="alternarExpandirGeneros()">
+                            Ver mais (+)
+                        </button>
+                    `;
+                } else {
+                    containerVerMais.innerHTML = `
+                        <button class="btn-ver-mais-generos" onclick="alternarExpandirGeneros()">
+                            Ver menos (-)
+                        </button>
+                    `;
+                }
+            } else {
+                containerVerMais.innerHTML = '';
+            }
+
             aplicarFiltrosMultiplos();
         }
 
+        function alternarExpandirGeneros() {
+            generosExpandidos = !generosExpandidos;
+            renderizarPaginaGeneros();
+        }
+
+        // CORREÇÃO: Função aprimorada para garantir que cada botão funcione separadamente 
+        // e por categoria (limpando o outro botão da MESMA categoria, sem acumular todos ao mesmo tempo)
         function alternarFiltro(categoria, valor, elemento) {
             let containerPai = elemento.parentElement;
 
             if (elemento.classList.contains('active')) {
+                // Se já estava ativo, desativa
                 elemento.classList.remove('active');
                 filtrosAtivos[categoria] = null;
             } else {
+                // Remove a classe 'active' apenas dos botões DA MESMA CATEGORIA
                 containerPai.querySelectorAll('.genre-pill-btn').forEach(b => b.classList.remove('active'));
+                // Ativa o botão clicado
                 elemento.classList.add('active');
+                // Define apenas esse valor na categoria correspondente
                 filtrosAtivos[categoria] = valor;
             }
 
@@ -1527,7 +1587,7 @@
                     <div class="bib-empty-state" style="grid-column: span 2; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
                         <div class="bib-empty-icon" style="font-size: 3rem; margin-bottom: 8px;">🌸</div>
                         <div class="bib-empty-title" style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #ffffff; text-shadow: 0 0 10px var(--primary-pink); margin-bottom: 6px;">Nenhuma obra nesta categoria</div>
-                        <div class="bib-empty-desc" style="font-size: 0.85rem; color: var(--text-muted); max-width: 260px; line-height: 1.4; text-shadow: var(--neon-glow); margin-bottom: 18px;">Você não possui obras salvas com este status no momento.</div>
+                        <div class="bib-empty-desc" style="font-size: 0.85rem; color: var(--text-muted); max-width: 260px; line-height: 1.4; text-shadow: var(--neon-glow); margin-bottom: 18px;">You don't have saved works with this status right now.</div>
                         
                         <a href="./?aba=obras" class="btn-explorar-obras-estilizado" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
                             <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
