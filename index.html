@@ -748,7 +748,6 @@
             text-shadow: none;
         }
 
-        /* Estilo do botão Ver Mais / Ver Menos */
         .btn-ver-mais-generos {
             background: transparent;
             border: 1px dashed var(--primary-pink);
@@ -1018,7 +1017,7 @@
         let listaObras = [];
         let obraCarrosselAtualSlug = '';
         let filtroBibAtual = 'todos';
-        let generosExpandidos = false; // Estado do Ver Mais/Ver Menos
+        let generosExpandidos = false; 
 
         let filtrosAtivos = {
             genero: null,
@@ -1342,7 +1341,6 @@
                 return;
             }
 
-            // Limite padrão exibido antes de clicar em "Ver mais" (ex: 8 gêneros)
             let limiteExibicao = 8;
             let generosParaMostrar = generosExpandidos ? listaGenerosUnicos : listaGenerosUnicos.slice(0, limiteExibicao);
 
@@ -1358,7 +1356,6 @@
 
             containerBotoesGeneros.innerHTML = htmlBotoesGen;
 
-            // Gerenciar botão Ver Mais / Ver Menos caso haja mais gêneros que o limite
             if (listaGenerosUnicos.length > limiteExibicao) {
                 if (!generosExpandidos) {
                     containerVerMais.innerHTML = `
@@ -1385,21 +1382,16 @@
             renderizarPaginaGeneros();
         }
 
-        // CORREÇÃO: Função aprimorada para garantir que cada botão funcione separadamente 
-        // e por categoria (limpando o outro botão da MESMA categoria, sem acumular todos ao mesmo tempo)
+        // CORREÇÃO DEFINITIVA: Desmarca os irmãos do mesmo container e atribui exclusivamente o valor
         function alternarFiltro(categoria, valor, elemento) {
             let containerPai = elemento.parentElement;
 
             if (elemento.classList.contains('active')) {
-                // Se já estava ativo, desativa
                 elemento.classList.remove('active');
                 filtrosAtivos[categoria] = null;
             } else {
-                // Remove a classe 'active' apenas dos botões DA MESMA CATEGORIA
                 containerPai.querySelectorAll('.genre-pill-btn').forEach(b => b.classList.remove('active'));
-                // Ativa o botão clicado
                 elemento.classList.add('active');
-                // Define apenas esse valor na categoria correspondente
                 filtrosAtivos[categoria] = valor;
             }
 
