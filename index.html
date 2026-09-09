@@ -793,14 +793,25 @@
 
         .filtros-card-title {
             display: flex;
-            align-items: center;
-            gap: 8px;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 4px;
             font-size: 0.95rem;
             font-weight: 800;
             letter-spacing: 0.8px;
             color: #ffffff;
             text-shadow: 0 0 10px var(--primary-pink);
             text-transform: uppercase;
+            width: calc(100% - 30px);
+        }
+
+        .filtros-card-subtitle-small {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: none;
+            letter-spacing: normal;
+            text-shadow: var(--neon-glow);
         }
 
         .filtros-card-arrow {
@@ -1059,7 +1070,8 @@
                     <div class="todas-obras-filtros-card">
                         <div class="filtros-card-top" onclick="toggleCardFiltrosObras()">
                             <div class="filtros-card-title">
-                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);"></span> FILTROS
+                                <span>FILTROS</span>
+                                <span class="filtros-card-subtitle-small">todas as nossas obras traduzidas em um só lugar ♡</span>
                             </div>
                             <div class="filtros-card-arrow" id="seta-filtro-obras">⌄</div>
                         </div>
@@ -1922,7 +1934,6 @@
             mudarAbaVisual('obras');
             
             grid.innerHTML = '';
-            filtradas.execute = ''; // mantido limpo
             filtradas.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
                 let ultimoCapNum = 'Em breve';
