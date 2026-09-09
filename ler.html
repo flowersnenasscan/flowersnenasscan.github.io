@@ -277,7 +277,7 @@
             justify-content: space-between;
             transition: all 0.2s ease;
             width: 100%;
-            height: 145px; /* Caixa de reação mais compacta/menor */
+            height: 145px; /* Caixa mantida compacta como pedido anteriormente */
             pointer-events: auto;
         }
         .item-reacao:hover {
@@ -291,16 +291,16 @@
             box-shadow: 0 0 12px var(--primary-pink);
         }
         .item-reacao img {
-            width: 65px; /* Imagem levemente maior proporcionalmente ao novo tamanho da caixa */
-            height: 65px;
+            width: 78px; /* Imagens das reações aumentadas */
+            height: 78px; /* Imagens das reações aumentadas */
             object-fit: cover;
             border-radius: 8px;
             flex-shrink: 0;
-            margin-top: 2px;
+            margin-top: 1px;
             pointer-events: none;
         }
         .item-reacao .texto-reacao {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             color: #ffffff;
             font-weight: 600;
             text-align: center;
@@ -308,12 +308,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 24px;
+            height: 20px;
             overflow: hidden;
             margin: auto 0;
         }
         .item-reacao .contador-reacao {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--primary-pink);
             font-weight: bold;
             flex-shrink: 0;
@@ -390,7 +390,7 @@
             z-index: 999;
             transition: transform 0.2s ease;
             text-decoration: none;
-            pointer-events: auto; /* Mantém o clique funcional no link/botão, mas a tag img interna tem pointer-events desativado globalmente */
+            pointer-events: auto;
         }
         .btn-flor-topo:hover { transform: scale(1.15); }
         .btn-flor-topo img {
