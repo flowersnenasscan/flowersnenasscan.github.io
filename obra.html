@@ -328,9 +328,10 @@
             align-items: center;
             gap: 14px;
         }
+        /* Miniatura dos capítulos com altura aumentada */
         .cap-miniatura {
             width: 155px;
-            height: 100px;
+            height: 125px;
             object-fit: cover;
             border-radius: 10px;
             border: 1px solid rgba(255, 153, 221, 0.35);
@@ -435,7 +436,7 @@
             let agora = new Date();
             let diferencaEmMilissegundos = agora - dataCap;
             let diasPassados = diferencaEmMilissegundos / (1000 * 60 * 60 * 24);
-            return diasPassados >= 0 && diasPassados <= 4; // Exibe se tiver até 4 dias
+            return diasPassados >= 0 && diasPassados <= 4;
         }
 
         fetch('obras.json?v=' + new Date().getTime())
@@ -645,7 +646,7 @@
                 favoritos.push(obraTitulo);
             }
 
-            localStorage.setItem('flowers_favoritos', JSON.stringify(favoritos));
+localStorage.setItem('flowers_favoritos', JSON.stringify(favoritos));
             atualizarEstadoFavorito(obraTitulo);
         }
 
