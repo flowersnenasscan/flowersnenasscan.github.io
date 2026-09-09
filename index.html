@@ -15,7 +15,7 @@
       gtag('config', 'G-5HHMHEDSD0');
     </script>
 
-    <!-- Fonte estilizada para títulos gerais -->
+    <!-- Fontes -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
@@ -63,7 +63,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Estilo exato idêntico à imagem de referência para o título "TODAS AS OBRAS" */
         .todas-obras-titulo {
             font-family: 'Poppins', sans-serif;
             font-size: 2rem;
@@ -78,7 +77,6 @@
             text-shadow: 0 0 12px rgba(255, 153, 221, 0.8), 0 0 25px rgba(255, 153, 221, 0.4);
         }
 
-        /* Removida a linha divisoria para ficar limpo igual na foto */
         .section-divider-line {
             display: none;
         }
@@ -653,14 +651,20 @@
             background: rgba(255, 153, 221, 0.15);
             border-color: var(--primary-pink);
         }
+        /* CORREÇÃO DO TEXTO SUMINDO NOS BOTÕES DA BIBLIOTECA QUANDO ATIVOS: */
         .bib-tab.active {
             background: var(--primary-pink);
-            color: #000000;
+            color: #2b061d;
             border-color: var(--primary-pink);
             text-shadow: none;
         }
         .bib-tab.active svg {
-            fill: #000000;
+            fill: #2b061d;
+        }
+        .bib-tab.active span {
+            color: #2b061d !important;
+            text-shadow: none !important;
+            font-weight: 700;
         }
         .bib-tab-badge {
             background: rgba(255, 153, 221, 0.25);
@@ -668,10 +672,11 @@
             border-radius: 10px;
             font-size: 0.7rem;
             font-weight: 700;
+            color: var(--primary-pink);
         }
         .bib-tab.active .bib-tab-badge {
-            background: rgba(0, 0, 0, 0.2);
-            color: #000000;
+            background: rgba(43, 6, 29, 0.25);
+            color: #2b061d !important;
         }
 
         .bib-filter-row {
@@ -737,7 +742,6 @@
             transform: translateY(-2px);
         }
 
-        /* ESTILOS DA PÁGINA DE TODAS AS OBRAS AJUSTADOS EXATAMENTE À REFERÊNCIA */
         .todas-obras-header {
             margin-bottom: 20px;
         }
@@ -846,25 +850,37 @@
             text-shadow: none;
         }
 
-        .todas-obras-flower-footer-icon {
+        /* LINHA AO LADO DA FLOR DE BAIXO (Página de Gêneros) */
+        .todas-obras-flower-footer-container {
             display: flex;
+            align-items: center;
             justify-content: flex-end;
-            margin-top: -10px;
-            margin-bottom: 10px;
+            gap: 12px;
+            margin-top: 5px;
+            margin-bottom: 15px;
             padding-right: 4px;
+        }
+        .todas-obras-flower-line {
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 153, 221, 0.6));
+            box-shadow: 0 0 8px rgba(255, 153, 221, 0.4);
+        }
+        .todas-obras-flower-footer-icon {
             font-size: 1.2rem;
             color: var(--primary-pink);
             text-shadow: var(--neon-glow);
         }
 
-        /* ESTILOS DA PÁGINA DE GÊNEROS / EXPLORAR */
+        /* TÍTULOS DE CATEGORIAS EM ROSINHA CLARO (Página de Gêneros) */
         .filtro-categoria-titulo {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 0.95rem;
             font-weight: 800;
-            color: #ffffff;
+            color: #ffb8e6;
             margin-top: 18px;
             margin-bottom: 10px;
-            text-shadow: 0 0 8px var(--primary-pink);
+            text-shadow: 0 0 10px rgba(255, 184, 230, 0.8);
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
@@ -933,7 +949,7 @@
 
         .nav-item {
             background: none;
-            border: none;
+            border: None;
             color: var(--text-muted);
             display: flex;
             flex-direction: column;
@@ -1032,12 +1048,12 @@
                 <div class="todas-obras-header">
                     <h1 class="todas-obras-titulo">TODAS AS OBRAS</h1>
                     <div class="todas-obras-sub">
-                        Todas as nossas obras em um só lugar <span>✦</span>
+                        Todas as nossas obras em um só lugar <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">✦</span>
                     </div>
 
                     <div>
                         <div class="todas-obras-counter-pill">
-                            <span>💗</span>
+                            <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">💗</span>
                             <span id="contador-total-obras">0 obras</span>
                         </div>
                     </div>
@@ -1045,27 +1061,31 @@
                     <div class="todas-obras-filtros-card">
                         <div class="filtros-card-top" onclick="toggleCardFiltrosObras()">
                             <div class="filtros-card-title">
-                                <span>🌸</span> FILTROS
+                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">🌸</span> FILTROS
                             </div>
                             <div class="filtros-card-arrow" id="seta-filtro-obras">⌄</div>
                         </div>
                         <div class="filtros-botoes-row" id="filtros-botoes-row-obras">
                             <button class="filtro-pill-btn" data-filtro="andamento" onclick="filtrarObrasPorStatus('andamento', this)">
-                                <span>✨</span> Em andamento
+                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">✨</span> Em andamento
                             </button>
                             <button class="filtro-pill-btn" data-filtro="completo" onclick="filtrarObrasPorStatus('completo', this)">
-                                <span>💗</span> Completo
+                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">💗</span> Completo
                             </button>
                             <button class="filtro-pill-btn" data-filtro="pausado" onclick="filtrarObrasPorStatus('pausado', this)">
-                                <span>⏱️</span> Pausado
+                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">⏱️</span> Pausado
                             </button>
                             <button class="filtro-pill-btn" data-filtro="18" onclick="filtrarObrasPorStatus('18', this)">
-                                <span>🔞</span> +18
+                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">🔞</span> +18
                             </button>
                         </div>
                     </div>
 
-                    <div class="todas-obras-flower-footer-icon">🌸</div>
+                    <!-- LINHA AO LADO DA FLOR DE BAIXO (Página de Obras / Geral) -->
+                    <div class="todas-obras-flower-footer-container">
+                        <div class="todas-obras-flower-line"></div>
+                        <div class="todas-obras-flower-footer-icon">🌸</div>
+                    </div>
                 </div>
 
                 <div id="grid-todas-obras" class="manga-grid"></div>
@@ -1125,7 +1145,7 @@
                     <h2 class="section-title">AVISOS</h2>
                 </div>
                 <div style="background: var(--card-bg); border: 1px solid rgba(255,153,221,0.3); padding: 18px; border-radius: 12px; margin-top: 10px;">
-                    <h3 style="font-size: 1rem; margin-bottom: 6px;">🌸 Bem-vindos à Flower's Nenasscan!</h3>
+                    <h3 style="font-size: 1rem; margin-bottom: 6px;"><span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">🌸</span> Bem-vindos à Flower's Nenasscan!</h3>
                     <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">Nenhum aviso importante no momento. Aproveitem as traduções e boa leitura!</p>
                 </div>
             </div>
@@ -1166,7 +1186,13 @@
                     <button class="genre-pill-btn" data-cat="classificacao" data-val="18" onclick="alternarFiltroIndependente('classificacao', '18', this)">+18</button>
                 </div>
 
-                <div class="section-header" style="margin-top: 30px;">
+                <!-- LINHA AO LADO DA FLOR DE BAIXO (Página de Gêneros) -->
+                <div class="todas-obras-flower-footer-container" style="margin-top: 20px;">
+                    <div class="todas-obras-flower-line"></div>
+                    <div class="todas-obras-flower-footer-icon">🌸</div>
+                </div>
+
+                <div class="section-header" style="margin-top: 20px;">
                     <div class="section-bar"></div>
                     <h2 class="section-title" id="titulo-resultados-filtro">RESULTADOS</h2>
                 </div>
