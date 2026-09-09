@@ -23,6 +23,13 @@
         body { background-color: var(--bg-color); color: var(--text-main); padding-bottom: 50px; }
         p, span, a, h1, h2, h3, h4, div, button { color: var(--primary-pink); text-shadow: var(--neon-glow); }
         
+        /* PROTEÇÃO DE IMAGENS: Impede seleção e arraste via CSS */
+        img {
+            -webkit-user-drag: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        
         header { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; background-color: rgba(0, 0, 0, 0.96); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 153, 221, 0.3); }
         .logo-img-container { display: flex; align-items: center; cursor: pointer; text-decoration: none; }
         .icon-btn { background: #181822; border: 1px solid rgba(255, 153, 221, 0.5); color: var(--primary-pink); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; font-size: 1.3rem; text-shadow: var(--neon-glow); text-decoration: none; }
@@ -400,6 +407,20 @@
     </div>
 
     <script>
+        // PROTEÇÃO: Bloqueia clique direito em cima de qualquer imagem
+        document.addEventListener('contextmenu', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+
+        // PROTEÇÃO: Bloqueia arrastar imagens
+        document.addEventListener('dragstart', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+
         const urlParams = new URLSearchParams(window.location.search);
         const slugUrl = decodeURIComponent(urlParams.get('nome') || '').trim().toLowerCase();
 
@@ -646,7 +667,7 @@
                 favoritos.push(obraTitulo);
             }
 
-localStorage.setItem('flowers_favoritos', JSON.stringify(favoritos));
+            localStorage.setItem('flowers_favoritos', JSON.stringify(favoritos));
             atualizarEstadoFavorito(obraTitulo);
         }
 
