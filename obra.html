@@ -11,7 +11,7 @@
     <style>
         #netlify-badge, div[id*="netlify-badge"] { display: none !important; }
         :root {
-            --bg-color: #0b0b0e;
+            --bg-color: #000000;
             --card-bg: #14141a;
             --primary-pink: #FF99DD; 
             --neon-glow: 0 0 12px rgba(255, 153, 221, 0.7), 0 0 25px rgba(255, 153, 221, 0.35);
@@ -23,7 +23,7 @@
         body { background-color: var(--bg-color); color: var(--text-main); padding-bottom: 50px; }
         p, span, a, h1, h2, h3, h4, div, button { color: var(--primary-pink); text-shadow: var(--neon-glow); }
         
-        header { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; background-color: rgba(11, 11, 14, 0.96); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 153, 221, 0.3); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; background-color: rgba(0, 0, 0, 0.96); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 153, 221, 0.3); }
         .logo-img-container { display: flex; align-items: center; cursor: pointer; text-decoration: none; }
         .icon-btn { background: #181822; border: 1px solid rgba(255, 153, 221, 0.5); color: var(--primary-pink); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; font-size: 1.3rem; text-shadow: var(--neon-glow); text-decoration: none; }
         .icon-btn svg { width: 22px; height: 22px; fill: currentColor; filter: drop-shadow(0 0 6px rgba(255, 153, 221, 0.7)); }
@@ -44,20 +44,8 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(11,11,14,0.02), rgba(11,11,14,0.35) 80%, #0b0b0e);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.02), rgba(0,0,0,0.35) 80%, #000000);
         }
-        .caminho-breadcrumb {
-            position: relative;
-            z-index: 2;
-            padding: 15px 20px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            text-shadow: var(--neon-glow);
-            width: 100%;
-            max-width: 650px;
-        }
-        .caminho-breadcrumb a { color: var(--text-muted); text-decoration: none; }
-        .caminho-breadcrumb a:hover { color: var(--primary-pink); text-decoration: underline; }
 
         /* CAPA PRINCIPAL */
         .wrapper-capa-principal {
@@ -554,11 +542,7 @@
 
             container.innerHTML = `
                 <!-- BANNER DE FUNDO -->
-                <div class="banner-topo" style="background-image: url('${imagemFundo}');">
-                    <div class="caminho-breadcrumb">
-                        <a href="./">Início</a> / <a href="./?aba=obras">Obras</a> / <span>${obraGlobal.titulo}</span>
-                    </div>
-                </div>
+                <div class="banner-topo" style="background-image: url('${imagemFundo}');"></div>
 
                 <!-- CAPA PRINCIPAL -->
                 <div class="wrapper-capa-principal">
