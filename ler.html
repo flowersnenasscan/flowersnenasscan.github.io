@@ -20,6 +20,11 @@
         margin: 0;
         padding: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* BLOQUEIO UNIVERSAL DE SELEÇÃO DE TEXTO */
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
     body {
         background-color: var(--bg-color);
@@ -305,7 +310,7 @@
         justify-content: space-between;
         transition: all 0.2s ease;
         width: 100%;
-        height: 165px; /* Altura ajustada proporcionalmente para caber as imagens maiores */
+        height: 165px;
         pointer-events: auto;
     }
 
@@ -322,8 +327,8 @@
     }
 
     .item-reacao img {
-        width: 94px; /* Imagens das reações aumentadas ainda mais */
-        height: 94px; /* Imagens das reações aumentadas ainda mais */
+        width: 94px;
+        height: 94px;
         object-fit: cover;
         border-radius: 8px;
         flex-shrink: 0;
@@ -390,7 +395,6 @@
         justify-content: space-between;
         align-items: center;
         background: rgba(255, 153, 221, 0.08);
-        user-select: none;
     }
 
     .regras-cabecalho:hover {
@@ -494,7 +498,7 @@
         <div class="grid-reamoes" id="gridReacoes">
             <div class="item-reacao" id="reacao-fofooo" onclick="votarReacao('fofooo')">
                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgU6vS6AZwByFLsGV9a-fKkarZB31kEos8swXC1d7dgFAtnYO-gSR20UL4xryBnQyThQL1D7Q3hgj5mLv9xcxPbYpu6_1UVfjx0BkMmPCYp0H5okkDid0JsSrjMizMSZIR-gS1BmBXaPFyJcvfaaZUGRGl6lhEUxf8qyRJp_4BkJGssQ6TjHouLr6ggks/s16000/1000701366.png" alt="FOFOO!" referrerpolicy="no-referrer">
-                <span class="texto-reacao">FOFOO!!</span>
+                <span class="texto-reacao">FOFOO</span>
                 <span class="contador-reacao" id="cnt-fofooo">0</span>
             </div>
             <div class="item-reacao" id="reacao-ameiii" onclick="votarReacao('ameiii')">
@@ -550,8 +554,23 @@
     </a>
 
     <script>
+        // BLOQUEIO COMPLETO DE CLIQUES E TENTATIVAS DE CÓPIA/DOWNLOAD
         document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
         document.addEventListener('dragstart', function(e) { e.preventDefault(); });
+        document.addEventListener('copy', function(e) { e.preventDefault(); });
+        document.addEventListener('cut', function(e) { e.preventDefault(); });
+        document.addEventListener('selectstart', function(e) { e.preventDefault(); });
+
+        // BLOQUEIO DE ATALHOS DE TECLADO COMUNS (Ctrl+C, Ctrl+X, Ctrl+A, Ctrl+U, F12, etc.)
+        document.addEventListener('keydown', function(e) {
+            if (
+                e.key === 'F12' ||
+                (e.ctrlKey && (e.key === 'c' || e.key === 'C' || e.key === 'x' || e.key === 'X' || e.key === 'a' || e.key === 'A' || e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S'))
+            ) {
+                e.preventDefault();
+                return false;
+            }
+        });
 
         const SUPABASE_URL = 'https://rjqmaheyuattvsqocvku.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcW1haGV5dWF0dHZzcW9jdmt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyMTQ0MDIsImV4cCI6MjEwMzc5MDQwMn0.EGnNvkrxSTyXmW-OlZcx4iAElQBFqu67qyHXLr7BMo4';
@@ -738,11 +757,11 @@
                             const styleCustom = iframeDoc.createElement('style');
                             styleCustom.textContent = `
                                 main { color-scheme: dark; }
-                                body { background-color: #000000 !important; color: #FF99DD !important; }
+                                body { background-color: #000000 !important; color: #FF99DD !important; user-select: none !important; }
                                 .gsc-header { border-bottom-color: rgba(255, 153, 221, 0.2) !important; }
                                 a { color: #FF99DD !important; }
                                 .btn-primary, button[type="submit"] { background-color: #FF99DD !important; color: #000000 !important; border-color: #FF99DD !important; }
-                                .form-control, textarea, input { background-color: #111111 !important; color: #FF99DD !important; border-color: rgba(255, 153, 221, 0.4) !important; }
+                                .form-control, textarea, input { background-color: #111111 !important; color: #FF99DD !important; border-color: rgba(255, 153, 221, 0.4) !important; user-select: text !important; }
                                 .timeline-comment { background-color: #111111 !important; border-color: rgba(255, 153, 221, 0.2) !important; }
                             `;
                             iframeDoc.head.appendChild(styleCustom);
