@@ -456,14 +456,17 @@
         .manga-titulo {
             font-size: 0.93rem;
             font-weight: 700;
-            color: var(--primary-pink);
+            color: #ffffff;
+            background: linear-gradient(135deg, #ffffff 40%, var(--primary-pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             cursor: pointer;
             text-decoration: none;
             display: block;
-            text-shadow: var(--neon-glow);
+            text-shadow: 0 0 8px rgba(255, 153, 221, 0.5);
         }
 
         .manga-titulo:hover {
@@ -651,7 +654,6 @@
             background: rgba(255, 153, 221, 0.15);
             border-color: var(--primary-pink);
         }
-        /* CORREÇÃO DO TEXTO SUMINDO NOS BOTÕES DA BIBLIOTECA QUANDO ATIVOS: */
         .bib-tab.active {
             background: var(--primary-pink);
             color: #2b061d;
@@ -850,7 +852,6 @@
             text-shadow: none;
         }
 
-        /* LINHA AO LADO DA FLOR DE BAIXO (Página de Gêneros) */
         .todas-obras-flower-footer-container {
             display: flex;
             align-items: center;
@@ -872,7 +873,6 @@
             text-shadow: var(--neon-glow);
         }
 
-        /* TÍTULOS DE CATEGORIAS EM ROSINHA CLARO (Página de Gêneros) */
         .filtro-categoria-titulo {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 0.95rem;
@@ -1046,14 +1046,14 @@
         <div id="obras" class="view-section">
             <div class="section-container">
                 <div class="todas-obras-header">
-                    <h1 class="todas-obras-titulo">TODAS AS OBRAS</h1>
+                    <h1 class="todas-obras-titulo">TODAS AS OBRAS 🌸</h1>
                     <div class="todas-obras-sub">
-                        Todas as nossas obras em um só lugar <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">✦</span>
+                        Todas as nossas obras em um só lugar 🌸 <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">✦</span>
                     </div>
 
                     <div>
                         <div class="todas-obras-counter-pill">
-                            <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">💗</span>
+                            <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">💗🌸</span>
                             <span id="contador-total-obras">0 obras</span>
                         </div>
                     </div>
@@ -1061,22 +1061,22 @@
                     <div class="todas-obras-filtros-card">
                         <div class="filtros-card-top" onclick="toggleCardFiltrosObras()">
                             <div class="filtros-card-title">
-                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">🌸</span> FILTROS
+                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">🌸</span> FILTROS 🌸
                             </div>
                             <div class="filtros-card-arrow" id="seta-filtro-obras">⌄</div>
                         </div>
                         <div class="filtros-botoes-row" id="filtros-botoes-row-obras">
                             <button class="filtro-pill-btn" data-filtro="andamento" onclick="filtrarObrasPorStatus('andamento', this)">
-                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">✨</span> Em andamento
+                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">✨🌸</span> Em andamento
                             </button>
                             <button class="filtro-pill-btn" data-filtro="completo" onclick="filtrarObrasPorStatus('completo', this)">
-                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">💗</span> Completo
+                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">💗🌸</span> Completo
                             </button>
                             <button class="filtro-pill-btn" data-filtro="pausado" onclick="filtrarObrasPorStatus('pausado', this)">
-                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">⏱️</span> Pausado
+                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">⏱️🌸</span> Pausado
                             </button>
                             <button class="filtro-pill-btn" data-filtro="18" onclick="filtrarObrasPorStatus('18', this)">
-                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">🔞</span> +18
+                                <span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">🔞🌸</span> +18
                             </button>
                         </div>
                     </div>
@@ -1084,7 +1084,7 @@
                     <!-- LINHA AO LADO DA FLOR DE BAIXO (Página de Obras / Geral) -->
                     <div class="todas-obras-flower-footer-container">
                         <div class="todas-obras-flower-line"></div>
-                        <div class="todas-obras-flower-footer-icon">🌸</div>
+                        <div class="todas-obras-flower-footer-icon">🌸🌸</div>
                     </div>
                 </div>
 
@@ -1098,27 +1098,27 @@
                 <div class="biblioteca-header-area">
                     <div class="biblioteca-title-row">
                         <svg viewBox="0 0 24 24" style="width:24px; height:24px; fill:currentColor;"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
-                        MINHA BIBLIOTECA
+                        MINHA BIBLIOTECA 🌸
                     </div>
-                    <div class="biblioteca-subtitle">Aqui estão suas obras favoritas. Continue lendo quando quiser! ♡</div>
+                    <div class="biblioteca-subtitle">Aqui estão suas obras favoritas. Continue lendo quando quiser! ♡ 🌸</div>
 
                     <div class="bib-tabs-container">
                         <button class="bib-tab active" onclick="filtrarBibTab('todos', this)">
                             <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
-                            <span>Favoritos</span>
+                            <span>Favoritos 🌸</span>
                             <div class="bib-tab-badge" id="count-todos">0</div>
                         </button>
                         <button class="bib-tab" onclick="filtrarBibTab('andamento', this)">
                             <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0-2-.9-2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
-                            <span>Em andamento</span>
+                            <span>Em andamento 🌸</span>
                         </button>
                         <button class="bib-tab" onclick="filtrarBibTab('concluidas', this)">
                             <svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
-                            <span>Concluídas</span>
+                            <span>Concluídas 🌸</span>
                         </button>
                         <button class="bib-tab" onclick="filtrarBibTab('hiatus', this)">
                             <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                            <span>Hiatus</span>
+                            <span>Hiatus 🌸</span>
                         </button>
                     </div>
 
@@ -1127,7 +1127,7 @@
                             <span>Ordenar por:</span>
                             <button class="bib-filter-btn" onclick="mudarAbaVisual('generos'); history.pushState({}, '', './?aba=generos'); renderizarPaginaGeneros();">
                                 <svg viewBox="0 0 24 24"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v5z"/></svg>
-                                Gêneros
+                                Gêneros 🌸
                             </button>
                         </div>
                     </div>
@@ -1142,11 +1142,11 @@
             <div class="section-container">
                 <div class="section-header">
                     <div class="section-bar"></div>
-                    <h2 class="section-title">AVISOS</h2>
+                    <h2 class="section-title">AVISOS 🌸</h2>
                 </div>
                 <div style="background: var(--card-bg); border: 1px solid rgba(255,153,221,0.3); padding: 18px; border-radius: 12px; margin-top: 10px;">
-                    <h3 style="font-size: 1rem; margin-bottom: 6px;"><span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">🌸</span> Bem-vindos à Flower's Nenasscan!</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">Nenhum aviso importante no momento. Aproveitem as traduções e boa leitura!</p>
+                    <h3 style="font-size: 1rem; margin-bottom: 6px;"><span style="color:#ff99dd; text-shadow:0 0 10px rgba(255,153,221,0.8);">🌸</span> Bem-vindos à Flower's Nenasscan! 🌸</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">Nenhum aviso importante no momento. Aproveitem as traduções e boa leitura! 🌸</p>
                 </div>
             </div>
         </div>
@@ -1156,45 +1156,45 @@
             <div class="section-container">
                 <div class="section-header">
                     <div class="section-bar"></div>
-                    <h2 class="section-title">EXPLORAR OBRAS</h2>
+                    <h2 class="section-title">EXPLORAR OBRAS 🌸</h2>
                 </div>
 
-                <div class="filtro-categoria-titulo">Gêneros</div>
+                <div class="filtro-categoria-titulo">Gêneros 🌸</div>
                 <div id="generos-botoes-container" class="filtro-grupo-botoes">
                     <span style="color: var(--text-muted); font-size: 0.85rem;">Carregando gêneros...</span>
                 </div>
                 <div id="container-ver-mais-generos"></div>
 
-                <div class="filtro-categoria-titulo">Status</div>
+                <div class="filtro-categoria-titulo">Status 🌸</div>
                 <div id="status-botoes-container" class="filtro-grupo-botoes">
-                    <button class="genre-pill-btn" data-cat="status" data-val="andamento" onclick="alternarFiltroIndependente('status', 'andamento', this)">Em Andamento</button>
-                    <button class="genre-pill-btn" data-cat="status" data-val="completo" onclick="alternarFiltroIndependente('status', 'completo', this)">Completo</button>
-                    <button class="genre-pill-btn" data-cat="status" data-val="hiatus" onclick="alternarFiltroIndependente('status', 'hiatus', this)">Hiatus</button>
+                    <button class="genre-pill-btn" data-cat="status" data-val="andamento" onclick="alternarFiltroIndependente('status', 'andamento', this)">Em Andamento 🌸</button>
+                    <button class="genre-pill-btn" data-cat="status" data-val="completo" onclick="alternarFiltroIndependente('status', 'completo', this)">Completo 🌸</button>
+                    <button class="genre-pill-btn" data-cat="status" data-val="hiatus" onclick="alternarFiltroIndependente('status', 'hiatus', this)">Hiatus 🌸</button>
                 </div>
 
-                <div class="filtro-categoria-titulo">Tipo</div>
+                <div class="filtro-categoria-titulo">Tipo 🌸</div>
                 <div id="tipo-botoes-container" class="filtro-grupo-botoes">
-                    <button class="genre-pill-btn" data-cat="tipo" data-val="manhwa" onclick="alternarFiltroIndependente('tipo', 'manhwa', this)">Manhwa</button>
-                    <button class="genre-pill-btn" data-cat="tipo" data-val="manhua" onclick="alternarFiltroIndependente('tipo', 'manhua', this)">Manhua</button>
-                    <button class="genre-pill-btn" data-cat="tipo" data-val="manga" onclick="alternarFiltroIndependente('tipo', 'manga', this)">Mangá</button>
-                    <button class="genre-pill-btn" data-cat="tipo" data-val="webtoon" onclick="alternarFiltroIndependente('tipo', 'webtoon', this)">Webtoon</button>
+                    <button class="genre-pill-btn" data-cat="tipo" data-val="manhwa" onclick="alternarFiltroIndependente('tipo', 'manhwa', this)">Manhwa 🌸</button>
+                    <button class="genre-pill-btn" data-cat="tipo" data-val="manhua" onclick="alternarFiltroIndependente('tipo', 'manhua', this)">Manhua 🌸</button>
+                    <button class="genre-pill-btn" data-cat="tipo" data-val="manga" onclick="alternarFiltroIndependente('tipo', 'manga', this)">Mangá 🌸</button>
+                    <button class="genre-pill-btn" data-cat="tipo" data-val="webtoon" onclick="alternarFiltroIndependente('tipo', 'webtoon', this)">Webtoon 🌸</button>
                 </div>
 
-                <div class="filtro-categoria-titulo">Classificação</div>
+                <div class="filtro-categoria-titulo">Classificação 🌸</div>
                 <div id="classificacao-botoes-container" class="filtro-grupo-botoes">
-                    <button class="genre-pill-btn" data-cat="classificacao" data-val="livre" onclick="alternarFiltroIndependente('classificacao', 'livre', this)">Livre</button>
-                    <button class="genre-pill-btn" data-cat="classificacao" data-val="18" onclick="alternarFiltroIndependente('classificacao', '18', this)">+18</button>
+                    <button class="genre-pill-btn" data-cat="classificacao" data-val="livre" onclick="alternarFiltroIndependente('classificacao', 'livre', this)">Livre 🌸</button>
+                    <button class="genre-pill-btn" data-cat="classificacao" data-val="18" onclick="alternarFiltroIndependente('classificacao', '18', this)">+18 🌸</button>
                 </div>
 
                 <!-- LINHA AO LADO DA FLOR DE BAIXO (Página de Gêneros) -->
                 <div class="todas-obras-flower-footer-container" style="margin-top: 20px;">
                     <div class="todas-obras-flower-line"></div>
-                    <div class="todas-obras-flower-footer-icon">🌸</div>
+                    <div class="todas-obras-flower-footer-icon">🌸🌸</div>
                 </div>
 
                 <div class="section-header" style="margin-top: 20px;">
                     <div class="section-bar"></div>
-                    <h2 class="section-title" id="titulo-resultados-filtro">RESULTADOS</h2>
+                    <h2 class="section-title" id="titulo-resultados-filtro">RESULTADOS 🌸</h2>
                 </div>
 
                 <div id="grid-generos-obras" class="manga-grid" style="margin-top: 15px;"></div>
