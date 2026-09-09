@@ -366,16 +366,20 @@
             text-shadow: none;
         }
         
+        /* SELO NOVO IDêntico à imagem de referência */
         .selo-novo-cap {
-            background: rgba(255, 153, 221, 0.2);
-            color: var(--primary-pink);
-            font-size: 0.62rem;
-            font-weight: 800;
-            padding: 2px 8px;
-            border-radius: 6px;
-            letter-spacing: 0.6px;
-            border: 1px solid rgba(255, 153, 221, 0.5);
-            box-shadow: 0 0 8px rgba(255, 153, 221, 0.3);
+            background-color: #ff55bb;
+            color: #ffcceb;
+            font-size: 0.7rem;
+            font-weight: 900;
+            padding: 4px 12px;
+            border-radius: 8px;
+            letter-spacing: 1px;
+            border: none;
+            box-shadow: 0 0 10px rgba(255, 85, 187, 0.8), 0 0 20px rgba(255, 85, 187, 0.4);
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+            display: inline-block;
+            text-transform: uppercase;
         }
     </style>
 </head>
@@ -431,7 +435,7 @@
             let agora = new Date();
             let diferencaEmMilissegundos = agora - dataCap;
             let diasPassados = diferencaEmMilissegundos / (1000 * 60 * 60 * 24);
-            return diasPassados >= 0 && diasPassados <= 5;
+            return diasPassados >= 0 && diasPassados <= 4; // Exibe se tiver até 4 dias
         }
 
         fetch('obras.json?v=' + new Date().getTime())
