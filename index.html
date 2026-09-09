@@ -63,30 +63,24 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Estilo limpo e moderno para o título "TODAS AS OBRAS" (sem emojis e nova fonte) */
+        /* Estilo exato idêntico à imagem de referência para o título "TODAS AS OBRAS" */
         .todas-obras-titulo {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: 700;
-            text-align: center;
-            color: #ff2a85;
-            letter-spacing: 2px;
-            margin: 25px 0 15px 0;
+            color: #ff99dd;
+            letter-spacing: 1px;
+            margin: 15px 0 6px 0;
             text-transform: uppercase;
             background: none;
             -webkit-background-clip: initial;
             -webkit-text-fill-color: initial;
-            text-shadow: 0 0 10px rgba(255, 42, 133, 0.6);
+            text-shadow: 0 0 12px rgba(255, 153, 221, 0.8), 0 0 25px rgba(255, 153, 221, 0.4);
         }
 
-        /* Linhazinha divisoria no meio */
+        /* Removida a linha divisoria para ficar limpo igual na foto */
         .section-divider-line {
-            width: 60px;
-            height: 3px;
-            background-color: #ff2a85;
-            margin: 20px auto;
-            border-radius: 2px;
-            box-shadow: 0 0 8px rgba(255, 42, 133, 0.8);
+            display: none;
         }
 
         #titulo-ultimas-atualizacoes {
@@ -743,46 +737,43 @@
             transform: translateY(-2px);
         }
 
-        /* ESTILOS DA PÁGINA DE TODAS AS OBRAS */
+        /* ESTILOS DA PÁGINA DE TODAS AS OBRAS AJUSTADOS EXATAMENTE À REFERÊNCIA */
         .todas-obras-header {
             margin-bottom: 20px;
         }
 
         .todas-obras-sub {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: var(--text-muted);
             text-shadow: var(--neon-glow);
             margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            text-align: center;
+            display: block;
+            text-align: left;
         }
 
         .todas-obras-counter-pill {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #0b0b0f;
+            background: transparent;
             border: 1px solid rgba(255, 153, 221, 0.45);
             padding: 8px 16px;
             border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 700;
+            font-size: 0.85rem;
+            font-weight: 600;
             color: var(--primary-pink);
-            box-shadow: 0 0 12px rgba(255, 153, 221, 0.2);
+            box-shadow: 0 0 10px rgba(255, 153, 221, 0.15);
             margin-bottom: 16px;
             text-shadow: var(--neon-glow);
         }
 
         .todas-obras-filtros-card {
-            background: #07070a;
+            background: transparent;
             border: 1px solid rgba(255, 153, 221, 0.45);
             border-radius: 16px;
             padding: 16px;
             margin-bottom: 24px;
-            box-shadow: 0 0 20px rgba(255, 153, 221, 0.15), inset 0 0 15px rgba(255, 153, 221, 0.03);
+            box-shadow: 0 0 15px rgba(255, 153, 221, 0.1);
             position: relative;
         }
 
@@ -830,7 +821,7 @@
         }
 
         .filtro-pill-btn {
-            background: #0b0b0f;
+            background: transparent;
             border: 1px solid rgba(255, 153, 221, 0.4);
             color: var(--primary-pink);
             padding: 8px 16px;
@@ -844,7 +835,6 @@
             white-space: nowrap;
             transition: all 0.2s ease;
             text-shadow: var(--neon-glow);
-            box-shadow: 0 0 8px rgba(255, 153, 221, 0.12);
         }
 
         .filtro-pill-btn:hover, .filtro-pill-btn.active {
@@ -1041,12 +1031,11 @@
             <div class="section-container">
                 <div class="todas-obras-header">
                     <h1 class="todas-obras-titulo">TODAS AS OBRAS</h1>
-                    <div class="section-divider-line"></div>
                     <div class="todas-obras-sub">
                         Todas as nossas obras em um só lugar <span>✦</span>
                     </div>
 
-                    <div style="text-align: center;">
+                    <div>
                         <div class="todas-obras-counter-pill">
                             <span>💗</span>
                             <span id="contador-total-obras">0 obras</span>
