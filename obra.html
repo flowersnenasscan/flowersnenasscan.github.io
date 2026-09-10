@@ -19,7 +19,19 @@
             --text-muted: #e69ac5;
             --shadow: 0 4px 22px rgba(0, 0, 0, 0.7);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            -webkit-tap-highlight-color: transparent; /* Remove o destaque azul de toque em mobile */
+        }
+        
+        /* Remove o foco padrão azul em todos os elementos ao clicar/navegar por teclado */
+        a:focus, button:focus, *:focus {
+            outline: none !important;
+        }
+
         body { background-color: var(--bg-color); color: var(--text-main); padding-bottom: 50px; }
         p, span, a, h1, h2, h3, h4, div, button { color: var(--primary-pink); text-shadow: var(--neon-glow); }
         
