@@ -40,6 +40,32 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* REMOVE O CLIQUE AZUL / DESTAQUE DE TOQUE */
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            /* BLOQUEIO DE SELEÇÃO DE TEXTO */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* PERMITIR APENAS DIGITAÇÃO SE HOUVER INPUTS/TEXTAREAS */
+        input, textarea {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        /* PROTEÇÃO DE IMAGENS (BLOQUEIA ARRASTE E SALVAR DIRETO) */
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
         }
 
         body {
@@ -1450,8 +1476,6 @@
                                 <span class="aviso-item-titulo">Comunicado</span>
                             </div>
                         </div>
-                        
-                        </a>
                     </div>
                     <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; text-shadow: var(--neon-glow); margin-top: 4px;">
                         Somos uma scan privada — nosso objetivo é continuar assim, trazendo conteúdos exclusivos e de qualidade para quem realmente acompanha e valoriza nosso trabalho.
@@ -1467,8 +1491,6 @@
                                 <span class="aviso-item-titulo">Proteja nosso trabalho</span>
                             </div>
                         </div>
-                        
-                        </a>
                     </div>
 
                     <div class="aviso-lista-topicos">
@@ -1642,6 +1664,18 @@
     </nav>
 
     <script>
+        // SCRIPT DE PROTEÇÃO ADICIONAL (BLOQUEIA BOTÃO DIREITO E ATALHOS DE INSPEÇÃO)
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', event => {
+            if (
+                event.key === 'F12' || 
+                (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C')) || 
+                (event.ctrlKey && event.key === 'U')
+            ) {
+                event.preventDefault();
+            }
+        });
+
         let listaObras = [];
         let obraCarrosselAtualSlug = '';
         let filtroBibAtual = 'todos';
