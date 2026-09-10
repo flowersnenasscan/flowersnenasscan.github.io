@@ -2409,6 +2409,74 @@
             });
         }
     </script>
+<script>
+    fetch('obras.json')
+        .then(response => response.json())
+        .then(obrasNovas => {
+            const container = document.getElementById('grid-atualizacoes');
+            if (!container) return;
+            container.innerHTML = '';
+
+            // Pega o histórico salvo no navegador
+            let historico = JSON.parse(localStorage.getItem('controle_atualizacoes_auto') || '{}');
+            const agora = new Date().getTime();
+            const quatroDiasEmMs = 4 * 24 * 60 * 60 * 1000;
+
+            // Processa cada obra do JSON
+            obrasNovas.forEach(obra => {
+                const idObra = obra.titulo; 
+                const conteudoAtual = obra.capitulo; 
+
+                if (!historico[idObra]) {
+                    historico[idObra] = {
+                        capituloSalvo: conteudoAtual,
+                        timestamp: agora
+                    };
+                } else if (historico[idObra].capituloSalvo !== conteudoAtual) {
+                    historico[idObra] = {
+                        capituloSalvo: conteudoAtual,
+                        timestamp: agora
+                    };
+                }
+            });
+
+            // Salva o histórico atualizado
+            localStorage.setItem('controle_atualizacoes_auto', JSON.stringify(historico));
+
+            // Ordena automaticamente do mais recentemente atualizado para o mais antigo
+            obrasNovas.sort((a, b) => {
+                const tempoA = historico[a.titulo] ? historico[a.titulo].timestamp : 0;
+                const tempoB = historico[b.titulo] ? historico[b.titulo].timestamp : 0;
+                return tempoB - tempoA; // O mais recente vai para o topo
+            });
+
+            // Monta os cards na tela
+            obrasNovas.forEach(obra => {
+                const dadosObra = historico[obra.titulo];
+                let mostrarSelo = false;
+
+                if (dadosObra) {
+                    const diferenca = agora - dadosObra.timestamp;
+                    if (diferenca >= 0 && diferenca < quatroDiasEmMs) {
+                        mostrarSelo = true;
+                    }
+                }
+
+                const cardHtml = `
+                    <div style="background: #fff; padding: 15px; border-radius: 15px; display: flex; align-items: center; justify-content: space-between; border: 1px solid #f3c2dc; box-shadow: 0 4px 15px rgba(255,133,194,0.15); margin-bottom: 12px;">
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            ${mostrarSelo ? '<span style="background: linear-gradient(135deg, #ffb3de 0%, #ff85c2 100%); color: #fff; padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 700;">NOVO</span>' : ''}
+                            <h3 style="font-size: 1rem; color: #d66ba0; margin: 0;">${obra.titulo} - ${obra.capitulo}</h3>
+                        </div>
+                        <a href="${obra.link}" style="background: #ff85c2; color: #fff; padding: 8px 16px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.9rem;">Ler</a>
+                    </div>
+                `;
+                
+                container.innerHTML += cardHtml;
+            });
+        })
+        .catch(error => console.error('Erro ao carregar as obras:', error));
+</script>
 
   
 <!-- TELA DE SENHA ESTILIZADA - TRAVADA NO TOPO -->
