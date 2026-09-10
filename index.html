@@ -2412,8 +2412,8 @@
 
   
 
-<!-- TELA DE SENHA ESTILIZADA -->
-<div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background: url('https://files.catbox.moe/iuy2vm.png') no-repeat center center / cover !important; display: flex; align-items: flex-start; justify-content: center; padding-top: 12vh; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);">
+    <!-- TELA DE SENHA ESTILIZADA -->
+<div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background: url('https://files.catbox.moe/iuy2vm.png') no-repeat center center / cover !important; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);">
     
     <div id="caixa-senha" style="position: relative; z-index: 10; background: #ffffff; border-radius: 35px; padding: 40px 30px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 0 30px rgba(255, 133, 194, 0.6), 0 15px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255, 133, 194, 0.3);">
         
@@ -2475,7 +2475,6 @@
         localStorage.removeItem('acesso_liberado_ate');
     }
 
-    // Senha definida como "x"
     const SENHA_CORRETA = "x"; 
 
     function verificarSenha() {
@@ -2484,13 +2483,11 @@
         const caixa = document.getElementById('caixa-senha');
 
         if (digitada === SENHA_CORRETA) {
-            // 10 dias em milissegundos
             const dezDiasEmMs = 10 * 24 * 60 * 60 * 1000;
             const validadeAcesso = new Date().getTime() + dezDiasEmMs;
             
             localStorage.setItem('acesso_liberado_ate', validadeAcesso);
 
-            // Libera a rolagem ao acertar
             document.documentElement.style.overflow = '';
             document.body.style.overflow = '';
             document.body.classList.remove('bloqueio-scroll');
@@ -2505,7 +2502,6 @@
             document.getElementById('input-senha-site').value = '';
             document.getElementById('input-senha-site').focus();
 
-            // Aplica o efeito de tremer na caixa branca
             caixa.classList.remove('tremer');
             void caixa.offsetWidth; 
             caixa.classList.add('tremer');
