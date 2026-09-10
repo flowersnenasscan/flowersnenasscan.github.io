@@ -2411,72 +2411,8 @@
     </script>
 
 
-<script>
-    fetch('obras.json')
-        .then(response => response.json())
-        .then(obrasNovas => {
-            const container = document.getElementById('grid-atualizacoes');
-            if (!container) return;
-            container.innerHTML = '';
 
-            let historico = JSON.parse(localStorage.getItem('controle_atualizacoes_auto') || '{}');
-            const agora = new Date().getTime();
-            const quatroDiasEmMs = 4 * 24 * 60 * 60 * 1000;
-
-            obrasNovas.forEach(obra => {
-                const idObra = obra.titulo; 
-                const conteudoAtual = obra.capitulo || ''; 
-
-                if (!historico[idObra]) {
-                    historico[idObra] = {
-                        capituloSalvo: conteudoAtual,
-                        timestamp: agora
-                    };
-                } else if (historico[idObra].capituloSalvo !== conteudoAtual) {
-                    historico[idObra] = {
-                        capituloSalvo: conteudoAtual,
-                        timestamp: agora
-                    };
-                }
-            });
-
-            localStorage.setItem('controle_atualizacoes_auto', JSON.stringify(historico));
-
-            obrasNovas.sort((a, b) => {
-                const tempoA = historico[a.titulo] ? historico[a.titulo].timestamp : 0;
-                const tempoB = historico[b.titulo] ? historico[b.titulo].timestamp : 0;
-                return tempoB - tempoA; 
-            });
-
-            obrasNovas.forEach(obra => {
-                const dadosObra = historico[obra.titulo];
-                let mostrarSelo = false;
-
-                if (dadosObra) {
-                    const diferenca = agora - dadosObra.timestamp;
-                    if (diferenca >= 0 && diferenca < quatroDiasEmMs) {
-                        mostrarSelo = true;
-                    }
-                }
-
-                // Substitua abaixo pelas classes reais dos seus cards se precisar, mantendo o visual escuro
-                const cardHtml = `
-                    <div class="card-obra" style="position: relative;">
-                        ${mostrarSelo ? '<span class="selo-novo" style="position: absolute; top: 10px; left: 10px; background: #ff85c2; color: #fff; padding: 2px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: bold; z-index: 2;">NOVO</span>' : ''}
-                        <img src="${obra.capa || ''}" alt="${obra.titulo}">
-                        <div class="card-info">
-                            <h3>${obra.titulo}</h3>
-                            <p>${obra.capitulo || ''}</p>
-                            <a href="${obra.link}">Ler</a>
-                        </div>
-                    </div>
-                `;
-                
-                container.innerHTML += cardHtml;
-            });
-        })
-        .catch(error => console.error('Erro ao carregar as obras:', error));
-</script>
+    
 
 
     
@@ -2579,6 +2515,55 @@
 
  
     
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('grid-atualizacoes');
+        if (!container) return;
+
+        // Pega todos os cards de obras que já estão no seu HTML
+        const cards = Array.from(container.children);
+        
+        let historico = JSON.parse(localStorage.getItem('controle_atualizacoes_auto') || '{}');
+        const agora = new Date().getTime();
+        const quatroDiasEmMs = 4 * 24 * 60 * 60 * 1000;
+
+        // Ordena os elementos no HTML com base no timestamp salvo de cada obra
+        cards.sort((a, b) => {
+            // Pega o título ou identificador que está dentro do seu card atual
+            const tituloA = a.getAttribute('data-titulo') || a.querySelector('h3, .titulo-obra')?.innerText.trim() || '';
+            const tituloB = b.getAttribute('data-titulo') || b.querySelector('h3, .titulo-obra')?.innerText.trim() || '';
+
+            const tempoA = historico[tituloA] ? historico[tituloA].timestamp : 0;
+            const tempoB = historico[tituloB] ? historico[tituloB].timestamp : 0;
+
+            return tempoB - tempoA; // Joga o mais recente para o topo
+        });
+
+        // Reorganiza na tela e adiciona o selo de "NOVO" se estiver dentro dos 4 dias
+        cards.forEach(card => {
+            const titulo = card.getAttribute('data-titulo') || card.querySelector('h3, .titulo-obra')?.innerText.trim() || '';
+            const dadosObra = historico[titulo];
+
+            if (dadosObra) {
+                const diferenca = agora - dadosObra.timestamp;
+                if (diferenca >= 0 && diferenca < quatroDiasEmMs) {
+                    // Adiciona o selo apenas se ele já não existir no card
+                    if (!card.querySelector('.selo-novo-auto')) {
+                        const selo = document.createElement('span');
+                        selo.className = 'selo-novo-auto';
+                        selo.innerText = 'NOVO';
+                        // Classes ou estilos idênticos aos que seu site já usa para selos
+                        selo.style.cssText = 'background: #ff85c2; color: #fff; padding: 2px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: bold; display: inline-block; margin-bottom: 5px;';
+                        card.prepend(selo);
+                    }
+                }
+            }
+
+            // Realoca o card existente na nova ordem correta
+            container.appendChild(card);
+        });
+    });
+</script>
 
 
   
