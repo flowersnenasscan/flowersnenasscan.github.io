@@ -1282,38 +1282,413 @@
         </div>
 
         <!-- AVISOS -->
-        <div id="avisos" class="view-section">
-            <div class="section-container">
-                <div class="aviso-topo-banner">
-                    <div class="aviso-topo-esquerda">
-                        <span class="aviso-topo-icone">🌸</span>
-                        <div class="aviso-topo-texto">
-                            <span class="aviso-topo-titulo-mini">Aviso Rápido</span>
-                            <span class="aviso-topo-sub">Estamos sempre trabalhando para trazer mais capítulos! ♡</span>
-                        </div>
-                    </div>
-                    <span style="color: var(--primary-pink); font-size: 1.1rem; text-shadow: var(--neon-glow);">&gt;</span>
-                </div>
+        <style>
+  /* Estilos gerais da página de avisos */
+  .nenasscan-avisos-wrapper {
+    background-color: #0b0710;
+    color: #e2d9ec;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
 
-                <div class="aviso-principal-header">
-                    <h1 class="aviso-titulo-principal">🌸 AVISOS 🌸</h1>
-                    <div class="aviso-sub-principal">Fique por dentro das nossas atualizações e informações importantes!</div>
-                </div>
+  .nenasscan-container {
+    width: 100%;
+    max-width: 600px;
+    background: #120b18;
+    border: 2px solid #ff2a8d;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 0 25px rgba(255, 42, 141, 0.3);
+    box-sizing: border-box;
+  }
 
-                <div class="aviso-bloco-bemvindo">
-                    <span class="aviso-flor-abs"></span>
-                    <h3 class="aviso-bloco-titulo">Bem-vindos à Flower's Nenasscan! ♡</h3>
-                    <p class="aviso-bloco-texto">Aqui você encontra traduções de qualidade, feitas com muito carinho e dedicação. ♡</p>
-                    <div class="aviso-assinatura-lateral">Obrigado por estar aqui!</div>
-                </div>
+  /* Aviso Rápido Superior */
+  .aviso-rapido-topo {
+    background: linear-gradient(135deg, #251229, #170b1e);
+    border: 1px solid #ff2a8d;
+    border-radius: 12px;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    box-shadow: 0 0 10px rgba(255, 42, 141, 0.2);
+  }
 
-                <div class="aviso-footer-voltar">
-                    <a href="./" class="btn-voltar-aviso" onclick="event.preventDefault(); mudarAbaVisual('inicio'); history.pushState({}, '', './');">
-                        ♡ Voltar
-                    </a>
-                </div>
-            </div>
+  .aviso-rapido-topo .conteudo-aviso {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #fce4f0;
+  }
+
+  .aviso-rapido-topo .seta {
+    color: #ff2a8d;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  /* Cabeçalho Principal */
+  .header-avisos {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .header-avisos h1 {
+    color: #ff2a8d;
+    font-size: 26px;
+    letter-spacing: 2px;
+    margin: 10px 0 5px 0;
+    text-shadow: 0 0 10px rgba(255, 42, 141, 0.5);
+  }
+
+  .header-avisos p {
+    font-size: 11px;
+    color: #b5a4cb;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  /* Caixa de Boas-vindas */
+  .card-bem-vindo {
+    background: linear-gradient(145deg, #190e22, #110719);
+    border: 1px solid #ff2a8d;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    margin-bottom: 25px;
+    box-shadow: 0 0 15px rgba(255, 42, 141, 0.15);
+  }
+
+  .card-bem-vindo h2 {
+    color: #fce4f0;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .card-bem-vindo p {
+    font-size: 13px;
+    color: #d0c2e2;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .tag-obrigado {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    font-family: 'Brush Script MT', cursive, sans-serif;
+    color: #ff2a8d;
+    font-size: 18px;
+    transform: rotate(-5deg);
+  }
+
+  /* Títulos de Seção com Linha */
+  .secao-titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 25px 0 15px 0;
+  }
+
+  .secao-titulo span {
+    font-size: 16px;
+    color: #ff2a8d;
+    font-weight: bold;
+  }
+
+  .linha-divisorias {
+    flex-grow: 1;
+    height: 1px;
+    background: linear-gradient(90deg, #ff2a8d, transparent);
+  }
+
+  /* Cards de Comunicados */
+  .card-comunicado {
+    background: #170c20;
+    border: 1px solid #ff2a8d;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 15px;
+    position: relative;
+  }
+
+  .comunicado-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .comunicado-info h3 {
+    color: #fce4f0;
+    font-size: 15px;
+    margin: 0 0 3px 0;
+  }
+
+  .comunicado-info .data {
+    font-size: 11px;
+    color: #9a88b3;
+  }
+
+  .btn-acao {
+    background: transparent;
+    border: 1px solid #ff2a8d;
+    color: #ff2a8d;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.2s;
+    white-space: nowrap;
+  }
+
+  .btn-acao:hover {
+    background: #ff2a8d;
+    color: #fff;
+    box-shadow: 0 0 8px rgba(255, 42, 141, 0.6);
+  }
+
+  .comunicado-texto {
+    font-size: 12px;
+    color: #c9bcdc;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Lista de Regras / Proteja nosso trabalho */
+  .lista-regras {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0 0;
+  }
+
+  .lista-regras li {
+    font-size: 12px;
+    color: #c9bcdc;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+  }
+
+  /* Como Você Pode Ajudar & Apoio */
+  .lista-coracoes {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+
+  .lista-coracoes li {
+    font-size: 12px;
+    color: #c9bcdc;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+  }
+
+  .lista-coracoes li::before {
+    content: "♥";
+    color: #ff2a8d;
+    font-size: 11px;
+    margin-top: 1px;
+  }
+
+  .tag-juntos {
+    text-align: right;
+    font-family: 'Brush Script MT', cursive, sans-serif;
+    color: #ff2a8d;
+    font-size: 15px;
+    margin: 5px 0 15px 0;
+  }
+
+  /* Bloco de Importante Final */
+  .card-importante-fim {
+    background: #170c20;
+    border: 1px dashed #ff2a8d;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .card-importante-fim p {
+    font-size: 12px;
+    color: #fce4f0;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .rodape-mensagem {
+    text-align: center;
+    font-size: 12px;
+    color: #b5a4cb;
+    margin: 20px 0 15px 0;
+  }
+
+  /* Botão Voltar */
+  .container-voltar {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .btn-voltar {
+    background: transparent;
+    border: 1px solid #ff2a8d;
+    color: #fce4f0;
+    padding: 8px 30px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.2s;
+    box-shadow: 0 0 10px rgba(255, 42, 141, 0.2);
+  }
+
+  .btn-voltar:hover {
+    background: #ff2a8d;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(255, 42, 141, 0.6);
+  }
+</style>
+
+<div class="nenasscan-avisos-wrapper">
+  <div class="nenasscan-container">
+
+    <!-- AVISO RÁPIDO -->
+    <div class="aviso-rapido-topo">
+      <div class="conteudo-aviso">
+        <span>🌸</span>
+        <div>
+          <strong style="color: #ff2a8d; font-size: 11px; display: block; text-transform: uppercase; letter-spacing: 0.5px;">Aviso Rápido</strong>
+          Estamos sempre trabalhando para trazer mais capítulos! ♡
         </div>
+      </div>
+      <span class="seta">&gt;</span>
+    </div>
+
+    <!-- CABEÇALHO PRINCIPAL -->
+    <div class="header-avisos">
+      <h1>🌸 AVISOS 🌸</h1>
+      <p>Fique por dentro das nossas atualizações e informações importantes!</p>
+    </div>
+
+    <!-- BEM-VINDOS -->
+    <div class="card-bem-vindo">
+      <div style="position: absolute; top: 15px; right: 15px; font-size: 20px;">🌸</div>
+      <h2>Bem-vindos à Flower's Nenasscan! ♡</h2>
+      <p>Aqui você encontra traduções de qualidade, feitas com muito carinho e dedicação. ♡</p>
+      <div class="tag-obrigado">Obrigado por estar aqui! ♡</div>
+    </div>
+
+    <!-- SEÇÃO: AVISOS IMPORTANTES -->
+    <div class="secao-titulo">
+      <span>📣 Avisos importantes</span>
+      <div class="linha-divisorias"></div>
+      <span>🌸</span>
+    </div>
+
+    <!-- Comunicado 1 -->
+    <div class="card-comunicado">
+      <div class="comunicado-topo">
+        <div class="comunicado-info">
+          <h3>💬 Comunicado</h3>
+          <span class="data">08/06/2025</span>
+        </div>
+        <a href="#" class="btn-acao">Leia mais &rarr;</a>
+      </div>
+      <p class="comunicado-texto">
+        Somos uma scan privada — nosso objetivo é continuar assim, trazendo conteúdos exclusivos e de qualidade para quem realmente acompanha e valoriza nosso trabalho.
+      </p>
+    </div>
+
+    <!-- Comunicado 2 -->
+    <div class="card-comunicado">
+      <div class="comunicado-topo">
+        <div class="comunicado-info">
+          <h3>🛡️ Proteja nosso trabalho</h3>
+          <span class="data">05/06/2025</span>
+        </div>
+        <a href="#" class="btn-acao">Saiba mais &rarr;</a>
+      </div>
+      <ul class="lista-regras">
+        <li><span style="color: #ff4d4d; font-weight: bold;">✕</span> Não compartilhe a senha com terceiros, em redes sociais ou grupos públicos.</li>
+        <li><span style="color: #2ecc71; font-weight: bold;">✓</span> A senha deve ser compartilhada apenas no nosso canal principal e nos canais parceiros autorizados.</li>
+        <li><span style="color: #f1c40f; font-weight: bold;">!</span> Evite consumir nossas obras em sites ou grupos que roubam conteúdo.</li>
+      </ul>
+    </div>
+
+    <!-- SEÇÃO: COMO VOCÊ PODE AJUDAR -->
+    <div class="secao-titulo">
+      <span>🌸 Como Você Pode Ajudar ♡</span>
+      <div class="linha-divisorias"></div>
+      <span>🌸</span>
+    </div>
+
+    <div class="card-comunicado">
+      <ul class="lista-coracoes">
+        <li>Leia sempre na plataforma oficial de quem traduz e entrega conteúdo gratuito e de qualidade.</li>
+        <li>Não indique agregadores ou canais não oficiais para outros leitores.</li>
+        <li>Respeite as marcas d'água e avisos presentes em cada capítulo.</li>
+        <li>Valorize o empenho da equipe para continuarmos trazendo histórias de tirar o fôlego!</li>
+      </ul>
+      <div class="tag-juntos">✨ Juntos fazemos a diferença! ♡</div>
+    </div>
+
+    <!-- SEÇÃO: APOIO À EQUIPE -->
+    <div class="card-comunicado">
+      <div class="comunicado-info" style="margin-bottom: 10px;">
+        <h3 style="color: #ff2a8d; display: flex; align-items: center; gap: 6px;">💖 Apoio à Equipe (Opcional)</h3>
+      </div>
+      <p class="comunicado-texto" style="margin-bottom: 12px;">
+        Nosso trabalho exige dedicação, tempo e muito carinho em cada detalhe — desde a tradução primária até a edição e revisão final de cada lançamento.
+      </p>
+      <p class="comunicado-texto" style="margin-bottom: 12px;">
+        Para manter o projeto ativo e com a qualidade atual, disponibilizamos uma aba de suporte financeiro voluntário.
+      </p>
+      <p class="comunicado-texto" style="margin-bottom: 12px; background: rgba(255, 42, 141, 0.05); padding: 10px; border-left: 2px solid #ff2a8d; border-radius: 4px;">
+        🌸 Esta contribuição <strong>não é obrigatória</strong>. Você poderá continuar acompanhando as atualizações normalmente. O envio serve apenas para incentivar e demonstrar carinho pelo empenho da nossa equipe. Qualquer valor nos auxilia imensamente na manutenção da estrutura do scan.
+      </p>
+      <p class="comunicado-texto">
+        ✨ Ao apoiar, você pode sugerir obras que gostaria de ver por aqui. Todos os pedidos passam por uma avaliação cuidadosa da gerência (considerando tempo, hábil e disponibilidade).
+      </p>
+    </div>
+
+    <!-- SEÇÃO: IMPORTANTE -->
+    <div class="secao-titulo">
+      <span>🌸 Importante 🌸</span>
+      <div class="linha-divisorias"></div>
+    </div>
+
+    <div class="card-importante-fim">
+      <p>⚠️ Se você consome e gosta do nosso trabalho, sua fidelidade e leitura constante já significam o mundo para nós! ♡</p>
+    </div>
+
+    <!-- RODAPÉ -->
+    <div class="rodape-mensagem">
+      🌸 Obrigada por caminhar com a gente e fazer parte da nossa jornada! 🌸
+      <div style="margin-top: 5px; font-weight: bold; color: #ff2a8d;">— Flower's Nenasscan —</div>
+    </div>
+
+    <!-- BOTÃO VOLTAR -->
+    <div class="container-voltar">
+      <a href="javascript:history.back()" class="btn-voltar">♡ Voltar</a>
+    </div>
+
+  </div>
+</div>
+
 
         <!-- GÊNEROS -->
         <div id="generos" class="view-section">
