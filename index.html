@@ -2514,88 +2514,72 @@
 
 
  
-  <script>
-    window.addEventListener('load', () => {
-        // Intervalo curto para garantir que o script original do seu site já terminou de desenhar os cards na tela
-        const checarECorrigir = setInterval(() => {
+  
+                
+<script>
+    fetch('obras.json')
+        .then(response => response.json())
+        .then(obras => {
             const container = document.getElementById('grid-atualizacoes');
             if (!container) return;
-
-            const cards = Array.from(container.children);
-            // Só executa quando os cards reais da sua página já estiverem carregados no grid
-            if (cards.length === 0 || cards.some(c => c.innerText.includes('Carregando'))) return;
-
-            clearInterval(checarECorrigir); // Para o loop assim que pega os cards prontos
+            container.innerHTML = '';
 
             let historico = JSON.parse(localStorage.getItem('controle_atualizacoes_auto') || '{}');
             const agora = new Date().getTime();
             const quatroDiasEmMs = 4 * 24 * 60 * 60 * 1000;
-            let houveMudanca = false;
 
-            // 1. Analisa cada card existente na tela
-            const dadosCards = cards.map(card => {
-                const tituloEl = card.querySelector('h3, .titulo-obra, [class*="titulo"]');
-                // Procura especificamente onde está escrito o capítulo (ex: "Capítulo 03")
-                const capEl = Array.from(card.querySelectorAll('p, span, div')).find(el => el.innerText && el.innerText.toLowerCase().includes('capítulo'));
-                
-                const titulo = tituloEl ? tituloEl.innerText.trim() : '';
-                const capituloAtual = capEl ? capEl.innerText.trim() : '';
+            // Processa cada obra pegando o capítulo mais recente (o primeiro da lista)
+            const obrasProcessadas = obras.map(obra => {
+                const ultimoCap = obra.capitulos && obra.capitulos.length > 0 ? obra.capitulos[0].numero : '';
+                const idObra = obra.titulo;
 
-                if (!titulo) return { card, titulo, timestamp: 0, mostrarSelo: false, capEl };
-
-                let timestampObra;
-                let mostrarSelo = false;
-
-                if (!historico[titulo]) {
-                    // Obra nova no sistema
-                    timestampObra = agora;
-                    historico[titulo] = { capituloSalvo: capituloAtual, timestamp: agora };
-                    houveMudanca = true;
-                } else if (historico[titulo].capituloSalvo !== capituloAtual) {
-                    // MUDOU DE CAPÍTULO! SÓ AQUI ATUALIZA O TEMPO E O SELO!
-                    timestampObra = agora;
-                    historico[titulo] = { capituloSalvo: capituloAtual, timestamp: agora };
-                    houveMudanca = true;
-                } else {
-                    // Capítulo igual ao anterior: mantém o timestamp antigo e NÃO mostra selo (a menos que ainda esteja no prazo de 4 dias da última mudança real)
-                    timestampObra = historico[titulo].timestamp;
+                if (!historico[idObra]) {
+                    historico[idObra] = { capituloSalvo: ultimoCap, timestamp: agora };
+                } else if (historico[idObra].capituloSalvo !== ultimoCap) {
+                    // MUDOU DE CAPÍTULO: Atualiza a data para subir para o topo na hora!
+                    historico[idObra] = { capituloSalvo: ultimoCap, timestamp: agora };
                 }
 
-                const diferenca = agora - timestampObra;
-                if (diferenca >= 0 && diferenca < quatroDiasEmMs) {
-                    mostrarSelo = true;
-                }
+                const timestamp = historico[idObra].timestamp;
+                const diferenca = agora - timestamp;
+                const mostrarSelo = (diferenca >= 0 && diferenca < quatroDiasEmMs);
 
-                return { card, titulo, timestamp: timestampObra, mostrarSelo, capEl };
+                return {
+                    ...obra,
+                    ultimoCap,
+                    timestamp,
+                    mostrarSelo
+                };
             });
 
-            if (houveMudanca) {
-                localStorage.setItem('controle_atualizacoes_auto', JSON.stringify(historico));
-            }
+            localStorage.setItem('controle_atualizacoes_auto', JSON.stringify(historico));
 
-            // 2. Ordena do mais recente para o mais antigo
-            dadosCards.sort((a, b) => b.timestamp - a.timestamp);
+            // ORDENAÇÃO AUTOMÁTICA: Do mais recentemente atualizado para o mais antigo (topo = mais recente)
+            obrasProcessadas.sort((a, b) => b.timestamp - a.timestamp);
 
-            // 3. Reorganiza no DOM e injeta o selo EXATAMENTE AO LADO do texto do capítulo
-            dadosCards.forEach(item => {
-                container.appendChild(item.card); // Joga pro topo quem tiver o maior timestamp
+            // Monta os cards na tela mantendo a estrutura visual exata
+            obrasProcessadas.forEach(obra => {
+                const card = document.createElement('div');
+                card.className = 'manga-card';
+                card.style.position = 'relative';
 
-                if (item.mostrarSelo && item.capEl) {
-                    // Evita duplicar o selo se já existir
-                    if (!item.capEl.querySelector('.selo-novo-inline')) {
-                        const selo = document.createElement('span');
-                        selo.className = 'selo-novo-inline';
-                        selo.innerText = 'NOVO';
-                        // Estilo compacto para encaixar perfeitamente ao lado do texto do capítulo
-                        selo.style.cssText = 'background: #ff85c2; color: #fff; padding: 1px 5px; border-radius: 4px; font-size: 0.6rem; font-weight: bold; margin-left: 8px; display: inline-block; vertical-align: middle;';
-                        item.capEl.appendChild(selo);
-                    }
-                }
+                card.innerHTML = `
+                    <img src="${obra.capa}" alt="${obra.titulo}" style="width: 100%; border-radius: 8px; object-fit: cover;">
+                    <div style="margin-top: 8px;">
+                        <h3 style="font-size: 0.95rem; color: #fff; margin: 0 0 4px 0;">${obra.titulo}</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted, #aaa); margin: 0; display: flex; align-items: center; gap: 6px;">
+                            Capítulo ${obra.ultimoCap}
+                            ${obra.mostrarSelo ? '<span style="background: #ff85c2; color: #fff; padding: 1px 6px; border-radius: 4px; font-size: 0.6rem; font-weight: bold; display: inline-block;">NOVO</span>' : ''}
+                        </p>
+                    </div>
+                    <a href="leitor.html?id=${obra.id}&cap=${obra.ultimoCap}" style="display: block; margin-top: 8px; text-align: center; background: #ff85c2; color: #fff; padding: 6px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.85rem;">Ler</a>
+                `;
+
+                container.appendChild(card);
             });
-        }, 200);
-    });
+        })
+        .catch(err => console.error('Erro ao processar as obras:', err));
 </script>
-  
 
 
 
