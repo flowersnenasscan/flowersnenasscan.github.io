@@ -40,17 +40,14 @@
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* REMOVE O CLIQUE AZUL / DESTAQUE DE TOQUE */
             -webkit-tap-highlight-color: transparent;
             -webkit-touch-callout: none;
-            /* BLOQUEIO DE SELEÇÃO DE TEXTO */
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
         }
 
-        /* PERMITIR APENAS DIGITAÇÃO SE HOUVER INPUTS/TEXTAREAS */
         input, textarea {
             -webkit-user-select: text;
             -moz-user-select: text;
@@ -58,12 +55,8 @@
             user-select: text;
         }
 
-        /* PROTEÇÃO DE IMAGENS (BLOQUEIA ARRASTE E SALVAR DIRETO) */
         img {
             -webkit-user-drag: none;
-            -khtml-user-drag: none;
-            -moz-user-drag: none;
-            -o-user-drag: none;
             user-drag: none;
             pointer-events: none;
         }
@@ -103,9 +96,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .section-divider-line {
-            display: none;
-        }
+        .section-divider-line { display: none; }
 
         #titulo-ultimas-atualizacoes {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -214,9 +205,7 @@
             border-left: 2px solid var(--primary-pink);
         }
 
-        #sidebar-menu.open {
-            right: 0;
-        }
+        #sidebar-menu.open { right: 0; }
 
         .sidebar-header {
             display: flex;
@@ -311,9 +300,7 @@
             background-position: center;
         }
 
-        .hero-slide.active {
-            opacity: 1;
-        }
+        .hero-slide.active { opacity: 1; }
 
         .hero-slide::after {
             content: '';
@@ -326,10 +313,7 @@
             z-index: 1;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+        .hero-content { position: relative; z-index: 2; }
 
         .hero-title {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -495,9 +479,7 @@
             text-shadow: 0 0 8px rgba(255, 153, 221, 0.5);
         }
 
-        .manga-titulo:hover {
-            text-decoration: underline;
-        }
+        .manga-titulo:hover { text-decoration: underline; }
 
         .card-tags-row {
             display: flex;
@@ -523,11 +505,7 @@
             color: var(--text-muted);
             margin-top: 2px;
         }
-        .card-recent-chapter svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-        }
+        .card-recent-chapter svg { width: 14px; height: 14px; fill: currentColor; }
 
         .btn-continuar-lendo {
             display: flex;
@@ -546,11 +524,7 @@
             transition: 0.2s;
             text-shadow: var(--neon-glow);
         }
-        .btn-continuar-lendo svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-        }
+        .btn-continuar-lendo svg { width: 14px; height: 14px; fill: currentColor; }
         .btn-continuar-lendo:hover {
             background: rgba(255, 153, 221, 0.15);
             border-color: var(--primary-pink);
@@ -583,11 +557,6 @@
             text-shadow: var(--neon-glow);
         }
 
-        .data-cap-recente {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-        }
-
         .selo-novo-cap {
             background: rgba(255, 153, 221, 0.2);
             color: var(--primary-pink);
@@ -604,6 +573,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 6px;
         }
 
         .capitulo-link {
@@ -620,9 +590,7 @@
             text-decoration: underline;
         }
 
-        .biblioteca-header-area {
-            margin-bottom: 16px;
-        }
+        .biblioteca-header-area { margin-bottom: 16px; }
         .biblioteca-title-row {
             display: flex;
             align-items: center;
@@ -652,9 +620,7 @@
             margin-bottom: 14px;
             scrollbar-width: none;
         }
-        .bib-tabs-container::-webkit-scrollbar {
-            display: none;
-        }
+        .bib-tabs-container::-webkit-scrollbar { display: none; }
         .bib-tab {
             background: #0b0b0f;
             border: 1px solid rgba(255, 153, 221, 0.35);
@@ -671,11 +637,7 @@
             transition: 0.2s;
             text-shadow: var(--neon-glow);
         }
-        .bib-tab svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-        }
+        .bib-tab svg { width: 14px; height: 14px; fill: currentColor; }
         .bib-tab:hover {
             background: rgba(255, 153, 221, 0.15);
             border-color: var(--primary-pink);
@@ -686,9 +648,7 @@
             border-color: var(--primary-pink);
             text-shadow: none;
         }
-        .bib-tab.active svg {
-            fill: #2b061d;
-        }
+        .bib-tab.active svg { fill: #2b061d; }
         .bib-tab.active span {
             color: #2b061d !important;
             text-shadow: none !important;
@@ -716,11 +676,7 @@
             font-size: 0.85rem;
             color: var(--text-muted);
         }
-        .bib-filter-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .bib-filter-left { display: flex; align-items: center; gap: 12px; }
         .bib-filter-btn {
             background: #0b0b0f;
             border: 1px solid rgba(255, 153, 221, 0.35);
@@ -735,11 +691,7 @@
             text-shadow: var(--neon-glow);
             transition: 0.2s;
         }
-        .bib-filter-btn svg {
-            width: 14px;
-            height: 14px;
-            fill: currentColor;
-        }
+        .bib-filter-btn svg { width: 14px; height: 14px; fill: currentColor; }
         .bib-filter-btn:hover {
             background: rgba(255, 153, 221, 0.15);
             border-color: var(--primary-pink);
@@ -762,7 +714,6 @@
             transition: all 0.25s ease;
             cursor: pointer;
         }
-
         .btn-explorar-obras-estilizado:hover {
             background: var(--primary-pink);
             color: #000000;
@@ -770,10 +721,7 @@
             transform: translateY(-2px);
         }
 
-        .todas-obras-header {
-            margin-bottom: 20px;
-        }
-
+        .todas-obras-header { margin-bottom: 20px; }
         .todas-obras-sub {
             font-size: 0.88rem;
             color: var(--text-muted);
@@ -837,10 +785,7 @@
             text-shadow: var(--neon-glow);
             transition: transform 0.3s ease;
         }
-
-        .filtros-card-arrow.collapsed {
-            transform: rotate(-90deg);
-        }
+        .filtros-card-arrow.collapsed { transform: rotate(-90deg); }
 
         .filtros-botoes-row {
             display: flex;
@@ -850,9 +795,7 @@
             scrollbar-width: none;
             transition: max-height 0.3s ease, opacity 0.3s ease;
         }
-        .filtros-botoes-row::-webkit-scrollbar {
-            display: none;
-        }
+        .filtros-botoes-row::-webkit-scrollbar { display: none; }
 
         .filtro-pill-btn {
             background: transparent;
@@ -895,11 +838,6 @@
             background: linear-gradient(90deg, transparent, rgba(255, 153, 221, 0.6));
             box-shadow: 0 0 8px rgba(255, 153, 221, 0.4);
         }
-        .todas-obras-flower-footer-icon {
-            font-size: 1.2rem;
-            color: var(--primary-pink);
-            text-shadow: var(--neon-glow);
-        }
 
         .filtro-categoria-titulo {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -941,9 +879,7 @@
             text-shadow: none;
         }
 
-        .genre-hidden {
-            display: none !important;
-        }
+        .genre-hidden { display: none !important; }
 
         .btn-ver-mais-generos {
             background: transparent;
@@ -958,19 +894,7 @@
             display: inline-block;
             text-decoration: underline;
         }
-        .btn-ver-mais-generos:hover {
-            color: #ffffff;
-        }
-
-        /* Estilos específicos da Tela de Avisos (Inspirados nas Imagens) */
-        .avisos-card-box {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 153, 221, 0.4);
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 16px;
-            box-shadow: 0 0 15px rgba(255, 153, 221, 0.15);
-        }
+        .btn-ver-mais-generos:hover { color: #ffffff; }
 
         .aviso-topo-banner {
             background: #0d0d14;
@@ -984,22 +908,9 @@
             box-shadow: var(--neon-glow);
         }
 
-        .aviso-topo-esquerda {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .aviso-topo-icone {
-            font-size: 1.2rem;
-        }
-
-        .aviso-topo-texto {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
+        .aviso-topo-esquerda { display: flex; align-items: center; gap: 10px; }
+        .aviso-topo-icone { font-size: 1.2rem; }
+        .aviso-topo-texto { display: flex; flex-direction: column; gap: 2px; }
         .aviso-topo-titulo-mini {
             font-size: 0.72rem;
             font-weight: 700;
@@ -1007,18 +918,9 @@
             color: var(--text-muted);
             letter-spacing: 0.5px;
         }
+        .aviso-topo-sub { font-size: 0.85rem; font-weight: 600; color: #ffffff; }
 
-        .aviso-topo-sub {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #ffffff;
-        }
-
-        .aviso-principal-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
+        .aviso-principal-header { text-align: center; margin-bottom: 20px; }
         .aviso-titulo-principal {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
@@ -1033,7 +935,6 @@
             gap: 8px;
             margin-bottom: 4px;
         }
-
         .aviso-sub-principal {
             font-size: 0.78rem;
             color: var(--text-muted);
@@ -1051,7 +952,6 @@
             margin-bottom: 20px;
             box-shadow: 0 0 20px rgba(255, 153, 221, 0.2);
         }
-
         .aviso-flor-abs {
             position: absolute;
             top: 15px;
@@ -1060,7 +960,6 @@
             color: var(--primary-pink);
             text-shadow: var(--neon-glow);
         }
-
         .aviso-bloco-titulo {
             font-family: 'Playfair Display', serif;
             font-size: 1.25rem;
@@ -1069,7 +968,6 @@
             margin-bottom: 8px;
             text-shadow: 0 0 10px var(--primary-pink);
         }
-
         .aviso-bloco-texto {
             font-size: 0.88rem;
             color: var(--text-muted);
@@ -1077,7 +975,6 @@
             text-shadow: var(--neon-glow);
             padding-right: 30px;
         }
-
         .aviso-assinatura-lateral {
             text-align: right;
             font-family: 'Playfair Display', cursive, serif;
@@ -1111,20 +1008,8 @@
             gap: 10px;
             position: relative;
         }
-
-        .aviso-item-topo {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        .aviso-item-info {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
+        .aviso-item-topo { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+        .aviso-item-info { display: flex; gap: 12px; align-items: flex-start; }
         .aviso-item-icone-redondo {
             width: 38px;
             height: 38px;
@@ -1138,42 +1023,12 @@
             flex-shrink: 0;
             box-shadow: 0 0 8px rgba(255, 153, 221, 0.3);
         }
-
-        .aviso-item-detalhes {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
+        .aviso-item-detalhes { display: flex; flex-direction: column; gap: 2px; }
         .aviso-item-titulo {
             font-size: 0.95rem;
             font-weight: 700;
             color: #ffffff;
             text-shadow: 0 0 8px var(--primary-pink);
-        }
-
-        .aviso-botao-acao {
-            background: transparent;
-            border: 1px solid rgba(255, 153, 221, 0.5);
-            color: var(--primary-pink);
-            padding: 5px 12px;
-            border-radius: 14px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            text-decoration: none;
-            white-space: nowrap;
-            transition: 0.2s;
-            text-shadow: var(--neon-glow);
-        }
-
-        .aviso-botao-acao:hover {
-            background: var(--primary-pink);
-            color: #000;
-            box-shadow: 0 0 12px var(--primary-pink);
         }
 
         .aviso-lista-topicos {
@@ -1183,7 +1038,6 @@
             margin-top: 6px;
             padding-left: 4px;
         }
-
         .aviso-topico-linha {
             display: flex;
             align-items: flex-start;
@@ -1194,18 +1048,7 @@
             text-shadow: var(--neon-glow);
         }
 
-        .aviso-topico-linha svg, .aviso-topico-linha span.bullet-icon {
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .aviso-footer-voltar {
-            display: flex;
-            justify-content: center;
-            margin-top: 24px;
-            margin-bottom: 10px;
-        }
-
+        .aviso-footer-voltar { display: flex; justify-content: center; margin-top: 24px; margin-bottom: 10px; }
         .btn-voltar-aviso {
             display: inline-flex;
             align-items: center;
@@ -1224,7 +1067,6 @@
             cursor: pointer;
             text-shadow: var(--neon-glow);
         }
-
         .btn-voltar-aviso:hover {
             background: var(--primary-pink);
             color: #000;
@@ -1246,7 +1088,7 @@
 
         .nav-item {
             background: none;
-            border: None;
+            border: none;
             color: var(--text-muted);
             display: flex;
             flex-direction: column;
@@ -1259,14 +1101,12 @@
             transition: 0.2s;
             text-shadow: var(--neon-glow);
         }
-
         .nav-item svg {
             width: 22px;
             height: 22px;
             fill: currentColor;
             filter: drop-shadow(0 0 4px rgba(255, 153, 221, 0.6));
         }
-
         .nav-item.active, .nav-item:hover {
             color: var(--primary-pink);
             text-shadow: var(--neon-glow);
@@ -1376,7 +1216,6 @@
                         </div>
                     </div>
 
-                    <!-- LINHA RODAPÉ OBRAS -->
                     <div class="todas-obras-flower-footer-container">
                         <div class="todas-obras-flower-line"></div>
                     </div>
@@ -1434,8 +1273,6 @@
         <!-- AVISOS -->
         <div id="avisos" class="view-section">
             <div class="section-container">
-                
-                <!-- TOPO: AVISO RÁPIDO -->
                 <div class="aviso-topo-banner">
                     <div class="aviso-topo-esquerda">
                         <span class="aviso-topo-icone">🌸</span>
@@ -1447,13 +1284,11 @@
                     <span style="color: var(--primary-pink); font-size: 1.1rem; text-shadow: var(--neon-glow);">&gt;</span>
                 </div>
 
-                <!-- CABEÇALHO PRINCIPAL DE AVISOS -->
                 <div class="aviso-principal-header">
                     <h1 class="aviso-titulo-principal">🌸 AVISOS 🌸</h1>
                     <div class="aviso-sub-principal">Fique por dentro das nossas atualizações e informações importantes!</div>
                 </div>
 
-                <!-- BLOCO: BEM-VINDOS -->
                 <div class="aviso-bloco-bemvindo">
                     <span class="aviso-flor-abs"></span>
                     <h3 class="aviso-bloco-titulo">Bem-vindos à Flower's Nenasscan! ♡</h3>
@@ -1461,138 +1296,15 @@
                     <div class="aviso-assinatura-lateral">Obrigado por estar aqui!</div>
                 </div>
 
-                <!-- SEÇÃO: AVISOS IMPORTANTES -->
-                <div class="aviso-secao-titulo">
-                    <span>📣</span>
-                    <h2>Avisos importantes</h2>
-                </div>
-
-                <!-- CARD 1: COMUNICADO -->
-                <div class="aviso-item-card">
-                    <div class="aviso-item-topo">
-                        <div class="aviso-item-info">
-                            <div class="aviso-item-icone-redondo">💬</div>
-                            <div class="aviso-item-detalhes">
-                                <span class="aviso-item-titulo">Comunicado</span>
-                            </div>
-                        </div>
-                    </div>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; text-shadow: var(--neon-glow); margin-top: 4px;">
-                        Somos uma scan privada — nosso objetivo é continuar assim, trazendo conteúdos exclusivos e de qualidade para quem realmente acompanha e valoriza nosso trabalho.
-                    </p>
-                </div>
-
-                <!-- CARD 2: PROTEJA NOSSO TRABALHO -->
-                <div class="aviso-item-card">
-                    <div class="aviso-item-topo">
-                        <div class="aviso-item-info">
-                            <div class="aviso-item-icone-redondo">🛡️</div>
-                            <div class="aviso-item-detalhes">
-                                <span class="aviso-item-titulo">Proteja nosso trabalho</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="aviso-lista-topicos">
-                        <div class="aviso-topico-linha">
-                            <span style="color: #ff4d4d; text-shadow: 0 0 6px rgba(255,77,77,0.7); font-weight: bold;">❌</span>
-                            <span>Não compartilhe a senha com terceiros, em redes sociais ou grupos públicos.</span>
-                        </div>
-                        <div class="aviso-topico-linha">
-                            <span style="color: #4caf50; text-shadow: 0 0 6px rgba(76,175,80,0.7); font-weight: bold;">✔</span>
-                            <span>A senha deve ser compartilhada apenas no nosso canal principal e nos canais parceiros autorizados.</span>
-                        </div>
-                        <div class="aviso-topico-linha">
-                            <span style="color: #4caf50; text-shadow: 0 0 6px rgba(76,175,80,0.7); font-weight: bold;">♥︎</span>
-                            <span>Se alguém quiser acessar nossas obras,encaminhe a pessoa diretamente para o nosso canal, ou se preferir,informa a senha apenas em mensagens privadas.</span>
-                        </div>
-                        <div class="aviso-topico-linha">
-                            <span style="color: #ff9800; text-shadow: 0 0 6px rgba(255,152,0,0.7); font-weight: bold;">⚠️</span>
-                            <span>Evite consumir nossas obras em sites ou grupos que roubam conteúdo.</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- SEÇÃO: COMO VOCÊ PODE AJUDAR -->
-                <div class="aviso-bloco-bemvindo" style="margin-top: 24px;">
-                    <span class="aviso-flor-abs">🌸</span>
-                    <h3 class="aviso-bloco-titulo"> Como Você Pode Ajudar ♡</h3>
-                    
-                    <div class="aviso-lista-topicos" style="margin-top: 10px;">
-                        <div class="aviso-topico-linha">
-                            <span style="color: var(--primary-pink);">♥</span>
-                            <span>Leia sempre na plataforma oficial de quem traduz e entrega conteúdo gratuito e de qualidade.</span>
-                        </div>
-                        <div class="aviso-topico-linha">
-                            <span style="color: var(--primary-pink);">♥</span>
-                            <span>Não indique agregadores ou canais não oficiais para outros leitores.</span>
-                        </div>
-                        <div class="aviso-topico-linha">
-                            <span style="color: var(--primary-pink);">♥</span>
-                            <span>Respeite as marcas d'água e avisos presentes em cada capítulo.</span>
-                        </div>
-                        <div class="aviso-topico-linha">
-                            <span style="color: var(--primary-pink);">♥</span>
-                            <span>Valorize o empenho da equipe para continuarmos trazendo histórias de tirar o fôlego!</span>
-                        </div>
-                    </div>
-                    <div class="aviso-assinatura-lateral" style="font-style: normal; font-weight: 600;">Juntos fazemos a diferença! ♡</div>
-                </div>
-
-                <!-- SEÇÃO: APOIO À EQUIPE (OPCIONAL) -->
-                <div class="aviso-bloco-bemvindo">
-                    <span class="aviso-flor-abs"></span>
-                    <h3 class="aviso-bloco-titulo">💖 Apoio à Equipe (Opcional)</h3>
-                    
-                    <p class="aviso-bloco-texto" style="margin-bottom: 12px;">
-                        Nosso trabalho exige dedicação, tempo e muito carinho em cada detalhe — desde a tradução primária até a edição e revisão final de cada lançamento.
-                    </p>
-                    <p class="aviso-bloco-texto" style="margin-bottom: 12px;">
-                        Para manter o projeto ativo e com a qualidade atual, disponibilizamos uma aba de suporte financeiro voluntário.
-                    </p>
-
-                    <div style="background: rgba(255, 153, 221, 0.06); border: 1px solid rgba(255, 153, 221, 0.3); border-radius: 12px; padding: 12px; margin: 12px 0; display: flex; gap: 10px; align-items: flex-start;">
-                        <span style="font-size: 1.1rem;">🌸</span>
-                        <p style="font-size: 0.83rem; color: var(--text-muted); line-height: 1.4; text-shadow: var(--neon-glow);">
-                            Esta contribuição não é obrigatória. Você poderá continuar acompanhando as atualizações normalmente. O envio serve apenas para incentivar e demonstrar carinho pelo empenho da nossa equipe. Qualquer valor nos auxilia imensamente na manutenção da estrutura do scan.
-                        </p>
-                    </div>
-
-                    <div style="display: flex; gap: 10px; align-items: flex-start; margin-top: 10px;">
-                        <span style="font-size: 1rem;">✨</span>
-                        <p style="font-size: 0.83rem; color: var(--text-muted); line-height: 1.4; text-shadow: var(--neon-glow);">
-                            Ao apoiar, você pode sugerir obras que gostaria de ver por aqui. Todos os pedidos passam por uma avaliação cuidadosa da gerência (considerando tempo, hábil e disponibilidade).
-                        </p>
-                    </div>
-                </div>
-
-                <!-- SEÇÃO: IMPORTANTE -->
-                <div class="aviso-bloco-bemvindo" style="text-align: center;">
-                    <h3 class="aviso-bloco-titulo" style="font-size: 1.1rem; display: inline-flex; align-items: center; gap: 6px;">
-                        <span>🌸</span> Importante <span>🌸</span>
-                    </h3>
-                    <p class="aviso-bloco-texto" style="padding-right: 0; text-align: center; margin-top: 6px;">
-                        ⚠️ Se você consome e gosta do nosso trabalho, sua fidelidade e leitura constante já significam o mundo para nós! ♥
-                    </p>
-                </div>
-
-                <div style="text-align: center; margin: 20px 0 10px 0;">
-                    <span style="font-size: 1.1rem;">🌸</span>
-                    <span style="font-size: 0.85rem; color: var(--text-muted); display: block; margin-top: 4px; text-shadow: var(--neon-glow);">Obrigada por caminhar com a gente e fazer parte da nossa jornada! 🌸</span>
-                    <span style="font-family: 'Playfair Display', serif; font-size: 0.9rem; color: var(--primary-pink); display: block; margin-top: 6px; text-shadow: var(--neon-glow);">— Flower's Nenasscan —</span>
-                </div>
-
-                <!-- BOTÃO VOLTAR -->
                 <div class="aviso-footer-voltar">
                     <a href="./" class="btn-voltar-aviso" onclick="event.preventDefault(); mudarAbaVisual('inicio'); history.pushState({}, '', './');">
                         ♡ Voltar
                     </a>
                 </div>
-
             </div>
         </div>
 
-        <!-- GÊNEROS / FILTROS COMPLETOS -->
+        <!-- GÊNEROS -->
         <div id="generos" class="view-section">
             <div class="section-container">
                 <div class="section-header">
@@ -1627,7 +1339,6 @@
                     <button class="genre-pill-btn" data-cat="classificacao" data-val="18" onclick="alternarFiltroIndependente('classificacao', '18', this)">+18</button>
                 </div>
 
-                <!-- LINHA RODAPÉ GÊNEROS -->
                 <div class="todas-obras-flower-footer-container" style="margin-top: 20px;">
                     <div class="todas-obras-flower-line"></div>
                 </div>
@@ -1664,7 +1375,6 @@
     </nav>
 
     <script>
-        // SCRIPT DE PROTEÇÃO ADICIONAL (BLOQUEIA BOTÃO DIREITO E ATALHOS DE INSPEÇÃO)
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.addEventListener('keydown', event => {
             if (
@@ -1691,6 +1401,29 @@
 
         function criarSlug(texto) {
             return String(texto || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+        }
+
+        // Função para converter e comparar a data do capítulo mais recente (calcula se está dentro de 4 dias)
+        function obterDataUltimoCapitulo(obra) {
+            if (!obra.capitulos || !Array.isArray(obra.capitulos) || obra.capitulos.length === 0) {
+                return new Date(0); // Data antiga se não tiver capítulos
+            }
+            let capObj = obra.capitulos[0];
+            let dataStr = typeof capObj === 'object' ? (capObj.data || '') : '';
+            if (!dataStr) return new Date(0);
+
+            let partes = dataStr.split('/');
+            let dataCap;
+            if (partes.length === 3) {
+                dataCap = new Date(`${partes[2]}-${partes[1]}-${partes[0]}`);
+            } else {
+                dataCap = new Date(dataStr);
+            }
+            return isNaN(dataCap.getTime()) ? new Date(0) : dataCap;
+        }
+
+        function ordenarObrasPorMaisRecentes(obras) {
+            return [...obras].sort((a, b) => obterDataUltimoCapitulo(b) - obterDataUltimoCapitulo(a));
         }
 
         function ehCapituloNovo(dataStr) {
@@ -1763,13 +1496,13 @@
                 if (res.ok) {
                     const data = await res.json();
                     if (Array.isArray(data) && data.length > 0) {
-                        listaObras = data;
+                        listaObras = ordenarObrasPorMaisRecentes(data);
                         inicializarHome();
                         verificarParametroUrl();
                         return;
                     }
                 }
-                throw new Error("obras.json falhou ou vazio, buscando direto do Supabase...");
+                throw new Error("obras.json falhou ou vazio...");
             } catch (err) {
                 console.warn(err.message);
                 try {
@@ -1780,12 +1513,7 @@
                         const sbClient = supabase.createClient(sUrl, sKey);
                         const { data: sbData, error: sbError } = await sbClient.from('obras').select('*');
                         if (!sbError && sbData) {
-                            listaObras = sbData;
-                        }
-                    } else if (typeof _supabase !== 'undefined') {
-                        const { data: sbData, error: sbError } = await _supabase.from('obras').select('*');
-                        if (!sbError && sbData) {
-                            listaObras = sbData;
+                            listaObras = ordenarObrasPorMaisRecentes(sbData);
                         }
                     }
                 } catch (supabaseErr) {
@@ -1830,17 +1558,7 @@
 
         function renderizarCarrosselAleatorio() {
             const carousel = document.getElementById('hero-carousel');
-            if (!listaObras || listaObras.length === 0) {
-                carousel.innerHTML = `
-                    <div class="hero-slide active" style="background-image: url('');">
-                        <div class="hero-content">
-                            <div class="hero-title">Nenhuma obra cadastrada</div>
-                            <div class="hero-synopsis">Adicione obras ao seu catálogo ou banco de dados.</div>
-                        </div>
-                    </div>
-                `;
-                return;
-            }
+            if (!listaObras || listaObras.length === 0) return;
 
             const copia = [...listaObras].sort(() => 0.5 - Math.random());
             const destaques = copia.slice(0, 5);
@@ -1861,17 +1579,6 @@
                     </div>
                 `;
             });
-
-            let slideIndex = 0;
-            const slides = carousel.querySelectorAll('.hero-slide');
-            if (slides.length > 1) {
-                setInterval(() => {
-                    slides[slideIndex].classList.remove('active');
-                    slideIndex = (slideIndex + 1) % slides.length;
-                    slides[slideIndex].classList.add('active');
-                    obraCarrosselAtualSlug = slides[slideIndex].dataset.slug;
-                }, 4500);
-            }
         }
 
         function abrirObraDoCarrossel() {
@@ -1889,7 +1596,7 @@
                 return;
             }
 
-            const recentes = listaObras.slice(0, 10);
+            const recentes = ordenarObrasPorMaisRecentes(listaObras).slice(0, 10);
 
             recentes.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
@@ -1938,16 +1645,11 @@
 
             grid.innerHTML = '';
 
-            if (!listaObras || listaObras.length === 0) {
-                if (counterEl) counterEl.innerText = `0 obras`;
-                grid.innerHTML = `<p style="color: var(--text-muted); grid-column: span 2;">Nenhuma obra cadastrada.</p>`;
-                return;
-            }
-
-            let obrasFiltradas = listaObras;
+            let obrasOrdenadas = ordenarObrasPorMaisRecentes(listaObras);
+            let obrasFiltradas = obrasOrdenadas;
 
             if (filtroObrasStatusAtual) {
-                obrasFiltradas = listaObras.filter(obra => {
+                obrasFiltradas = obrasOrdenadas.filter(obra => {
                     let st = String(obra.status || '').toLowerCase();
                     if (filtroObrasStatusAtual === 'andamento') {
                         return st.includes('andamento');
@@ -1974,16 +1676,20 @@
             obrasFiltradas.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
                 let ultimoCapNum = 'Em breve';
+                let dataCap = '';
                 let slugCap = '';
                 let linkLeitor = '#';
 
                 if (obra.capitulos && obra.capitulos.length > 0) {
                     let capObj = obra.capitulos[0];
                     ultimoCapNum = typeof capObj === 'object' ? capObj.numero : capObj;
+                    dataCap = typeof capObj === 'object' ? (capObj.data || '') : '';
                     slugCap = String(ultimoCapNum).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
                     linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`;
                 }
 
+                let exibirSelo = ehCapituloNovo(dataCap);
+                let seloHtml = exibirSelo ? `<span class="selo-novo-cap">NOVO</span>` : '';
                 let badgesHtml = gerarBadgesObra(obra);
 
                 grid.innerHTML += `
@@ -1996,6 +1702,7 @@
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
                             <div class="capitulo-recente-row">
                                 <a href="${linkLeitor}" class="capitulo-link" onclick="event.stopPropagation()">Capítulo ${ultimoCapNum}</a>
+                                ${seloHtml}
                             </div>
                         </div>
                     </div>
@@ -2050,17 +1757,9 @@
             });
 
             let listaGenerosUnicos = Array.from(conjuntoGeneros).sort();
-
-            if (listaGenerosUnicos.length === 0) {
-                containerBotoesGeneros.innerHTML = `<span style="color: var(--text-muted); font-size: 0.85rem;">Nenhum gênero encontrado nas obras.</span>`;
-                containerVerMais.innerHTML = '';
-                aplicarFiltrosMultiplos();
-                return;
-            }
-
             let limiteExibicao = 8;
-
             let htmlBotoesGen = '';
+
             listaGenerosUnicos.forEach((gen, index) => {
                 let ativoClass = filtrosAtivos.genero === gen ? 'active' : '';
                 let hiddenClass = (!generosExpandidos && index >= limiteExibicao) ? 'genre-hidden' : '';
@@ -2072,24 +1771,9 @@
             });
 
             containerBotoesGeneros.innerHTML = htmlBotoesGen;
-
-            if (listaGenerosUnicos.length > limiteExibicao) {
-                if (!generosExpandidos) {
-                    containerVerMais.innerHTML = `
-                        <button class="btn-ver-mais-generos" onclick="alternarExpandirGeneros()">
-                            Ver mais
-                        </button>
-                    `;
-                } else {
-                    containerVerMais.innerHTML = `
-                        <button class="btn-ver-mais-generos" onclick="alternarExpandirGeneros()">
-                            Ver menos
-                        </button>
-                    `;
-                }
-            } else {
-                containerVerMais.innerHTML = '';
-            }
+            containerVerMais.innerHTML = listaGenerosUnicos.length > limiteExibicao ? `
+                <button class="btn-ver-mais-generos" onclick="alternarExpandirGeneros()">${generosExpandidos ? 'Ver menos' : 'Ver mais'}</button>
+            ` : '';
 
             aplicarFiltrosMultiplos();
         }
@@ -2104,17 +1788,11 @@
                 elemento.classList.remove('active');
                 filtrosAtivos[categoria] = null;
             } else {
-                Object.keys(filtrosAtivos).forEach(cat => {
-                    filtrosAtivos[cat] = null;
-                });
-                document.querySelectorAll('.genre-pill-btn').forEach(b => {
-                    b.classList.remove('active');
-                });
-                
+                Object.keys(filtrosAtivos).forEach(cat => { filtrosAtivos[cat] = null; });
+                document.querySelectorAll('.genre-pill-btn').forEach(b => { b.classList.remove('active'); });
                 elemento.classList.add('active');
                 filtrosAtivos[categoria] = valor;
             }
-
             aplicarFiltrosMultiplos();
         }
 
@@ -2123,97 +1801,66 @@
             if (!grid) return;
 
             grid.innerHTML = '';
-
             let nenhumFiltroAtivo = !filtrosAtivos.genero && !filtrosAtivos.status && !filtrosAtivos.tipo && !filtrosAtivos.classificacao;
 
             if (nenhumFiltroAtivo) {
                 grid.style.gridTemplateColumns = '1fr';
-                grid.innerHTML = `
-                    <div style="padding: 40px 20px; text-align: center; grid-column: span 2;">
-                        <p style="color: var(--text-muted); font-size: 0.9rem; text-shadow: var(--neon-glow);">Selecione um filtro acima para exibir as obras.</p>
-                    </div>
-                `;
+                grid.innerHTML = `<div style="padding: 40px 20px; text-align: center; grid-column: span 2;"><p style="color: var(--text-muted); font-size: 0.9rem;">Selecione um filtro acima para exibir as obras.</p></div>`;
                 return;
             }
 
-            let obrasFiltradas = listaObras.filter(obra => {
+            let obrasOrdenadas = ordenarObrasPorMaisRecentes(listaObras);
+            let obrasFiltradas = obrasOrdenadas.filter(obra => {
                 if (filtrosAtivos.genero) {
                     let temGen = false;
                     let filtroGenLower = filtrosAtivos.genero.toLowerCase().trim();
-
-                    if (obra.generos && Array.isArray(obra.generos)) {
-                        if (obra.generos.some(g => String(g).trim().toLowerCase() === filtroGenLower)) {
-                            temGen = true;
-                        }
-                    }
-                    if (!temGen && obra.tags && Array.isArray(obra.tags)) {
-                        if (obra.tags.some(t => String(t).trim().toLowerCase() === filtroGenLower)) {
-                            temGen = true;
-                        }
-                    }
+                    if (obra.generos && Array.isArray(obra.generos) && obra.generos.some(g => String(g).trim().toLowerCase() === filtroGenLower)) temGen = true;
+                    if (!temGen && obra.tags && Array.isArray(obra.tags) && obra.tags.some(t => String(t).trim().toLowerCase() === filtroGenLower)) temGen = true;
                     if (!temGen) return false;
                 }
-
                 if (filtrosAtivos.status) {
                     let st = String(obra.status || '').toLowerCase();
                     if (filtrosAtivos.status === 'andamento' && !st.includes('andamento')) return false;
                     if (filtrosAtivos.status === 'completo' && !st.includes('completo') && !st.includes('concluido') && !st.includes('finalizado')) return false;
                     if (filtrosAtivos.status === 'hiatus' && !st.includes('hiatus') && !st.includes('pausa')) return false;
                 }
-
                 if (filtrosAtivos.tipo) {
                     let tipoFiltro = filtrosAtivos.tipo.toLowerCase();
                     let tipoObra = String(obra.tipo || obra.formato || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-                    
-                    let temTipoNasFontes = false;
-                    if (obra.generos && Array.isArray(obra.generos)) {
-                        if (obra.generos.some(g => String(g).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(tipoFiltro))) {
-                            temTipoNasFontes = true;
-                        }
-                    }
-                    if (!temTipoNasFontes && obra.tags && Array.isArray(obra.tags)) {
-                        if (obra.tags.some(t => String(t).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(tipoFiltro))) {
-                            temTipoNasFontes = true;
-                        }
-                    }
-                    
-                    if (!tipoObra.includes(tipoFiltro) && !temTipoNasFontes) return false;
+                    if (!tipoObra.includes(tipoFiltro)) return false;
                 }
-
                 if (filtrosAtivos.classificacao) {
                     let ehNsfw = checarSeEObraNsfw(obra);
                     if (filtrosAtivos.classificacao === '18' && !ehNsfw) return false;
                     if (filtrosAtivos.classificacao === 'livre' && ehNsfw) return false;
                 }
-
                 return true;
             });
 
             if (obrasFiltradas.length === 0) {
                 grid.style.gridTemplateColumns = '1fr';
-                grid.innerHTML = `
-                    <div style="padding: 40px 20px; text-align: center; grid-column: span 2;">
-                        <p style="color: var(--text-muted); font-size: 0.9rem; text-shadow: var(--neon-glow);">Nenhuma obra encontrada com os filtros selecionados.</p>
-                    </div>
-                `;
+                grid.innerHTML = `<div style="padding: 40px 20px; text-align: center; grid-column: span 2;"><p style="color: var(--text-muted); font-size: 0.9rem;">Nenhuma obra encontrada.</p></div>`;
                 return;
             }
 
             grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
-
             obrasFiltradas.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
                 let ultimoCapNum = 'Em breve';
+                let dataCap = '';
                 let slugCap = '';
                 let linkLeitor = '#';
 
                 if (obra.capitulos && obra.capitulos.length > 0) {
                     let capObj = obra.capitulos[0];
                     ultimoCapNum = typeof capObj === 'object' ? capObj.numero : capObj;
+                    dataCap = typeof capObj === 'object' ? (capObj.data || '') : '';
                     slugCap = String(ultimoCapNum).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
                     linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`;
                 }
 
+                let exibirSelo = ehCapituloNovo(dataCap);
+                let seloHtml = exibirSelo ? `<span class="selo-novo-cap">NOVO</span>` : '';
                 let badgesHtml = gerarBadgesObra(obra);
 
                 grid.innerHTML += `
@@ -2226,6 +1873,7 @@
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
                             <div class="capitulo-recente-row">
                                 <a href="${linkLeitor}" class="capitulo-link" onclick="event.stopPropagation()">Capítulo ${ultimoCapNum}</a>
+                                ${seloHtml}
                             </div>
                         </div>
                     </div>
@@ -2243,68 +1891,25 @@
         function renderizarBiblioteca() {
             const container = document.getElementById('lista-favoritos');
             let favoritosSalvos = [];
-            
             try {
                 const itemBruto = localStorage.getItem('flowers_favoritos');
                 if (itemBruto && itemBruto !== "undefined" && itemBruto !== "null") {
                     favoritosSalvos = JSON.parse(itemBruto);
                 }
-            } catch(e) { 
-                favoritosSalvos = []; 
-            }
+            } catch(e) { favoritosSalvos = []; }
 
             if (!Array.isArray(favoritosSalvos)) favoritosSalvos = [];
 
-            let obrasFavs = listaObras.filter(o => favoritosSalvos.includes(o.titulo) || favoritosSalvos.includes(o.id));
-
+            let obrasFavs = ordenarObrasPorMaisRecentes(listaObras).filter(o => favoritosSalvos.includes(o.titulo) || favoritosSalvos.includes(o.id));
             const badgeCount = document.getElementById('count-todos');
-            if (badgeCount) {
-                badgeCount.innerText = obrasFavs.length;
-            }
+            if (badgeCount) badgeCount.innerText = obrasFavs.length;
 
             if (obrasFavs.length === 0) {
                 container.style.gridTemplateColumns = '1fr';
                 container.innerHTML = `
                     <div class="bib-empty-state" style="grid-column: span 2; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-                        <div class="bib-empty-icon" style="font-size: 3.5rem; margin-bottom: 10px; filter: drop-shadow(0 0 12px rgba(255,153,221,0.6));"></div>
-                        <div class="bib-empty-title" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #ffffff; text-shadow: 0 0 10px var(--primary-pink); margin-bottom: 6px;">Sua biblioteca está vazia</div>
-                        <div class="bib-empty-desc" style="font-size: 0.88rem; color: var(--text-muted); max-width: 280px; line-height: 1.4; text-shadow: var(--neon-glow); margin-bottom: 20px;">Você não possui nenhuma obra favoritada no momento.</div>
-                        
-                        <a href="./?aba=obras" class="btn-explorar-obras-estilizado" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
-                            <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                            Explorar Obras
-                        </a>
-                    </div>
-                `;
-                return;
-            }
-
-            if (filtroBibAtual === 'andamento') {
-                obrasFavs = obrasFavs.filter(o => String(o.status || '').toLowerCase().includes('andamento'));
-            } else if (filtroBibAtual === 'concluidas') {
-                obrasFavs = obrasFavs.filter(o => {
-                    let st = String(o.status || '').toLowerCase();
-                    return st.includes('completo') || st.includes('concluido') || st.includes('finalizado');
-                });
-            } else if (filtroBibAtual === 'hiatus') {
-                obrasFavs = obrasFavs.filter(o => {
-                    let st = String(o.status || '').toLowerCase();
-                    return st.includes('hiatus') || st.includes('pausa');
-                });
-            }
-
-            if (obrasFavs.length === 0) {
-                container.style.gridTemplateColumns = '1fr';
-                container.innerHTML = `
-                    <div class="bib-empty-state" style="grid-column: span 2; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-                        <div class="bib-empty-icon" style="font-size: 3rem; margin-bottom: 8px;"></div>
-                        <div class="bib-empty-title" style="font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: #ffffff; text-shadow: 0 0 10px var(--primary-pink); margin-bottom: 6px;">Nenhuma obra nesta categoria</div>
-                        <div class="bib-empty-desc" style="font-size: 0.85rem; color: var(--text-muted); max-width: 260px; line-height: 1.4; text-shadow: var(--neon-glow); margin-bottom: 18px;">Você não possui obras salvas com este status no momento.</div>
-                        
-                        <a href="./?aba=obras" class="btn-explorar-obras-estilizado" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">
-                            <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
-                            Explorar Obras
-                        </a>
+                        <div class="bib-empty-title" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 6px;">Sua biblioteca está vazia</div>
+                        <a href="./?aba=obras" class="btn-explorar-obras-estilizado" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">Explorar Obras</a>
                     </div>
                 `;
                 return;
@@ -2315,14 +1920,6 @@
 
             obrasFavs.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
-
-                let tagsHtml = '';
-                let fonteTags = obra.generos || obra.tags;
-                if (fonteTags && Array.isArray(fonteTags)) {
-                    let tagsFiltradas = fonteTags.filter(t => !String(t).toLowerCase().includes('+18') && !String(t).toLowerCase().includes('nsfw'));
-                    tagsHtml = tagsFiltradas.slice(0, 3).map(t => `<span class="card-tag">${t}</span>`).join('');
-                }
-
                 let ultimoCapNum = '1';
                 if (obra.capitulos && obra.capitulos.length > 0) {
                     let capObj = obra.capitulos[0];
@@ -2333,46 +1930,27 @@
 
                 container.innerHTML += `
                     <div class="manga-card" onclick="window.location.href='obra.html?nome=${slugObra}'" style="cursor: pointer;">
-                        <div class="manga-capa-box">
-                            <img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa">
-                        </div>
+                        <div class="manga-capa-box"><img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa"></div>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
-                            
-                            <div class="card-tags-row">
-                                ${tagsHtml}
-                            </div>
-
-                            <div class="card-recent-chapter">
-                                <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0-2-.9-2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
-                                <span>Capítulo mais recente: ${ultimoCapNum}</span>
-                            </div>
-
-                            <a href="${linkLeitor}" class="btn-continuar-lendo" onclick="event.stopPropagation()">
-                                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                Continuar lendo
-                            </a>
+                            <div class="card-recent-chapter"><span>Capítulo mais recente: ${ultimoCapNum}</span></div>
+                            <a href="${linkLeitor}" class="btn-continuar-lendo" onclick="event.stopPropagation()">Continuar lendo</a>
                         </div>
                     </div>
                 `;
             });
         }
 
-        function toggleMenu() {
-            document.getElementById('sidebar-menu').classList.toggle('open');
-        }
-
+        function toggleMenu() { document.getElementById('sidebar-menu').classList.toggle('open'); }
         function togglePesquisa() {
             const searchBox = document.getElementById('search-container');
             searchBox.style.display = searchBox.style.display === 'block' ? 'none' : 'block';
-            if(searchBox.style.display === 'block') {
-                document.getElementById('search-input').focus();
-            }
+            if(searchBox.style.display === 'block') document.getElementById('search-input').focus();
         }
 
         function filtrarObrasPesquisa(termo) {
             const query = termo.toLowerCase();
-            const filtradas = listaObras.filter(o => o.titulo.toLowerCase().includes(query));
+            const filtradas = ordenarObrasPorMaisRecentes(listaObras).filter(o => o.titulo.toLowerCase().includes(query));
             const grid = document.getElementById('grid-todas-obras');
             mudarAbaVisual('obras');
             
@@ -2380,28 +1958,29 @@
             filtradas.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
                 let ultimoCapNum = 'Em breve';
-                let slugCap = '';
+                let dataCap = '';
                 let linkLeitor = '#';
 
                 if (obra.capitulos && obra.capitulos.length > 0) {
                     let capObj = obra.capitulos[0];
                     ultimoCapNum = typeof capObj === 'object' ? capObj.numero : capObj;
-                    slugCap = String(ultimoCapNum).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
+                    dataCap = typeof capObj === 'object' ? (capObj.data || '') : '';
+                    let slugCap = String(ultimoCapNum).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
                     linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`;
                 }
 
+                let exibirSelo = ehCapituloNovo(dataCap);
+                let seloHtml = exibirSelo ? `<span class="selo-novo-cap">NOVO</span>` : '';
                 let badgesHtml = gerarBadgesObra(obra);
 
                 grid.innerHTML += `
                     <div class="manga-card" onclick="window.location.href='obra.html?nome=${slugObra}'" style="cursor: pointer;">
-                        <div class="manga-capa-box">
-                            <img src="${obra.capa}" class="manga-capa">
-                            ${badgesHtml}
-                        </div>
+                        <div class="manga-capa-box"><img src="${obra.capa}" class="manga-capa">${badgesHtml}</div>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo">${obra.titulo}</a>
                             <div class="capitulo-recente-row">
                                 <a href="${linkLeitor}" class="capitulo-link" onclick="event.stopPropagation()">Capítulo ${ultimoCapNum}</a>
+                                ${seloHtml}
                             </div>
                         </div>
                     </div>
@@ -2409,118 +1988,5 @@
             });
         }
     </script>
-
-
-
-    
-
-
-    
-
-  
-<!-- TELA DE SENHA ESTILIZADA - TRAVADA NO TOPO -->
-<div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background: url('https://files.catbox.moe/iuy2vm.png') no-repeat center center / cover !important; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); overflow: hidden;">
-    
-    <div id="caixa-senha" style="position: relative; z-index: 10; background: #ffffff; border-radius: 35px; padding: 40px 30px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 0 30px rgba(255, 133, 194, 0.6), 0 15px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255, 133, 194, 0.3);">
-        
-        <h2 style="font-size: 1.55rem; font-weight: 700; color: #ff85c2; margin-bottom: 4px; text-shadow: none;">Oi! Seja bem-vinda(o)</h2>
-        <div style="font-size: 1.2rem; margin: 8px 0;">🌸</div>
-        <p style="font-size: 0.88rem; color: #e093bd; margin-bottom: 24px; text-shadow: none; font-weight: 500;">Digite a senha para continuar</p>
-        
-        <input type="password" id="input-senha-site" placeholder="Senha..." style="width: 100%; background: #ffffff; border: 1.5px solid #f3c2dc; padding: 14px 18px; border-radius: 16px; color: #d66ba0; font-size: 0.95rem; text-align: left; outline: none; margin-bottom: 15px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);" onkeypress="if(event.key === 'Enter') verificarSenha();">
-        
-        <button onclick="verificarSenha()" style="width: 100%; background: linear-gradient(135deg, #ffb3de 0%, #ff85c2 100%); color: #ffffff; border: none; padding: 14px; border-radius: 16px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 133, 194, 0.4); transition: 0.2s;">Entrar</button>
-        
-        <p id="erro-senha" style="color: #ff4d94; font-size: 0.8rem; margin-top: 15px; display: none; text-shadow: none; font-weight: 600;">Acesso negado, senha incorreta.</p>
-    </div>
-</div>
-
-<style>
-    /* Trava rigorosamente a rolagem do corpo da página principal */
-    body.bloqueio-total {
-        overflow: hidden !important;
-        height: 100vh !important;
-        position: fixed !important;
-        width: 100% !important;
-    }
-
-    /* Animação de tremer (shake) quando erra a senha */
-    @keyframes tremerCaixa {
-        0% { transform: translateX(0); }
-        20% { transform: translateX(-10px); }
-        40% { transform: translateX(10px); }
-        60% { transform: translateX(-10px); }
-        80% { transform: translateX(10px); }
-        100% { transform: translateX(0); }
-    }
-    .tremer {
-        animation: tremerCaixa 0.4s ease;
-    }
-    #input-senha-site::placeholder {
-        color: #e6a8cc;
-    }
-</style>
-
-<script>
-    // Aplica o travamento de scroll imediatamente ao carregar a página
-    document.body.classList.add('bloqueio-total');
-
-    // Validação de 3 dias usando localStorage
-    const tempoLiberacao = localStorage.getItem('acesso_liberado_ate');
-    const agora = new Date().getTime();
-
-    if (tempoLiberacao && agora < parseInt(tempoLiberacao)) {
-        document.getElementById('modal-senha-overlay').style.display = 'none';
-        document.body.classList.remove('bloqueio-total');
-    } else {
-        localStorage.removeItem('acesso_liberado_ate');
-    }
-
-    // Senha definida como "x"
-    const SENHA_CORRETA = "x"; 
-
-    function verificarSenha() {
-        const digitada = document.getElementById('input-senha-site').value;
-        const msgErro = document.getElementById('erro-senha');
-        const caixa = document.getElementById('caixa-senha');
-
-        if (digitada === SENHA_CORRETA) {
-            // Validade de 3 dias em milissegundos
-            const tresDiasEmMs = 3 * 24 * 60 * 60 * 1000;
-            const validadeAcesso = new Date().getTime() + tresDiasEmMs;
-            
-            localStorage.setItem('acesso_liberado_ate', validadeAcesso);
-
-            // Libera a rolagem do site ao acertar
-            document.body.classList.remove('bloqueio-total');
-
-            document.getElementById('modal-senha-overlay').style.opacity = '0';
-            document.getElementById('modal-senha-overlay').style.transition = 'opacity 0.4s ease';
-            setTimeout(() => {
-                document.getElementById('modal-senha-overlay').style.display = 'none';
-            }, 400);
-        } else {
-            msgErro.style.display = 'block';
-            document.getElementById('input-senha-site').value = '';
-            document.getElementById('input-senha-site').focus();
-
-            // Aplica o efeito de tremer na caixa
-            caixa.classList.remove('tremer');
-            void caixa.offsetWidth; 
-            caixa.classList.add('tremer');
-        }
-    }
-</script>
-
-
- 
-
-
-                
-
-
-
-
-  
 </body>
 </html>
