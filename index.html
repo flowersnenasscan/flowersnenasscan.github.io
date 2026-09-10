@@ -2514,67 +2514,7 @@
 
 
  
-  <script>
-    fetch('obras.json')
-        .then(response => response.json())
-        .then(obras => {
-            const container = document.getElementById('grid-atualizacoes');
-            if (!container) return;
-            container.innerHTML = '';
 
-            const agora = new Date().getTime();
-            const quatroDiasEmMs = 4 * 24 * 60 * 60 * 1000;
-
-            const obrasProcessadas = obras.map(obra => {
-                const ultimoCapObj = obra.capitulos && obra.capitulos.length > 0 ? obra.capitulos[0] : { numero: '', data: '' };
-                
-                let timestamp = 0;
-                let mostrarSelo = false;
-
-                if (ultimoCapObj.data) {
-                    const dataLancamento = new Date(ultimoCapObj.data + 'T00:00:00').getTime();
-                    if (!isNaN(dataLancamento)) {
-                        timestamp = dataLancamento;
-                        const diferenca = agora - timestamp;
-                        if (diferenca >= 0 && diferenca < quatroDiasEmMs) {
-                            mostrarSelo = true;
-                        }
-                    }
-                }
-
-                return {
-                    ...obra,
-                    ultimoCap: ultimoCapObj.numero,
-                    timestamp,
-                    mostrarSelo
-                };
-            });
-
-            // Joga para o topo a obra com a data mais recente
-            obrasProcessadas.sort((a, b) => b.timestamp - a.timestamp);
-
-            obrasProcessadas.forEach(obra => {
-                const card = document.createElement('div');
-                card.className = 'manga-card';
-                card.style.position = 'relative';
-
-                card.innerHTML = `
-                    <img src="${obra.capa}" alt="${obra.titulo}" style="width: 100%; border-radius: 8px; object-fit: cover;">
-                    <div style="margin-top: 8px;">
-                        <h3 style="font-size: 0.95rem; color: #fff; margin: 0 0 4px 0;">${obra.titulo}</h3>
-                        <p style="font-size: 0.85rem; color: var(--text-muted, #aaa); margin: 0; display: flex; align-items: center; gap: 6px;">
-                            Capítulo ${obra.ultimoCap}
-                            ${obra.mostrarSelo ? '<span style="background: #ff85c2; color: #fff; padding: 1px 6px; border-radius: 4px; font-size: 0.6rem; font-weight: bold; display: inline-block;">NOVO</span>' : ''}
-                        </p>
-                    </div>
-                    <a href="leitor.html?id=${obra.id}&cap=${obra.ultimoCap}" style="display: block; margin-top: 8px; text-align: center; background: #ff85c2; color: #fff; padding: 6px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.85rem;">Ler</a>
-                `;
-
-                container.appendChild(card);
-            });
-        })
-        .catch(err => console.error('Erro ao processar as obras:', err));
-</script>
 
                 
 
