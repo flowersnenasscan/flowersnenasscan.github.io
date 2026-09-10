@@ -703,10 +703,11 @@
         }
     </script>
 
-    <!-- TELA DE SENHA ESTILIZADA -->
-<div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background: url('https://files.catbox.moe/iuy2vm.png') no-repeat center center / cover !important; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);">
+
+<!-- TELA DE SENHA ESTILIZADA - FLOWER'S NENASSCAN -->
+<div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background: url('https://files.catbox.moe/iuy2vm.png') no-repeat center center / cover !important; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); overflow-y: auto;">
     
-    <div id="caixa-senha" style="position: relative; z-index: 10; background: #ffffff; border-radius: 35px; padding: 40px 30px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 0 30px rgba(255, 133, 194, 0.6), 0 15px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255, 133, 194, 0.3);">
+    <div id="caixa-senha" style="position: relative; z-index: 10; background: #ffffff; border-radius: 35px; padding: 40px 30px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 0 30px rgba(255, 133, 194, 0.6), 0 15px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255, 133, 194, 0.3); margin: auto 0;">
         
         <h2 style="font-size: 1.55rem; font-weight: 700; color: #ff85c2; margin-bottom: 4px; text-shadow: none;">Oi! Seja bem-vinda(o)</h2>
         <div style="font-size: 1.2rem; margin: 8px 0;">🌸</div>
@@ -721,18 +722,6 @@
 </div>
 
 <style>
-    /* Força o travamento absoluto da página de fundo */
-    html, body.bloqueio-scroll {
-        overflow: hidden !important;
-        height: 100vh !important;
-        position: relative !important;
-    }
-
-    /* Estilo placeholder do input para combinar */
-    #input-senha-site::placeholder {
-        color: #e6a8cc;
-    }
-
     /* Animação de tremer (shake) quando erra a senha */
     @keyframes tremerCaixa {
         0% { transform: translateX(0); }
@@ -745,28 +734,24 @@
     .tremer {
         animation: tremerCaixa 0.4s ease;
     }
+    #input-senha-site::placeholder {
+        color: #e6a8cc;
+    }
 </style>
 
 <script>
-    // TRAVAMENTO DE ROLAGEM IMEDIATO AO CARREGAR
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
-    document.body.classList.add('bloqueio-scroll');
-
-    // Validação de 10 dias usando localStorage
+    // Validação de 3 dias usando localStorage
     const tempoLiberacao = localStorage.getItem('acesso_liberado_ate');
     const agora = new Date().getTime();
 
     if (tempoLiberacao && agora < parseInt(tempoLiberacao)) {
         document.getElementById('modal-senha-overlay').style.display = 'none';
-        document.documentElement.style.overflow = '';
-        document.body.style.overflow = '';
-        document.body.classList.remove('bloqueio-scroll');
     } else {
         localStorage.removeItem('acesso_liberado_ate');
     }
 
-    const SENHA_CORRETA = "x"; 
+    // Senha definida como "x"
+    const SENHA_CORRETA = "xx"; 
 
     function verificarSenha() {
         const digitada = document.getElementById('input-senha-site').value;
@@ -774,14 +759,11 @@
         const caixa = document.getElementById('caixa-senha');
 
         if (digitada === SENHA_CORRETA) {
-            const dezDiasEmMs = 10 * 24 * 60 * 60 * 1000;
-            const validadeAcesso = new Date().getTime() + dezDiasEmMs;
+            // Validade de 3 dias em milissegundos
+            const tresDiasEmMs = 3 * 24 * 60 * 60 * 1000;
+            const validadeAcesso = new Date().getTime() + tresDiasEmMs;
             
             localStorage.setItem('acesso_liberado_ate', validadeAcesso);
-
-            document.documentElement.style.overflow = '';
-            document.body.style.overflow = '';
-            document.body.classList.remove('bloqueio-scroll');
 
             document.getElementById('modal-senha-overlay').style.opacity = '0';
             document.getElementById('modal-senha-overlay').style.transition = 'opacity 0.4s ease';
@@ -793,12 +775,15 @@
             document.getElementById('input-senha-site').value = '';
             document.getElementById('input-senha-site').focus();
 
+            // Aplica o efeito de tremer na caixa
             caixa.classList.remove('tremer');
             void caixa.offsetWidth; 
             caixa.classList.add('tremer');
         }
     }
 </script>
+
+    
 
 </body>
 </html>
