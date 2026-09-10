@@ -5,12 +5,12 @@
     "capa": "cover.jpg",
     "banner": "cover.jpg",
     "status": "Em andamento",
-    "tipo": "Manga" , 
+    "tipo": "Manga",
     "autor": "",
     "artista": "",
     "classificacao": "+18",
     "ano": "2026",
-    "generos": ["Romance", "Drama" , "Suspense" , "Terror" , "Comédia", " Crime" , "Sem censura"],
+    "generos": ["Romance", "Drama", "Suspense", "Terror", "Comédia", "Crime", "Sem censura"],
     "sinopse": "Uma história incrível de mistério e romance.",
     "capitulos": [
       {
@@ -22,10 +22,6 @@
           "https://files.catbox.moe/7fbdln.png"
         ]
       },
-      {
-    
-    
-    [
       {
         "numero": "02",
         "data": "",
