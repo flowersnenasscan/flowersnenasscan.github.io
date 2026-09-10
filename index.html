@@ -2514,73 +2514,89 @@
 
 
  
-    
-
-<script>
+  <script>
     window.addEventListener('load', () => {
-        setTimeout(() => {
+        // Intervalo curto para garantir que o script original do seu site já terminou de desenhar os cards na tela
+        const checarECorrigir = setInterval(() => {
             const container = document.getElementById('grid-atualizacoes');
             if (!container) return;
 
             const cards = Array.from(container.children);
-            if (cards.length === 0) return;
+            // Só executa quando os cards reais da sua página já estiverem carregados no grid
+            if (cards.length === 0 || cards.some(c => c.innerText.includes('Carregando'))) return;
+
+            clearInterval(checarECorrigir); // Para o loop assim que pega os cards prontos
 
             let historico = JSON.parse(localStorage.getItem('controle_atualizacoes_auto') || '{}');
             const agora = new Date().getTime();
             const quatroDiasEmMs = 4 * 24 * 60 * 60 * 1000;
+            let houveMudanca = false;
 
-            // Identifica e atualiza os timestamps baseado no texto que já está na tela
-            cards.forEach(card => {
+            // 1. Analisa cada card existente na tela
+            const dadosCards = cards.map(card => {
                 const tituloEl = card.querySelector('h3, .titulo-obra, [class*="titulo"]');
-                const capEl = card.querySelector('p, .capitulo-obra, [class*="cap"]');
+                // Procura especificamente onde está escrito o capítulo (ex: "Capítulo 03")
+                const capEl = Array.from(card.querySelectorAll('p, span, div')).find(el => el.innerText && el.innerText.toLowerCase().includes('capítulo'));
                 
-                if (!tituloEl) return;
-                const titulo = tituloEl.innerText.trim();
-                const capitulo = capEl ? capEl.innerText.trim() : '';
+                const titulo = tituloEl ? tituloEl.innerText.trim() : '';
+                const capituloAtual = capEl ? capEl.innerText.trim() : '';
+
+                if (!titulo) return { card, titulo, timestamp: 0, mostrarSelo: false, capEl };
+
+                let timestampObra;
+                let mostrarSelo = false;
 
                 if (!historico[titulo]) {
-                    historico[titulo] = { capituloSalvo: capitulo, timestamp: agora };
-                } else if (historico[titulo].capituloSalvo !== capitulo) {
-                    historico[titulo] = { capituloSalvo: capitulo, timestamp: agora };
+                    // Obra nova no sistema
+                    timestampObra = agora;
+                    historico[titulo] = { capituloSalvo: capituloAtual, timestamp: agora };
+                    houveMudanca = true;
+                } else if (historico[titulo].capituloSalvo !== capituloAtual) {
+                    // MUDOU DE CAPÍTULO! SÓ AQUI ATUALIZA O TEMPO E O SELO!
+                    timestampObra = agora;
+                    historico[titulo] = { capituloSalvo: capituloAtual, timestamp: agora };
+                    houveMudanca = true;
+                } else {
+                    // Capítulo igual ao anterior: mantém o timestamp antigo e NÃO mostra selo (a menos que ainda esteja no prazo de 4 dias da última mudança real)
+                    timestampObra = historico[titulo].timestamp;
                 }
+
+                const diferenca = agora - timestampObra;
+                if (diferenca >= 0 && diferenca < quatroDiasEmMs) {
+                    mostrarSelo = true;
+                }
+
+                return { card, titulo, timestamp: timestampObra, mostrarSelo, capEl };
             });
 
-            localStorage.setItem('controle_atualizacoes_auto', JSON.stringify(historico));
+            if (houveMudanca) {
+                localStorage.setItem('controle_atualizacoes_auto', JSON.stringify(historico));
+            }
 
-            // Ordena os cards que já estão na tela do mais recente para o mais antigo
-            cards.sort((a, b) => {
-                const tA = a.querySelector('h3, .titulo-obra, [class*="titulo"]')?.innerText.trim() || '';
-                const tB = b.querySelector('h3, .titulo-obra, [class*="titulo"]')?.innerText.trim() || '';
-                
-                const tempoA = historico[tA] ? historico[tA].timestamp : 0;
-                const tempoB = historico[tB] ? historico[tB].timestamp : 0;
-                return tempoB - tempoA;
-            });
+            // 2. Ordena do mais recente para o mais antigo
+            dadosCards.sort((a, b) => b.timestamp - a.timestamp);
 
-            // Reorganiza no DOM e injeta o selo EXATAMENTE AO LADO do texto do capítulo
-            cards.forEach(card => {
-                const tituloEl = card.querySelector('h3, .titulo-obra, [class*="titulo"]');
-                const capEl = card.querySelector('p, .capitulo-obra, [class*="cap"]');
-                
-                if (tituloEl) {
-                    const titulo = tituloEl.innerText.trim();
-                    const dados = historico[titulo];
+            // 3. Reorganiza no DOM e injeta o selo EXATAMENTE AO LADO do texto do capítulo
+            dadosCards.forEach(item => {
+                container.appendChild(item.card); // Joga pro topo quem tiver o maior timestamp
 
-                    if (dados && (agora - dados.timestamp) < quatroDiasEmMs) {
-                        if (capEl && !capEl.querySelector('.selo-novo-inline')) {
-                            const selo = document.createElement('span');
-                            selo.className = 'selo-novo-inline';
-                            selo.innerText = 'NOVO';
-                            selo.style.cssText = 'background: #ff85c2; color: #fff; padding: 1px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: bold; margin-left: 6px; display: inline-block; vertical-align: middle;';
-                            capEl.appendChild(selo);
-                        }
+                if (item.mostrarSelo && item.capEl) {
+                    // Evita duplicar o selo se já existir
+                    if (!item.capEl.querySelector('.selo-novo-inline')) {
+                        const selo = document.createElement('span');
+                        selo.className = 'selo-novo-inline';
+                        selo.innerText = 'NOVO';
+                        // Estilo compacto para encaixar perfeitamente ao lado do texto do capítulo
+                        selo.style.cssText = 'background: #ff85c2; color: #fff; padding: 1px 5px; border-radius: 4px; font-size: 0.6rem; font-weight: bold; margin-left: 8px; display: inline-block; vertical-align: middle;';
+                        item.capEl.appendChild(selo);
                     }
                 }
-                container.appendChild(card);
             });
-        }, 800); // Aguarda o site carregar os cards originais antes de ordenar
+        }, 200);
     });
 </script>
+  
+
 
 
 
