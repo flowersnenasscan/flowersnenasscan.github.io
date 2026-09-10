@@ -466,17 +466,17 @@
         .manga-titulo {
             font-size: 0.93rem;
             font-weight: 700;
-            color: #ffffff;
-            background: linear-gradient(135deg, #ffffff 40%, var(--primary-pink) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #ffb8e6;
+            background: none;
+            -webkit-background-clip: initial;
+            -webkit-text-fill-color: initial;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             cursor: pointer;
             text-decoration: none;
             display: block;
-            text-shadow: 0 0 8px rgba(255, 153, 221, 0.5);
+            text-shadow: 0 0 8px rgba(255, 184, 230, 0.5);
         }
 
         .manga-titulo:hover { text-decoration: underline; }
@@ -536,7 +536,7 @@
             justify-content: space-between;
             background: rgba(255, 153, 221, 0.04);
             border: 1px solid rgba(255, 153, 221, 0.25);
-            padding: 5px 8px;
+            padding: 4px 6px;
             border-radius: 6px;
             text-decoration: none;
             transition: 0.2s;
@@ -551,26 +551,33 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: var(--primary-pink);
             text-shadow: var(--neon-glow);
         }
 
-        /* Selo NOVO personalizado conforme a imagem enviada */
+        /* Selo NOVO personalizado pequeno exatamente conforme solicitado */
         .selo-novo-cap {
             background: #FF55BB;
-            color: #ffffff;
-            font-size: 0.65rem;
+            color: #ffdef2;
+            font-size: 0.52rem;
             font-weight: 800;
-            padding: 3px 8px;
-            border-radius: 8px;
-            letter-spacing: 0.8px;
+            padding: 1px 5px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
             border: 1px solid #ff99dd;
-            box-shadow: 0 0 10px rgba(255, 85, 187, 0.8), 0 0 18px rgba(255, 153, 221, 0.5);
-            text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 6px rgba(255, 85, 187, 0.7);
+            text-shadow: none;
             display: inline-block;
             text-align: center;
+        }
+
+        .capitulos-container-ultimos {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 2px;
         }
 
         .capitulo-recente-row {
@@ -581,7 +588,7 @@
         }
 
         .capitulo-link {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             text-decoration: none;
             font-weight: 600;
@@ -1599,26 +1606,41 @@
                 return;
             }
 
-            const recentes = ordenarObrasPorMaisRecentes(listaObras).slice(0, 10);
+            const recentes = ordenarObrasPorMaisRecentes(listaObras).slice(0, 14);
 
             recentes.forEach(obra => {
                 const slugObra = obra.id || criarSlug(obra.titulo);
-                let ultimoCapNum = 'Em breve';
-                let dataCap = '';
-                let slugCap = '';
-                let linkLeitor = '#';
-
-                if (obra.capitulos && obra.capitulos.length > 0) {
-                    let capObj = obra.capitulos[0];
-                    ultimoCapNum = typeof capObj === 'object' ? capObj.numero : capObj;
-                    dataCap = typeof capObj === 'object' ? (capObj.data || '') : '';
-                    slugCap = String(ultimoCapNum).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
-                    linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`;
-                }
-
-                let exibirSelo = ehCapituloNovo(dataCap);
-                let seloHtml = exibirSelo ? `<span class="selo-novo-cap">NOVO</span>` : '';
                 let badgesHtml = gerarBadgesObra(obra);
+
+                let capsHtml = '';
+                if (obra.capitulos && obra.capitulos.length > 0) {
+                    let ultimosDois = obra.capitulos.slice(0, 2);
+                    ultimosDois.forEach(capObj => {
+                        let capNum = typeof capObj === 'object' ? capObj.numero : capObj;
+                        let dataCap = typeof capObj === 'object' ? (capObj.data || '') : '';
+                        let slugCap = String(capNum).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
+                        let linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`;
+                        let exibirSelo = ehCapituloNovo(dataCap);
+                        let seloHtml = exibirSelo ? `<span class="selo-novo-cap">NOVO</span>` : '';
+
+                        capsHtml += `
+                            <a href="${linkLeitor}" class="retangulo-capitulo" onclick="event.stopPropagation()">
+                                <div class="info-cap-recente">
+                                    <span>Capítulo ${capNum}</span>
+                                </div>
+                                ${seloHtml}
+                            </a>
+                        `;
+                    });
+                } else {
+                    capsHtml = `
+                        <div class="retangulo-capitulo" style="cursor: default;">
+                            <div class="info-cap-recente">
+                                <span>Em breve</span>
+                            </div>
+                        </div>
+                    `;
+                }
 
                 grid.innerHTML += `
                     <div class="manga-card" onclick="window.location.href='obra.html?nome=${slugObra}'" style="cursor: pointer;">
@@ -1628,13 +1650,9 @@
                         </div>
                         <div class="manga-info">
                             <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a>
-                            
-                            <a href="${linkLeitor}" class="retangulo-capitulo" onclick="event.stopPropagation()">
-                                <div class="info-cap-recente">
-                                    <span>Capítulo ${ultimoCapNum}</span>
-                                    ${seloHtml}
-                                </div>
-                            </a>
+                            <div class="capitulos-container-ultimos">
+                                ${capsHtml}
+                            </div>
                         </div>
                     </div>
                 `;
