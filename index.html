@@ -2515,54 +2515,68 @@
 
  
     
+
 <script>
-    window.addEventListener('DOMContentLoaded', () => {
-        const container = document.getElementById('grid-atualizacoes');
-        if (!container) return;
+    fetch('obras.json')
+        .then(response => response.json())
+        .then(obrasNovas => {
+            const container = document.getElementById('grid-atualizacoes');
+            if (!container) return;
+            container.innerHTML = '';
 
-        // Pega todos os cards de obras que já estão no seu HTML
-        const cards = Array.from(container.children);
-        
-        let historico = JSON.parse(localStorage.getItem('controle_atualizacoes_auto') || '{}');
-        const agora = new Date().getTime();
-        const quatroDiasEmMs = 4 * 24 * 60 * 60 * 1000;
+            let historico = JSON.parse(localStorage.getItem('controle_atualizacoes_auto') || '{}');
+            const agora = new Date().getTime();
+            const quatroDiasEmMs = 4 * 24 * 60 * 60 * 1000;
 
-        // Ordena os elementos no HTML com base no timestamp salvo de cada obra
-        cards.sort((a, b) => {
-            // Pega o título ou identificador que está dentro do seu card atual
-            const tituloA = a.getAttribute('data-titulo') || a.querySelector('h3, .titulo-obra')?.innerText.trim() || '';
-            const tituloB = b.getAttribute('data-titulo') || b.querySelector('h3, .titulo-obra')?.innerText.trim() || '';
+            obrasNovas.forEach(obra => {
+                const idObra = obra.titulo; 
+                const conteudoAtual = obra.capitulo || ''; 
 
-            const tempoA = historico[tituloA] ? historico[tituloA].timestamp : 0;
-            const tempoB = historico[tituloB] ? historico[tituloB].timestamp : 0;
+                if (!historico[idObra]) {
+                    historico[idObra] = { capituloSalvo: conteudoAtual, timestamp: agora };
+                } else if (historico[idObra].capituloSalvo !== conteudoAtual) {
+                    historico[idObra] = { capituloSalvo: conteudoAtual, timestamp: agora };
+                }
+            });
 
-            return tempoB - tempoA; // Joga o mais recente para o topo
-        });
+            localStorage.setItem('controle_atualizacoes_auto', JSON.stringify(historico));
 
-        // Reorganiza na tela e adiciona o selo de "NOVO" se estiver dentro dos 4 dias
-        cards.forEach(card => {
-            const titulo = card.getAttribute('data-titulo') || card.querySelector('h3, .titulo-obra')?.innerText.trim() || '';
-            const dadosObra = historico[titulo];
+            obrasNovas.sort((a, b) => {
+                const tempoA = historico[a.titulo] ? historico[a.titulo].timestamp : 0;
+                const tempoB = historico[b.titulo] ? historico[b.titulo].timestamp : 0;
+                return tempoB - tempoA; 
+            });
 
-            if (dadosObra) {
-                const diferenca = agora - dadosObra.timestamp;
-                if (diferenca >= 0 && diferenca < quatroDiasEmMs) {
-                    // Adiciona o selo apenas se ele já não existir no card
-                    if (!card.querySelector('.selo-novo-auto')) {
-                        const selo = document.createElement('span');
-                        selo.className = 'selo-novo-auto';
-                        selo.innerText = 'NOVO';
-                        // Classes ou estilos idênticos aos que seu site já usa para selos
-                        selo.style.cssText = 'background: #ff85c2; color: #fff; padding: 2px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: bold; display: inline-block; margin-bottom: 5px;';
-                        card.prepend(selo);
+            obrasNovas.forEach(obra => {
+                const dadosObra = historico[obra.titulo];
+                let mostrarSelo = false;
+
+                if (dadosObra) {
+                    const diferenca = agora - dadosObra.timestamp;
+                    if (diferenca >= 0 && diferenca < quatroDiasEmMs) {
+                        mostrarSelo = true;
                     }
                 }
-            }
 
-            // Realoca o card existente na nova ordem correta
-            container.appendChild(card);
-        });
-    });
+                // Cria o card usando a classe manga-card do seu grid
+                const card = document.createElement('div');
+                card.className = 'manga-card'; // Usa a classe que já estiliza seus cards
+                card.style.position = 'relative';
+
+                card.innerHTML = `
+                    ${mostrarSelo ? '<span style="position: absolute; top: 10px; left: 10px; background: #ff85c2; color: #fff; padding: 3px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: bold; z-index: 10; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">NOVO</span>' : ''}
+                    <img src="${obra.capa || ''}" alt="${obra.titulo}" style="width: 100%; border-radius: 8px;">
+                    <div style="margin-top: 8px;">
+                        <h3 style="font-size: 0.95rem; color: #fff; margin: 0 0 4px 0;">${obra.titulo}</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-muted, #aaa); margin: 0;">${obra.capitulo || ''}</p>
+                    </div>
+                    <a href="${obra.link}" style="display: block; margin-top: 8px; text-align: center; background: #ff85c2; color: #fff; padding: 6px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.85rem;">Ler</a>
+                `;
+                
+                container.appendChild(card);
+            });
+        })
+        .catch(error => console.error('Erro ao carregar as obras:', error));
 </script>
 
 
