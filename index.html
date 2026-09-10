@@ -2411,10 +2411,10 @@
     </script>
 
   
-<!-- TELA DE SENHA ESTILIZADA - FLOWER'S NENASSCAN -->
-<div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background: url('https://files.catbox.moe/iuy2vm.png') no-repeat center center / cover !important; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); overflow-y: auto;">
+<!-- TELA DE SENHA ESTILIZADA - TRAVADA NO TOPO -->
+<div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background: url('https://files.catbox.moe/iuy2vm.png') no-repeat center center / cover !important; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); overflow: hidden;">
     
-    <div id="caixa-senha" style="position: relative; z-index: 10; background: #ffffff; border-radius: 35px; padding: 40px 30px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 0 30px rgba(255, 133, 194, 0.6), 0 15px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255, 133, 194, 0.3); margin: auto 0;">
+    <div id="caixa-senha" style="position: relative; z-index: 10; background: #ffffff; border-radius: 35px; padding: 40px 30px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 0 30px rgba(255, 133, 194, 0.6), 0 15px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255, 133, 194, 0.3);">
         
         <h2 style="font-size: 1.55rem; font-weight: 700; color: #ff85c2; margin-bottom: 4px; text-shadow: none;">Oi! Seja bem-vinda(o)</h2>
         <div style="font-size: 1.2rem; margin: 8px 0;">🌸</div>
@@ -2429,6 +2429,14 @@
 </div>
 
 <style>
+    /* Trava rigorosamente a rolagem do corpo da página principal */
+    body.bloqueio-total {
+        overflow: hidden !important;
+        height: 100vh !important;
+        position: fixed !important;
+        width: 100% !important;
+    }
+
     /* Animação de tremer (shake) quando erra a senha */
     @keyframes tremerCaixa {
         0% { transform: translateX(0); }
@@ -2447,18 +2455,22 @@
 </style>
 
 <script>
+    // Aplica o travamento de scroll imediatamente ao carregar a página
+    document.body.classList.add('bloqueio-total');
+
     // Validação de 3 dias usando localStorage
     const tempoLiberacao = localStorage.getItem('acesso_liberado_ate');
     const agora = new Date().getTime();
 
     if (tempoLiberacao && agora < parseInt(tempoLiberacao)) {
         document.getElementById('modal-senha-overlay').style.display = 'none';
+        document.body.classList.remove('bloqueio-total');
     } else {
         localStorage.removeItem('acesso_liberado_ate');
     }
 
     // Senha definida como "x"
-    const SENHA_CORRETA = "xx"; 
+    const SENHA_CORRETA = "x"; 
 
     function verificarSenha() {
         const digitada = document.getElementById('input-senha-site').value;
@@ -2471,6 +2483,9 @@
             const validadeAcesso = new Date().getTime() + tresDiasEmMs;
             
             localStorage.setItem('acesso_liberado_ate', validadeAcesso);
+
+            // Libera a rolagem do site ao acertar
+            document.body.classList.remove('bloqueio-total');
 
             document.getElementById('modal-senha-overlay').style.opacity = '0';
             document.getElementById('modal-senha-overlay').style.transition = 'opacity 0.4s ease';
@@ -2489,6 +2504,7 @@
         }
     }
 </script>
+
 
  
     
