@@ -557,16 +557,20 @@
             text-shadow: var(--neon-glow);
         }
 
+        /* Selo NOVO personalizado conforme a imagem enviada */
         .selo-novo-cap {
-            background: rgba(255, 153, 221, 0.2);
-            color: var(--primary-pink);
-            font-size: 0.55rem;
+            background: #FF55BB;
+            color: #ffffff;
+            font-size: 0.65rem;
             font-weight: 800;
-            padding: 1px 4px;
-            border-radius: 3px;
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(255, 153, 221, 0.5);
-            box-shadow: 0 0 6px rgba(255, 153, 221, 0.3);
+            padding: 3px 8px;
+            border-radius: 8px;
+            letter-spacing: 0.8px;
+            border: 1px solid #ff99dd;
+            box-shadow: 0 0 10px rgba(255, 85, 187, 0.8), 0 0 18px rgba(255, 153, 221, 0.5);
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+            display: inline-block;
+            text-align: center;
         }
 
         .capitulo-recente-row {
@@ -1403,10 +1407,9 @@
             return String(texto || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-').replace(/[^\w-]/g, '');
         }
 
-        // Função para converter e comparar a data do capítulo mais recente (calcula se está dentro de 4 dias)
         function obterDataUltimoCapitulo(obra) {
             if (!obra.capitulos || !Array.isArray(obra.capitulos) || obra.capitulos.length === 0) {
-                return new Date(0); // Data antiga se não tiver capítulos
+                return new Date(0);
             }
             let capObj = obra.capitulos[0];
             let dataStr = typeof capObj === 'object' ? (capObj.data || '') : '';
