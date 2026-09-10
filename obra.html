@@ -610,7 +610,7 @@
                     <div class="info-grid">
                         <div class="info-item-detalhe">
                             <span class="info-label">Tipo</span>
-                            <span class="info-value">${bandeiraHtml} ${tipoObp || tipoObra}</span>
+                            <span class="info-value">${bandeiraHtml} ${tipoObra}</span>
                         </div>
                         <div class="info-item-detalhe">
                             <span class="info-label">Status</span>
@@ -679,7 +679,7 @@
             if (index > -1) {
                 favoritos.splice(index, 1);
             } else {
-                favoritos.push(obraTitle);
+                favoritos.push(obraTitulo);
             }
 
             localStorage.setItem('flowers_favoritos', JSON.stringify(favoritos));
@@ -767,7 +767,7 @@
     const SENHA_CORRETA = "x"; 
 
     function verificarSenha() {
-        const digitada = document.getElementById('input-senha-site').value;
+        const digitada = document.getElementById('input-senha-site'].value;
         const msgErro = document.getElementById('erro-senha');
         const caixa = document.getElementById('caixa-senha');
 
@@ -782,7 +782,6 @@
             document.body.classList.remove('bloqueio-total');
 
             document.getElementById('modal-senha-overlay').style.opacity = '0';
-            document.getElementById('modal-senha-overlay-transition').style.transition = 'opacity 0.4s ease'; // fallback
             document.getElementById('modal-senha-overlay').style.transition = 'opacity 0.4s ease';
             setTimeout(() => {
                 document.getElementById('modal-senha-overlay').style.display = 'none';
