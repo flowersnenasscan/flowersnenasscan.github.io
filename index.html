@@ -2517,67 +2517,71 @@
     
 
 <script>
-    fetch('obras.json')
-        .then(response => response.json())
-        .then(obrasNovas => {
+    window.addEventListener('load', () => {
+        setTimeout(() => {
             const container = document.getElementById('grid-atualizacoes');
             if (!container) return;
-            container.innerHTML = '';
+
+            const cards = Array.from(container.children);
+            if (cards.length === 0) return;
 
             let historico = JSON.parse(localStorage.getItem('controle_atualizacoes_auto') || '{}');
             const agora = new Date().getTime();
             const quatroDiasEmMs = 4 * 24 * 60 * 60 * 1000;
 
-            obrasNovas.forEach(obra => {
-                const idObra = obra.titulo; 
-                const conteudoAtual = obra.capitulo || ''; 
+            // Identifica e atualiza os timestamps baseado no texto que já está na tela
+            cards.forEach(card => {
+                const tituloEl = card.querySelector('h3, .titulo-obra, [class*="titulo"]');
+                const capEl = card.querySelector('p, .capitulo-obra, [class*="cap"]');
+                
+                if (!tituloEl) return;
+                const titulo = tituloEl.innerText.trim();
+                const capitulo = capEl ? capEl.innerText.trim() : '';
 
-                if (!historico[idObra]) {
-                    historico[idObra] = { capituloSalvo: conteudoAtual, timestamp: agora };
-                } else if (historico[idObra].capituloSalvo !== conteudoAtual) {
-                    historico[idObra] = { capituloSalvo: conteudoAtual, timestamp: agora };
+                if (!historico[titulo]) {
+                    historico[titulo] = { capituloSalvo: capitulo, timestamp: agora };
+                } else if (historico[titulo].capituloSalvo !== capitulo) {
+                    historico[titulo] = { capituloSalvo: capitulo, timestamp: agora };
                 }
             });
 
             localStorage.setItem('controle_atualizacoes_auto', JSON.stringify(historico));
 
-            obrasNovas.sort((a, b) => {
-                const tempoA = historico[a.titulo] ? historico[a.titulo].timestamp : 0;
-                const tempoB = historico[b.titulo] ? historico[b.titulo].timestamp : 0;
-                return tempoB - tempoA; 
+            // Ordena os cards que já estão na tela do mais recente para o mais antigo
+            cards.sort((a, b) => {
+                const tA = a.querySelector('h3, .titulo-obra, [class*="titulo"]')?.innerText.trim() || '';
+                const tB = b.querySelector('h3, .titulo-obra, [class*="titulo"]')?.innerText.trim() || '';
+                
+                const tempoA = historico[tA] ? historico[tA].timestamp : 0;
+                const tempoB = historico[tB] ? historico[tB].timestamp : 0;
+                return tempoB - tempoA;
             });
 
-            obrasNovas.forEach(obra => {
-                const dadosObra = historico[obra.titulo];
-                let mostrarSelo = false;
+            // Reorganiza no DOM e injeta o selo EXATAMENTE AO LADO do texto do capítulo
+            cards.forEach(card => {
+                const tituloEl = card.querySelector('h3, .titulo-obra, [class*="titulo"]');
+                const capEl = card.querySelector('p, .capitulo-obra, [class*="cap"]');
+                
+                if (tituloEl) {
+                    const titulo = tituloEl.innerText.trim();
+                    const dados = historico[titulo];
 
-                if (dadosObra) {
-                    const diferenca = agora - dadosObra.timestamp;
-                    if (diferenca >= 0 && diferenca < quatroDiasEmMs) {
-                        mostrarSelo = true;
+                    if (dados && (agora - dados.timestamp) < quatroDiasEmMs) {
+                        if (capEl && !capEl.querySelector('.selo-novo-inline')) {
+                            const selo = document.createElement('span');
+                            selo.className = 'selo-novo-inline';
+                            selo.innerText = 'NOVO';
+                            selo.style.cssText = 'background: #ff85c2; color: #fff; padding: 1px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: bold; margin-left: 6px; display: inline-block; vertical-align: middle;';
+                            capEl.appendChild(selo);
+                        }
                     }
                 }
-
-                // Cria o card usando a classe manga-card do seu grid
-                const card = document.createElement('div');
-                card.className = 'manga-card'; // Usa a classe que já estiliza seus cards
-                card.style.position = 'relative';
-
-                card.innerHTML = `
-                    ${mostrarSelo ? '<span style="position: absolute; top: 10px; left: 10px; background: #ff85c2; color: #fff; padding: 3px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: bold; z-index: 10; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">NOVO</span>' : ''}
-                    <img src="${obra.capa || ''}" alt="${obra.titulo}" style="width: 100%; border-radius: 8px;">
-                    <div style="margin-top: 8px;">
-                        <h3 style="font-size: 0.95rem; color: #fff; margin: 0 0 4px 0;">${obra.titulo}</h3>
-                        <p style="font-size: 0.85rem; color: var(--text-muted, #aaa); margin: 0;">${obra.capitulo || ''}</p>
-                    </div>
-                    <a href="${obra.link}" style="display: block; margin-top: 8px; text-align: center; background: #ff85c2; color: #fff; padding: 6px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.85rem;">Ler</a>
-                `;
-                
                 container.appendChild(card);
             });
-        })
-        .catch(error => console.error('Erro ao carregar as obras:', error));
+        }, 800); // Aguarda o site carregar os cards originais antes de ordenar
+    });
 </script>
+
 
 
   
