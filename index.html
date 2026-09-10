@@ -40,7 +40,7 @@ gtag('config', 'G-5HHMHEDSD0');
   #titulo-ultimas-atualizacoes { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 1.15rem; font-weight: 800; letter-spacing: 0.5px; color: #ffc2eb; text-shadow: 0 0 10px rgba(255, 194, 235, 0.8); background: none; -webkit-background-clip: initial; -webkit-text-fill-color: initial; } 
   header { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; background-color: rgba(0, 0, 0, 0.96); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(255, 153, 221, 0.3); } 
   .logo-img-container { display: flex; align-items: center; cursor: pointer; text-decoration: none; } 
-  .logo-img-container img { height: 48px; width: auto; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255, 153, 221, 0.6)); pointer-events: auto; }
+  .logo-img-container img { height: 62px; width: auto; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255, 153, 221, 0.6)); pointer-events: auto; }
   .top-actions { display: flex; gap: 12px; align-items: center; } 
   .icon-btn { background: #121218; border: 1px solid rgba(255, 153, 221, 0.5); color: var(--primary-pink); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; font-size: 1.3rem; text-shadow: var(--neon-glow); text-decoration: none; } 
   .icon-btn svg { width: 22px; height: 22px; fill: currentColor; filter: drop-shadow(0 0 6px rgba(255, 153, 221, 0.7)); } 
@@ -78,57 +78,41 @@ gtag('config', 'G-5HHMHEDSD0');
   .btn-telegram-lateral {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    background: #0b0b0f;
-    border: 1px solid rgba(255, 153, 221, 0.5);
+    justify-content: center;
+    background: transparent;
+    border: none;
     color: var(--primary-pink);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.78rem;
-    font-weight: 700;
+    padding: 4px;
     text-decoration: none;
-    box-shadow: var(--neon-glow);
     transition: 0.2s ease;
-    text-shadow: var(--neon-glow);
   }
   .btn-telegram-lateral svg {
-    width: 15px;
-    height: 15px;
+    width: 28px;
+    height: 28px;
     fill: #FF99DD;
-    filter: drop-shadow(0 0 5px rgba(255, 153, 221, 0.8));
-  }
-  .btn-telegram-lateral:hover {
-    background: var(--primary-pink);
-    color: #000000;
-    box-shadow: 0 0 18px rgba(255, 153, 221, 0.9);
+    filter: drop-shadow(0 0 6px rgba(255, 153, 221, 0.8));
+    transition: 0.2s ease;
   }
   .btn-telegram-lateral:hover svg {
-    fill: #000000;
-    filter: none;
+    fill: #ffffff;
+    filter: drop-shadow(0 0 12px rgba(255, 153, 221, 1));
+    transform: scale(1.1);
   }
 
-  /* BOTÃO DO CORAÇÃO SEPARADO */
+  /* BOTÃO DO CORAÇÃO SEPARADO (SEM CÍRCULO) */
   .btn-coracao-lateral {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #0b0b0f;
-    border: 1px solid rgba(255, 153, 221, 0.5);
+    background: transparent;
+    border: none;
     color: var(--primary-pink);
-    width: 33px;
-    height: 33px;
-    border-radius: 50%;
-    font-size: 0.85rem;
+    font-size: 1.5rem;
     text-decoration: none;
-    box-shadow: var(--neon-glow);
     transition: 0.2s ease;
     text-shadow: var(--neon-glow);
-  }
-  .btn-coracao-lateral:hover {
-    background: var(--primary-pink);
-    color: #000000;
-    box-shadow: 0 0 18px rgba(255, 153, 221, 0.9);
-    text-shadow: none;
+    cursor: default;
+    pointer-events: none;
   }
 
   .section-container { padding: 20px 15px; max-width: 1100px; margin: 0 auto; } 
@@ -574,15 +558,14 @@ gtag('config', 'G-5HHMHEDSD0');
       </div> 
     </div> 
 
-    <!-- BOTÃO DO TELEGRAM E BOTÃO DO CORAÇÃO SEPARADOS -->
+    <!-- BOTÃO DO TELEGRAM E BOTÃO DO CORAÇÃO SEPARADOS (SEM NOME "TELEGRAM", SEM CÍRCULO E LOGO AUMENTADA) -->
     <div class="telegram-lateral-container">
       <a href="https://t.me/SEU_LINK_AQUI" target="_blank" class="btn-telegram-lateral" title="Nosso Telegram">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.03-1.99 1.27-5.62 3.73-.53.36-1.01.54-1.44.53-.47-.02-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.35-.49.97-.75 3.82-1.66 6.37-2.76 7.66-3.3 3.65-1.54 4.41-1.81 4.91-1.82.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.13-.04.2z"/></svg>
-        <span>Telegram</span>
       </a>
-      <a href="https://t.me/SEU_LINK_AQUI" target="_blank" class="btn-coracao-lateral" title="Favorito">
+      <span class="btn-coracao-lateral" title="Favorito">
         ♥
-      </a>
+      </span>
     </div>
 
     <div class="section-container"> 
