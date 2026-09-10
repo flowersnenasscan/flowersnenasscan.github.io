@@ -24,10 +24,14 @@
             margin: 0; 
             padding: 0; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            -webkit-tap-highlight-color: transparent; /* Remove o destaque azul de toque em mobile */
+            -webkit-tap-highlight-color: transparent;
+            /* BLOQUEIO DE SELEÇÃO: Impede selecionar texto em todo o site */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
-        
-        /* Remove o foco padrão azul em todos os elementos ao clicar/navegar por teclado */
+
         a:focus, button:focus, *:focus {
             outline: none !important;
         }
@@ -419,11 +423,9 @@
     </div>
 
     <script>
-        // PROTEÇÃO: Bloqueia clique direito em cima de qualquer imagem
+        // PROTEÇÃO: Bloqueia clique direito em toda a página
         document.addEventListener('contextmenu', function(e) {
-            if (e.target.tagName === 'IMG') {
-                e.preventDefault();
-            }
+            e.preventDefault();
         });
 
         // PROTEÇÃO: Bloqueia arrastar imagens
