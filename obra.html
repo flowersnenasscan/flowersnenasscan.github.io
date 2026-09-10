@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title> - Detalhes da Obra</title>
+    <title>Flower's Nenascan 🌸 - Detalhes da Obra</title>
     <!-- Fonte estilizada para o título de capítulos -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -413,7 +413,6 @@
     <header>
         <a href="./" class="logo-img-container">
             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaQno-acWBLX3bO6i_ivtOUB3H4KlmVs-gxAGQ1t4ingQZYv2G_zL1wrR6kf8lI7LEDSkAVvNAy0KlOxAPjzKgtAl9KyR-ABi-ku7UcPAMML-TxwWPD6RPuwhxDSwpQFekGC4DPUfzwCBQtroq2stOYSSsDq0KQNSYRwPX8p5gSS_XFj3FdkpxuOl8vi2Q/s2592/1000703103.png" alt="Flower's Nenascan Logo" class="logo-site">
-            <span style="font-size:1.15rem; font-weight:800; color:var(--primary-pink);">flower's nenasscan 🌸</span>
         </a>
         <a href="./" class="icon-btn" title="Voltar ao Início">
             <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
@@ -611,7 +610,7 @@
                     <div class="info-grid">
                         <div class="info-item-detalhe">
                             <span class="info-label">Tipo</span>
-                            <span class="info-value">${bandeiraHtml} ${tipoObra}</span>
+                            <span class="info-value">${bandeiraHtml} ${tipoObp || tipoObra}</span>
                         </div>
                         <div class="info-item-detalhe">
                             <span class="info-label">Status</span>
@@ -680,7 +679,7 @@
             if (index > -1) {
                 favoritos.splice(index, 1);
             } else {
-                favoritos.push(obraTitulo);
+                favoritos.push(obraTitle);
             }
 
             localStorage.setItem('flowers_favoritos', JSON.stringify(favoritos));
@@ -783,6 +782,7 @@
             document.body.classList.remove('bloqueio-total');
 
             document.getElementById('modal-senha-overlay').style.opacity = '0';
+            document.getElementById('modal-senha-overlay-transition').style.transition = 'opacity 0.4s ease'; // fallback
             document.getElementById('modal-senha-overlay').style.transition = 'opacity 0.4s ease';
             setTimeout(() => {
                 document.getElementById('modal-senha-overlay').style.display = 'none';
