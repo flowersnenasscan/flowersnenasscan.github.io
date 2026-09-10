@@ -20,11 +20,13 @@
         margin: 0;
         padding: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        /* BLOQUEIO UNIVERSAL DE SELEÇÃO DE TEXTO */
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        /* REMOVE O DESTAQUE AZUL/CINZA AO CLICAR EM QUALQUER ELEMENTO NO CELULAR/PC */
+        -webkit-tap-highlight-color: transparent;
+        outline: none;
     }
     body {
         background-color: var(--bg-color);
@@ -35,7 +37,7 @@
         max-width: 100vw;
     }
 
-    /* BLOQUEIO UNIVERSAL PARA TODAS AS IMAGENS DO SITE (INCLUINDO BOTÕES E FLOCAS) */
+    /* BLOQUEIO UNIVERSAL PARA TODAS AS IMAGENS DO SITE */
     img {
         -webkit-user-drag: none;
         user-select: none;
@@ -554,14 +556,12 @@
     </a>
 
     <script>
-        // BLOQUEIO COMPLETO DE CLIQUES E TENTATIVAS DE CÓPIA/DOWNLOAD
         document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
         document.addEventListener('dragstart', function(e) { e.preventDefault(); });
         document.addEventListener('copy', function(e) { e.preventDefault(); });
         document.addEventListener('cut', function(e) { e.preventDefault(); });
         document.addEventListener('selectstart', function(e) { e.preventDefault(); });
 
-        // BLOQUEIO DE ATALHOS DE TECLADO COMUNS (Ctrl+C, Ctrl+X, Ctrl+A, Ctrl+U, F12, etc.)
         document.addEventListener('keydown', function(e) {
             if (
                 e.key === 'F12' ||
@@ -757,7 +757,7 @@
                             const styleCustom = iframeDoc.createElement('style');
                             styleCustom.textContent = `
                                 main { color-scheme: dark; }
-                                body { background-color: #000000 !important; color: #FF99DD !important; user-select: none !important; }
+                                body { background-color: #000000 !important; color: #FF99DD !important; user-select: none !important; -webkit-tap-highlight-color: transparent !important; }
                                 .gsc-header { border-bottom-color: rgba(255, 153, 221, 0.2) !important; }
                                 a { color: #FF99DD !important; }
                                 .btn-primary, button[type="submit"] { background-color: #FF99DD !important; color: #000000 !important; border-color: #FF99DD !important; }
