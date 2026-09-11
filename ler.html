@@ -136,25 +136,25 @@
         -webkit-text-fill-color: transparent;
     }
 
-    /* BARRA DE BOTÕES NO TOPO (VOLTAR, CASINHA, DROPDOWN) */
+    /* BARRA DE BOTÕES NO TOPO (VOLTAR, CASINHA, DROPDOWN - MESMO TAMANHO E CENTRALIZADOS) */
     .leitor-controles {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         width: 100%;
         max-width: 450px;
     }
 
-    /* BOTÃO VOLTAR (ESTILO IGUAL AO DROPDOWN) */
+    /* BOTÃO VOLTAR (MESMA LARGURA DO DROPDOWN) */
     .btn-voltar-obra {
         background: #000000;
         border: 2px solid var(--primary-pink);
         color: #FF99DD;
-        padding: 8px 16px;
+        padding: 8px 12px;
         border-radius: 20px;
         font-weight: 700;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         cursor: pointer;
         outline: none;
         box-shadow: 0 0 10px rgba(255, 153, 221, 0.3);
@@ -165,6 +165,8 @@
         justify-content: center;
         transition: all 0.2s ease;
         white-space: nowrap;
+        flex: 1;
+        max-width: 130px;
     }
 
     .btn-voltar-obra:hover {
@@ -173,35 +175,34 @@
         color: #ffffff;
     }
 
-    /* BOTÃO DA CASINHA (SEM CÍRCULO, SOLTO E CENTRALIZADO) */
+    /* BOTÃO DA CASINHA (CENTRALIZADO, FIXO E PROPORCIONAL) */
     .btn-casinha {
-        background: transparent;
-        border: none;
-        width: auto;
-        height: auto;
-        border-radius: 0;
+        background: #000000;
+        border: 2px solid var(--primary-pink);
+        width: 44px;
+        height: 38px;
+        border-radius: 20px;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         text-decoration: none;
-        box-shadow: none;
-        transition: transform 0.2s ease;
+        box-shadow: 0 0 10px rgba(255, 153, 221, 0.3);
+        transition: all 0.2s ease;
         flex-shrink: 0;
-        padding: 4px;
+        padding: 0;
     }
 
     .btn-casinha:hover {
-        background: transparent;
-        box-shadow: none;
-        transform: scale(1.15);
+        background: rgba(255, 153, 221, 0.15);
+        box-shadow: 0 0 15px rgba(255, 153, 221, 0.6);
     }
 
     .btn-casinha svg {
-        width: 22px;
-        height: 22px;
+        width: 18px;
+        height: 18px;
         fill: #FF99DD;
-        filter: drop-shadow(0 0 5px rgba(255, 153, 221, 0.7));
+        filter: drop-shadow(0 0 4px rgba(255, 153, 221, 0.7));
         transition: fill 0.2s ease;
     }
 
@@ -212,7 +213,7 @@
     .dropdown-container {
         position: relative;
         flex: 1;
-        max-width: 175px; /* Ligeiramente menos comprida */
+        max-width: 130px; /* Mesma largura do botão voltar */
     }
 
     .btn-dropdown-custom {
@@ -556,17 +557,17 @@
             <div class="capitulo-titulo-topo" id="textoCapituloReal">CAPÍTULO --</div>
         </div>
         <div class="leitor-controles">
-            <!-- Botão Voltar para a Obra -->
+            <!-- Botão Voltar para a Obra (Mesmo tamanho do dropdown) -->
             <a href="#" class="btn-voltar-obra" id="btnVoltarObra" onclick="irParaDetalhes(event)">voltar</a>
             
-            <!-- Botão Casinha para o Início (Sem círculo e centralizado) -->
+            <!-- Botão da Casinha no Meio, Centralizado e Estilizado -->
             <a href="./" class="btn-casinha" title="Início">
                 <svg viewBox="0 0 24 24">
                     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
                 </svg>
             </a>
 
-            <!-- Dropdown Lista de Capítulos (Menos comprida) -->
+            <!-- Dropdown Lista de Capítulos (Mesmo tamanho do voltar) -->
             <div class="dropdown-container">
                 <button class="btn-dropdown-custom" id="btnDropdownCaps" onclick="toggleMenuCaps()">
                     <span>Capítulos</span>
