@@ -136,7 +136,7 @@
         -webkit-text-fill-color: transparent;
     }
 
-    /* BARRA DE BOTÕES NO TOPO (VOLTAR, CASINHA, DROPDOWN - MESMO TAMANHO E CENTRALIZADOS) */
+    /* BARRA DE BOTÕES NO TOPO (VOLTAR, CASINHA, DROPDOWN) */
     .leitor-controles {
         display: flex;
         justify-content: center;
@@ -146,15 +146,15 @@
         max-width: 450px;
     }
 
-    /* BOTÃO VOLTAR (MESMA LARGURA DO DROPDOWN) */
+    /* BOTÃO VOLTAR */
     .btn-voltar-obra {
         background: #000000;
         border: 2px solid var(--primary-pink);
         color: #FF99DD;
-        padding: 8px 12px;
+        padding: 9px 12px;
         border-radius: 20px;
         font-weight: 700;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         cursor: pointer;
         outline: none;
         box-shadow: 0 0 10px rgba(255, 153, 221, 0.3);
@@ -166,7 +166,7 @@
         transition: all 0.2s ease;
         white-space: nowrap;
         flex: 1;
-        max-width: 130px;
+        max-width: 135px;
     }
 
     .btn-voltar-obra:hover {
@@ -175,34 +175,31 @@
         color: #ffffff;
     }
 
-    /* BOTÃO DA CASINHA (CENTRALIZADO, FIXO E PROPORCIONAL) */
+    /* BOTÃO DA CASINHA (SEM BORDA DE CÍRCULO/QUADRADO, APENAS O ÍCONE MAIOR) */
     .btn-casinha {
-        background: #000000;
-        border: 2px solid var(--primary-pink);
+        background: transparent;
+        border: none;
         width: 44px;
-        height: 38px;
-        border-radius: 20px;
+        height: 44px;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         text-decoration: none;
-        box-shadow: 0 0 10px rgba(255, 153, 221, 0.3);
-        transition: all 0.2s ease;
+        transition: transform 0.2s ease;
         flex-shrink: 0;
         padding: 0;
     }
 
     .btn-casinha:hover {
-        background: rgba(255, 153, 221, 0.15);
-        box-shadow: 0 0 15px rgba(255, 153, 221, 0.6);
+        transform: scale(1.15);
     }
 
     .btn-casinha svg {
-        width: 18px;
-        height: 18px;
+        width: 26px;
+        height: 26px;
         fill: #FF99DD;
-        filter: drop-shadow(0 0 4px rgba(255, 153, 221, 0.7));
+        filter: drop-shadow(0 0 8px rgba(255, 153, 221, 0.8));
         transition: fill 0.2s ease;
     }
 
@@ -213,7 +210,7 @@
     .dropdown-container {
         position: relative;
         flex: 1;
-        max-width: 130px; /* Mesma largura do botão voltar */
+        max-width: 135px;
     }
 
     .btn-dropdown-custom {
@@ -221,10 +218,10 @@
         background: #000000;
         border: 2px solid var(--primary-pink);
         color: #FF99DD;
-        padding: 8px 12px;
+        padding: 9px 12px;
         border-radius: 20px;
         font-weight: 700;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         cursor: pointer;
         outline: none;
         box-shadow: 0 0 10px rgba(255, 153, 221, 0.3);
@@ -243,8 +240,8 @@
     }
 
     .btn-dropdown-custom svg {
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
         fill: #FF99DD;
         transition: transform 0.3s ease;
         flex-shrink: 0;
@@ -557,20 +554,20 @@
             <div class="capitulo-titulo-topo" id="textoCapituloReal">CAPÍTULO --</div>
         </div>
         <div class="leitor-controles">
-            <!-- Botão Voltar para a Obra (Mesmo tamanho do dropdown) -->
+            <!-- Botão Voltar -->
             <a href="#" class="btn-voltar-obra" id="btnVoltarObra" onclick="irParaDetalhes(event)">voltar</a>
             
-            <!-- Botão da Casinha no Meio, Centralizado e Estilizado -->
+            <!-- Botão da Casinha (Sem moldura de círculo, centralizado e maior) -->
             <a href="./" class="btn-casinha" title="Início">
                 <svg viewBox="0 0 24 24">
                     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
                 </svg>
             </a>
 
-            <!-- Dropdown Lista de Capítulos (Mesmo tamanho do voltar) -->
+            <!-- Dropdown Lista de Capítulos -->
             <div class="dropdown-container">
                 <button class="btn-dropdown-custom" id="btnDropdownCaps" onclick="toggleMenuCaps()">
-                    <span>Capítulos</span>
+                    <span id="textoBotaoCapitulos">Lista de Capítulos</span>
                     <svg viewBox="0 0 24 24" id="setaDropdown"><path d="M7 10l5 5 5-5z"/></svg>
                 </button>
                 <div class="lista-suspensa-caps" id="listaSuspensaCaps">
@@ -761,6 +758,7 @@
 
             let numCap = typeof capAtual === 'object' ? capAtual.numero : capAtual;
             document.getElementById('textoCapituloReal').textContent = `CAPÍTULO ${numCap}`;
+            document.getElementById('textoBotaoCapitulos').textContent = `Lista de Capítulos`;
             document.title = `Capítulo ${numCap} - ${obraGlobal.titulo} - Flower's Nenascan 🌸`;
 
             idUnicoCapitulo = `${criarSlug(obraGlobal.titulo)}_${String(numCap).toLowerCase()}`;
