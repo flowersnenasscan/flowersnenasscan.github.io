@@ -361,15 +361,16 @@
             position: relative;
         }
         .capitulo-item:hover {
-            border-color: rgba(255, 153, 221, 0.6);
+            border-color: rgba(255, 153, 221, 0.4);
             background: rgba(255, 153, 221, 0.04);
             transform: translateX(4px);
         }
         
-        /* ESTILO QUANDO O CAPÍTULO JÁ FOI CLICADO/LIDO (Bordas Rosa Neon) */
-        .capitulo-item.lido {
-            border: 1.5px solid var(--primary-pink);
-            box-shadow: 0 0 10px rgba(255, 153, 221, 0.4);
+        /* BORDAS ROSA APENAS NO INSTANTE DO CLIQUE/TOQUE */
+        .capitulo-item:active {
+            border-color: var(--primary-pink) !important;
+            box-shadow: var(--neon-glow) !important;
+            background: rgba(255, 153, 221, 0.08) !important;
         }
 
         .cap-esquerda {
@@ -397,9 +398,6 @@
             font-weight: 800;
             color: var(--primary-pink);
             text-shadow: var(--neon-glow);
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
         .cap-sub-label {
             font-size: 0.82rem;
@@ -408,32 +406,42 @@
             font-weight: 600;
         }
         
-        /* SÍMBOLO DE LIDO (CHECK FLORIDO) */
-        .simbolo-lido {
-            font-size: 0.85rem;
-            filter: drop-shadow(0 0 5px rgba(255, 153, 221, 0.8));
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* LADO DIREITO AJUSTADO COM A DATA BEM ABAIXO */
+        /* LADO DIREITO: DATA BEM EM BAIXO E OLHO ROSA EM CIMA DA DATA */
         .cap-direita {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
             justify-content: flex-end;
-            height: 100px;
+            height: 105px;
             padding-bottom: 2px;
-            gap: auto;
+            gap: 4px;
         }
+        
+        .topo-direita-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+            margin-top: auto;
+        }
+
         .cap-data {
             font-size: 0.78rem;
             color: var(--text-muted);
             text-shadow: none;
-            margin-top: auto; /* Empurra a data totalmente para o final do bloco */
         }
         
+        /* SÍMBOLO DE OLHO ROSA PARA INDICAR CAPÍTULO VISTO (EM CIMA DA DATA) */
+        .simbolo-olho-visto {
+            font-size: 0.95rem;
+            filter: drop-shadow(0 0 6px rgba(255, 153, 221, 0.9));
+            display: none;
+            line-height: 1;
+        }
+        .capitulo-item.lido .simbolo-olho-visto {
+            display: inline-block;
+        }
+
         /* SELO NOVO (SÓ APARECE SE FOR RECENTE <= 4 DIAS) */
         .selo-novo-cap {
             background-color: #ff55bb;
@@ -448,7 +456,6 @@
             text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
             display: inline-block;
             text-transform: uppercase;
-            margin-bottom: 6px;
         }
     </style>
 </head>
@@ -549,10 +556,6 @@
                 let capId = item.getAttribute('data-cap-slug');
                 if (lidos.includes(capId)) {
                     item.classList.add('lido');
-                    let numContainer = item.querySelector('.cap-num-principal');
-                    if (numContainer && !numContainer.querySelector('.simbolo-lido')) {
-                        numContainer.innerHTML += `<span class="simbolo-lido" title="Capítulo Lido">🌸</span>`;
-                    }
                 }
             });
         }
@@ -636,7 +639,10 @@
                             </div>
                             <div class="cap-direita">
                                 ${seloNovoHtml}
-                                <span class="cap-data">${dataCap}</span>
+                                <div class="topo-direita-info">
+                                    <span class="simbolo-olho-visto" title="Capítulo Visto">👁️</span>
+                                    <span class="cap-data">${dataCap}</span>
+                                </div>
                             </div>
                         </a>
                     `;
