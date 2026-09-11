@@ -36,18 +36,30 @@
         max-width: 100vw;
     }
 
-    /* PÁGINAS DO MANGÁ TOTALMENTE COLADAS E SEM LINHAS BRANCAS */
+    /* PÁGINAS DO MANGÁ TOTALMENTE COLADAS E SEM LINHAS */
     .pagina-manga-img {
         width: 100vw;
         max-width: 800px;
         height: auto;
         display: block;
-        margin: 0 auto -1px auto; /* Corrigido para -1px para evitar sobreposição excessiva */
+        margin: 0 auto;
+        padding: 0;
+        border: none;
+        outline: none;
         -webkit-user-drag: none;
         user-select: none;
         -webkit-user-select: none;
         -webkit-touch-callout: none;
         pointer-events: none;
+    }
+
+    /* Esconde o texto alt e o ícone de imagem quebrada caso falhe */
+    .pagina-manga-img:-moz-broken {
+        font-size: 0;
+        visibility: hidden;
+    }
+    .pagina-manga-img::-webkit-media-text-track-container {
+        display: none;
     }
 
     .barra-progresso-container {
@@ -735,7 +747,7 @@
             const containerPaginas = document.getElementById('paginasContainer');
             if (paginasParaExibir.length > 0) {
                 containerPaginas.innerHTML = paginasParaExibir.map(img => `
-                    <img src="${img}" class="pagina-manga-img" alt="Página do capítulo" referrerpolicy="no-referrer">
+                    <img src="${img}" class="pagina-manga-img" alt="" onerror="this.style.display='none'" referrerpolicy="no-referrer">
                 `).join('');
             } else {
                 containerPaginas.innerHTML = `<p style="color: var(--primary-pink); text-align: center; padding: 60px;">Nenhuma imagem adicional cadastrada para este capítulo.</p>`;
@@ -991,7 +1003,7 @@
 
             document.body.classList.remove('bloqueio-total');
 
-            document.getElementById('modal-senha-overlay').style.opacity = '0';
+            document.getElementById('modal-schema-overlay').style.opacity = '0';
             document.getElementById('modal-senha-overlay').style.transition = 'opacity 0.4s ease';
             setTimeout(() => {
                 document.getElementById('modal-senha-overlay').style.display = 'none';
