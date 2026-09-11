@@ -36,7 +36,6 @@
         max-width: 100vw;
     }
 
-    /* PÁGINAS DO MANGÁ TOTALMENTE COLADAS E SEM LINHAS */
     .pagina-manga-img {
         width: 100vw;
         max-width: 800px;
@@ -53,7 +52,6 @@
         pointer-events: none;
     }
 
-    /* Esconde o texto alt e o ícone de imagem quebrada caso falhe */
     .pagina-manga-img:-moz-broken {
         font-size: 0;
         visibility: hidden;
@@ -138,31 +136,71 @@
         -webkit-text-fill-color: transparent;
     }
 
+    /* BARRA DE BOTÕES NO TOPO (VOLTAR, CASINHA, DROPDOWN) */
+    .leitor-controles {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        max-width: 450px;
+    }
+
+    /* BOTÃO VOLTAR (ESTILO IGUAL AO DROPDOWN) */
+    .btn-voltar-obra {
+        background: #000000;
+        border: 2px solid var(--primary-pink);
+        color: #FF99DD;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        cursor: pointer;
+        outline: none;
+        box-shadow: 0 0 10px rgba(255, 153, 221, 0.3);
+        text-decoration: none;
+        text-transform: lowercase;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+
+    .btn-voltar-obra:hover {
+        background: rgba(255, 153, 221, 0.15);
+        box-shadow: 0 0 15px rgba(255, 153, 221, 0.6);
+        color: #ffffff;
+    }
+
+    /* BOTÃO DA CASINHA (INÍCIO) */
     .btn-casinha {
-        position: absolute;
-        right: 4px;
-        top: 50%;
-        transform: translateY(-50%);
-        background: transparent;
-        border: none;
+        background: #000000;
+        border: 2px solid var(--primary-pink);
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         text-decoration: none;
-        transition: transform 0.2s ease, filter 0.2s ease;
-        pointer-events: auto;
+        box-shadow: 0 0 10px rgba(255, 153, 221, 0.3);
+        transition: all 0.2s ease;
+        flex-shrink: 0;
     }
 
     .btn-casinha:hover {
-        transform: translateY(-50%) scale(1.15);
+        background: rgba(255, 153, 221, 0.15);
+        box-shadow: 0 0 15px rgba(255, 153, 221, 0.6);
+        transform: scale(1.05);
     }
 
     .btn-casinha svg {
-        width: 24px;
-        height: 24px;
+        width: 18px;
+        height: 18px;
         fill: #FF99DD;
-        filter: drop-shadow(0 0 6px rgba(255, 153, 221, 0.7));
+        filter: drop-shadow(0 0 4px rgba(255, 153, 221, 0.7));
         transition: fill 0.2s ease;
     }
 
@@ -170,17 +208,9 @@
         fill: #ffffff;
     }
 
-    .leitor-controles {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        max-width: 320px;
-    }
-
     .dropdown-container {
         position: relative;
-        width: 100%;
+        flex: 1;
     }
 
     .btn-dropdown-custom {
@@ -517,13 +547,19 @@
         <a class="obra-titulo-link" id="linkObraTopo" onclick="irParaDetalhes()">Carregando obra...</a>
         <div class="capitulo-container-topo">
             <div class="capitulo-titulo-topo" id="textoCapituloReal">CAPÍTULO --</div>
+        </div>
+        <div class="leitor-controles">
+            <!-- Botão Voltar para a Obra -->
+            <a href="#" class="btn-voltar-obra" id="btnVoltarObra" onclick="irParaDetalhes(event)">voltar</a>
+            
+            <!-- Botão Casinha para o Início -->
             <a href="./" class="btn-casinha" title="Início">
                 <svg viewBox="0 0 24 24">
                     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
                 </svg>
             </a>
-        </div>
-        <div class="leitor-controles">
+
+            <!-- Dropdown Lista de Capítulos -->
             <div class="dropdown-container">
                 <button class="btn-dropdown-custom" id="btnDropdownCaps" onclick="toggleMenuCaps()">
                     <span>Lista de Capítulos</span>
@@ -665,7 +701,8 @@
                 document.getElementById('paginasContainer').innerHTML = `<p style="color:#FF99DD; text-align:center; padding: 40px;">Erro ao carregar o capítulo.</p>`;
             });
 
-        function irParaDetalhes() {
+        function irParaDetalhes(e) {
+            if (e) e.preventDefault();
             if (obraGlobal) {
                 const identificadorObra = obraGlobal.id || criarSlug(obraGlobal.titulo);
                 window.location.href = `obra.html?nome=${encodeURIComponent(identificadorObra)}`;
@@ -1003,7 +1040,7 @@
 
             document.body.classList.remove('bloqueio-total');
 
-            document.getElementById('modal-schema-overlay').style.opacity = '0';
+            document.getElementById('modal-senha-overlay').style.opacity = '0';
             document.getElementById('modal-senha-overlay').style.transition = 'opacity 0.4s ease';
             setTimeout(() => {
                 document.getElementById('modal-senha-overlay').style.display = 'none';
