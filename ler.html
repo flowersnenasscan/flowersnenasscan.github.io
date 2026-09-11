@@ -36,27 +36,18 @@
         max-width: 100vw;
     }
 
-    img {
+    /* PÁGINAS DO MANGÁ TOTALMENTE COLADAS E SEM LINHAS BRANCAS */
+    .pagina-manga-img {
+        width: 100vw;
+        max-width: 800px;
+        height: auto;
+        display: block;
+        margin: 0 auto -2px auto;
         -webkit-user-drag: none;
         user-select: none;
         -webkit-user-select: none;
         -webkit-touch-callout: none;
         pointer-events: none;
-    }
-
-    /* PÁGINAS DO MANGÁ TOTALMENTE COLADAS E SEM LINHAS BRANCAS */
-    .pagina-manga-bg {
-        width: 100vw;
-        max-width: 800px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-color: #000000;
-        margin: 0 auto -1px auto;
-        display: block;
-        line-height: 0;
-        font-size: 0;
-        transform: translateY(0.5px);
     }
 
     .barra-progresso-container {
@@ -264,6 +255,7 @@
         flex-direction: column;
         align-items: center;
         min-height: 70vh;
+        background-color: #000000;
     }
 
     .navegacao-final {
@@ -743,23 +735,8 @@
             const containerPaginas = document.getElementById('paginasContainer');
             if (paginasParaExibir.length > 0) {
                 containerPaginas.innerHTML = paginasParaExibir.map(img => `
-                    <div class="pagina-manga-bg" style="background-image: url('${img}');" data-src="${img}"></div>
+                    <img src="${img}" class="pagina-manga-img" alt="Página do capítulo" referrerpolicy="no-referrer">
                 `).join('');
-
-                paginasParaExibir.forEach((imgUrl, index) => {
-                    const tempImg = new Image();
-                    tempImg.src = imgUrl;
-                    tempImg.onload = function() {
-                        const elementos = document.querySelectorAll('.pagina-manga-bg');
-                        if (elementos[index]) {
-                            const larguraReal = tempImg.naturalWidth;
-                            const alturaReal = tempImg.naturalHeight;
-                            const larguraTela = Math.min(window.innerWidth, 800);
-                            const alturaCalculada = (alturaReal * larguraTela) / larguraReal;
-                            elementos[index].style.height = `${alturaCalculada}px`;
-                        }
-                    };
-                });
             } else {
                 containerPaginas.innerHTML = `<p style="color: var(--primary-pink); text-align: center; padding: 60px;">Nenhuma imagem adicional cadastrada para este capítulo.</p>`;
             }
