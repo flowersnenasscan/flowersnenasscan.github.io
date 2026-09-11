@@ -52,14 +52,6 @@
         pointer-events: none;
     }
 
-    .pagina-manga-img:-moz-broken {
-        font-size: 0;
-        visibility: hidden;
-    }
-    .pagina-manga-img::-webkit-media-text-track-container {
-        display: none;
-    }
-
     .barra-progresso-container {
         position: fixed;
         bottom: 0;
@@ -136,7 +128,6 @@
         -webkit-text-fill-color: transparent;
     }
 
-    /* BARRA DE BOTÕES NO TOPO (VOLTAR, CASINHA, DROPDOWN) */
     .leitor-controles {
         display: flex;
         justify-content: center;
@@ -146,7 +137,6 @@
         max-width: 450px;
     }
 
-    /* BOTÃO VOLTAR */
     .btn-voltar-obra {
         background: #000000;
         border: 2px solid var(--primary-pink);
@@ -175,7 +165,6 @@
         color: #ffffff;
     }
 
-    /* BOTÃO DA CASINHA (SEM BORDA DE CÍRCULO/QUADRADO, APENAS O ÍCONE MAIOR) */
     .btn-casinha {
         background: transparent;
         border: none;
@@ -555,9 +544,9 @@
         </div>
         <div class="leitor-controles">
             <!-- Botão Voltar -->
-            <a href="#" class="btn-voltar-obra" id="btnVoltarObra" onclick="irParaDetalhes(event)">❀ Voltar</a>
+            <a href="#" class="btn-voltar-obra" id="btnVoltarObra" onclick="irParaDetalhes(event)">voltar</a>
             
-            <!-- Botão da Casinha (Sem moldura de círculo, centralizado e maior) -->
+            <!-- Botão da Casinha (Sem borda, centralizado e maior) -->
             <a href="./" class="btn-casinha" title="Início">
                 <svg viewBox="0 0 24 24">
                     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
@@ -567,7 +556,7 @@
             <!-- Dropdown Lista de Capítulos -->
             <div class="dropdown-container">
                 <button class="btn-dropdown-custom" id="btnDropdownCaps" onclick="toggleMenuCaps()">
-                    <span id="textoBotaoCapitulos">❀ Capítulos</span>
+                    <span id="textoBotaoCapitulos">Lista de Capítulos</span>
                     <svg viewBox="0 0 24 24" id="setaDropdown"><path d="M7 10l5 5 5-5z"/></svg>
                 </button>
                 <div class="lista-suspensa-caps" id="listaSuspensaCaps">
@@ -591,7 +580,7 @@
         <div class="grid-reamoes" id="gridReacoes">
             <div class="item-reacao" id="reacao-fofooo" onclick="votarReacao('fofooo')">
                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgU6vS6AZwByFLsGV9a-fKkarZB31kEos8swXC1d7dgFAtnYO-gSR20UL4xryBnQyThQL1D7Q3hgj5mLv9xcxPbYpu6_1UVfjx0BkMmPCYp0H5okkDid0JsSrjMizMSZIR-gS1BmBXaPFyJcvfaaZUGRGl6lhEUxf8qyRJp_4BkJGssQ6TjHouLr6ggks/s16000/1000701366.png" alt="FOFOO!" referrerpolicy="no-referrer">
-                <span class="texto-reacao">FOFOO!!</span>
+                <span class="texto-reacao">FOFOO</span>
                 <span class="contador-reacao" id="cnt-fofooo">0</span>
             </div>
             <div class="item-reacao" id="reacao-ameiii" onclick="votarReacao('ameiii')">
@@ -758,7 +747,7 @@
 
             let numCap = typeof capAtual === 'object' ? capAtual.numero : capAtual;
             document.getElementById('textoCapituloReal').textContent = `CAPÍTULO ${numCap}`;
-            document.getElementById('textoBotaoCapitulos').textContent = `❀ Capítulos`;
+            document.getElementById('textoBotaoCapitulos').textContent = `Lista de Capítulos`;
             document.title = `Capítulo ${numCap} - ${obraGlobal.titulo} - Flower's Nenascan 🌸`;
 
             idUnicoCapitulo = `${criarSlug(obraGlobal.titulo)}_${String(numCap).toLowerCase()}`;
@@ -803,19 +792,13 @@
 
             const slugObraId = encodeURIComponent(obraSlugUrl);
 
+            // CORREÇÃO DOS BOTÕES DE NAVEGAÇÃO:
+            // Como no array os capítulos mais recentes costumam vir primeiro (índice 0 = cap 3, índice 1 = cap 2, etc.):
+            // - "Próximo" deve ir para o índice anterior (capítulo mais recente/número maior)
+            // - "Anterior" deve ir para o índice seguinte (capítulo mais antigo/número menor)
+            
             if (indexAtual > 0) {
-                let capAnt = capitulos[indexAtual - 1];
-                let numAnt = typeof capAnt === 'object' ? capAnt.numero : capAnt;
-                let slugAnt = String(numAnt).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
-                btnAnterior.href = `ler.html?obra=${slugObraId}&cap=${slugAnt}`;
-                btnAnterior.classList.remove('disabled');
-            } else {
-                btnAnterior.href = '#';
-                btnAnterior.classList.add('disabled');
-            }
-
-            if (indexAtual < capitulos.length - 1 && indexAtual !== -1) {
-                let capProx = capitulos[indexAtual + 1];
+                let capProx = capitulos[indexAtual - 1];
                 let numProx = typeof capProx === 'object' ? capProx.numero : capProx;
                 let slugProx = String(numProx).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
                 btnProximo.href = `ler.html?obra=${slugObraId}&cap=${slugProx}`;
@@ -823,6 +806,17 @@
             } else {
                 btnProximo.href = '#';
                 btnProximo.classList.add('disabled');
+            }
+
+            if (indexAtual < capitulos.length - 1 && indexAtual !== -1) {
+                let capAnt = capitulos[indexAtual + 1];
+                let numAnt = typeof capAnt === 'object' ? capAnt.numero : capAnt;
+                let slugAnt = String(numAnt).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
+                btnAnterior.href = `ler.html?obra=${slugObraId}&cap=${slugAnt}`;
+                btnAnterior.classList.remove('disabled');
+            } else {
+                btnAnterior.href = '#';
+                btnAnterior.classList.add('disabled');
             }
         }
 
