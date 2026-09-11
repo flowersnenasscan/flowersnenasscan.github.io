@@ -88,6 +88,93 @@
           "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitEXZkaTMM5tetr-YchCyhBfso8txDSzBxf8AnzdDZKMTzEpJ6nFRHzvQ-ahk70JTKdx-E6wsp4OcKRIn-UcyV8nCpLcpWmcuWfYP4oWZ_ChdeXUnSTolpES5rK21XhF1mbjVI6RmiGy2UpST0uJ-_e4nvyD7mEOJWC7XIIBsSfvQmpVtQ_7Umc2qkbVY/s1600/1000702905.png",
           "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilnbBBuTpcdOdax-PWKYe0DIzquEmSx4_3MWTVO6tQ2etxYWRbKnEBpzAMDd9BXuWYt8Sk2PiGIuU8hogwb6qOi3jofvW9cTXnmMF5DKyxS-Hrocas2_4Fb0bueaB1CbuT5T1J9Rkvwx4RsK1tOuURmOwsO2Lc1lhRZfLzblQESVcu5PidjZPVIKaTKq8/s1600/1000702906.png",
           "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf7jfXw-1oB4zkY5sF9T9vK0we5XBjIA5VkwtsyvPQyQuTlxOS3qr7Q1gXRmOqr_Sq28S0pCApkbT8bYKalsVK0s2hFFPQlpviHR5tjUALt3XBbojG-QLhWk4Kf-TYROMI4kdxX9a5MDfcNTHhIj_SGfhBLtpaXvwhB638LxxEzF20c6HSyzEUvgRvl50/s1600/1000702907.png"
+        
+          
+        ]
+      },
+      {
+        "numero": "02",
+        "data": "",
+        "temporada": "1ª Temporada",
+        "paginas": [
+          "https://files.catbox.moe/ae205i.png",
+          "https://files.catbox.moe/7fbdln.png"
+        ]
+      },
+      {
+        "numero": "01",
+        "data": "",
+        "temporada": "1ª Temporada",
+        "paginas": [
+          "https://files.catbox.moe/ae205i.png",
+          "https://files.catbox.moe/7fbdln.png",
+          "https://files.catbox.moe/llrh59.png"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "meu-mestre-sadico",
+    "titulo": "Meu Mestre Sádico",
+    "capa": "https://files.catbox.moe/wyy3gm.png",
+    "banner": "https://files.catbox.moe/s641ug.png",
+    "status": "Completo",
+    "autor": "",
+    "artista": "",
+    "classificacao": "",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Josei"],
+    "sinopse": "Escreva a sinopse da obra aqui...",
+    "capitulos": [
+      {
+        "numero": "03",
+        "data": "",
+        "temporada": "2ª Temporada",
+        "paginas": [
+          "https://files.catbox.moe/ae205i.png",
+          "https://files.catbox.moe/7fbdln.png"
+        ]
+      },
+      {
+        "numero": "02",
+        "data": "",
+        "temporada": "2ª Temporada",
+        "paginas": [
+          "https://files.catbox.moe/ae205i.png"
+        ]
+      },
+      {
+        "numero": "01",
+        "data": "",
+        "temporada": "1ª Temporada",
+        "paginas": [
+          "https://files.catbox.moe/ae205i.png",
+          "https://files.catbox.moe/7fbdln.png"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nome-da-nova-obra",
+    "titulo": "Nome da Nova Obra",
+    "capa": "https://files.catbox.moe/wyy3gm.png",
+    "banner": "https://files.catbox.moe/wyy3gm.png",
+    "status": "Em hiatus",
+    "autor": "",
+    "artista": "",
+    "classificacao": "",
+    "ano": "2026",
+    "generos": ["Ação", "Fantasia"],
+    "sinopse": "Escreva a sinopse da obra aqui...",
+    "capitulos": [
+      {
+        "numero": "01",
+        "data": "",
+        "temporada": "1ª Temporada",
+        "paginas": [
+          "https://files.catbox.moe/ae205i.png",
+          "https://files.catbox.moe/7fbdln.png",
+          "https://files.catbox.moe/llrh59.png"
         ]
       }
     ]
