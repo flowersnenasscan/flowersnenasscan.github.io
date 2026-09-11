@@ -358,6 +358,7 @@
             justify-content: space-between;
             text-decoration: none;
             transition: 0.2s;
+            position: relative;
         }
         .capitulo-item:hover {
             border-color: rgba(255, 153, 221, 0.6);
@@ -365,7 +366,7 @@
             transform: translateX(4px);
         }
         
-        /* ESTILO QUANDO O CAPÍTULO JÁ FOI CLICADO/LIDO */
+        /* ESTILO QUANDO O CAPÍTULO JÁ FOI CLICADO/LIDO (Bordas Rosa Neon) */
         .capitulo-item.lido {
             border: 1.5px solid var(--primary-pink);
             box-shadow: 0 0 10px rgba(255, 153, 221, 0.4);
@@ -396,6 +397,9 @@
             font-weight: 800;
             color: var(--primary-pink);
             text-shadow: var(--neon-glow);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
         .cap-sub-label {
             font-size: 0.82rem;
@@ -404,23 +408,33 @@
             font-weight: 600;
         }
         
-        /* LADO DIREITO AJUSTADO COM MAIS ESPAÇAMENTO PARA BAIXO */
+        /* SÍMBOLO DE LIDO (CHECK FLORIDO) */
+        .simbolo-lido {
+            font-size: 0.85rem;
+            filter: drop-shadow(0 0 5px rgba(255, 153, 221, 0.8));
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* LADO DIREITO AJUSTADO COM A DATA BEM ABAIXO */
         .cap-direita {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            justify-content: space-between;
-            height: 100px; /* Garante altura para separar o selo da data */
+            justify-content: flex-end;
+            height: 100px;
             padding-bottom: 2px;
+            gap: auto;
         }
         .cap-data {
             font-size: 0.78rem;
             color: var(--text-muted);
             text-shadow: none;
-            margin-top: auto; /* Joga a data totalmente para baixo */
+            margin-top: auto; /* Empurra a data totalmente para o final do bloco */
         }
         
-        /* SELO NOVO IDêntico à imagem de referência */
+        /* SELO NOVO (SÓ APARECE SE FOR RECENTE <= 4 DIAS) */
         .selo-novo-cap {
             background-color: #ff55bb;
             color: #ffcceb;
@@ -434,6 +448,7 @@
             text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
             display: inline-block;
             text-transform: uppercase;
+            margin-bottom: 6px;
         }
     </style>
 </head>
@@ -534,6 +549,10 @@
                 let capId = item.getAttribute('data-cap-slug');
                 if (lidos.includes(capId)) {
                     item.classList.add('lido');
+                    let numContainer = item.querySelector('.cap-num-principal');
+                    if (numContainer && !numContainer.querySelector('.simbolo-lido')) {
+                        numContainer.innerHTML += `<span class="simbolo-lido" title="Capítulo Lido">🌸</span>`;
+                    }
                 }
             });
         }
@@ -581,7 +600,7 @@
 
                 let temporadaAtual = null;
 
-                capsParaExibir.forEach((cap, index) => {
+                capsParaExibir.forEach((cap) => {
                     let numCap = typeof cap === 'object' ? cap.numero : cap;
                     let dataCap = typeof cap === 'object' && cap.data ? cap.data : '';
                     let temporadaCap = typeof cap === 'object' && cap.temporada ? cap.temporada : null;
@@ -601,7 +620,9 @@
                     }
 
                     let slugCap = String(numCap).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
-                    let exibirSelo = ehCapituloNovo(dataCap) || (!dataCap && index === 0 && !ordemInvertida);
+                    
+                    // O selo NOVO só aparece se a data for realmente menor ou igual a 4 dias
+                    let exibirSelo = ehCapituloNovo(dataCap);
                     let seloNovoHtml = exibirSelo ? `<span class="selo-novo-cap">NOVO</span>` : '';
 
                     listaCapsHtml += `
@@ -787,7 +808,6 @@
 </div>
 
 <style>
-    /* Trava rigorosamente a rolagem do corpo da página principal */
     body.bloqueio-total {
         overflow: hidden !important;
         height: 100vh !important;
@@ -795,7 +815,6 @@
         width: 100% !important;
     }
 
-    /* Animação de tremer (shake) quando erra a senha */
     @keyframes tremerCaixa {
         0% { transform: translateX(0); }
         20% { transform: translateX(-10px); }
@@ -813,10 +832,8 @@
 </style>
 
 <script>
-    // Aplica o travamento de scroll imediatamente ao carregar a página
     document.body.classList.add('bloqueio-total');
 
-    // Validação de 3 dias usando localStorage
     const tempoLiberacao = localStorage.getItem('acesso_liberado_ate');
     const agora = new Date().getTime();
 
@@ -827,7 +844,6 @@
         localStorage.removeItem('acesso_liberado_ate');
     }
 
-    // Senha definida como "x"
     const SENHA_CORRETA = "x"; 
 
     function verificarSenha() {
@@ -836,13 +852,11 @@
         const caixa = document.getElementById('caixa-senha');
 
         if (digitada === SENHA_CORRETA) {
-            // Validade de 3 dias em milissegundos
             const tresDiasEmMs = 3 * 24 * 60 * 60 * 1000;
             const validadeAcesso = new Date().getTime() + tresDiasEmMs;
             
             localStorage.setItem('acesso_liberado_ate', validadeAcesso);
 
-            // Libera a rolagem do site ao acertar
             document.body.classList.remove('bloqueio-total');
 
             document.getElementById('modal-senha-overlay').style.opacity = '0';
@@ -855,7 +869,6 @@
             document.getElementById('input-senha-site').value = '';
             document.getElementById('input-senha-site').focus();
 
-            // Aplica o efeito de tremer na caixa
             caixa.classList.remove('tremer');
             void caixa.offsetWidth; 
             caixa.classList.add('tremer');
