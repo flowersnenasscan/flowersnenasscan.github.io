@@ -44,7 +44,7 @@
         pointer-events: none;
     }
 
-    /* PÁGINAS DO MANGÁ TOTALMENTE COLADAS (SEM LINHAS OU MARGENS) */
+    /* PÁGINAS DO MANGÁ TOTALMENTE COLADAS E SEM LINHAS BRANCAS */
     .pagina-manga-bg {
         width: 100vw;
         max-width: 800px;
@@ -52,10 +52,11 @@
         background-repeat: no-repeat;
         background-position: center;
         background-color: #000000;
-        margin: 0 auto;
+        margin: 0 auto -1px auto;
         display: block;
         line-height: 0;
         font-size: 0;
+        transform: translateY(0.5px);
     }
 
     .barra-progresso-container {
@@ -174,7 +175,6 @@
         max-width: 320px;
     }
 
-    /* NOVO MENU PERSONALIZADO DE CAPÍTULOS */
     .dropdown-container {
         position: relative;
         width: 100%;
@@ -522,7 +522,7 @@
         <div class="leitor-controles">
             <div class="dropdown-container">
                 <button class="btn-dropdown-custom" id="btnDropdownCaps" onclick="toggleMenuCaps()">
-                    <span id="textoCapituloAtualDropdown">Lista de Capítulos</span>
+                    <span>Lista de Capítulos</span>
                     <svg viewBox="0 0 24 24" id="setaDropdown"><path d="M7 10l5 5 5-5z"/></svg>
                 </button>
                 <div class="lista-suspensa-caps" id="listaSuspensaCaps">
@@ -677,7 +677,6 @@
             menu.classList.toggle('ativo');
         }
 
-        // Fecha o menu suspenso ao clicar fora
         window.addEventListener('click', function(e) {
             const dropdown = document.querySelector('.dropdown-container');
             if (dropdown && !dropdown.contains(e.target)) {
@@ -713,7 +712,6 @@
 
             let numCap = typeof capAtual === 'object' ? capAtual.numero : capAtual;
             document.getElementById('textoCapituloReal').textContent = `CAPÍTULO ${numCap}`;
-            document.getElementById('textoCapituloAtualDropdown').textContent = `Capítulo ${numCap}`;
             document.title = `Capítulo ${numCap} - ${obraGlobal.titulo} - Flower's Nenascan 🌸`;
 
             idUnicoCapitulo = `${criarSlug(obraGlobal.titulo)}_${String(numCap).toLowerCase()}`;
@@ -721,7 +719,6 @@
             carregarReacoesDoSupabase();
             carregarGiscus(idUnicoCapitulo);
 
-            // Popula o menu personalizado customizado de capítulos
             const listaCapsEl = document.getElementById('listaSuspensaCaps');
             listaCapsEl.innerHTML = '';
             capitulos.forEach((c) => {
@@ -741,7 +738,6 @@
                 paginas = capAtual.paginas;
             }
 
-            // Oculta a primeira imagem do array visualmente, mantendo a existência dela preservada
             let paginasParaExibir = paginas.length > 1 ? paginas.slice(1) : [];
 
             const containerPaginas = document.getElementById('paginasContainer');
@@ -950,8 +946,6 @@
         });
     </script>
 
-
- <!-- TELA DE SENHA ESTILIZADA - TRAVADA NO TOPO -->
 <div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background: url('https://files.catbox.moe/iuy2vm.png') no-repeat center center / cover !important; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); overflow: hidden;">
     
     <div id="caixa-senha" style="position: relative; z-index: 10; background: #ffffff; border-radius: 35px; padding: 40px 30px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 0 30px rgba(255, 133, 194, 0.6), 0 15px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255, 133, 194, 0.3);">
