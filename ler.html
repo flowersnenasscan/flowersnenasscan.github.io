@@ -24,7 +24,6 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-        /* REMOVE O DESTAQUE AZUL/CINZA AO CLICAR EM QUALQUER ELEMENTO NO CELULAR/PC */
         -webkit-tap-highlight-color: transparent;
         outline: none;
     }
@@ -37,7 +36,6 @@
         max-width: 100vw;
     }
 
-    /* BLOQUEIO UNIVERSAL PARA TODAS AS IMAGENS DO SITE */
     img {
         -webkit-user-drag: none;
         user-select: none;
@@ -46,6 +44,7 @@
         pointer-events: none;
     }
 
+    /* PÁGINAS DO MANGÁ TOTALMENTE COLADAS (SEM LINHAS OU MARGENS) */
     .pagina-manga-bg {
         width: 100vw;
         max-width: 800px;
@@ -54,6 +53,9 @@
         background-position: center;
         background-color: #000000;
         margin: 0 auto;
+        display: block;
+        line-height: 0;
+        font-size: 0;
     }
 
     .barra-progresso-container {
@@ -172,46 +174,86 @@
         max-width: 320px;
     }
 
+    /* NOVO MENU PERSONALIZADO DE CAPÍTULOS */
     .dropdown-container {
         position: relative;
         width: 100%;
     }
 
-    .select-capitulos {
+    .btn-dropdown-custom {
         width: 100%;
         background: #000000;
         border: 2px solid var(--primary-pink);
         color: #FF99DD;
-        padding: 7px 14px;
+        padding: 8px 14px;
         border-radius: 20px;
         font-weight: 700;
         font-size: 0.85rem;
         cursor: pointer;
         outline: none;
         box-shadow: 0 0 10px rgba(255, 153, 221, 0.3);
-        appearance: none;
-        -webkit-appearance: none;
-        background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.364%22%20height%3D%22292.364%22%3E%3Cpath%20fill%3D%22%23FF99DD%22%20d%3D%22M287.934%20197.935L146.123%2056.127%204.31%20197.935c-3.28%203.28-3.28%208.6-0.003%2011.88l19.52%2019.52c3.28%203.28%208.6%203.28%2011.88%200l110.4-110.4%20110.4%20110.4c3.28%203.28%208.6%203.28%2011.88%200l19.52-19.52c3.28-3.28%203.28-8.6%200.002-11.88z%22%2F%3E%3C%2Fsvg%3E");
-        background-repeat: no-repeat;
-        background-position: right 12px center;
-        background-size: 8px;
-        padding-right: 30px;
-        text-align-last: center;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         transition: all 0.2s ease;
     }
 
-    .select-capitulos:hover {
+    .btn-dropdown-custom:hover {
         background: rgba(255, 153, 221, 0.15);
         box-shadow: 0 0 15px rgba(255, 153, 221, 0.6);
     }
 
-    .select-capitulos option {
-        background: #000000;
+    .btn-dropdown-custom svg {
+        width: 12px;
+        height: 12px;
+        fill: #FF99DD;
+        transition: transform 0.3s ease;
+    }
+
+    .lista-suspensa-caps {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        width: 100%;
+        max-height: 280px;
+        overflow-y: auto;
+        background: #121216;
+        border: 2px solid var(--primary-pink);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.9), 0 0 15px rgba(255, 153, 221, 0.3);
+        z-index: 9999;
+        display: none;
+        flex-direction: column;
+    }
+
+    .lista-suspensa-caps.ativo {
+        display: flex;
+    }
+
+    .opcao-cap-custom {
+        padding: 10px 16px;
         color: #FF99DD;
-        padding: 8px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-align: center;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(255, 153, 221, 0.1);
+        transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .opcao-cap-custom:last-child {
+        border-bottom: none;
+    }
+
+    .opcao-cap-custom:hover {
+        background: rgba(255, 153, 221, 0.2);
+        color: #ffffff;
+    }
+
+    .opcao-cap-custom.selecionado {
+        background: rgba(255, 153, 221, 0.3);
+        color: #ffffff;
+        font-weight: bold;
     }
 
     .paginas-leitor {
@@ -479,9 +521,13 @@
         </div>
         <div class="leitor-controles">
             <div class="dropdown-container">
-                <select class="select-capitulos" id="selectCapitulos" onchange="mudarCapitulo(this.value)">
-                    <option value="" disabled selected>Lista de Capítulos</option>
-                </select>
+                <button class="btn-dropdown-custom" id="btnDropdownCaps" onclick="toggleMenuCaps()">
+                    <span id="textoCapituloAtualDropdown">Lista de Capítulos</span>
+                    <svg viewBox="0 0 24 24" id="setaDropdown"><path d="M7 10l5 5 5-5z"/></svg>
+                </button>
+                <div class="lista-suspensa-caps" id="listaSuspensaCaps">
+                    <!-- Preenchido via JavaScript -->
+                </div>
             </div>
         </div>
     </div>
@@ -626,6 +672,19 @@
             }
         }
 
+        function toggleMenuCaps() {
+            const menu = document.getElementById('listaSuspensaCaps');
+            menu.classList.toggle('ativo');
+        }
+
+        // Fecha o menu suspenso ao clicar fora
+        window.addEventListener('click', function(e) {
+            const dropdown = document.querySelector('.dropdown-container');
+            if (dropdown && !dropdown.contains(e.target)) {
+                document.getElementById('listaSuspensaCaps').classList.remove('ativo');
+            }
+        });
+
         function carregarLeitor() {
             let capitulos = obraGlobal.capitulos || [];
             let indexAtual = -1;
@@ -654,6 +713,7 @@
 
             let numCap = typeof capAtual === 'object' ? capAtual.numero : capAtual;
             document.getElementById('textoCapituloReal').textContent = `CAPÍTULO ${numCap}`;
+            document.getElementById('textoCapituloAtualDropdown').textContent = `Capítulo ${numCap}`;
             document.title = `Capítulo ${numCap} - ${obraGlobal.titulo} - Flower's Nenascan 🌸`;
 
             idUnicoCapitulo = `${criarSlug(obraGlobal.titulo)}_${String(numCap).toLowerCase()}`;
@@ -661,12 +721,19 @@
             carregarReacoesDoSupabase();
             carregarGiscus(idUnicoCapitulo);
 
-            const selectEl = document.getElementById('selectCapitulos');
-            selectEl.innerHTML = `<option value="" disabled selected>Lista de Capítulos</option>`;
+            // Popula o menu personalizado customizado de capítulos
+            const listaCapsEl = document.getElementById('listaSuspensaCaps');
+            listaCapsEl.innerHTML = '';
             capitulos.forEach((c) => {
                 let num = typeof c === 'object' ? c.numero : c;
                 let slugC = String(num).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-');
-                selectEl.innerHTML += `<option value="${slugC}">Capítulo ${num}</option>`;
+                let estaSelecionado = slugC === capSlugUrl || (!capSlugUrl && c === capitulos[0]);
+                
+                listaCapsEl.innerHTML += `
+                    <div class="opcao-cap-custom ${estaSelecionado ? 'selecionado' : ''}" onclick="mudarCapitulo('${slugC}')">
+                        Capítulo ${num}
+                    </div>
+                `;
             });
 
             let paginas = [];
@@ -674,13 +741,16 @@
                 paginas = capAtual.paginas;
             }
 
+            // Oculta a primeira imagem do array visualmente, mantendo a existência dela preservada
+            let paginasParaExibir = paginas.length > 1 ? paginas.slice(1) : [];
+
             const containerPaginas = document.getElementById('paginasContainer');
-            if (paginas.length > 0) {
-                containerPaginas.innerHTML = paginas.map(img => `
+            if (paginasParaExibir.length > 0) {
+                containerPaginas.innerHTML = paginasParaExibir.map(img => `
                     <div class="pagina-manga-bg" style="background-image: url('${img}');" data-src="${img}"></div>
                 `).join('');
 
-                paginas.forEach((imgUrl, index) => {
+                paginasParaExibir.forEach((imgUrl, index) => {
                     const tempImg = new Image();
                     tempImg.src = imgUrl;
                     tempImg.onload = function() {
@@ -695,7 +765,7 @@
                     };
                 });
             } else {
-                containerPaginas.innerHTML = `<p style="color: var(--primary-pink); text-align: center; padding: 60px;">Nenhuma imagem cadastrada para este capítulo.</p>`;
+                containerPaginas.innerHTML = `<p style="color: var(--primary-pink); text-align: center; padding: 60px;">Nenhuma imagem adicional cadastrada para este capítulo.</p>`;
             }
 
             const navFinal = document.getElementById('navegacaoFinal');
@@ -899,7 +969,6 @@
 </div>
 
 <style>
-    /* Trava rigorosamente a rolagem do corpo da página principal */
     body.bloqueio-total {
         overflow: hidden !important;
         height: 100vh !important;
@@ -907,7 +976,6 @@
         width: 100% !important;
     }
 
-    /* Animação de tremer (shake) quando erra a senha */
     @keyframes tremerCaixa {
         0% { transform: translateX(0); }
         20% { transform: translateX(-10px); }
@@ -925,10 +993,8 @@
 </style>
 
 <script>
-    // Aplica o travamento de scroll imediatamente ao carregar a página
     document.body.classList.add('bloqueio-total');
 
-    // Validação de 3 dias usando localStorage
     const tempoLiberacao = localStorage.getItem('acesso_liberado_ate');
     const agora = new Date().getTime();
 
@@ -939,7 +1005,6 @@
         localStorage.removeItem('acesso_liberado_ate');
     }
 
-    // Senha definida como "x"
     const SENHA_CORRETA = "x"; 
 
     function verificarSenha() {
@@ -948,13 +1013,11 @@
         const caixa = document.getElementById('caixa-senha');
 
         if (digitada === SENHA_CORRETA) {
-            // Validade de 3 dias em milissegundos
             const tresDiasEmMs = 3 * 24 * 60 * 60 * 1000;
             const validadeAcesso = new Date().getTime() + tresDiasEmMs;
             
             localStorage.setItem('acesso_liberado_ate', validadeAcesso);
 
-            // Libera a rolagem do site ao acertar
             document.body.classList.remove('bloqueio-total');
 
             document.getElementById('modal-senha-overlay').style.opacity = '0';
@@ -967,7 +1030,6 @@
             document.getElementById('input-senha-site').value = '';
             document.getElementById('input-senha-site').focus();
 
-            // Aplica o efeito de tremer na caixa
             caixa.classList.remove('tremer');
             void caixa.offsetWidth; 
             caixa.classList.add('tremer');
@@ -975,7 +1037,5 @@
     }
 </script>
 
-
-    
 </body>
 </html>
