@@ -360,10 +360,17 @@
             transition: 0.2s;
         }
         .capitulo-item:hover {
-            border-color: rgba(255, 153, 221, 0.4);
+            border-color: rgba(255, 153, 221, 0.6);
             background: rgba(255, 153, 221, 0.04);
             transform: translateX(4px);
         }
+        
+        /* ESTILO QUANDO O CAPÍTULO JÁ FOI CLICADO/LIDO */
+        .capitulo-item.lido {
+            border: 1.5px solid var(--primary-pink);
+            box-shadow: 0 0 10px rgba(255, 153, 221, 0.4);
+        }
+
         .cap-esquerda {
             display: flex;
             align-items: center;
@@ -396,16 +403,21 @@
             text-shadow: none;
             font-weight: 600;
         }
+        
+        /* LADO DIREITO AJUSTADO COM MAIS ESPAÇAMENTO PARA BAIXO */
         .cap-direita {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 6px;
+            justify-content: space-between;
+            height: 100px; /* Garante altura para separar o selo da data */
+            padding-bottom: 2px;
         }
         .cap-data {
             font-size: 0.78rem;
             color: var(--text-muted);
             text-shadow: none;
+            margin-top: auto; /* Joga a data totalmente para baixo */
         }
         
         /* SELO NOVO IDêntico à imagem de referência */
@@ -503,6 +515,29 @@
             return diasPassados >= 0 && diasPassados <= 4;
         }
 
+        function marcarComoLido(slugObraId, slugCap) {
+            let chaveLidos = `lidos_${slugObraId}`;
+            let lidos = [];
+            try { lidos = JSON.parse(localStorage.getItem(chaveLidos)) || []; } catch(e) { lidos = []; }
+            if (!lidos.includes(slugCap)) {
+                lidos.push(slugCap);
+                localStorage.setItem(chaveLidos, JSON.stringify(lidos));
+            }
+        }
+
+        function verificarLidos(slugObraId) {
+            let chaveLidos = `lidos_${slugObraId}`;
+            let lidos = [];
+            try { lidos = JSON.parse(localStorage.getItem(chaveLidos)) || []; } catch(e) { lidos = []; }
+            
+            document.querySelectorAll('.capitulo-item').forEach(item => {
+                let capId = item.getAttribute('data-cap-slug');
+                if (lidos.includes(capId)) {
+                    item.classList.add('lido');
+                }
+            });
+        }
+
         fetch('obras.json?v=' + new Date().getTime())
             .then(res => res.json())
             .then(obras => {
@@ -570,7 +605,7 @@
                     let seloNovoHtml = exibirSelo ? `<span class="selo-novo-cap">NOVO</span>` : '';
 
                     listaCapsHtml += `
-                        <a href="ler.html?obra=${slugObraId}&cap=${slugCap}" class="capitulo-item">
+                        <a href="ler.html?obra=${slugObraId}&cap=${slugCap}" class="capitulo-item" data-cap-slug="${slugCap}" onclick="marcarComoLido('${slugObraId}', '${slugCap}')">
                             <div class="cap-esquerda">
                                 <img src="${capaCap}" alt="Cap ${numCap}" class="cap-miniatura">
                                 <div class="cap-info-texto">
@@ -692,6 +727,7 @@
             `;
 
             atualizarEstadoFavorito(obraGlobal.titulo);
+            verificarLidos(slugObraId);
         }
 
         function inverterOrdem() {
