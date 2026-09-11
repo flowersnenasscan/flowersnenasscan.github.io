@@ -406,23 +406,23 @@
             font-weight: 600;
         }
         
-        /* LADO DIREITO: DATA BEM EM BAIXO E OLHO ROSA EM CIMA DA DATA */
+        /* LADO DIREITO: DATA BEM MAIS EM BAIXO E SÍMBOLO SVG DE OLHO EM CIMA DA DATA */
         .cap-direita {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
             justify-content: flex-end;
-            height: 105px;
+            height: 120px;
             padding-bottom: 2px;
-            gap: 4px;
+            gap: 6px;
         }
         
         .topo-direita-info {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 4px;
-            margin-top: auto;
+            gap: 6px;
+            margin-top: auto; /* Empurra totalmente para baixo */
         }
 
         .cap-data {
@@ -431,14 +431,19 @@
             text-shadow: none;
         }
         
-        /* SÍMBOLO DE OLHO ROSA PARA INDICAR CAPÍTULO VISTO (EM CIMA DA DATA) */
-        .simbolo-olho-visto {
-            font-size: 0.95rem;
-            filter: drop-shadow(0 0 6px rgba(255, 153, 221, 0.9));
+        /* SÍMBOLO SVG DE OLHO ROSA NEON (EM CIMA DA DATA) */
+        .icone-olho-svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: var(--primary-pink);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 0 8px var(--primary-pink));
             display: none;
-            line-height: 1;
         }
-        .capitulo-item.lido .simbolo-olho-visto {
+        .capitulo-item.lido .icone-olho-svg {
             display: inline-block;
         }
 
@@ -640,7 +645,10 @@
                             <div class="cap-direita">
                                 ${seloNovoHtml}
                                 <div class="topo-direita-info">
-                                    <span class="simbolo-olho-visto" title="Capítulo Visto">👁️</span>
+                                    <svg class="icone-olho-svg" viewBox="0 0 24 24" title="Capítulo Visto">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
                                     <span class="cap-data">${dataCap}</span>
                                 </div>
                             </div>
