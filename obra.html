@@ -462,6 +462,74 @@
             display: inline-block;
             text-transform: uppercase;
         }
+
+        /* ESTILOS DOS MODAIS DE PESQUISA E MENU LATERAL */
+        .site-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+        .site-modal.ativo {
+            display: flex;
+        }
+        .modal-conteudo-pesquisa {
+            background: var(--card-bg);
+            border: 1px solid var(--primary-pink);
+            padding: 25px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: var(--neon-glow);
+            text-align: center;
+        }
+        .modal-conteudo-pesquisa input {
+            width: 100%;
+            background: #000;
+            border: 1px solid var(--primary-pink);
+            padding: 12px 15px;
+            border-radius: 12px;
+            color: var(--primary-pink);
+            font-size: 1rem;
+            outline: none;
+            margin-top: 15px;
+        }
+
+        /* MENU LATERAL */
+        .menu-lateral-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            display: none;
+            justify-content: flex-end;
+        }
+        .menu-lateral-overlay.ativo {
+            display: flex;
+        }
+        .menu-lateral-conteudo {
+            background: var(--card-bg);
+            border-left: 1px solid var(--primary-pink);
+            width: 280px;
+            height: 100%;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            box-shadow: var(--shadow);
+        }
+        .menu-lateral-conteudo a {
+            color: var(--primary-pink);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 153, 221, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -471,20 +539,45 @@
             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaQno-acWBLX3bO6i_ivtOUB3H4KlmVs-gxAGQ1t4ingQZYv2G_zL1wrR6kf8lI7LEDSkAVvNAy0KlOxAPjzKgtAl9KyR-ABi-ku7UcPAMML-TxwWPD6RPuwhxDSwpQFekGC4DPUfzwCBQtroq2stOYSSsDq0KQNSYRwPX8p5gSS_XFj3FdkpxuOl8vi2Q/s2592/1000703103.png" alt="Flower's Nenascan Logo" class="logo-site">
         </a>
         <div class="header-botoes-direita">
-            <!-- Botão de Pesquisa (Lupa) -->
-            <a href="index.html?abrir=pesquisa" class="icon-btn" title="Pesquisar">
+            <!-- Botão de Pesquisa (Lupa) corrigido para acionar o modal via JS -->
+            <button type="button" class="icon-btn" id="btnAbrirPesquisa" title="Pesquisar">
                 <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-            </a>
-            <!-- Botão de Menu (hambúrguer) -->
-            <a href="index.html?abrir=menu" class="icon-btn" title="Menu">
+            </button>
+            <!-- Botão de Menu (hambúrguer) corrigido para acionar o menu lateral via JS -->
+            <button type="button" class="icon-btn" id="btnAbrirMenu" title="Menu">
                 <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-            </a>
+            </button>
             <!-- Botão da Casinha (Início) -->
             <a href="./" class="icon-btn" title="Voltar ao Início">
                 <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
             </a>
         </div>
     </header>
+
+    <!-- MODAL DE PESQUISA -->
+    <div class="site-modal" id="modalPesquisa">
+        <div class="modal-conteudo-pesquisa">
+            <h3 style="color: #fff;">Pesquisar Obra</h3>
+            <input type="text" id="inputPesquisaModal" placeholder="Digite o nome da obra..." onkeypress="if(event.key==='Enter') executarBuscaModal()">
+            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <button onclick="executarBuscaModal()" class="btn-acao" style="max-width: none;">Buscar</button>
+                <button onclick="fecharModais()" class="btn-acao" style="background: #333; max-width: none;">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MENU LATERAL -->
+    <div class="menu-lateral-overlay" id="menuLateral">
+        <div class="menu-lateral-conteudo">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--primary-pink); padding-bottom: 10px;">
+                <h3 style="color: #fff;">Menu</h3>
+                <button onclick="fecharModais()" style="background: none; border: none; font-size: 1.2rem; cursor: pointer;">✕</button>
+            </div>
+            <a href="./">Início</a>
+            <a href="./" onclick="fecharModais()">Favoritos</a>
+            <a href="https://github.com/nena-scan" target="_blank">GitHub / Contato</a>
+        </div>
+    </div>
 
     <div class="obra-container" id="detalhes-conteudo">
         <p style="text-align: center; color: var(--text-muted); padding: 50px;">Carregando informações da obra...</p>
@@ -502,6 +595,50 @@
                 e.preventDefault();
             }
         });
+
+        // CONTROLE DOS BOTÕES DE PESQUISA E MENU
+        const btnAbrirPesquisa = document.getElementById('btnAbrirPesquisa');
+        const btnAbrirMenu = document.getElementById('btnAbrirMenu');
+        const modalPesquisa = document.getElementById('modalPesquisa');
+        const menuLateral = document.getElementById('menuLateral');
+
+        if (btnAbrirPesquisa && modalPesquisa) {
+            btnAbrirPesquisa.addEventListener('click', () => {
+                modalPesquisa.classList.add('ativo');
+                const inp = document.getElementById('inputPesquisaModal');
+                if (inp) inp.focus();
+            });
+        }
+
+        if (btnAbrirMenu && menuLateral) {
+            btnAbrirMenu.addEventListener('click', () => {
+                menuLateral.classList.add('ativo');
+            });
+        }
+
+        function fecharModais() {
+            if (modalPesquisa) modalPesquisa.classList.remove('ativo');
+            if (menuLateral) menuLateral.classList.remove('ativo');
+        }
+
+        // Fechar clicando fora do modal de pesquisa
+        if (modalPesquisa) {
+            modalPesquisa.addEventListener('click', (e) => {
+                if (e.target === modalPesquisa) fecharModais();
+            });
+        }
+        if (menuLateral) {
+            menuLateral.addEventListener('click', (e) => {
+                if (e.target === menuLateral) fecharModais();
+            });
+        }
+
+        function executarBuscaModal() {
+            const termo = document.getElementById('inputPesquisaModal').value.trim();
+            if (termo) {
+                window.location.href = `./?q=${encodeURIComponent(termo)}`;
+            }
+        }
 
         const urlParams = new URLSearchParams(window.location.search);
         const slugUrl = decodeURIComponent(urlParams.get('nome') || '').trim().toLowerCase();
