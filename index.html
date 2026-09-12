@@ -1058,78 +1058,80 @@ function filtrarObrasPesquisa(termo) {
 </script> 
 
 
-<!-- Importando fontes idênticas ao estilo da imagem -->
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
-<!-- Importando ícones (FontAwesome) para o Telegram e Projetos -->
+
+    
+ <!-- Importando as fontes idênticas às da sua arte -->
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Ícones do Telegram e Projetos -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<footer class="nenas-custom-footer">
-  <div class="nenas-footer-wrap">
+<footer class="nenas-exact-footer">
+  <div class="nenas-exact-container">
     
-    <!-- Título com fonte cursiva e as cores exatas -->
-    <div class="nenas-main-title">
-      <span class="pink-script">Flower's</span><span class="flower-icon-title">🌸</span> <span class="white-text">Nenasscan</span>
+    <!-- Título Principal -->
+    <div class="nenas-title-art">
+      <span class="script-flower">Flower's</span><span class="title-flower-icon">🌸</span> <span class="scan-part">Nenasscan</span>
     </div>
     
-    <!-- Frase com palavras destacadas em rosa -->
-    <p class="nenas-phrase">
-      Traduções feitas com <span class="highlight-pink">carinho</span> de <span class="highlight-pink">fã</span> para <span class="highlight-pink">fã</span> ♡
+    <!-- Frase com palavras específicas em rosa -->
+    <p class="nenas-phrase-art">
+      Traduções feitas com <span class="pink-word">carinho</span> de <span class="pink-word">fã</span> para <span class="pink-word">fã</span> ♡
     </p>
     
-    <!-- Copyright e florzinha -->
-    <div class="nenas-copy-line">
+    <!-- Copyright -->
+    <div class="nenas-copy-art">
       ©2025-2026 🌸
     </div>
     
-    <!-- Divisor com o coraçãozinho exato -->
-    <div class="nenas-heart-divider">
-      <span class="line-side"></span>
-      <span class="divider-heart">♥</span>
-      <span class="line-side"></span>
+    <!-- Divisor com Coração Exato -->
+    <div class="art-divider">
+      <div class="line-h"></div>
+      <span class="divider-heart-icon">♥</span>
+      <div class="line-h"></div>
     </div>
     
-    <!-- Aviso de direitos -->
-    <p class="nenas-disclaimer-box">
+    <!-- Aviso -->
+    <p class="nenas-disclaimer-art">
       Todos os conteúdos e créditos aos seus respectivos autores e artistas, apoiem comprando a obra original.
     </p>
     
-    <!-- Botõezinhos redondos do Telegram e Projetos -->
-    <div class="nenas-social-buttons">
-      <a href="LINK_DO_TELEGRAM_AQUI" target="_blank" class="nenas-circle-btn" title="Telegram">
+    <!-- Botões Redondos (Telegram e Projetos) -->
+    <div class="art-social-row">
+      <a href="LINK_DO_TELEGRAM_AQUI" target="_blank" class="art-icon-btn" title="Telegram">
         <i class="fa-brands fa-telegram"></i>
       </a>
-      <a href="LINK_DE_PROJETOS_AQUI" class="nenas-circle-btn" title="Projetos">
+      <a href="LINK_DE_PROJETOS_AQUI" class="art-icon-btn" title="Projetos">
         <i class="fa-solid fa-book-open"></i>
       </a>
     </div>
     
-    <!-- Frase final com fonte cursiva -->
-    <div class="nenas-final-greeting">
+    <!-- Frase Final Cursiva -->
+    <div class="nenas-final-art">
       Obrigada por nos acompanhar ♡
     </div>
     
-    <!-- Divisor final com florzinha e brilho -->
-    <div class="nenas-bottom-divider">
-      <span class="line-side"></span>
-      <span class="bottom-flower">🌸 ✨</span>
-      <span class="line-side"></span>
+    <!-- Divisor Final com Florzinha -->
+    <div class="art-divider-bottom">
+      <div class="line-h"></div>
+      <span class="bottom-cherry">🌸 ✨</span>
+      <div class="line-h"></div>
     </div>
 
   </div>
 </footer>
 
 <style>
-.nenas-custom-footer {
+.nenas-exact-footer {
   width: 100%;
-  background-color: #060608;
-  padding: 40px 20px 45px 20px;
+  background-color: #050507;
+  padding: 45px 24px;
   box-sizing: border-box;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   justify-content: flex-start;
 }
 
-.nenas-footer-wrap {
+.nenas-exact-container {
   width: 100%;
   max-width: 600px;
   display: flex;
@@ -1138,99 +1140,100 @@ function filtrarObrasPesquisa(termo) {
   text-align: left;
 }
 
-/* Título principal */
-.nenas-main-title {
-  font-size: 2.1rem;
-  font-weight: 700;
-  margin-bottom: 8px;
+/* Título */
+.nenas-title-art {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  margin-bottom: 6px;
   flex-wrap: wrap;
 }
 
-.pink-script {
+.script-flower {
   font-family: 'Caveat', cursive;
-  font-size: 2.5rem;
+  font-size: 2.6rem;
+  font-weight: 700;
   color: #ff4785;
-  text-shadow: 0 0 12px rgba(255, 71, 133, 0.5);
+  text-shadow: 0 0 14px rgba(255, 71, 133, 0.5);
+  line-height: 1;
 }
 
-.flower-icon-title {
-  font-size: 1.3rem;
-  margin-top: 4px;
+.title-flower-icon {
+  font-size: 1.2rem;
 }
 
-.white-text {
-  color: #f2f2f8;
-  font-family: 'Quicksand', sans-serif;
+.scan-part {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.7rem;
   font-weight: 600;
+  color: #ffffff;
   letter-spacing: -0.5px;
 }
 
 /* Frase descritiva */
-.nenas-phrase {
+.nenas-phrase-art {
   color: #d1d1dc;
   font-size: 0.95rem;
   margin: 0 0 8px 0;
   font-weight: 400;
 }
 
-.highlight-pink {
+.pink-word {
   color: #ff4785;
   font-weight: 600;
+  text-shadow: 0 0 8px rgba(255, 71, 133, 0.4);
 }
 
-.nenas-copy-line {
+.nenas-copy-art {
   color: #ff4785;
   font-size: 0.9rem;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   text-shadow: 0 0 8px rgba(255, 71, 133, 0.3);
 }
 
-/* Divisor com coração */
-.nenas-heart-divider {
+/* Divisor do meio */
+.art-divider {
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
-.line-side {
+.line-h {
   flex-grow: 1;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255, 71, 133, 0.4), transparent);
 }
 
-.divider-heart {
+.divider-heart-icon {
   color: #ff4785;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-shadow: 0 0 8px rgba(255, 71, 133, 0.6);
 }
 
-/* Aviso legal */
-.nenas-disclaimer-box {
+/* Disclaimer */
+.nenas-disclaimer-art {
   color: #7a7a8c;
   font-size: 0.82rem;
   line-height: 1.5;
-  margin: 0 0 22px 0;
+  margin: 0 0 20px 0;
   max-width: 480px;
 }
 
-/* Botões redondos de ícones */
-.nenas-social-buttons {
+/* Botões Redondos com Brilho Neon Exato */
+.art-social-row {
   display: flex;
   gap: 12px;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
-.nenas-circle-btn {
+.art-icon-btn {
   width: 38px;
   height: 38px;
   background: rgba(255, 71, 133, 0.08);
-  border: 1px solid rgba(255, 71, 133, 0.25);
+  border: 1px solid rgba(255, 71, 133, 0.3);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1238,38 +1241,45 @@ function filtrarObrasPesquisa(termo) {
   color: #ff4785;
   font-size: 1rem;
   text-decoration: none;
+  box-shadow: 0 0 10px rgba(255, 71, 133, 0.15);
   transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(255, 71, 133, 0.1);
 }
 
-.nenas-circle-btn:hover {
+.art-icon-btn:hover {
   background: rgba(255, 71, 133, 0.2);
+  box-shadow: 0 0 15px rgba(255, 71, 133, 0.5);
   transform: translateY(-2px);
-  box-shadow: 0 0 15px rgba(255, 71, 133, 0.4);
 }
 
-/* Frase final cursiva */
-.nenas-final-greeting {
+/* Frase Final */
+.nenas-final-art {
   font-family: 'Caveat', cursive;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   color: #ff4785;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   text-shadow: 0 0 10px rgba(255, 71, 133, 0.4);
 }
 
-/* Divisor inferior */
-.nenas-bottom-divider {
+/* Divisor final */
+.art-divider-bottom {
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.bottom-flower {
+.bottom-cherry {
   font-size: 0.85rem;
 }
 </style>
+   
+
+
+
+
+
+
 
 
 
