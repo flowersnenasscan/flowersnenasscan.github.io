@@ -1406,12 +1406,12 @@ function filtrarObrasPesquisa(termo) {
 
 </div>
 
-  <div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background-color: #000; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; overflow: hidden;">
+
+<div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background-color: #000; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; overflow: hidden;">
     
-    <!-- Imagem de fundo garantida -->
-    <img src="https://files.catbox.moe/e4kcyt.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; filter: blur(4px); -webkit-filter: blur(4px); transform: scale(1.05);" alt="Fundo">
+    <!-- COLQUE O LINK DA SUA IMAGEM FUNCIONANDO AQUI EMBAIXO -->
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPizRBEA6EgNotktGlEJSUsbM_S_aOcBLTAZnOeQO-EJjqFjWxPym-rHWLnRIjZky9dKd3DzrHpRq4FTrBK5lK2JLJ8HwfELnsnfzoketaGXIK9tsg9EKVLh2V-5cDAuK4u77ATnkW_pM_UIfN6zMQH3pp52o_AK_vWfksK6aQPHobrCG11pxZgtVHj_0/s16000/1000703798.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; filter: blur(4px); -webkit-filter: blur(4px); transform: scale(1.05);" alt="Fundo">
     
-    <!-- Camada escura leve para destacar a caixinha -->
     <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 2;"></div>
 
     <div id="caixa-senha" style="position: relative; z-index: 10; background: #ffffff; border-radius: 35px; padding: 40px 30px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 0 30px rgba(255, 133, 194, 0.6), 0 15px 40px rgba(0,0,0,0.3); border: 1px solid rgba(255, 133, 194, 0.3);">
@@ -1454,16 +1454,7 @@ function filtrarObrasPesquisa(termo) {
 
 <script>
     document.body.classList.add('bloqueio-total');
-
-    const tempoLiberacao = localStorage.getItem('acesso_liberado_ate');
-    const agora = new Date().getTime();
-
-    if (tempoLiberacao && agora < parseInt(tempoLiberacao)) {
-        document.getElementById('modal-senha-overlay').style.display = 'none';
-        document.body.classList.remove('bloqueio-total');
-    } else {
-        localStorage.removeItem('acesso_liberado_ate');
-    }
+    localStorage.removeItem('acesso_liberado_ate');
 
     const SENHA_CORRETA = "x"; 
 
@@ -1477,7 +1468,6 @@ function filtrarObrasPesquisa(termo) {
             const validadeAcesso = new Date().getTime() + tresDiasEmMs;
             
             localStorage.setItem('acesso_liberado_ate', validadeAcesso);
-
             document.body.classList.remove('bloqueio-total');
 
             document.getElementById('modal-senha-overlay').style.opacity = '0';
@@ -1495,7 +1485,7 @@ function filtrarObrasPesquisa(termo) {
             caixa.classList.add('tremer');
         }
     }
-</script>
+</script>  
 
   
 </body> 
