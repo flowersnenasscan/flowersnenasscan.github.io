@@ -1060,13 +1060,14 @@ function filtrarObrasPesquisa(termo) {
 
 
 
+
 <div class="flower-footer">
 
 <style>
 .flower-footer{
   width:100%;
   max-width:1100px;
-  margin:30px auto 0;
+  margin:25px auto 0;
   padding:18px 25px 16px;
   box-sizing:border-box;
   background:#030303;
@@ -1123,54 +1124,31 @@ function filtrarObrasPesquisa(termo) {
 .flower-footer-copy{
   font-size:14px;
   color:#aaa4aa;
-  margin-top:5px;
+  margin-top:4px;
 }
 
 
-/* LINHA COM CORAÇÃO */
-.flower-footer-divider{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:9px;
-  margin:9px auto 12px;
-  width:52%;
-}
-
-.flower-footer-divider span.line{
-  width:105px;
-  height:1px;
-  flex:none;
-  background:#ff9bd3;
-  box-shadow:0 0 3px rgba(255,130,200,.5);
-}
-
-.flower-footer-divider .heart{
-  font-size:20px;
-  line-height:1;
-  color:#ff9bd3;
-}
-
-
-/* TEXTO DOS CRÉDITOS */
+/* TEXTO DOS CRÉDITOS
+   FICA LOGO ABAIXO DA DATA */
 .flower-footer-text{
   font-size:12px;
   line-height:1.45;
   color:#d0c9d0;
   max-width:900px;
+  margin-top:7px;
 }
 
 
-/* BOTÕES */
+/* BOTÕES PEQUENOS */
 .flower-footer-buttons{
   display:flex;
-  gap:6px;
-  margin-top:10px;
+  gap:5px;
+  margin-top:9px;
 }
 
 .flower-footer-button{
-  width:37px;
-  height:37px;
+  width:32px;
+  height:32px;
   border-radius:50%;
   background:#ff9bd3;
   border:2px solid #ffd4e9;
@@ -1179,44 +1157,45 @@ function filtrarObrasPesquisa(termo) {
   justify-content:center;
   box-sizing:border-box;
   text-decoration:none;
-  box-shadow:
-    0 0 5px rgba(255,120,195,.45);
+  box-shadow:0 0 5px rgba(255,120,195,.45);
 }
 
 .flower-footer-button svg{
-  width:19px;
-  height:19px;
+  width:17px;
+  height:17px;
   fill:#68445f;
 }
 
 .flower-footer-heart{
-  font-size:18px;
+  font-size:16px;
   color:#68445f;
   line-height:1;
 }
 
 
-/* OBRIGADA */
+/* OBRIGADA — MENOR E CENTRALIZADO */
 .flower-footer-thanks{
-  margin-top:6px;
+  width:100%;
+  text-align:center;
+  margin-top:7px;
   font-family:"Brush Script MT","Segoe Script",cursive;
-  font-size:25px;
+  font-size:22px;
   font-style:italic;
   color:#ff9bd3;
   line-height:1;
-  text-shadow:
-    0 0 4px rgba(255,120,195,.7);
+  text-shadow:0 0 4px rgba(255,120,195,.7);
 }
 
 
-/* LINHA FINAL */
+/* LINHA DECORATIVA DE BAIXO */
 .flower-footer-bottom{
   display:flex;
   align-items:center;
+  justify-content:center;
   gap:6px;
-  width:300px;
+  width:280px;
   max-width:60%;
-  margin:5px 0 0 8%;
+  margin:5px auto 0;
 }
 
 .flower-footer-bottom .line{
@@ -1227,12 +1206,12 @@ function filtrarObrasPesquisa(termo) {
 }
 
 .flower-footer-bottom .flower{
-  font-size:17px;
+  font-size:16px;
   line-height:1;
 }
 
 .flower-footer-bottom .diamond{
-  font-size:7px;
+  font-size:6px;
   color:#ff9bd3;
   line-height:1;
 }
@@ -1243,11 +1222,7 @@ function filtrarObrasPesquisa(termo) {
 
   .flower-footer{
     padding:15px 14px 13px;
-    margin-top:22px;
-  }
-
-  .flower-footer-title{
-    gap:4px;
+    margin-top:20px;
   }
 
   .flower-footer-title .flower-script{
@@ -1268,30 +1243,14 @@ function filtrarObrasPesquisa(termo) {
 
   .flower-footer-copy{
     font-size:11px;
-    margin-top:4px;
+    margin-top:3px;
   }
-
-
-  .flower-footer-divider{
-    width:52%;
-    gap:6px;
-    margin:8px auto 10px;
-  }
-
-  .flower-footer-divider span.line{
-    width:52px;
-  }
-
-  .flower-footer-divider .heart{
-    font-size:17px;
-  }
-
 
   .flower-footer-text{
     font-size:10px;
+    margin-top:6px;
     line-height:1.4;
   }
-
 
   .flower-footer-buttons{
     gap:5px;
@@ -1299,9 +1258,8 @@ function filtrarObrasPesquisa(termo) {
   }
 
   .flower-footer-button{
-    width:31px;
-    height:31px;
-    border-width:2px;
+    width:30px;
+    height:30px;
   }
 
   .flower-footer-button svg{
@@ -1313,26 +1271,23 @@ function filtrarObrasPesquisa(termo) {
     font-size:15px;
   }
 
-
   .flower-footer-thanks{
-    font-size:21px;
-    margin-top:5px;
+    font-size:20px;
+    margin-top:6px;
   }
 
-
   .flower-footer-bottom{
-    width:220px;
+    width:210px;
     max-width:65%;
-    margin-left:7%;
     margin-top:4px;
   }
 
   .flower-footer-bottom .flower{
-    font-size:15px;
+    font-size:14px;
   }
 
   .flower-footer-bottom .diamond{
-    font-size:6px;
+    font-size:5px;
   }
 }
 </style>
@@ -1352,24 +1307,16 @@ function filtrarObrasPesquisa(termo) {
 </div>
 
 
-<!-- COPYRIGHT -->
+<!-- DATA -->
 <div class="flower-footer-copy">
   ©2025–2026 🌸
 </div>
 
 
-<!-- LINHA COM CORAÇÃO -->
-<div class="flower-footer-divider">
-  <span class="line"></span>
-  <span class="heart">♡</span>
-  <span class="line"></span>
-</div>
-
-
-<!-- CRÉDITOS -->
+<!-- CRÉDITOS, LOGO ABAIXO DA DATA -->
 <div class="flower-footer-text">
-  Todos os conteúdos e créditos aos seus respectivos autores e
-  artistas, apoiem comprando a obra original.
+  Todos os conteúdos e créditos aos seus respectivos autores e artistas,<br>
+  apoiem comprando a obra original.
 </div>
 
 
@@ -1387,7 +1334,6 @@ function filtrarObrasPesquisa(termo) {
 
   </a>
 
-
   <a href="#"
      class="flower-footer-button"
      aria-label="Apoiar">
@@ -1399,7 +1345,7 @@ function filtrarObrasPesquisa(termo) {
 </div>
 
 
-<!-- FRASE FINAL -->
+<!-- OBRIGADA -->
 <div class="flower-footer-thanks">
   Obrigada por nos acompanhar ♡
 </div>
@@ -1415,6 +1361,22 @@ function filtrarObrasPesquisa(termo) {
 </div>
 
 </div>
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+
 
 
 
