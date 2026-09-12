@@ -1056,5 +1056,225 @@ function filtrarObrasPesquisa(termo) {
   }); 
 } 
 </script> 
+
+  <footer class="nenas-footer">
+  <div class="nenas-footer-glow"></div>
+  
+  <div class="nenas-footer-content">
+    <!-- Bloco da Marca com Ícone Decorativo -->
+    <div class="nenas-footer-brand">
+      <span class="nenas-flower-icon">🌸</span>
+      <span class="nenas-title">Flowers nenasscan</span>
+      <span class="nenas-flower-icon">🌸</span>
+    </div>
+    
+    <p class="nenas-tagline">
+      Traduções feitas com carinho de fã para fã <span class="nenas-highlight-heart">♡</span>
+    </p>
+
+    <!-- Links Rápidos / Redes (Exemplo de extras úteis e bonitos) -->
+    <div class="nenas-footer-links">
+      <a href="#" class="nenas-link">Início</a>
+      <span class="nenas-dot">•</span>
+      <a href="#" class="nenas-link">Projetos</a>
+      <span class="nenas-dot">•</span>
+      <a href="#" class="nenas-link">Discord</a>
+      <span class="nenas-dot">•</span>
+      <a href="#" class="nenas-link">Contato</a>
+    </div>
+    
+    <div class="nenas-divider"></div>
+
+    <!-- Seção de Aviso Legal e Direitos -->
+    <div class="nenas-footer-meta">
+      <p class="nenas-copyright">© 2025 - 2026 Flowers Nenasscan. Todos os direitos reservados.</p>
+      <p class="nenas-disclaimer">
+        Todos os conteúdos, imagens e marcas pertencem aos seus respectivos autores e artistas. Apoie a indústria comprando e lendo a obra original oficial!
+      </p>
+    </div>
+    
+    <!-- Assinatura Final Estilizada -->
+    <div class="nenas-final-note">
+      <span class="nenas-sparkle">✨</span>
+      <span>Obrigada por nos acompanhar nessa jornada</span>
+      <span class="nenas-heart">♥</span>
+      <span class="nenas-sparkle">✨</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+.nenas-footer {
+  position: relative;
+  width: 100%;
+  background-color: #070709;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(255, 105, 180, 0.12) 0%, transparent 70%),
+    radial-gradient(circle at 20% 100%, rgba(255, 182, 193, 0.06) 0%, transparent 50%);
+  border-top: 1px solid rgba(255, 105, 180, 0.2);
+  padding: 50px 20px 45px;
+  margin-top: auto;
+  box-sizing: border-box;
+  font-family: inherit;
+  overflow: hidden;
+}
+
+/* Efeito de luz sutil no topo */
+.nenas-footer-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.8), transparent);
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+}
+
+.nenas-footer-content {
+  max-width: 850px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.nenas-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nenas-title {
+  font-size: 1.65rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffb6c1 0%, #ff69b4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+  text-shadow: 0 0 30px rgba(255, 105, 180, 0.25);
+}
+
+.nenas-flower-icon {
+  font-size: 1.1rem;
+  animation: nenas-float 3s ease-in-out infinite alternate;
+}
+
+.nenas-flower-icon:nth-child(3) {
+  animation-delay: 1.5s;
+}
+
+.nenas-tagline {
+  color: #f3f3f7;
+  font-size: 1rem;
+  margin: 0 0 20px 0;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+.nenas-highlight-heart {
+  color: #ff69b4;
+}
+
+/* Links Rápidos Adicionados */
+.nenas-footer-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+  font-size: 0.9rem;
+}
+
+.nenas-link {
+  color: #ffb6c1;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.nenas-link:hover {
+  color: #ff69b4;
+  text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+  transform: translateY(-1px);
+}
+
+.nenas-dot {
+  color: rgba(255, 105, 180, 0.4);
+  font-size: 0.7rem;
+}
+
+.nenas-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff69b4, transparent);
+  margin-bottom: 22px;
+  opacity: 0.7;
+}
+
+.nenas-footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.nenas-copyright {
+  color: #d1d1e0;
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.nenas-disclaimer {
+  color: #8c8c9b;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.nenas-final-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 105, 180, 0.05);
+  border: 1px solid rgba(255, 105, 180, 0.15);
+  padding: 8px 18px;
+  border-radius: 30px;
+  color: #ffb6c1;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  box-shadow: inset 0 0 10px rgba(255, 105, 180, 0.03);
+}
+
+.nenas-heart {
+  color: #ff69b4;
+  text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+  animation: nenas-pulse 2s infinite ease-in-out;
+}
+
+.nenas-sparkle {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+@keyframes nenas-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+@keyframes nenas-float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-3px) rotate(5deg); }
+}
+</style>
+
 </body> 
 </html>
