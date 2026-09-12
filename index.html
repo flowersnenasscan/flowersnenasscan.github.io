@@ -697,6 +697,26 @@ function inicializarHome() {
   renderizarPaginaGeneros(); 
 } 
 
+
+
+
+async function registrarVisualizacao(slug) {
+  if (!slug) return;
+  const { error } = await sbClient
+    .from('views')
+    .insert([{ slug: slug }]);
+  
+  if (error) {
+    console.warn("Erro ao registrar view:", error.message);
+  }
+}
+
+
+
+
+
+  
+
 function verificarParametroUrl() { 
   const urlParams = new URLSearchParams(window.location.search); 
   const aba = urlParams.get('aba'); 
