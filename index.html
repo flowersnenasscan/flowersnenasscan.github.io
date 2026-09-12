@@ -1406,10 +1406,15 @@ function filtrarObrasPesquisa(termo) {
 
 </div>
 
-  
-  <div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background: url('https://files.catbox.moe/e4kcyt.png') no-repeat center center / cover !important; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); overflow: hidden;">
+  <div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background-color: #000; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; overflow: hidden;">
     
-    <div id="caixa-senha" style="position: relative; z-index: 10; background: #ffffff; border-radius: 35px; padding: 40px 30px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 0 30px rgba(255, 133, 194, 0.6), 0 15px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255, 133, 194, 0.3);">
+    <!-- Imagem de fundo garantida -->
+    <img src="https://files.catbox.moe/e4kcyt.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; filter: blur(4px); -webkit-filter: blur(4px); transform: scale(1.05);" alt="Fundo">
+    
+    <!-- Camada escura leve para destacar a caixinha -->
+    <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 2;"></div>
+
+    <div id="caixa-senha" style="position: relative; z-index: 10; background: #ffffff; border-radius: 35px; padding: 40px 30px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 0 30px rgba(255, 133, 194, 0.6), 0 15px 40px rgba(0,0,0,0.3); border: 1px solid rgba(255, 133, 194, 0.3);">
         
         <h2 style="font-size: 1.55rem; font-weight: 700; color: #ff85c2; margin-bottom: 4px; text-shadow: none;">Oi! Seja bem-vinda(o)</h2>
         <div style="font-size: 1.2rem; margin: 8px 0;">🌸</div>
@@ -1492,6 +1497,6 @@ function filtrarObrasPesquisa(termo) {
     }
 </script>
 
-
+  
 </body> 
 </html>
