@@ -1057,27 +1057,29 @@ function filtrarObrasPesquisa(termo) {
 } 
 </script> 
 
-    
 <footer class="nenas-footer">
   <div class="nenas-footer-content">
     <div class="nenas-header-line">
-      <span class="nenas-title"><span class="nenas-pink-f">F</span>lowers nenasscan</span>
+      <span class="nenas-pink">Flowers</span><span class="nenas-white">nenasscan</span>
     </div>
     
     <p class="nenas-tagline">
-      traduções feitas com carinho de fã para fã ♡
+      traduções feitas com carinho de fã para fã <span class="nenas-symbol">♡</span>
     </p>
     
     <p class="nenas-copyright">
-      ©2025-2026 🌸
+      ©2025-2026 <span class="nenas-flower">🌸</span>
     </p>
+    
+    <div class="nenas-divider"></div>
     
     <p class="nenas-disclaimer">
       Todos os conteúdos e créditos aos seus respectivos autores e artistas, apoiem comprando a obra original.
     </p>
     
     <div class="nenas-final-note">
-      Obrigada por nos acompanhar <span class="nenas-heart">♥</span>
+      <span>Obrigada por nos acompanhar</span>
+      <span class="nenas-heart">♥</span>
     </div>
   </div>
 </footer>
@@ -1085,8 +1087,8 @@ function filtrarObrasPesquisa(termo) {
 <style>
 .nenas-footer {
   width: 100%;
-  background-color: #0b0b0d;
-  padding: 40px 20px;
+  background-color: #08080a;
+  padding: 45px 20px;
   box-sizing: border-box;
   font-family: inherit;
   display: flex;
@@ -1103,57 +1105,70 @@ function filtrarObrasPesquisa(termo) {
 }
 
 .nenas-header-line {
-  display: flex;
-  align-items: baseline;
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
   margin-bottom: 6px;
 }
 
-.nenas-title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: -0.3px;
+/* Cores corrigidas: Flowers rosa bonito/leve e nenasscan branco */
+.nenas-pink {
+  color: #ff8da1;
 }
 
-.nenas-pink-f {
-  color: #ff69b4;
+.nenas-white {
+  color: #ffffff;
 }
 
 .nenas-tagline {
-  color: #c5c5d0;
+  color: #d0d0dc;
   font-size: 0.95rem;
   margin: 0 0 8px 0;
+  font-weight: 400;
+}
+
+.nenas-symbol {
+  color: #ff8da1;
 }
 
 .nenas-copyright {
-  color: #ff69b4;
-  font-size: 0.9rem;
-  margin: 0 0 24px 0;
+  color: #ff8da1;
+  font-size: 0.88rem;
+  margin: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nenas-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 141, 161, 0.15);
+  margin-bottom: 20px;
 }
 
 .nenas-disclaimer {
-  color: #7b7b8c;
+  color: #8c8c9b;
   font-size: 0.82rem;
   line-height: 1.5;
-  margin: 0 0 35px 0;
-  max-width: 480px;
+  margin: 0 0 28px 0;
+  max-width: 520px;
 }
 
 .nenas-final-note {
   display: flex;
   align-items: center;
-  gap: 6px;
-  color: #ff69b4;
+  gap: 8px;
+  color: #ff8da1;
   font-size: 0.92rem;
-  width: 100%;
-  justify-content: center;
-  margin-top: 10px;
+  font-weight: 400;
 }
 
 .nenas-heart {
-  color: #ff69b4;
+  color: #ff8da1;
 }
 </style>
+
 
 
 
