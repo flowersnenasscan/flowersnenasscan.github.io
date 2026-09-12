@@ -1060,43 +1060,14 @@ function filtrarObrasPesquisa(termo) {
 
 
 
-
-  
-
-
-
-
-    
-
-
-
-
-
-   
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
 <div class="flower-footer">
 
 <style>
 .flower-footer{
   width:100%;
   max-width:1100px;
-  margin:35px auto 0;
-  padding:20px 25px 18px;
+  margin:30px auto 0;
+  padding:18px 25px 16px;
   box-sizing:border-box;
   background:#030303;
   color:#ddd;
@@ -1107,38 +1078,42 @@ function filtrarObrasPesquisa(termo) {
 .flower-footer-title{
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:5px;
   white-space:nowrap;
-  margin-bottom:7px;
+  margin-bottom:6px;
 }
 
 .flower-footer-title .flower-script{
   font-family:"Brush Script MT","Segoe Script",cursive;
-  font-size:40px;
+  font-size:38px;
   font-style:italic;
   font-weight:bold;
   color:#ff91cf;
   line-height:1;
-  text-shadow:0 0 7px #ff8dcc;
+  text-shadow:
+    0 0 5px #ff8dcc,
+    0 0 10px rgba(255,100,190,.55);
 }
 
 .flower-footer-title .flower-symbol{
-  font-size:21px;
+  font-size:20px;
 }
 
 .flower-footer-title .nenasscan{
   font-family:"Trebuchet MS",Arial,sans-serif;
-  font-size:37px;
+  font-size:35px;
   font-style:italic;
   font-weight:600;
   color:#d2cad2;
+  line-height:1;
 }
 
-/* TEXTO */
+
+/* DESCRIÇÃO */
 .flower-footer-description{
-  font-size:15px;
+  font-size:14px;
   color:#aaa4aa;
-  line-height:1.4;
+  line-height:1.35;
 }
 
 .flower-footer-description b{
@@ -1146,106 +1121,120 @@ function filtrarObrasPesquisa(termo) {
 }
 
 .flower-footer-copy{
-  font-size:15px;
+  font-size:14px;
   color:#aaa4aa;
-  margin-top:6px;
+  margin-top:5px;
 }
 
-/* LINHA */
+
+/* LINHA COM CORAÇÃO */
 .flower-footer-divider{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:12px;
-  margin:12px 0 14px;
+  gap:9px;
+  margin:9px auto 12px;
+  width:52%;
 }
 
 .flower-footer-divider span.line{
+  width:105px;
   height:1px;
-  flex:1;
-  max-width:300px;
-  background:#ff91ca;
-  box-shadow:0 0 5px #ff91ca;
+  flex:none;
+  background:#ff9bd3;
+  box-shadow:0 0 3px rgba(255,130,200,.5);
 }
 
 .flower-footer-divider .heart{
-  font-size:23px;
+  font-size:20px;
+  line-height:1;
   color:#ff9bd3;
 }
 
-/* CRÉDITOS */
+
+/* TEXTO DOS CRÉDITOS */
 .flower-footer-text{
-  font-size:14px;
-  line-height:1.5;
+  font-size:12px;
+  line-height:1.45;
   color:#d0c9d0;
-  max-width:1000px;
+  max-width:900px;
 }
+
 
 /* BOTÕES */
 .flower-footer-buttons{
   display:flex;
-  gap:7px;
-  margin-top:13px;
+  gap:6px;
+  margin-top:10px;
 }
 
 .flower-footer-button{
-  width:43px;
-  height:43px;
+  width:37px;
+  height:37px;
   border-radius:50%;
   background:#ff9bd3;
   border:2px solid #ffd4e9;
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 0 7px rgba(255,120,195,.5);
+  box-sizing:border-box;
   text-decoration:none;
+  box-shadow:
+    0 0 5px rgba(255,120,195,.45);
 }
 
 .flower-footer-button svg{
-  width:23px;
-  height:23px;
+  width:19px;
+  height:19px;
   fill:#68445f;
 }
 
 .flower-footer-heart{
-  font-size:22px;
+  font-size:18px;
   color:#68445f;
+  line-height:1;
 }
 
-/* FRASE */
+
+/* OBRIGADA */
 .flower-footer-thanks{
-  margin-top:8px;
+  margin-top:6px;
   font-family:"Brush Script MT","Segoe Script",cursive;
-  font-size:30px;
+  font-size:25px;
   font-style:italic;
   color:#ff9bd3;
-  text-shadow:0 0 7px rgba(255,100,190,.7);
+  line-height:1;
+  text-shadow:
+    0 0 4px rgba(255,120,195,.7);
 }
+
 
 /* LINHA FINAL */
 .flower-footer-bottom{
   display:flex;
   align-items:center;
-  gap:7px;
-  width:430px;
-  max-width:100%;
-  margin-top:4px;
+  gap:6px;
+  width:300px;
+  max-width:60%;
+  margin:5px 0 0 8%;
 }
 
 .flower-footer-bottom .line{
   flex:1;
   height:1px;
-  background:#ff91ca;
-  box-shadow:0 0 5px #ff91ca;
+  background:#ff9bd3;
+  box-shadow:0 0 3px rgba(255,120,195,.5);
 }
 
 .flower-footer-bottom .flower{
-  font-size:20px;
+  font-size:17px;
+  line-height:1;
 }
 
 .flower-footer-bottom .diamond{
+  font-size:7px;
   color:#ff9bd3;
-  font-size:9px;
+  line-height:1;
 }
 
 
@@ -1253,9 +1242,12 @@ function filtrarObrasPesquisa(termo) {
 @media(max-width:600px){
 
   .flower-footer{
-    max-width:100%;
-    padding:16px 14px 14px;
-    margin-top:25px;
+    padding:15px 14px 13px;
+    margin-top:22px;
+  }
+
+  .flower-footer-title{
+    gap:4px;
   }
 
   .flower-footer-title .flower-script{
@@ -1263,105 +1255,157 @@ function filtrarObrasPesquisa(termo) {
   }
 
   .flower-footer-title .flower-symbol{
-    font-size:16px;
+    font-size:15px;
   }
 
   .flower-footer-title .nenasscan{
-    font-size:27px;
+    font-size:26px;
   }
 
   .flower-footer-description{
-    font-size:12px;
-  }
-
-  .flower-footer-copy{
-    font-size:12px;
-  }
-
-  .flower-footer-text{
     font-size:11px;
   }
 
+  .flower-footer-copy{
+    font-size:11px;
+    margin-top:4px;
+  }
+
+
   .flower-footer-divider{
-    margin:9px 0 11px;
+    width:52%;
+    gap:6px;
+    margin:8px auto 10px;
+  }
+
+  .flower-footer-divider span.line{
+    width:52px;
   }
 
   .flower-footer-divider .heart{
-    font-size:18px;
+    font-size:17px;
+  }
+
+
+  .flower-footer-text{
+    font-size:10px;
+    line-height:1.4;
+  }
+
+
+  .flower-footer-buttons{
+    gap:5px;
+    margin-top:8px;
   }
 
   .flower-footer-button{
-    width:35px;
-    height:35px;
+    width:31px;
+    height:31px;
+    border-width:2px;
   }
 
   .flower-footer-button svg{
-    width:19px;
-    height:19px;
+    width:16px;
+    height:16px;
   }
 
   .flower-footer-heart{
-    font-size:18px;
+    font-size:15px;
   }
+
 
   .flower-footer-thanks{
-    font-size:24px;
+    font-size:21px;
+    margin-top:5px;
   }
 
+
   .flower-footer-bottom{
-    width:330px;
+    width:220px;
+    max-width:65%;
+    margin-left:7%;
+    margin-top:4px;
   }
 
   .flower-footer-bottom .flower{
-    font-size:17px;
+    font-size:15px;
+  }
+
+  .flower-footer-bottom .diamond{
+    font-size:6px;
   }
 }
 </style>
 
 
+<!-- TÍTULO -->
 <div class="flower-footer-title">
   <span class="flower-script">Flower's</span>
   <span class="flower-symbol">🌸</span>
   <span class="nenasscan">Nenasscan</span>
 </div>
 
+
+<!-- DESCRIÇÃO -->
 <div class="flower-footer-description">
   Traduções feitas com <b>carinho</b> de <b>fã</b> para <b>fã</b> ♡.
 </div>
 
+
+<!-- COPYRIGHT -->
 <div class="flower-footer-copy">
   ©2025–2026 🌸
 </div>
 
+
+<!-- LINHA COM CORAÇÃO -->
 <div class="flower-footer-divider">
   <span class="line"></span>
   <span class="heart">♡</span>
   <span class="line"></span>
 </div>
 
+
+<!-- CRÉDITOS -->
 <div class="flower-footer-text">
   Todos os conteúdos e créditos aos seus respectivos autores e
   artistas, apoiem comprando a obra original.
 </div>
 
+
+<!-- BOTÕES -->
 <div class="flower-footer-buttons">
 
-  <a href="https://t.me/" target="_blank" class="flower-footer-button">
+  <a href="https://t.me/"
+     target="_blank"
+     class="flower-footer-button"
+     aria-label="Telegram">
+
     <svg viewBox="0 0 24 24">
       <path d="M21.8 3.2 18.7 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6.1 13.6l-4.9-1.5c-1.1-.3-1.1-1 .2-1.5L20.6 3c.9-.3 1.7.2 1.2.2z"/>
     </svg>
+
   </a>
 
-  <a href="#" class="flower-footer-button">
+
+  <a href="#"
+     class="flower-footer-button"
+     aria-label="Apoiar">
+
     <span class="flower-footer-heart">♥</span>
+
   </a>
 
 </div>
 
+
+<!-- FRASE FINAL -->
 <div class="flower-footer-thanks">
   Obrigada por nos acompanhar ♡
 </div>
 
+
+<!-- DECORAÇÃO FINAL -->
 <div class="flower-footer-bottom">
   <span class="line"></span>
   <span class="diamond">◆</span>
@@ -1371,6 +1415,9 @@ function filtrarObrasPesquisa(termo) {
 </div>
 
 </div>
+
+
+
 
 </body> 
 </html>
