@@ -669,9 +669,9 @@ async function carregarDadosObras() {
   } catch (err) { 
     console.warn(err.message); 
     try { 
-      const sUrl = window.SUPABASE_URL || 'SUA_SUPABASE_URL'; 
-      const sKey = window.SUPABASE_ANON_KEY || 'SUA_SUPABASE_ANON_KEY'; 
-      if (typeof supabase !== 'undefined' && sUrl && sUrl !== 'SUA_SUPABASE_URL') { 
+      const sUrl = window.SUPABASE_URL || 'https://rjqmaheyuattvsqocvku.supabase.co/rest/v1/'; 
+      const sKey = window.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcW1haGV5dWF0dHZzcW9jdmt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyMTQ0MDIsImV4cCI6MjEwMzc5MDQwMn0.EGnNvkrxSTyXmW-OlZcx4iAElQBFqu67qyHXLr7BMo4'; 
+       
         const sbClient = supabase.createClient(sUrl, sKey); 
         const { data: sbData, error: sbError } = await sbClient.from('obras').select('*'); 
         if (!sbError && sbData) { 
