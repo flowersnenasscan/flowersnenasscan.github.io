@@ -476,7 +476,7 @@ gtag('config', 'G-5HHMHEDSD0');
             Para manter o projeto ativo e com a qualidade atual, disponibilizamos uma aba de suporte financeiro voluntário.
           </p>
           <p class="comunicado-texto" style="margin-bottom: 10px; background: rgba(212, 131, 180, 0.05); padding: 8px 10px; border-left: 2px solid #d483b4; border-radius: 4px;">
-            🌸 Esta contribuição <strong>não é obrigatória</strong>. Você poderá continuar acompanhando as atualizações normalmente. O envio serve apenas para incentivar e demonstrar carinho pelo empenho da nossa equipe. Qualquer valor nos auxilia imensamente na manutenção da estrutura do scan.
+            🌸 Esta contribuição <strong>não é obrigatória</strong>. Você poderá continuar acompanhando as atualizações normamente. O envio serve apenas para incentivar e demonstrar carinho pelo empenho da nossa equipe. Qualquer valor nos auxilia imensamente na manutenção da estrutura do scan.
           </p>
           <p class="comunicado-texto">
             ✨ Ao apoiar, você pode sugerir obras que gostaria de ver por aqui. Todos os pedidos passam por uma avaliação cuidadosa da gerência (considerando tempo, hábil e disponibilidade).
@@ -672,7 +672,7 @@ async function carregarDadosObras() {
     try { 
       const sUrl = window.SUPABASE_URL || 'https://rjqmaheyuattvsqocvku.supabase.co'; 
       const sKey = window.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcW1haGV5dWF0dHZzcW9jdmt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyMTQ0MDIsImV4cCI6MjEwMzc5MDQwMn0.EGnNvkrxSTyXmW-OlZcx4iAElQBFqu67qyHXLr7BMo4'; 
-      if (typeof supabase !== 'undefined' && sUrl && sUrl !== 'https://rjqmaheyuattvsqocvku.supabase.co') { 
+      if (typeof supabase !== 'undefined' && sUrl) { 
         const sbClient = supabase.createClient(sUrl, sKey); 
         const { data: sbData, error: sbError } = await sbClient.from('obras').select('*'); 
         if (!sbError && sbData) { 
@@ -689,50 +689,41 @@ async function carregarDadosObras() {
 } 
 carregarDadosObras(); 
 
-function inicializarHome() { 
-  renderizarCarrosselAleatorio(); 
-  renderizarAtualizacoes(); 
-  renderizarTodasObras(); 
-  renderizarBiblioteca(); 
-  renderizarPaginaGeneros(); 
-} 
-
-
-
-
-// Tenta registrar a view direto com as suas chaves garantidas
+// SISTEMA CORRIGIDO DE REGISTRO DE VIEWS NO SUPABASE
 async function registrarVisualizacaoDireta() {
   try {
-    // Pega o slug da URL (ex: ?obra=nome ou ?capitulo=nome)
     const urlParams = new URLSearchParams(window.location.search);
-    const slugAtual = urlParams.get('obra') || urlParams.get('capitulo') || urlParams.get('slug');
     
-    if (!slugAtual) return; // Se não estiver em nenhuma obra/capitulo, não faz nada
+    // Captura tanto parâmetros de obras quanto de capítulos
+    const slugObra = urlParams.get('obra') || urlParams.get('nome');
+    const slugCap = urlParams.get('cap');
+    
+    // Define o identificador exato para a contagem (obra ou capítulo)
+    let identificadorVisualizacao = null;
+    if (slugCap && slugObra) {
+      identificadorVisualizacao = `${slugObra}_cap_${slugCap}`;
+    } else if (slugObra) {
+      identificadorVisualizacao = slugObra;
+    }
 
-    // Cria o cliente do Supabase na hora para garantir que não falhe
+    if (!identificadorVisualizacao) return;
+
     const supabaseUrl = 'https://rjqmaheyuattvsqocvku.supabase.co';
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcW1haGV5dWF0dHZzcW9jdmt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyMTQ0MDIsImV4cCI6MjEwMzc5MDQwMn0.EGnNvkrxSTyXmW-OlZcx4iAElQBFqu67qyHXLr7BMo4';
     
     if (typeof supabase === 'undefined') return;
     const clientTemp = supabase.createClient(supabaseUrl, supabaseKey);
 
-    // Envia a view para a tabela views
-    await clientTemp.from('views').insert([{ slug: slugAtual }]);
+    // Insere o registro na tabela 'views' (Certifique-se de que a tabela 'views' possui as colunas 'slug' e 'created_at')
+    await clientTemp.from('views').insert([{ slug: identificadorVisualizacao }]);
     
   } catch (e) {
-    // Silencia qualquer erro para não quebrar o site
+    console.warn("Erro ao registrar visualização no Supabase:", e);
   }
 }
 
-// Executa assim que a página abre
+// Executa o registro de visualização ao abrir a página
 registrarVisualizacaoDireta();
-
-
-
-
-
-
-  
 
 function verificarParametroUrl() { 
   const urlParams = new URLSearchParams(window.location.search); 
@@ -1088,8 +1079,8 @@ function filtrarObrasPesquisa(termo) {
     } 
     let exibirSelo = ehCapituloNovo(dataCap); 
     let seloHtml = exibirSelo ? `<span class="selo-novo-cap">NOVO</span>` : ''; 
-    let badgesHtml = gerarBadgesObra(obra); 
-    grid.innerHTML += ` <div class="manga-card" onclick="window.location.href='obra.html?nome=${slugObra}'" style="cursor: pointer;"> <div class="manga-capa-box"><img src="${obra.capa}" class="manga-capa">${badgesHtml}</div> <div class="manga-info"> <a href="obra.html?nome=${slugObra}" class="manga-titulo">${obra.titulo}</a> <div class="capitulo-recente-row"> <a href="${linkLeitor}" class="capitulo-link" onclick="event.stopPropagation()">Capítulo ${ultimoCapNum}</a> ${seloHtml} </div> </div> </div> `; 
+    let badgesHtml = gerarBadgesObra(obra);
+    grid.innerHTML += ` <div class="manga-card" onclick="window.location.href='obra.html?nome=${slugObra}'" style="cursor: pointer;"> <div class="manga-capa-box"> <img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa"> ${badgesHtml} </div> <div class="manga-info"> <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a> <div class="capitulo-recente-row"> <a href="${linkLeitor}" class="capitulo-link" onclick="event.stopPropagation()">Capítulo ${ultimoCapNum}</a> ${seloHtml} </div> </div> </div> `; 
   }); 
 } 
 </script> 
