@@ -171,7 +171,7 @@ gtag('config', 'G-5HHMHEDSD0');
   .bib-tab.active span { color: #2b061d !important; text-shadow: none !important; font-weight: 700; } 
   .bib-tab-badge { background: rgba(255, 153, 221, 0.25); padding: 1px 6px; border-radius: 10px; font-size: 0.7rem; font-weight: 700; color: var(--primary-pink); } 
   .bib-tab.active .bib-tab-badge { background: rgba(43, 6, 29, 0.25); color: #2b061d !important; } 
-  .bib-filter-row { display: flex; align-items: center; justify-content: flex-start; gap: 12px; margin-bottom: 20px; font-size: 0.85rem; color: var(--text-muted); } 
+  .bib-filter-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; font-size: 0.85rem; color: var(--text-muted); } 
   .bib-filter-left { display: flex; align-items: center; gap: 12px; } 
   .bib-filter-btn { background: #0b0b0f; border: 1px solid rgba(255, 153, 221, 0.35); color: var(--primary-pink); padding: 6px 12px; border-radius: 16px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 6px; text-shadow: var(--neon-glow); transition: 0.2s; } 
   .bib-filter-btn svg { width: 14px; height: 14px; fill: currentColor; } 
@@ -358,13 +358,29 @@ gtag('config', 'G-5HHMHEDSD0');
         <div class="bib-tabs-container"> 
           <button class="bib-tab active" onclick="filtrarBibTab('todos', this)"> 
             <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg> 
-            <span>Favoritos Salvos</span> 
+            <span>Favoritos</span> 
             <div class="bib-tab-badge" id="count-todos">0</div> 
           </button> 
-          <button class="bib-tab" onclick="mudarAbaVisual('generos'); history.pushState({}, '', './?aba=generos'); renderizarPaginaGeneros();"> 
-            <svg viewBox="0 0 24 24"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v5z"/></svg> 
-            <span>Gêneros</span> 
+          <button class="bib-tab" onclick="filtrarBibTab('andamento', this)"> 
+            <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0-2-.9-2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg> 
+            <span>Em andamento</span> 
           </button> 
+          <button class="bib-tab" onclick="filtrarBibTab('concluidas', this)"> 
+            <svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> 
+            <span>Concluídas</span> 
+          </button> 
+          <button class="bib-tab" onclick="filtrarBibTab('hiatus', this)"> 
+            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg> 
+            <span>Hiatus</span> 
+          </button> 
+        </div> 
+        <div class="bib-filter-row"> 
+          <div class="bib-filter-left"> 
+            <span>Ordenar por:</span> 
+            <button class="bib-filter-btn" onclick="mudarAbaVisual('generos'); history.pushState({}, '', './?aba=generos'); renderizarPaginaGeneros();"> 
+              <svg viewBox="0 0 24 24"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v5z"/></svg> Gêneros 
+            </button> 
+          </div> 
         </div> 
       </div> 
       <div id="lista-favoritos" class="manga-grid"></div> 
@@ -962,19 +978,46 @@ function renderizarBiblioteca() {
     favoritosSalvos = []; 
   } 
   if (!Array.isArray(favoritosSalvos)) favoritosSalvos = []; 
+  
   let obrasFavs = ordenarObrasPorMaisRecentes(listaObras).filter(o => favoritosSalvos.includes(o.titulo) || favoritosSalvos.includes(o.id)); 
+  
+  if (filtroBibAtual === 'andamento') {
+    obrasFavs = obrasFavs.filter(o => String(o.status || '').toLowerCase().includes('andamento'));
+  } else if (filtroBibAtual === 'concluidas') {
+    obrasFavs = obrasFavs.filter(o => {
+      let st = String(o.status || '').toLowerCase();
+      return st.includes('completo') || st.includes('concluido') || st.includes('finalizado');
+    });
+  } else if (filtroBibAtual === 'hiatus') {
+    obrasFavs = obrasFavs.filter(o => {
+      let st = String(o.status || '').toLowerCase();
+      return st.includes('hiatus') || st.includes('pausa');
+    });
+  }
+
   const badgeCount = document.getElementById('count-todos'); 
   if (badgeCount) badgeCount.innerText = obrasFavs.length; 
+
   if (obrasFavs.length === 0) { 
     container.style.gridTemplateColumns = '1fr'; 
-    container.innerHTML = ` <div class="bib-empty-state" style="grid-column: span 2; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;"> <div class="bib-empty-title" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 6px;">Sua biblioteca está vazia</div> <a href="./?aba=obras" class="btn-explorar-obras-estilizado" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">Explorar Obras</a> </div> `; 
+    container.innerHTML = ` <div class="bib-empty-state" style="grid-column: span 2; padding: 50px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;"> <div class="bib-empty-title" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-bottom: 6px;">Nenhuma obra encontrada nesta categoria</div> <a href="./?aba=obras" class="btn-explorar-obras-estilizado" onclick="event.preventDefault(); mudarAbaVisual('obras'); history.pushState({}, '', './?aba=obras');">Explorar Obras</a> </div> `; 
     return; 
   } 
+
   container.style.gridTemplateColumns = 'repeat(2, 1fr)'; 
   container.innerHTML = ''; 
   obrasFavs.forEach(obra => { 
     const slugObra = obra.id || criarSlug(obra.titulo); 
-    container.innerHTML += ` <div class="manga-card" onclick="window.location.href='obra.html?nome=${slugObra}'" style="cursor: pointer;"> <div class="manga-capa-box"><img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa"></div> <div class="manga-info"> <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a> </div> </div> `; 
+    let ultimoCapNum = '1'; 
+    if (obra.capitulos && obra.capitulos.length > 0) { 
+      let capObj = obra.capitulos[0]; 
+      ultimoCapNum = typeof capObj === 'object' ? capObj.numero : capObj; 
+    } 
+    let slugCap = String(ultimoCapNum).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-'); 
+    let linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`; 
+    let badgesHtml = gerarBadgesObra(obra);
+
+    container.innerHTML += ` <div class="manga-card" onclick="window.location.href='obra.html?nome=${slugObra}'" style="cursor: pointer;"> <div class="manga-capa-box"><img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa">${badgesHtml}</div> <div class="manga-info"> <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a> <a href="${linkLeitor}" class="btn-continuar-lendo" onclick="event.stopPropagation()">Capítulo ${ultimoCapNum}</a> </div> </div> `; 
   }); 
 } 
 
@@ -994,7 +1037,6 @@ function filtrarObrasPesquisa(termo) {
   const grid = document.getElementById('grid-todas-obras'); 
   mudarAbaVisual('obras'); 
   grid.innerHTML = ''; 
-  filtradas.exportforEach ? ... : null; // mantido o comportamento abaixo
   filtradas.forEach(obra => { 
     const slugObra = obra.id || criarSlug(obra.titulo); 
     let ultimoCapNum = 'Em breve'; 
