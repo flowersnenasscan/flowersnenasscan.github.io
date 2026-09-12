@@ -1057,47 +1057,79 @@ function filtrarObrasPesquisa(termo) {
 } 
 </script> 
 
-<!-- Importando uma fonte fofa e profissional de mangá/scan -->
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<footer class="nenas-footer-original">
-  <div class="nenas-content-box">
+<!-- Importando fontes idênticas ao estilo da imagem -->
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Importando ícones (FontAwesome) para o Telegram e Projetos -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<footer class="nenas-custom-footer">
+  <div class="nenas-footer-wrap">
     
-    <div class="nenas-title-main">
-      <span class="pink-word">Flowers</span><span class="white-word">nenasscan</span>
+    <!-- Título com fonte cursiva e as cores exatas -->
+    <div class="nenas-main-title">
+      <span class="pink-script">Flower's</span><span class="flower-icon-title">🌸</span> <span class="white-text">Nenasscan</span>
     </div>
     
-    <p class="nenas-text-line">
-      traduções feitas com carinho de fã para fã ♡
+    <!-- Frase com palavras destacadas em rosa -->
+    <p class="nenas-phrase">
+      Traduções feitas com <span class="highlight-pink">carinho</span> de <span class="highlight-pink">fã</span> para <span class="highlight-pink">fã</span> ♡
     </p>
     
-    <p class="nenas-text-line">
+    <!-- Copyright e florzinha -->
+    <div class="nenas-copy-line">
       ©2025-2026 🌸
-    </p>
+    </div>
     
-    <p class="nenas-disclaimer-text">
+    <!-- Divisor com o coraçãozinho exato -->
+    <div class="nenas-heart-divider">
+      <span class="line-side"></span>
+      <span class="divider-heart">♥</span>
+      <span class="line-side"></span>
+    </div>
+    
+    <!-- Aviso de direitos -->
+    <p class="nenas-disclaimer-box">
       Todos os conteúdos e créditos aos seus respectivos autores e artistas, apoiem comprando a obra original.
     </p>
     
-    <div class="nenas-footer-bottom">
-      Obrigada por nos acompanhar 💖
+    <!-- Botõezinhos redondos do Telegram e Projetos -->
+    <div class="nenas-social-buttons">
+      <a href="LINK_DO_TELEGRAM_AQUI" target="_blank" class="nenas-circle-btn" title="Telegram">
+        <i class="fa-brands fa-telegram"></i>
+      </a>
+      <a href="LINK_DE_PROJETOS_AQUI" class="nenas-circle-btn" title="Projetos">
+        <i class="fa-solid fa-book-open"></i>
+      </a>
+    </div>
+    
+    <!-- Frase final com fonte cursiva -->
+    <div class="nenas-final-greeting">
+      Obrigada por nos acompanhar ♡
+    </div>
+    
+    <!-- Divisor final com florzinha e brilho -->
+    <div class="nenas-bottom-divider">
+      <span class="line-side"></span>
+      <span class="bottom-flower">🌸 ✨</span>
+      <span class="line-side"></span>
     </div>
 
   </div>
 </footer>
 
 <style>
-.nenas-footer-original {
+.nenas-custom-footer {
   width: 100%;
-  background-color: #050507; /* Fundo preto bem limpo do site */
-  padding: 40px 24px;
+  background-color: #060608;
+  padding: 40px 20px 45px 20px;
   box-sizing: border-box;
-  font-family: 'Quicksand', sans-serif; /* Fonte bonita, limpa e profissional */
+  font-family: 'Quicksand', sans-serif;
   display: flex;
-  justify-content: flex-start; /* Alinhado à esquerda igualzinho ao seu print */
+  justify-content: flex-start;
 }
 
-.nenas-content-box {
+.nenas-footer-wrap {
   width: 100%;
   max-width: 600px;
   display: flex;
@@ -1106,47 +1138,136 @@ function filtrarObrasPesquisa(termo) {
   text-align: left;
 }
 
-.nenas-title-main {
-  font-size: 1.7rem;
+/* Título principal */
+.nenas-main-title {
+  font-size: 2.1rem;
   font-weight: 700;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pink-script {
+  font-family: 'Caveat', cursive;
+  font-size: 2.5rem;
+  color: #ff4785;
+  text-shadow: 0 0 12px rgba(255, 71, 133, 0.5);
+}
+
+.flower-icon-title {
+  font-size: 1.3rem;
+  margin-top: 4px;
+}
+
+.white-text {
+  color: #f2f2f8;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
   letter-spacing: -0.5px;
 }
 
-/* O rosa exato e vivo igual ao da sua imagem */
-.pink-word {
-  color: #ff5c97; 
-  text-shadow: 0 0 12px rgba(255, 92, 151, 0.3);
-}
-
-.white-word {
-  color: #ffffff;
-}
-
-.nenas-text-line {
+/* Frase descritiva */
+.nenas-phrase {
   color: #d1d1dc;
   font-size: 0.95rem;
-  font-weight: 500;
-  margin: 0 0 6px 0;
+  margin: 0 0 8px 0;
+  font-weight: 400;
 }
 
-.nenas-disclaimer-text {
-  color: #7b7b8c;
+.highlight-pink {
+  color: #ff4785;
+  font-weight: 600;
+}
+
+.nenas-copy-line {
+  color: #ff4785;
+  font-size: 0.9rem;
+  margin-bottom: 18px;
+  text-shadow: 0 0 8px rgba(255, 71, 133, 0.3);
+}
+
+/* Divisor com coração */
+.nenas-heart-divider {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.line-side {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 71, 133, 0.4), transparent);
+}
+
+.divider-heart {
+  color: #ff4785;
+  font-size: 0.9rem;
+  text-shadow: 0 0 8px rgba(255, 71, 133, 0.6);
+}
+
+/* Aviso legal */
+.nenas-disclaimer-box {
+  color: #7a7a8c;
   font-size: 0.82rem;
   line-height: 1.5;
-  margin: 16px 0 24px 0;
+  margin: 0 0 22px 0;
   max-width: 480px;
 }
 
-.nenas-footer-bottom {
-  color: #ff5c97;
-  font-size: 0.92rem;
-  font-weight: 600;
+/* Botões redondos de ícones */
+.nenas-social-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.nenas-circle-btn {
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 71, 133, 0.08);
+  border: 1px solid rgba(255, 71, 133, 0.25);
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 10px;
-  text-shadow: 0 0 10px rgba(255, 92, 151, 0.3);
+  justify-content: center;
+  color: #ff4785;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 71, 133, 0.1);
+}
+
+.nenas-circle-btn:hover {
+  background: rgba(255, 71, 133, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(255, 71, 133, 0.4);
+}
+
+/* Frase final cursiva */
+.nenas-final-greeting {
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  color: #ff4785;
+  margin-bottom: 16px;
+  text-shadow: 0 0 10px rgba(255, 71, 133, 0.4);
+}
+
+/* Divisor inferior */
+.nenas-bottom-divider {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bottom-flower {
+  font-size: 0.85rem;
 }
 </style>
 
