@@ -1057,222 +1057,401 @@ function filtrarObrasPesquisa(termo) {
 } 
 </script> 
 
+<!-- 🌸 FLOWER'S NENASSCAN — BLOCO DE CRÉDITOS 🌸 -->
+<div class="flower-credit-box">
+
+  <style>
+    .flower-credit-box {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 45px 5% 35px;
+      background: #030303;
+      color: #eee8ee;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      text-align: left;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* brilho rosa discreto no fundo */
+    .flower-credit-box:before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 220px;
+      left: 5%;
+      top: 40px;
+      background: rgba(255, 105, 190, 0.07);
+      filter: blur(70px);
+      pointer-events: none;
+    }
+
+    /* TÍTULO */
+    .flower-title {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 15px;
+    }
+
+    .flower-title .script {
+      font-family: "Brush Script MT", "Segoe Script", cursive;
+      font-size: clamp(48px, 7vw, 82px);
+      font-weight: bold;
+      font-style: italic;
+      color: #ff91cf;
+      line-height: 0.95;
+      text-shadow:
+        0 0 5px #ff8acb,
+        0 0 12px rgba(255, 111, 190, .8),
+        0 0 25px rgba(255, 75, 170, .45);
+    }
+
+    .flower-title .flower {
+      font-size: 42px;
+      filter:
+        drop-shadow(0 0 5px #ff91cf)
+        drop-shadow(0 0 12px rgba(255, 105, 190, .7));
+    }
+
+    .flower-title .nenasscan {
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      font-size: clamp(43px, 6vw, 76px);
+      font-weight: 600;
+      font-style: italic;
+      color: #d9cfd9;
+      letter-spacing: -2px;
+      text-shadow: 0 0 8px rgba(255, 150, 215, .25);
+    }
+
+    /* TEXTO PRINCIPAL */
+    .flower-description {
+      position: relative;
+      z-index: 2;
+      margin: 10px 0 22px;
+      font-size: clamp(19px, 2.7vw, 34px);
+      line-height: 1.35;
+      color: #aaa3aa;
+    }
+
+    .flower-description strong {
+      color: #ff8fc9;
+      text-shadow: 0 0 8px rgba(255, 105, 190, .35);
+    }
+
+    .flower-description .heart {
+      color: #ff9bd2;
+      font-size: 1.15em;
+    }
+
+    /* COPYRIGHT */
+    .flower-copy {
+      position: relative;
+      z-index: 2;
+      font-size: clamp(19px, 2.7vw, 33px);
+      color: #bdb7bd;
+      margin-bottom: 18px;
+    }
+
+    /* LINHA COM CORAÇÃO */
+    .flower-divider {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      margin: 20px 0 28px;
+    }
+
+    .flower-divider .line {
+      height: 2px;
+      flex: 1;
+      max-width: 330px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        #ff8fca,
+        #ffb4dc
+      );
+      box-shadow: 0 0 7px rgba(255, 105, 190, .65);
+    }
+
+    .flower-divider .line.right {
+      background: linear-gradient(
+        to left,
+        transparent,
+        #ff8fca,
+        #ffb4dc
+      );
+    }
+
+    .flower-divider .heart {
+      font-size: 38px;
+      color: #ff9bd3;
+      line-height: 1;
+      text-shadow:
+        0 0 6px #ff8dca,
+        0 0 15px rgba(255, 100, 185, .6);
+    }
+
+    /* TEXTO DOS CRÉDITOS */
+    .flower-credits {
+      position: relative;
+      z-index: 2;
+      max-width: 1250px;
+      font-size: clamp(17px, 2.2vw, 28px);
+      line-height: 1.65;
+      color: #d3ccd3;
+      margin: 0 0 28px;
+    }
+
+    /* BOTÕES */
+    .flower-buttons {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin: 5px 0 12px;
+    }
+
+    .flower-social {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: #ff9bd3;
+      border: 4px solid #ffd0e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-sizing: border-box;
+      box-shadow:
+        0 0 5px rgba(255, 150, 210, .8),
+        0 0 14px rgba(255, 100, 190, .35);
+      transition: .2s ease;
+    }
+
+    .flower-social:hover {
+      transform: scale(1.06);
+      box-shadow:
+        0 0 8px #ff9bd3,
+        0 0 20px rgba(255, 100, 190, .6);
+    }
+
+    .telegram-icon {
+      width: 38px;
+      height: 38px;
+      fill: #68445f;
+    }
+
+    .heart-icon {
+      font-size: 39px;
+      color: #68445f;
+      line-height: 1;
+    }
+
+    /* FRASE FINAL */
+    .flower-thanks {
+      position: relative;
+      z-index: 2;
+      margin-top: 8px;
+      font-family: "Brush Script MT", "Segoe Script", cursive;
+      font-size: clamp(35px, 5vw, 62px);
+      font-style: italic;
+      color: #ff9bd3;
+      text-shadow:
+        0 0 5px #ff8dca,
+        0 0 14px rgba(255, 100, 190, .55);
+      white-space: normal;
+    }
+
+    /* LINHA FINAL */
+    .flower-bottom {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 7px;
+      max-width: 590px;
+    }
+
+    .flower-bottom .line {
+      height: 2px;
+      flex: 1;
+      background: linear-gradient(
+        to right,
+        transparent,
+        #ff91ca,
+        #ffb4dc
+      );
+      box-shadow: 0 0 7px rgba(255, 105, 190, .6);
+    }
+
+    .flower-bottom .diamond {
+      color: #ff9bd3;
+      font-size: 18px;
+      text-shadow: 0 0 7px #ff8fc9;
+    }
+
+    .flower-bottom .flower-small {
+      font-size: 33px;
+      filter:
+        drop-shadow(0 0 5px #ff8fc9)
+        drop-shadow(0 0 9px rgba(255, 100, 190, .6));
+    }
+
+    /* CELULAR */
+    @media (max-width: 600px) {
+
+      .flower-credit-box {
+        padding: 32px 18px 28px;
+      }
+
+      .flower-title {
+        gap: 7px;
+      }
+
+      .flower-title .script {
+        font-size: 45px;
+      }
+
+      .flower-title .flower {
+        font-size: 29px;
+      }
+
+      .flower-title .nenasscan {
+        font-size: 42px;
+      }
+
+      .flower-description {
+        font-size: 19px;
+      }
+
+      .flower-copy {
+        font-size: 19px;
+      }
+
+      .flower-divider {
+        gap: 12px;
+      }
+
+      .flower-divider .heart {
+        font-size: 30px;
+      }
+
+      .flower-social {
+        width: 61px;
+        height: 61px;
+      }
+
+      .flower-thanks {
+        font-size: 39px;
+      }
+
+      .flower-bottom {
+        max-width: 100%;
+      }
+    }
+  </style>
 
 
-    
- <!-- Importando as fontes idênticas às da sua arte -->
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-<!-- Ícones do Telegram e Projetos -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- 🌸 TÍTULO -->
+  <div class="flower-title">
+    <span class="script">Flower's</span>
+    <span class="flower">🌸</span>
+    <span class="nenasscan">Nenasscan</span>
+  </div>
 
-<footer class="nenas-exact-footer">
-  <div class="nenas-exact-container">
-    
-    <!-- Título Principal -->
-    <div class="nenas-title-art">
-      <span class="script-flower">Flower's</span><span class="title-flower-icon">🌸</span> <span class="scan-part">Nenasscan</span>
-    </div>
-    
-    <!-- Frase com palavras específicas em rosa -->
-    <p class="nenas-phrase-art">
-      Traduções feitas com <span class="pink-word">carinho</span> de <span class="pink-word">fã</span> para <span class="pink-word">fã</span> ♡
-    </p>
-    
-    <!-- Copyright -->
-    <div class="nenas-copy-art">
-      ©2025-2026 🌸
-    </div>
-    
-    <!-- Divisor com Coração Exato -->
-    <div class="art-divider">
-      <div class="line-h"></div>
-      <span class="divider-heart-icon">♥</span>
-      <div class="line-h"></div>
-    </div>
-    
-    <!-- Aviso -->
-    <p class="nenas-disclaimer-art">
-      Todos os conteúdos e créditos aos seus respectivos autores e artistas, apoiem comprando a obra original.
-    </p>
-    
-    <!-- Botões Redondos (Telegram e Projetos) -->
-    <div class="art-social-row">
-      <a href="LINK_DO_TELEGRAM_AQUI" target="_blank" class="art-icon-btn" title="Telegram">
-        <i class="fa-brands fa-telegram"></i>
-      </a>
-      <a href="LINK_DE_PROJETOS_AQUI" class="art-icon-btn" title="Projetos">
-        <i class="fa-solid fa-book-open"></i>
-      </a>
-    </div>
-    
-    <!-- Frase Final Cursiva -->
-    <div class="nenas-final-art">
-      Obrigada por nos acompanhar ♡
-    </div>
-    
-    <!-- Divisor Final com Florzinha -->
-    <div class="art-divider-bottom">
-      <div class="line-h"></div>
-      <span class="bottom-cherry">🌸 ✨</span>
-      <div class="line-h"></div>
-    </div>
+
+  <!-- 🌸 DESCRIÇÃO -->
+  <div class="flower-description">
+    Traduções feitas com
+    <strong>carinho</strong> de <strong>fã</strong> para <strong>fã</strong>
+    <span class="heart">♡</span>.
+  </div>
+
+
+  <!-- COPYRIGHT -->
+  <div class="flower-copy">
+    ©2025–2026 🌸
+  </div>
+
+
+  <!-- LINHA -->
+  <div class="flower-divider">
+    <span class="line"></span>
+    <span class="heart">♡</span>
+    <span class="line right"></span>
+  </div>
+
+
+  <!-- CRÉDITOS -->
+  <div class="flower-credits">
+    Todos os conteúdos e créditos aos seus respectivos autores e
+    artistas, apoiem comprando a obra original.
+  </div>
+
+
+  <!-- BOTÕES -->
+  <div class="flower-buttons">
+
+    <!-- Telegram -->
+    <a class="flower-social"
+       href="https://t.me/"
+       target="_blank"
+       aria-label="Telegram">
+
+      <svg class="telegram-icon"
+           viewBox="0 0 24 24"
+           xmlns="http://www.w3.org/2000/svg">
+        <path d="M21.8 3.2 18.7 20c-.2 1.2-.9 1.5-1.8.9l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L6.1 13.6l-4.9-1.5c-1.1-.3-1.1-1 .2-1.5L20.6 3c.9-.3 1.7.2 1.2.2z"/>
+      </svg>
+
+    </a>
+
+
+    <!-- Apoio / coração -->
+    <a class="flower-social"
+       href="#"
+       aria-label="Apoiar">
+
+      <span class="heart-icon">♥</span>
+
+    </a>
 
   </div>
-</footer>
 
-<style>
-.nenas-exact-footer {
-  width: 100%;
-  background-color: #050507;
-  padding: 45px 24px;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-  display: flex;
-  justify-content: flex-start;
-}
 
-.nenas-exact-container {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-}
+  <!-- FRASE FINAL -->
+  <div class="flower-thanks">
+    Obrigada por nos acompanhar ♡
+  </div>
 
-/* Título */
-.nenas-title-art {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 6px;
-  flex-wrap: wrap;
-}
 
-.script-flower {
-  font-family: 'Caveat', cursive;
-  font-size: 2.6rem;
-  font-weight: 700;
-  color: #ff4785;
-  text-shadow: 0 0 14px rgba(255, 71, 133, 0.5);
-  line-height: 1;
-}
+  <!-- LINHA FINAL -->
+  <div class="flower-bottom">
+    <span class="line"></span>
+    <span class="diamond">◆</span>
+    <span class="flower-small">🌸</span>
+    <span class="diamond">◆</span>
+    <span class="line"></span>
+  </div>
 
-.title-flower-icon {
-  font-size: 1.2rem;
-}
+</div>
 
-.scan-part {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.7rem;
-  font-weight: 600;
-  color: #ffffff;
-  letter-spacing: -0.5px;
-}
+    
 
-/* Frase descritiva */
-.nenas-phrase-art {
-  color: #d1d1dc;
-  font-size: 0.95rem;
-  margin: 0 0 8px 0;
-  font-weight: 400;
-}
 
-.pink-word {
-  color: #ff4785;
-  font-weight: 600;
-  text-shadow: 0 0 8px rgba(255, 71, 133, 0.4);
-}
 
-.nenas-copy-art {
-  color: #ff4785;
-  font-size: 0.9rem;
-  margin-bottom: 16px;
-  text-shadow: 0 0 8px rgba(255, 71, 133, 0.3);
-}
 
-/* Divisor do meio */
-.art-divider {
-  width: 100%;
-  max-width: 380px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-}
 
-.line-h {
-  flex-grow: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 71, 133, 0.4), transparent);
-}
-
-.divider-heart-icon {
-  color: #ff4785;
-  font-size: 0.85rem;
-  text-shadow: 0 0 8px rgba(255, 71, 133, 0.6);
-}
-
-/* Disclaimer */
-.nenas-disclaimer-art {
-  color: #7a7a8c;
-  font-size: 0.82rem;
-  line-height: 1.5;
-  margin: 0 0 20px 0;
-  max-width: 480px;
-}
-
-/* Botões Redondos com Brilho Neon Exato */
-.art-social-row {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-.art-icon-btn {
-  width: 38px;
-  height: 38px;
-  background: rgba(255, 71, 133, 0.08);
-  border: 1px solid rgba(255, 71, 133, 0.3);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ff4785;
-  font-size: 1rem;
-  text-decoration: none;
-  box-shadow: 0 0 10px rgba(255, 71, 133, 0.15);
-  transition: all 0.3s ease;
-}
-
-.art-icon-btn:hover {
-  background: rgba(255, 71, 133, 0.2);
-  box-shadow: 0 0 15px rgba(255, 71, 133, 0.5);
-  transform: translateY(-2px);
-}
-
-/* Frase Final */
-.nenas-final-art {
-  font-family: 'Caveat', cursive;
-  font-size: 1.7rem;
-  color: #ff4785;
-  margin-bottom: 14px;
-  text-shadow: 0 0 10px rgba(255, 71, 133, 0.4);
-}
-
-/* Divisor final */
-.art-divider-bottom {
-  width: 100%;
-  max-width: 380px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.bottom-cherry {
-  font-size: 0.85rem;
-}
-</style>
    
 
 
