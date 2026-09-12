@@ -544,7 +544,7 @@
         </div>
         <div class="leitor-controles">
             <!-- Botão Voltar -->
-            <a href="#" class="btn-voltar-obra" id="btnVoltarObra" onclick="irParaDetalhes(event)">voltar</a>
+            <a href="#" class="btn-voltar-obra" id="btnVoltarObra" onclick="irParaDetalhes(event)">❀ Voltar</a>
             
             <!-- Botão da Casinha (Sem borda, centralizado e maior) -->
             <a href="./" class="btn-casinha" title="Início">
@@ -556,7 +556,7 @@
             <!-- Dropdown Lista de Capítulos -->
             <div class="dropdown-container">
                 <button class="btn-dropdown-custom" id="btnDropdownCaps" onclick="toggleMenuCaps()">
-                    <span id="textoBotaoCapitulos">Lista de Capítulos</span>
+                    <span id="textoBotaoCapitulos">❀ Capítulos</span>
                     <svg viewBox="0 0 24 24" id="setaDropdown"><path d="M7 10l5 5 5-5z"/></svg>
                 </button>
                 <div class="lista-suspensa-caps" id="listaSuspensaCaps">
@@ -580,7 +580,7 @@
         <div class="grid-reamoes" id="gridReacoes">
             <div class="item-reacao" id="reacao-fofooo" onclick="votarReacao('fofooo')">
                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgU6vS6AZwByFLsGV9a-fKkarZB31kEos8swXC1d7dgFAtnYO-gSR20UL4xryBnQyThQL1D7Q3hgj5mLv9xcxPbYpu6_1UVfjx0BkMmPCYp0H5okkDid0JsSrjMizMSZIR-gS1BmBXaPFyJcvfaaZUGRGl6lhEUxf8qyRJp_4BkJGssQ6TjHouLr6ggks/s16000/1000701366.png" alt="FOFOO!" referrerpolicy="no-referrer">
-                <span class="texto-reacao">FOFOO</span>
+                <span class="texto-reacao">FOFOO!!</span>
                 <span class="contador-reacao" id="cnt-fofooo">0</span>
             </div>
             <div class="item-reacao" id="reacao-ameiii" onclick="votarReacao('ameiii')">
@@ -747,7 +747,7 @@
 
             let numCap = typeof capAtual === 'object' ? capAtual.numero : capAtual;
             document.getElementById('textoCapituloReal').textContent = `CAPÍTULO ${numCap}`;
-            document.getElementById('textoBotaoCapitulos').textContent = `Lista de Capítulos`;
+            document.getElementById('textoBotaoCapitulos').textContent = `❀ Capítulos`;
             document.title = `Capítulo ${numCap} - ${obraGlobal.titulo} - Flower's Nenascan 🌸`;
 
             idUnicoCapitulo = `${criarSlug(obraGlobal.titulo)}_${String(numCap).toLowerCase()}`;
@@ -972,9 +972,12 @@
         });
     </script>
 
-<div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background: url('https://files.catbox.moe/iuy2vm.png') no-repeat center center / cover !important; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); overflow: hidden;">
+          <div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background-color: #000; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; overflow: hidden;">
     
-    <div id="caixa-senha" style="position: relative; z-index: 10; background: #ffffff; border-radius: 35px; padding: 40px 30px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 0 30px rgba(255, 133, 194, 0.6), 0 15px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255, 133, 194, 0.3);">
+    <!-- Imagem limpa, sem desfoque e sem escurecer -->
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPizRBEA6EgNotktGlEJSUsbM_S_aOcBLTAZnOeQO-EJjqFjWxPym-rHWLnRIjZky9dKd3DzrHpRq4FTrBK5lK2JLJ8HwfELnsnfzoketaGXIK9tsg9EKVLh2V-5cDAuK4u77ATnkW_pM_UIfN6zMQH3pp52o_AK_vWfksK6aQPHobrCG11pxZgtVHj_0/s16000/1000703798.png" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;" alt="Fundo">
+
+    <div id="caixa-senha" style="position: relative; z-index: 10; background: #ffffff; border-radius: 35px; padding: 40px 30px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 0 30px rgba(255, 133, 194, 0.6), 0 15px 40px rgba(0,0,0,0.3); border: 1px solid rgba(255, 133, 194, 0.3);">
         
         <h2 style="font-size: 1.55rem; font-weight: 700; color: #ff85c2; margin-bottom: 4px; text-shadow: none;">Oi! Seja bem-vinda(o)</h2>
         <div style="font-size: 1.2rem; margin: 8px 0;">🌸</div>
@@ -1014,16 +1017,7 @@
 
 <script>
     document.body.classList.add('bloqueio-total');
-
-    const tempoLiberacao = localStorage.getItem('acesso_liberado_ate');
-    const agora = new Date().getTime();
-
-    if (tempoLiberacao && agora < parseInt(tempoLiberacao)) {
-        document.getElementById('modal-senha-overlay').style.display = 'none';
-        document.body.classList.remove('bloqueio-total');
-    } else {
-        localStorage.removeItem('acesso_liberado_ate');
-    }
+    localStorage.removeItem('acesso_liberado_ate');
 
     const SENHA_CORRETA = "x"; 
 
@@ -1037,7 +1031,6 @@
             const validadeAcesso = new Date().getTime() + tresDiasEmMs;
             
             localStorage.setItem('acesso_liberado_ate', validadeAcesso);
-
             document.body.classList.remove('bloqueio-total');
 
             document.getElementById('modal-senha-overlay').style.opacity = '0';
@@ -1056,6 +1049,7 @@
         }
     }
 </script>
+  
 
 </body>
 </html>
