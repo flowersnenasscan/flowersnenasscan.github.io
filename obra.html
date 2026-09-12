@@ -25,7 +25,6 @@
             padding: 0; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             -webkit-tap-highlight-color: transparent;
-            /* BLOQUEIO DE SELEÇÃO: Impede selecionar texto em todo o site */
             user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -39,7 +38,6 @@
         body { background-color: var(--bg-color); color: var(--text-main); padding-bottom: 50px; }
         p, span, a, h1, h2, h3, h4, div, button { color: var(--primary-pink); text-shadow: var(--neon-glow); }
         
-        /* PROTEÇÃO DE IMAGENS: Impede seleção e arraste via CSS */
         img {
             -webkit-user-drag: none;
             user-select: none;
@@ -162,7 +160,6 @@
         }
         .btn-acao:hover { background: var(--primary-pink); color: #0b0b0e; box-shadow: 0 0 15px var(--primary-pink); }
 
-        /* BOTÃO FAVORITO COM CORAÇÃO MAIOR E VAZIO */
         .btn-favorito {
             background: #181822;
             border: 1px solid var(--primary-pink);
@@ -191,7 +188,6 @@
             filter: drop-shadow(0 0 10px var(--primary-pink));
         }
 
-        /* BLOCOS GERAIS */
         .secao-bloco {
             background: var(--card-bg);
             border-radius: 16px;
@@ -209,7 +205,6 @@
             text-shadow: none;
         }
 
-        /* INFORMAÇÕES DA OBRA */
         .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -238,7 +233,6 @@
             gap: 6px;
         }
         
-        /* BANDEIRINHAS CIRCULARES */
         .bandeira-tipo {
             width: 18px;
             height: 18px;
@@ -266,7 +260,6 @@
             display: inline-block;
         }
 
-        /* ÁREA DE CAPÍTULOS */
         .secao-capitulos-solta {
             width: calc(100% - 30px);
             margin: 25px 15px 0 15px;
@@ -299,7 +292,6 @@
             gap: 12px;
         }
 
-        /* BOTÃO DE ORDENAÇÃO */
         .btn-ordenar {
             background: #181822;
             border: 1px solid rgba(255, 153, 221, 0.5);
@@ -329,7 +321,6 @@
             box-shadow: 0 0 15px var(--primary-pink);
         }
 
-        /* TÍTULO DA TEMPORADA */
         .temporada-titulo {
             font-size: 1.05rem;
             font-weight: 800;
@@ -366,7 +357,6 @@
             transform: translateX(4px);
         }
         
-        /* BORDAS ROSA APENAS NO INSTANTE DO CLIQUE/TOQUE */
         .capitulo-item:active {
             border-color: var(--primary-pink) !important;
             box-shadow: var(--neon-glow) !important;
@@ -378,7 +368,6 @@
             align-items: center;
             gap: 14px;
         }
-        /* Miniatura dos capítulos com altura aumentada */
         .cap-miniatura {
             width: 155px;
             height: 125px;
@@ -406,7 +395,6 @@
             font-weight: 600;
         }
         
-        /* LADO DIREITO: DATA BEM MAIS EM BAIXO E SÍMBOLO SVG DE OLHO EM CIMA DA DATA */
         .cap-direita {
             display: flex;
             flex-direction: column;
@@ -422,7 +410,7 @@
             flex-direction: column;
             align-items: flex-end;
             gap: 6px;
-            margin-top: auto; /* Empurra totalmente para baixo */
+            margin-top: auto;
         }
 
         .cap-data {
@@ -431,7 +419,6 @@
             text-shadow: none;
         }
         
-        /* SÍMBOLO SVG DE OLHO ROSA NEON (EM CIMA DA DATA) */
         .icone-olho-svg {
             width: 22px;
             height: 22px;
@@ -447,7 +434,6 @@
             display: inline-block;
         }
 
-        /* SELO NOVO (SÓ APARECE SE FOR RECENTE <= 4 DIAS) */
         .selo-novo-cap {
             background-color: #ff55bb;
             color: #ffcceb;
@@ -463,72 +449,85 @@
             text-transform: uppercase;
         }
 
-        /* ESTILOS DOS MODAIS DE PESQUISA E MENU LATERAL */
-        .site-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 1000;
+        /* PADRÃO DE BARRA DE PESQUISA E MENU LATERAL IDÊNTICOS AO INDEX */
+        #search-container {
             display: none;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(4px);
-        }
-        .site-modal.ativo {
-            display: flex;
-        }
-        .modal-conteudo-pesquisa {
             background: var(--card-bg);
-            border: 1px solid var(--primary-pink);
-            padding: 25px;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 450px;
-            box-shadow: var(--neon-glow);
-            text-align: center;
+            border-bottom: 1px solid rgba(255, 153, 221, 0.3);
+            padding: 12px 20px;
+            position: sticky;
+            top: 77px;
+            z-index: 99;
+            box-shadow: var(--shadow);
         }
-        .modal-conteudo-pesquisa input {
+        #search-container.ativo {
+            display: block;
+        }
+        #search-input {
             width: 100%;
             background: #000;
             border: 1px solid var(--primary-pink);
-            padding: 12px 15px;
+            padding: 10px 15px;
             border-radius: 12px;
             color: var(--primary-pink);
-            font-size: 1rem;
+            font-size: 0.95rem;
             outline: none;
-            margin-top: 15px;
         }
 
-        /* MENU LATERAL */
-        .menu-lateral-overlay {
+        #sidebar-menu {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.8);
             z-index: 1000;
             display: none;
             justify-content: flex-end;
+            backdrop-filter: blur(3px);
         }
-        .menu-lateral-overlay.ativo {
+        #sidebar-menu.ativo {
             display: flex;
         }
-        .menu-lateral-conteudo {
+        .sidebar-content {
             background: var(--card-bg);
             border-left: 1px solid var(--primary-pink);
             width: 280px;
             height: 100%;
-            padding: 25px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 15px;
             box-shadow: var(--shadow);
         }
-        .menu-lateral-conteudo a {
-            color: var(--primary-pink);
-            text-decoration: none;
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 153, 221, 0.3);
+            padding-bottom: 12px;
+        }
+        .sidebar-title-area {
             font-size: 1.1rem;
             font-weight: 700;
+            color: #fff;
+        }
+        .close-menu {
+            background: none;
+            border: none;
+            color: var(--primary-pink);
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .sidebar-links a {
+            color: var(--primary-pink);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
             padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 153, 221, 0.2);
+            border-bottom: 1px solid rgba(255, 153, 221, 0.15);
         }
     </style>
 </head>
@@ -539,12 +538,12 @@
             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaQno-acWBLX3bO6i_ivtOUB3H4KlmVs-gxAGQ1t4ingQZYv2G_zL1wrR6kf8lI7LEDSkAVvNAy0KlOxAPjzKgtAl9KyR-ABi-ku7UcPAMML-TxwWPD6RPuwhxDSwpQFekGC4DPUfzwCBQtroq2stOYSSsDq0KQNSYRwPX8p5gSS_XFj3FdkpxuOl8vi2Q/s2592/1000703103.png" alt="Flower's Nenascan Logo" class="logo-site">
         </a>
         <div class="header-botoes-direita">
-            <!-- Botão de Pesquisa (Lupa) corrigido para acionar o modal via JS -->
-            <button type="button" class="icon-btn" id="btnAbrirPesquisa" title="Pesquisar">
+            <!-- Botão de Pesquisa integrado com a função toggleSearch do index -->
+            <button class="icon-btn" onclick="toggleSearch()" title="Pesquisar">
                 <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
             </button>
-            <!-- Botão de Menu (hambúrguer) corrigido para acionar o menu lateral via JS -->
-            <button type="button" class="icon-btn" id="btnAbrirMenu" title="Menu">
+            <!-- Botão de Menu integrado com a função toggleSidebar do index -->
+            <button class="icon-btn" onclick="toggleSidebar()" title="Menu">
                 <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
             </button>
             <!-- Botão da Casinha (Início) -->
@@ -554,28 +553,26 @@
         </div>
     </header>
 
-    <!-- MODAL DE PESQUISA -->
-    <div class="site-modal" id="modalPesquisa">
-        <div class="modal-conteudo-pesquisa">
-            <h3 style="color: #fff;">Pesquisar Obra</h3>
-            <input type="text" id="inputPesquisaModal" placeholder="Digite o nome da obra..." onkeypress="if(event.key==='Enter') executarBuscaModal()">
-            <div style="display: flex; gap: 10px; margin-top: 15px;">
-                <button onclick="executarBuscaModal()" class="btn-acao" style="max-width: none;">Buscar</button>
-                <button onclick="fecharModais()" class="btn-acao" style="background: #333; max-width: none;">Fechar</button>
-            </div>
-        </div>
+    <!-- BARRA DE PESQUISA (PADRÃO DO INDEX) -->
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Pesquisar obra..." onkeypress="if(event.key==='Enter') executarBuscaModal()">
     </div>
 
-    <!-- MENU LATERAL -->
-    <div class="menu-lateral-overlay" id="menuLateral">
-        <div class="menu-lateral-conteudo">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--primary-pink); padding-bottom: 10px;">
-                <h3 style="color: #fff;">Menu</h3>
-                <button onclick="fecharModais()" style="background: none; border: none; font-size: 1.2rem; cursor: pointer;">✕</button>
+    <!-- MENU LATERAL (PADRÃO DO INDEX) -->
+    <div id="sidebar-menu">
+        <div class="sidebar-content">
+            <div class="sidebar-header">
+                <div class="sidebar-title-area">Menu Principal</div>
+                <button class="close-menu" onclick="toggleSidebar()">✕</button>
             </div>
-            <a href="./">Início</a>
-            <a href="./" onclick="fecharModais()">Favoritos</a>
-            <a href="https://github.com/nena-scan" target="_blank">GitHub / Contato</a>
+            <div class="sidebar-links">
+                <a href="./">Início</a>
+                <a href="./?aba=obras">Obras</a>
+                <a href="./?aba=favoritos">Favoritos</a>
+                <a href="./?aba=avisos">Avisos</a>
+                <a href="./?aba=generos">Gêneros</a>
+                <a href="https://github.com/nena-scan" target="_blank">GitHub / Contato</a>
+            </div>
         </div>
     </div>
 
@@ -584,57 +581,25 @@
     </div>
 
     <script>
-        // PROTEÇÃO: Bloqueia clique direito em toda a página
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+        document.addEventListener('dragstart', function(e) { if (e.target.tagName === 'IMG') e.preventDefault(); });
 
-        // PROTEÇÃO: Bloqueia arrastar imagens
-        document.addEventListener('dragstart', function(e) {
-            if (e.target.tagName === 'IMG') {
-                e.preventDefault();
+        // Funções de controle idênticas ao index
+        function toggleSearch() {
+            const searchContainer = document.getElementById('search-container');
+            searchContainer.classList.toggle('ativo');
+            if (searchContainer.classList.contains('ativo')) {
+                document.getElementById('search-input').focus();
             }
-        });
-
-        // CONTROLE DOS BOTÕES DE PESQUISA E MENU
-        const btnAbrirPesquisa = document.getElementById('btnAbrirPesquisa');
-        const btnAbrirMenu = document.getElementById('btnAbrirMenu');
-        const modalPesquisa = document.getElementById('modalPesquisa');
-        const menuLateral = document.getElementById('menuLateral');
-
-        if (btnAbrirPesquisa && modalPesquisa) {
-            btnAbrirPesquisa.addEventListener('click', () => {
-                modalPesquisa.classList.add('ativo');
-                const inp = document.getElementById('inputPesquisaModal');
-                if (inp) inp.focus();
-            });
         }
 
-        if (btnAbrirMenu && menuLateral) {
-            btnAbrirMenu.addEventListener('click', () => {
-                menuLateral.classList.add('ativo');
-            });
-        }
-
-        function fecharModais() {
-            if (modalPesquisa) modalPesquisa.classList.remove('ativo');
-            if (menuLateral) menuLateral.classList.remove('ativo');
-        }
-
-        // Fechar clicando fora do modal de pesquisa
-        if (modalPesquisa) {
-            modalPesquisa.addEventListener('click', (e) => {
-                if (e.target === modalPesquisa) fecharModais();
-            });
-        }
-        if (menuLateral) {
-            menuLateral.addEventListener('click', (e) => {
-                if (e.target === menuLateral) fecharModais();
-            });
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar-menu');
+            sidebar.classList.toggle('ativo');
         }
 
         function executarBuscaModal() {
-            const termo = document.getElementById('inputPesquisaModal').value.trim();
+            const termo = document.getElementById('search-input').value.trim();
             if (termo) {
                 window.location.href = `./?q=${encodeURIComponent(termo)}`;
             }
@@ -939,92 +904,75 @@
         }
     </script>
 
-
-<!-- TELA DE SENHA ESTILIZADA - TRAVADA NO TOPO -->
-<div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background: url('https://files.catbox.moe/iuy2vm.png') no-repeat center center / cover !important; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); overflow: hidden;">
-    
-    <div id="caixa-senha" style="position: relative; z-index: 10; background: #ffffff; border-radius: 35px; padding: 40px 30px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 0 30px rgba(255, 133, 194, 0.6), 0 15px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255, 133, 194, 0.3);">
-        
-        <h2 style="font-size: 1.55rem; font-weight: 700; color: #ff85c2; margin-bottom: 4px; text-shadow: none;">Oi! Seja bem-vinda(o)</h2>
-        <div style="font-size: 1.2rem; margin: 8px 0;">🌸</div>
-        <p style="font-size: 0.88rem; color: #e093bd; margin-bottom: 24px; text-shadow: none; font-weight: 500;">Digite a senha para continuar</p>
-        
-        <input type="password" id="input-senha-site" placeholder="Senha..." style="width: 100%; background: #ffffff; border: 1.5px solid #f3c2dc; padding: 14px 18px; border-radius: 16px; color: #d66ba0; font-size: 0.95rem; text-align: left; outline: none; margin-bottom: 15px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);" onkeypress="if(event.key === 'Enter') verificarSenha();">
-        
-        <button onclick="verificarSenha()" style="width: 100%; background: linear-gradient(135deg, #ffb3de 0%, #ff85c2 100%); color: #ffffff; border: none; padding: 14px; border-radius: 16px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 133, 194, 0.4); transition: 0.2s;">Entrar</button>
-        
-        <p id="erro-senha" style="color: #ff4d94; font-size: 0.8rem; margin-top: 15px; display: none; text-shadow: none; font-weight: 600;">Acesso negado, senha incorreta.</p>
+    <!-- TELA DE SENHA ESTILIZADA - TRAVADA NO TOPO -->
+    <div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background: url('https://files.catbox.moe/iuy2vm.png') no-repeat center center / cover !important; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); overflow: hidden;">
+        <div id="caixa-senha" style="position: relative; z-index: 10; background: #ffffff; border-radius: 35px; padding: 40px 30px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 0 30px rgba(255, 133, 194, 0.6), 0 15px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255, 133, 194, 0.3);">
+            <h2 style="font-size: 1.55rem; font-weight: 700; color: #ff85c2; margin-bottom: 4px; text-shadow: none;">Oi! Seja bem-vinda(o)</h2>
+            <div style="font-size: 1.2rem; margin: 8px 0;">🌸</div>
+            <p style="font-size: 0.88rem; color: #e093bd; margin-bottom: 24px; text-shadow: none; font-weight: 500;">Digite a senha para continuar</p>
+            <input type="password" id="input-senha-site" placeholder="Senha..." style="width: 100%; background: #ffffff; border: 1.5px solid #f3c2dc; padding: 14px 18px; border-radius: 16px; color: #d66ba0; font-size: 0.95rem; text-align: left; outline: none; margin-bottom: 15px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.03);" onkeypress="if(event.key === 'Enter') verificarSenha();">
+            <button onclick="verificarSenha()" style="width: 100%; background: linear-gradient(135deg, #ffb3de 0%, #ff85c2 100%); color: #ffffff; border: none; padding: 14px; border-radius: 16px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 133, 194, 0.4); transition: 0.2s;">Entrar</button>
+            <p id="erro-senha" style="color: #ff4d94; font-size: 0.8rem; margin-top: 15px; display: none; text-shadow: none; font-weight: 600;">Acesso negado, senha incorreta.</p>
+        </div>
     </div>
-</div>
 
-<style>
-    body.bloqueio-total {
-        overflow: hidden !important;
-        height: 100vh !important;
-        position: fixed !important;
-        width: 100% !important;
-    }
-
-    @keyframes tremerCaixa {
-        0% { transform: translateX(0); }
-        20% { transform: translateX(-10px); }
-        40% { transform: translateX(10px); }
-        60% { transform: translateX(-10px); }
-        80% { transform: translateX(10px); }
-        100% { transform: translateX(0); }
-    }
-    .tremer {
-        animation: tremerCaixa 0.4s ease;
-    }
-    #input-senha-site::placeholder {
-        color: #e6a8cc;
-    }
-</style>
-
-<script>
-    document.body.classList.add('bloqueio-total');
-
-    const tempoLiberacao = localStorage.getItem('acesso_liberado_ate');
-    const agora = new Date().getTime();
-
-    if (tempoLiberacao && agora < parseInt(tempoLiberacao)) {
-        document.getElementById('modal-senha-overlay').style.display = 'none';
-        document.body.classList.remove('bloqueio-total');
-    } else {
-        localStorage.removeItem('acesso_liberado_ate');
-    }
-
-    const SENHA_CORRETA = "x"; 
-
-    function verificarSenha() {
-        const digitada = document.getElementById('input-senha-site').value;
-        const msgErro = document.getElementById('erro-senha');
-        const caixa = document.getElementById('caixa-senha');
-
-        if (digitada === SENHA_CORRETA) {
-            const tresDiasEmMs = 3 * 24 * 60 * 60 * 1000;
-            const validadeAcesso = new Date().getTime() + tresDiasEmMs;
-            
-            localStorage.setItem('acesso_liberado_ate', validadeAcesso);
-
-            document.body.classList.remove('bloqueio-total');
-
-            document.getElementById('modal-senha-overlay').style.opacity = '0';
-            document.getElementById('modal-senha-overlay').style.transition = 'opacity 0.4s ease';
-            setTimeout(() => {
-                document.getElementById('modal-senha-overlay').style.display = 'none';
-            }, 400);
-        } else {
-            msgErro.style.display = 'block';
-            document.getElementById('input-senha-site').value = '';
-            document.getElementById('input-senha-site').focus();
-
-            caixa.classList.remove('tremer');
-            void caixa.offsetWidth; 
-            caixa.classList.add('tremer');
+    <style>
+        body.bloqueio-total {
+            overflow: hidden !important;
+            height: 100vh !important;
+            position: fixed !important;
+            width: 100% !important;
         }
-    }
-</script>
+        @keyframes tremerCaixa {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(-10px); }
+            40% { transform: translateX(10px); }
+            60% { transform: translateX(-10px); }
+            80% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
+        }
+        .tremer { animation: tremerCaixa 0.4s ease; }
+        #input-senha-site::placeholder { color: #e6a8cc; }
+    </style>
 
+    <script>
+        document.body.classList.add('bloqueio-total');
+        const tempoLiberacao = localStorage.getItem('acesso_liberado_ate');
+        const agora = new Date().getTime();
+
+        if (tempoLiberacao && agora < parseInt(tempoLiberacao)) {
+            document.getElementById('modal-senha-overlay').style.display = 'none';
+            document.body.classList.remove('bloqueio-total');
+        } else {
+            localStorage.removeItem('acesso_liberado_ate');
+        }
+
+        const SENHA_CORRETA = "x"; 
+
+        function verificarSenha() {
+            const digitada = document.getElementById('input-senha-site').value;
+            const msgErro = document.getElementById('erro-senha');
+            const caixa = document.getElementById('caixa-senha');
+
+            if (digitada === SENHA_CORRETA) {
+                const tresDiasEmMs = 3 * 24 * 60 * 60 * 1000;
+                const validadeAcesso = new Date().getTime() + tresDiasEmMs;
+                localStorage.setItem('acesso_liberado_ate', validadeAcesso);
+                document.body.classList.remove('bloqueio-total');
+                document.getElementById('modal-senha-overlay').style.opacity = '0';
+                document.getElementById('modal-senha-overlay').style.transition = 'opacity 0.4s ease';
+                setTimeout(() => {
+                    document.getElementById('modal-senha-overlay').style.display = 'none';
+                }, 400);
+            } else {
+                msgErro.style.display = 'block';
+                document.getElementById('input-senha-site').value = '';
+                document.getElementById('input-senha-site').focus();
+                caixa.classList.remove('tremer');
+                void caixa.offsetWidth; 
+                caixa.classList.add('tremer');
+            }
+        }
+    </script>
 </body>
 </html>
