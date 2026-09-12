@@ -1057,117 +1057,151 @@ function filtrarObrasPesquisa(termo) {
 } 
 </script> 
 
-<footer class="nenas-footer">
-  <div class="nenas-footer-content">
-    <div class="nenas-header-line">
-      <span class="nenas-pink">Flowers</span><span class="nenas-white">nenasscan</span>
+
+<footer class="nenas-site-footer">
+  <div class="nenas-footer-container">
+    
+    <!-- Topo do Rodapé: Logo com Efeito Neon Exato do Site -->
+    <div class="nenas-footer-brand">
+      <span class="nenas-logo-flowers">Flowers</span><span class="nenas-logo-scan">nenasscan</span>
     </div>
     
-    <p class="nenas-tagline">
-      traduções feitas com carinho de fã para fã <span class="nenas-symbol">♡</span>
+    <p class="nenas-footer-tagline">
+      traduções feitas com carinho de fã para fã <span class="nenas-heart-icon">♡</span>
     </p>
     
-    <p class="nenas-copyright">
-      ©2025-2026 <span class="nenas-flower">🌸</span>
-    </p>
+    <div class="nenas-footer-info-row">
+      <span class="nenas-footer-copy">©2025-2026</span>
+      <span class="nenas-footer-flower-badge">🌸</span>
+    </div>
     
-    <div class="nenas-divider"></div>
+    <!-- Linha Divisória com Gradiente Rosa Suave -->
+    <div class="nenas-footer-divider"></div>
     
-    <p class="nenas-disclaimer">
+    <!-- Aviso Legal -->
+    <p class="nenas-footer-disclaimer">
       Todos os conteúdos e créditos aos seus respectivos autores e artistas, apoiem comprando a obra original.
     </p>
-    
-    <div class="nenas-final-note">
-      <span>Obrigada por nos acompanhar</span>
-      <span class="nenas-heart">♥</span>
+
+    <!-- Selo/Mensagem Final Estilizada com Acento Profissional -->
+    <div class="nenas-footer-bottom-box">
+      <span class="nenas-footer-msg">Obrigada por nos acompanhar</span>
+      <span class="nenas-footer-pink-heart">♥</span>
     </div>
+    
   </div>
 </footer>
 
 <style>
-.nenas-footer {
+.nenas-site-footer {
   width: 100%;
-  background-color: #08080a;
-  padding: 45px 20px;
+  background-color: #0b0b0e;
+  background-image: radial-gradient(circle at 50% 100%, rgba(255, 105, 180, 0.05) 0%, transparent 60%);
+  border-top: 1px solid rgba(255, 105, 180, 0.18);
+  padding: 45px 20px 40px;
   box-sizing: border-box;
   font-family: inherit;
   display: flex;
   justify-content: center;
 }
 
-.nenas-footer-content {
+.nenas-footer-container {
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+  text-align: center;
 }
 
-.nenas-header-line {
-  font-size: 1.65rem;
+/* Título com o brilho neon característico do site */
+.nenas-footer-brand {
+  font-size: 1.8rem;
   font-weight: 700;
-  letter-spacing: -0.3px;
-  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
 }
 
-/* Cores corrigidas: Flowers rosa bonito/leve e nenasscan branco */
-.nenas-pink {
-  color: #ff8da1;
+.nenas-logo-flowers {
+  color: #ff69b4;
+  text-shadow: 0 0 12px rgba(255, 105, 180, 0.5), 0 0 25px rgba(255, 105, 180, 0.2);
 }
 
-.nenas-white {
+.nenas-logo-scan {
   color: #ffffff;
 }
 
-.nenas-tagline {
-  color: #d0d0dc;
+.nenas-footer-tagline {
+  color: #dedee9;
   font-size: 0.95rem;
-  margin: 0 0 8px 0;
+  margin: 0 0 10px 0;
   font-weight: 400;
 }
 
-.nenas-symbol {
-  color: #ff8da1;
+.nenas-heart-icon {
+  color: #ff69b4;
+  text-shadow: 0 0 8px rgba(255, 105, 180, 0.6);
 }
 
-.nenas-copyright {
-  color: #ff8da1;
-  font-size: 0.88rem;
-  margin: 0 0 20px 0;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.nenas-divider {
-  width: 100%;
-  height: 1px;
-  background: rgba(255, 141, 161, 0.15);
-  margin-bottom: 20px;
-}
-
-.nenas-disclaimer {
-  color: #8c8c9b;
-  font-size: 0.82rem;
-  line-height: 1.5;
-  margin: 0 0 28px 0;
-  max-width: 520px;
-}
-
-.nenas-final-note {
+.nenas-footer-info-row {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #ff8da1;
-  font-size: 0.92rem;
-  font-weight: 400;
+  margin-bottom: 25px;
 }
 
-.nenas-heart {
-  color: #ff8da1;
+.nenas-footer-copy {
+  color: #ff69b4;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
+}
+
+.nenas-footer-flower-badge {
+  font-size: 0.95rem;
+}
+
+.nenas-footer-divider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 105, 180, 0.6), transparent);
+  margin-bottom: 22px;
+}
+
+.nenas-footer-disclaimer {
+  color: #8c8c9b;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 0 28px 0;
+}
+
+/* Caixa final elegante com leve fundo translúcido e bordas arredondadas (estilo do site) */
+.nenas-footer-bottom-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 105, 180, 0.04);
+  border: 1px solid rgba(255, 105, 180, 0.15);
+  padding: 10px 22px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.nenas-footer-msg {
+  color: #ffb6c1;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.nenas-footer-pink-heart {
+  color: #ff69b4;
+  font-size: 0.95rem;
+  text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
 }
 </style>
+
+
 
 
 
