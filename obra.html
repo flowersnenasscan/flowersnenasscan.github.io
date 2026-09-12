@@ -448,88 +448,6 @@
             display: inline-block;
             text-transform: uppercase;
         }
-
-        /* BARRA DE PESQUISA ID EXATO DO SEU INDEX */
-        #search-container {
-            display: none;
-            background: var(--card-bg);
-            border-bottom: 1px solid rgba(255, 153, 221, 0.3);
-            padding: 12px 20px;
-            position: sticky;
-            top: 77px;
-            z-index: 99;
-            box-shadow: var(--shadow);
-        }
-        #search-container.ativo {
-            display: block;
-        }
-        #search-input {
-            width: 100%;
-            background: #000;
-            border: 1px solid var(--primary-pink);
-            padding: 10px 15px;
-            border-radius: 12px;
-            color: var(--primary-pink);
-            font-size: 0.95rem;
-            outline: none;
-        }
-
-        /* MENU LATERAL ID EXATO DO SEU INDEX */
-        #sidebar-menu {
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            display: none;
-            justify-content: flex-end;
-            backdrop-filter: blur(3px);
-        }
-        #sidebar-menu.ativo {
-            display: flex;
-        }
-        .sidebar-content {
-            background: var(--card-bg);
-            border-left: 1px solid var(--primary-pink);
-            width: 280px;
-            height: 100%;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            box-shadow: var(--shadow);
-        }
-        .sidebar-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255, 153, 221, 0.3);
-            padding-bottom: 12px;
-        }
-        .sidebar-title-area {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #fff;
-        }
-        .close-menu {
-            background: none;
-            border: none;
-            color: var(--primary-pink);
-            font-size: 1.3rem;
-            cursor: pointer;
-        }
-        .sidebar-links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .sidebar-links a {
-            color: var(--primary-pink);
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 600;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 153, 221, 0.15);
-        }
     </style>
 </head>
 <body>
@@ -539,44 +457,12 @@
             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhaQno-acWBLX3bO6i_ivtOUB3H4KlmVs-gxAGQ1t4ingQZYv2G_zL1wrR6kf8lI7LEDSkAVvNAy0KlOxAPjzKgtAl9KyR-ABi-ku7UcPAMML-TxwWPD6RPuwhxDSwpQFekGC4DPUfzwCBQtroq2stOYSSsDq0KQNSYRwPX8p5gSS_XFj3FdkpxuOl8vi2Q/s2592/1000703103.png" alt="Flower's Nenascan Logo" class="logo-site">
         </a>
         <div class="header-botoes-direita">
-            <!-- Botão de Pesquisa aciona a função toggleSearch igual ao index -->
-            <button class="icon-btn" onclick="toggleSearch()" title="Pesquisar">
-                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-            </button>
-            <!-- Botão de Menu aciona toggleMenu igual ao index -->
-            <button class="icon-btn" onclick="toggleMenu()" title="Menu">
-                <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-            </button>
             <!-- Botão da Casinha (Início) -->
             <a href="./" class="icon-btn" title="Voltar ao Início">
                 <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
             </a>
         </div>
     </header>
-
-    <!-- BARRA DE PESQUISA COM OS MESMOS IDS DO INDEX -->
-    <div id="search-container">
-        <input type="text" id="search-input" placeholder="Pesquisar obra..." oninput="executarBuscaNoIndex(this.value)">
-    </div>
-
-    <!-- MENU LATERAL COM OS MESMOS IDS E LINKS DIRECIONADOS PARA O INDEX -->
-    <div id="sidebar-menu">
-        <div class="sidebar-content">
-            <div class="sidebar-header">
-                <div class="sidebar-title-area">Menu Principal</div>
-                <button class="close-menu" onclick="toggleMenu()">✕</button>
-            </div>
-            <div class="sidebar-links">
-                <a href="./?aba=inicio" onclick="event.preventDefault(); toggleMenu(); window.location.href='./?aba=inicio';">Início</a>
-                <a href="./?aba=obras" onclick="event.preventDefault(); toggleMenu(); window.location.href='./?aba=obras';">Obras</a>
-                <a href="./?aba=biblioteca" onclick="event.preventDefault(); toggleMenu(); window.location.href='./?aba=biblioteca';">Biblioteca</a>
-                <a href="./?aba=avisos" onclick="event.preventDefault(); toggleMenu(); window.location.href='./?aba=avisos';">Avisos</a>
-                <a href="./?aba=generos" onclick="event.preventDefault(); toggleMenu(); window.location.href='./?aba=generos';">Gêneros</a>
-                <a href="javascript:void(0)" onclick="toggleMenu(); alert('Apoio em breve!');">Apoie a Scan</a>
-                <a href="javascript:void(0)" onclick="toggleMenu(); alert('Pedidos abertos no Discord/Telegram!');">Pedidos</a>
-            </div>
-        </div>
-    </div>
 
     <div class="obra-container" id="detalhes-conteudo">
         <p style="text-align: center; color: var(--text-muted); padding: 50px;">Carregando informações da obra...</p>
@@ -585,27 +471,6 @@
     <script>
         document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
         document.addEventListener('dragstart', function(e) { if (e.target.tagName === 'IMG') e.preventDefault(); });
-
-        // Funções padrão do seu menu e barra de pesquisa
-        function toggleSearch() {
-            const searchContainer = document.getElementById('search-container');
-            searchContainer.classList.toggle('ativo');
-            if (searchContainer.classList.contains('ativo')) {
-                document.getElementById('search-input').focus();
-            }
-        }
-
-        function toggleMenu() {
-            const sidebar = document.getElementById('sidebar-menu');
-            sidebar.classList.toggle('ativo');
-        }
-
-        // Se o usuário digitar na pesquisa em outra página, redireciona já abrindo a aba de obras com o termo filtrado
-        function executarBuscaNoIndex(termo) {
-            if (event.key === 'Enter' || termo.length > 2) {
-                window.location.href = `./?aba=obras&q=${encodeURIComponent(termo)}`;
-            }
-        }
 
         const urlParams = new URLSearchParams(window.location.search);
         const slugUrl = decodeURIComponent(urlParams.get('nome') || '').trim().toLowerCase();
