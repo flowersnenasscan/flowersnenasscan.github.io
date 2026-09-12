@@ -1059,8 +1059,6 @@ function filtrarObrasPesquisa(termo) {
 
 
 
-
-
 <div class="flower-footer">
 
 <style>
@@ -1074,6 +1072,7 @@ function filtrarObrasPesquisa(termo) {
   color:#ddd;
   font-family:Arial,sans-serif;
 }
+
 
 /* TÍTULO */
 .flower-footer-title{
@@ -1096,17 +1095,21 @@ function filtrarObrasPesquisa(termo) {
     0 0 10px rgba(255,100,190,.55);
 }
 
-.flower-footer-title .flower-symbol{
-  font-size:20px;
-}
 
+/* NENASSCAN — MESMA LETRA */
 .flower-footer-title .nenasscan{
-  font-family:"Trebuchet MS",Arial,sans-serif;
+  font-family:"Brush Script MT","Segoe Script",cursive;
   font-size:35px;
   font-style:italic;
-  font-weight:600;
+  font-weight:bold;
   color:#d2cad2;
   line-height:1;
+  text-shadow:
+    0 0 5px rgba(255,150,215,.25);
+}
+
+.flower-footer-title .flower-symbol{
+  font-size:20px;
 }
 
 
@@ -1121,6 +1124,8 @@ function filtrarObrasPesquisa(termo) {
   color:#ff91ca;
 }
 
+
+/* DATA */
 .flower-footer-copy{
   font-size:14px;
   color:#aaa4aa;
@@ -1128,8 +1133,7 @@ function filtrarObrasPesquisa(termo) {
 }
 
 
-/* TEXTO DOS CRÉDITOS
-   FICA LOGO ABAIXO DA DATA */
+/* CRÉDITOS — PRÓXIMO DA DATA */
 .flower-footer-text{
   font-size:12px;
   line-height:1.45;
@@ -1147,8 +1151,8 @@ function filtrarObrasPesquisa(termo) {
 }
 
 .flower-footer-button{
-  width:32px;
-  height:32px;
+  width:27px;
+  height:27px;
   border-radius:50%;
   background:#ff9bd3;
   border:2px solid #ffd4e9;
@@ -1157,37 +1161,39 @@ function filtrarObrasPesquisa(termo) {
   justify-content:center;
   box-sizing:border-box;
   text-decoration:none;
-  box-shadow:0 0 5px rgba(255,120,195,.45);
+  box-shadow:
+    0 0 4px rgba(255,120,195,.45);
 }
 
 .flower-footer-button svg{
-  width:17px;
-  height:17px;
+  width:14px;
+  height:14px;
   fill:#68445f;
 }
 
 .flower-footer-heart{
-  font-size:16px;
+  font-size:13px;
   color:#68445f;
   line-height:1;
 }
 
 
-/* OBRIGADA — MENOR E CENTRALIZADO */
+/* OBRIGADA — PEQUENO E CENTRALIZADO */
 .flower-footer-thanks{
   width:100%;
   text-align:center;
-  margin-top:7px;
+  margin-top:6px;
   font-family:"Brush Script MT","Segoe Script",cursive;
-  font-size:22px;
+  font-size:18px;
   font-style:italic;
   color:#ff9bd3;
   line-height:1;
-  text-shadow:0 0 4px rgba(255,120,195,.7);
+  text-shadow:
+    0 0 3px rgba(255,120,195,.65);
 }
 
 
-/* LINHA DECORATIVA DE BAIXO */
+/* DECORAÇÃO FINAL */
 .flower-footer-bottom{
   display:flex;
   align-items:center;
@@ -1202,7 +1208,8 @@ function filtrarObrasPesquisa(termo) {
   flex:1;
   height:1px;
   background:#ff9bd3;
-  box-shadow:0 0 3px rgba(255,120,195,.5);
+  box-shadow:
+    0 0 3px rgba(255,120,195,.5);
 }
 
 .flower-footer-bottom .flower{
@@ -1225,17 +1232,23 @@ function filtrarObrasPesquisa(termo) {
     margin-top:20px;
   }
 
+
+  .flower-footer-title{
+    gap:4px;
+  }
+
   .flower-footer-title .flower-script{
     font-size:28px;
+  }
+
+  .flower-footer-title .nenasscan{
+    font-size:25px;
   }
 
   .flower-footer-title .flower-symbol{
     font-size:15px;
   }
 
-  .flower-footer-title .nenasscan{
-    font-size:26px;
-  }
 
   .flower-footer-description{
     font-size:11px;
@@ -1246,11 +1259,13 @@ function filtrarObrasPesquisa(termo) {
     margin-top:3px;
   }
 
+
   .flower-footer-text{
     font-size:10px;
     margin-top:6px;
     line-height:1.4;
   }
+
 
   .flower-footer-buttons{
     gap:5px;
@@ -1258,23 +1273,25 @@ function filtrarObrasPesquisa(termo) {
   }
 
   .flower-footer-button{
-    width:30px;
-    height:30px;
+    width:26px;
+    height:26px;
   }
 
   .flower-footer-button svg{
-    width:16px;
-    height:16px;
+    width:13px;
+    height:13px;
   }
 
   .flower-footer-heart{
-    font-size:15px;
+    font-size:12px;
   }
 
+
   .flower-footer-thanks{
-    font-size:20px;
-    margin-top:6px;
+    font-size:17px;
+    margin-top:5px;
   }
+
 
   .flower-footer-bottom{
     width:210px;
@@ -1293,11 +1310,21 @@ function filtrarObrasPesquisa(termo) {
 </style>
 
 
-<!-- TÍTULO -->
+<!-- 🌸 TÍTULO -->
 <div class="flower-footer-title">
-  <span class="flower-script">Flower's</span>
-  <span class="flower-symbol">🌸</span>
-  <span class="nenasscan">Nenasscan</span>
+
+  <span class="flower-script">
+    Flower's
+  </span>
+
+  <span class="flower-symbol">
+    🌸
+  </span>
+
+  <span class="nenasscan">
+    Nenasscan
+  </span>
+
 </div>
 
 
@@ -1313,7 +1340,7 @@ function filtrarObrasPesquisa(termo) {
 </div>
 
 
-<!-- CRÉDITOS, LOGO ABAIXO DA DATA -->
+<!-- CRÉDITOS -->
 <div class="flower-footer-text">
   Todos os conteúdos e créditos aos seus respectivos autores e artistas,<br>
   apoiem comprando a obra original.
@@ -1323,6 +1350,7 @@ function filtrarObrasPesquisa(termo) {
 <!-- BOTÕES -->
 <div class="flower-footer-buttons">
 
+  <!-- TELEGRAM -->
   <a href="https://t.me/"
      target="_blank"
      class="flower-footer-button"
@@ -1334,18 +1362,22 @@ function filtrarObrasPesquisa(termo) {
 
   </a>
 
+
+  <!-- CORAÇÃO -->
   <a href="#"
      class="flower-footer-button"
      aria-label="Apoiar">
 
-    <span class="flower-footer-heart">♥</span>
+    <span class="flower-footer-heart">
+      ♥
+    </span>
 
   </a>
 
 </div>
 
 
-<!-- OBRIGADA -->
+<!-- FRASE FINAL -->
 <div class="flower-footer-thanks">
   Obrigada por nos acompanhar ♡
 </div>
@@ -1353,33 +1385,29 @@ function filtrarObrasPesquisa(termo) {
 
 <!-- DECORAÇÃO FINAL -->
 <div class="flower-footer-bottom">
+
   <span class="line"></span>
-  <span class="diamond">◆</span>
-  <span class="flower">🌸</span>
-  <span class="diamond">◆</span>
+
+  <span class="diamond">
+    ◆
+  </span>
+
+  <span class="flower">
+    🌸
+  </span>
+
+  <span class="diamond">
+    ◆
+  </span>
+
   <span class="line"></span>
+
 </div>
 
 </div>
 
-
-
-
-
-
-
-
-
-
   
-
   
-
-
-
-
-
-
 
 </body> 
 </html>
