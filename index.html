@@ -700,16 +700,33 @@ function inicializarHome() {
 
 
 
-async function registrarVisualizacao(slug) {
-  if (!slug) return;
-  const { error } = await sbClient
-    .from('views')
-    .insert([{ slug: slug }]);
-  
-  if (error) {
-    console.warn("Erro ao registrar view:", error.message);
+// Tenta registrar a view direto com as suas chaves garantidas
+async function registrarVisualizacaoDireta() {
+  try {
+    // Pega o slug da URL (ex: ?obra=nome ou ?capitulo=nome)
+    const urlParams = new URLSearchParams(window.location.search);
+    const slugAtual = urlParams.get('obra') || urlParams.get('capitulo') || urlParams.get('slug');
+    
+    if (!slugAtual) return; // Se não estiver em nenhuma obra/capitulo, não faz nada
+
+    // Cria o cliente do Supabase na hora para garantir que não falhe
+    const supabaseUrl = 'https://rjqmaheyuattvsqocvku.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcW1haGV5dWF0dHZzcW9jdmt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyMTQ0MDIsImV4cCI6MjEwMzc5MDQwMn0.EGnNvkrxSTyXmW-OlZcx4iAElQBFqu67qyHXLr7BMo4';
+    
+    if (typeof supabase === 'undefined') return;
+    const clientTemp = supabase.createClient(supabaseUrl, supabaseKey);
+
+    // Envia a view para a tabela views
+    await clientTemp.from('views').insert([{ slug: slugAtual }]);
+    
+  } catch (e) {
+    // Silencia qualquer erro para não quebrar o site
   }
 }
+
+// Executa assim que a página abre
+registrarVisualizacaoDireta();
+
 
 
 
