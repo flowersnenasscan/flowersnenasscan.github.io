@@ -4,7 +4,7 @@
 <meta charset="UTF-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <meta name="robots" content="noindex, nofollow"> 
-<title>Flower's Nenascan</title> 
+<title>Flower's Nenasscan</title> 
 <!-- Google tag (gtag.js) --> 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HHMHEDSD0"></script> 
 <script> 
@@ -147,9 +147,7 @@ gtag('config', 'G-5HHMHEDSD0');
   .card-tag { background: transparent; border: 1px solid rgba(255, 153, 221, 0.4); color: var(--primary-pink); font-size: 0.65rem; padding: 1px 6px; border-radius: 10px; text-shadow: var(--neon-glow); } 
   .card-recent-chapter { display: flex; align-items: center; gap: 5px; font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; } 
   .card-recent-chapter svg { width: 14px; height: 14px; fill: currentColor; } 
-  .btn-continuar-lendo { display: flex; align-items: center; justify-content: center; gap: 6px; background: #15151c; border: 1px solid rgba(255, 153, 221, 0.4); color: var(--primary-pink); padding: 6px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; text-decoration: none; margin-top: 4px; transition: 0.2s; text-shadow: var(--neon-glow); } 
-  .btn-continuar-lendo svg { width: 14px; height: 14px; fill: currentColor; } 
-  .btn-continuar-lendo:hover { background: rgba(255, 153, 221, 0.15); border-color: var(--primary-pink); } 
+  .btn-continuar-lendo { display: none !important; } 
   .retangulo-capitulo { display: flex; align-items: center; justify-content: space-between; background: rgba(255, 153, 221, 0.04); border: 1px solid rgba(255, 153, 221, 0.25); padding: 4px 6px; border-radius: 6px; text-decoration: none; transition: 0.2s; } 
   .retangulo-capitulo:hover { background: rgba(255, 153, 221, 0.12); border-color: var(--primary-pink); transform: translateX(2px); } 
   .info-cap-recente { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 700; color: var(--primary-pink); text-shadow: var(--neon-glow); } 
@@ -161,8 +159,7 @@ gtag('config', 'G-5HHMHEDSD0');
   .biblioteca-header-area { margin-bottom: 16px; } 
   .biblioteca-title-row { display: flex; align-items: center; gap: 10px; font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #ffffff; text-shadow: 0 0 10px var(--primary-pink); background: linear-gradient(135deg, #ffffff 30%, var(--primary-pink) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 6px; } 
   .biblioteca-subtitle { font-size: 0.85rem; color: var(--text-muted); text-shadow: var(--neon-glow); margin-bottom: 14px; } 
-  .bib-tabs-container { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 14px; scrollbar-width: none; } 
-  .bib-tabs-container::-webkit-scrollbar { display: none; } 
+  .bib-tabs-container { display: none !important; } 
   .bib-tab { background: #0b0b0f; border: 1px solid rgba(255, 153, 221, 0.35); color: var(--primary-pink); padding: 8px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; white-space: nowrap; transition: 0.2s; text-shadow: var(--neon-glow); } 
   .bib-tab svg { width: 14px; height: 14px; fill: currentColor; } 
   .bib-tab:hover { background: rgba(255, 153, 221, 0.15); border-color: var(--primary-pink); } 
@@ -171,7 +168,7 @@ gtag('config', 'G-5HHMHEDSD0');
   .bib-tab.active span { color: #2b061d !important; text-shadow: none !important; font-weight: 700; } 
   .bib-tab-badge { background: rgba(255, 153, 221, 0.25); padding: 1px 6px; border-radius: 10px; font-size: 0.7rem; font-weight: 700; color: var(--primary-pink); } 
   .bib-tab.active .bib-tab-badge { background: rgba(43, 6, 29, 0.25); color: #2b061d !important; } 
-  .bib-filter-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; font-size: 0.85rem; color: var(--text-muted); } 
+  .bib-filter-row { display: flex; align-items: center; justify-content: flex-start; gap: 12px; margin-bottom: 20px; font-size: 0.85rem; color: var(--text-muted); } 
   .bib-filter-left { display: flex; align-items: center; gap: 12px; } 
   .bib-filter-btn { background: #0b0b0f; border: 1px solid rgba(255, 153, 221, 0.35); color: var(--primary-pink); padding: 6px 12px; border-radius: 16px; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; gap: 6px; text-shadow: var(--neon-glow); transition: 0.2s; } 
   .bib-filter-btn svg { width: 14px; height: 14px; fill: currentColor; } 
@@ -355,28 +352,9 @@ gtag('config', 'G-5HHMHEDSD0');
           <svg viewBox="0 0 24 24" style="width:24px; height:24px; fill:currentColor;"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg> MINHA BIBLIOTECA 
         </div> 
         <div class="biblioteca-subtitle">Aqui estão suas obras favoritas. Continue lendo quando quiser! ♡</div> 
-        <div class="bib-tabs-container"> 
-          <button class="bib-tab" onclick="filtrarBibTab('todos', this)"> 
-            <svg viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg> 
-            <span>Favoritos</span> 
-            <div class="bib-tab-badge" id="count-todos">0</div> 
-          </button> 
-          <button class="bib-tab" onclick="filtrarBibTab('andamento', this)"> 
-            <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0-2-.9-2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg> 
-            <span>Em andamento</span> 
-          </button> 
-          <button class="bib-tab" onclick="filtrarBibTab('concluidas', this)"> 
-            <svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg> 
-            <span>Concluídas</span> 
-          </button> 
-          <button class="bib-tab" onclick="filtrarBibTab('hiatus', this)"> 
-            <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg> 
-            <span>Hiatus</span> 
-          </button> 
-        </div> 
+        
         <div class="bib-filter-row"> 
           <div class="bib-filter-left"> 
-            <span>Ordenar por:</span> 
             <button class="bib-filter-btn" onclick="mudarAbaVisual('generos'); history.pushState({}, '', './?aba=generos'); renderizarPaginaGeneros();"> 
               <svg viewBox="0 0 24 24"><path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v5z"/></svg> Gêneros 
             </button> 
@@ -476,7 +454,7 @@ gtag('config', 'G-5HHMHEDSD0');
             Para manter o projeto ativo e com a qualidade atual, disponibilizamos uma aba de suporte financeiro voluntário.
           </p>
           <p class="comunicado-texto" style="margin-bottom: 10px; background: rgba(212, 131, 180, 0.05); padding: 8px 10px; border-left: 2px solid #d483b4; border-radius: 4px;">
-            🌸 Esta contribuição <strong>não é obrigatória</strong>. Você poderá continuar acompanhando as atualizações normalmente. O envio serve apenas para incentivar e demonstrar carinho pelo empenho da nossa equipe. Qualquer valor nos auxilia imensamente na manutenção da estrutura do scan.
+            🌸 Esta contribuição <strong>não é obrigatória</strong>. Você poderá continuar acompanhando das atualizações normalmente. O envio serve apenas para incentivar e demonstrar carinho pelo empenho da nossa equipe. Qualquer valor nos auxilia imensamente na manutenção da estrutura do scan.
           </p>
           <p class="comunicado-texto">
             ✨ Ao apoiar, você pode sugerir obras que gostaria de ver por aqui. Todos os pedidos passam por uma avaliação cuidadosa da gerência (considerando tempo, hábil e disponibilidade).
@@ -997,7 +975,7 @@ function renderizarBiblioteca() {
     } 
     let slugCap = String(ultimoCapNum).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-'); 
     let linkLeitor = `ler.html?obra=${slugObra}&cap=${slugCap}`; 
-    container.innerHTML += ` <div class="manga-card" onclick="window.location.href='obra.html?nome=${slugObra}'" style="cursor: pointer;"> <div class="manga-capa-box"><img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa"></div> <div class="manga-info"> <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a> <div class="card-recent-chapter"><span>Capítulo mais recente: ${ultimoCapNum}</span></div> <a href="${linkLeitor}" class="btn-continuar-lendo" onclick="event.stopPropagation()">Continuar lendo</a> </div> </div> `; 
+    container.innerHTML += ` <div class="manga-card" onclick="window.location.href='obra.html?nome=${slugObra}'" style="cursor: pointer;"> <div class="manga-capa-box"><img src="${obra.capa}" alt="${obra.titulo}" class="manga-capa"></div> <div class="manga-info"> <a href="obra.html?nome=${slugObra}" class="manga-titulo" title="${obra.titulo}">${obra.titulo}</a> </div> </div> `; 
   }); 
 } 
 
