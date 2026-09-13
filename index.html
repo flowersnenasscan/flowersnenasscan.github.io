@@ -1133,47 +1133,58 @@ function filtrarObrasPesquisa(termo) {
 </script> 
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const SUPABASE_URL = 'https://rjqmaheyuattvsqocvku.supabase.co';
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcW1haGV5dWF0dHZzcW9jdmt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyMTQ0MDIsImV4cCI6MjEwMzc5MDQwMn0.EGnNvkrxSTyXmW-OlZcx4iAElQBFqu67qyHXLr7BMo4';
-  
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  async function testarContadorPuro() {
+    const supabaseUrl = 'https://rjqmaheyuattvsqocvku.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcW1haGV5dWF0dHZzcW9jdmt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyMTQ0MDIsImV4cCI6MjEwMzc5MDQwMn0.EGnNvkrxSTyXmW-OlZcx4iAElQBFqu67qyHXLr7BMo4';
+    const identificador = window.location.pathname;
 
-  async function testarContador() {
-    const paginaAtual = window.location.pathname;
-    
-    // Tenta atualizar direto somando 1 ou criando se não existir
-    const { data, error } = await supabase.rpc('incrementar_contador', { path_input: paginaAtual });
-    
-    if (error) {
-      // Se der erro na função RPC, tenta o método normal de upsert
-      console.log("Tentando método alternativo...");
-      
-      const { data: selectData } = await supabase
-        .from('contador_geral_obras')
-        .select('total')
-        .eq('identificador', paginaAtual)
-        .maybeSingle();
+    try {
+      // 1. Tenta buscar o valor atual
+      let resposta = await fetch(`${supabaseUrl}/rest/v1/contador_geral_obras?identificador=eq.${encodeURIComponent(identificador)}`, {
+        method: 'GET',
+        headers: {
+          'apikey': supabaseKey,
+          'Authorization': `Bearer ${supabaseKey}`
+        }
+      });
 
-      const novoTotal = selectData ? selectData.total + 1 : 1;
+      let dados = await resposta.json();
+      let novoTotal = 1;
 
-      const { error: upsertError } = await supabase
-        .from('contador_geral_obras')
-        $.upsert([{ identificador: paginaAtual, total: novoTotal }], { onConflict: 'identificador' });
-
-      if (upsertError) {
-        alert("Erro fatal ao salvar: " + JSON.stringify(upsertError));
-      } else {
-        alert("AGORA FOI! Deu certo!");
+      if (dados && dados.length > 0) {
+        novoTotal = dados[0].total + 1;
       }
-    } else {
-      alert("Funcionou pelo RPC!");
+
+      // 2. Salva o novo valor (Upsert)
+      let respostaUpsert = await fetch(`${supabaseUrl}/rest/v1/contador_geral_obras`, {
+        method: 'POST',
+        headers: {
+          'apikey': supabaseKey,
+          'Authorization': `Bearer ${supabaseKey}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'resolution=merge-duplicates'
+        },
+        body: JSON.stringify({
+          identificador: identificador,
+          total: novoTotal
+        })
+      });
+
+      if (respostaUpsert.ok) {
+        alert("CONTOU COM SUCESSO! URL: " + identificador);
+      } else {
+        let erroTexto = await respostaUpsert.text();
+        alert("Erro da API: " + erroTexto);
+      }
+    } catch (e) {
+      alert("Erro de conexão: " + e.message);
     }
   }
 
-  testarContador();
+  testarContadorPuro();
 </script>
+
 
 
 
