@@ -1145,13 +1145,12 @@ function filtrarObrasPesquisa(termo) {
     
     let identificadorFinal = 'inicio';
 
-    // Identifica exatamente qual página é com base nas suas URLs
     if (path.includes('obra.html') && urlParams.has('nome')) {
-      identificadorFinal = 'obra: ' + urlParams.get('nome'); // Exemplo: obra: meu-vizinho
+      identificadorFinal = 'obra: ' + urlParams.get('nome');
     } else if (path.includes('ler.html') && urlParams.has('obra') && urlParams.has('cap')) {
-      identificadorFinal = `${urlParams.get('obra')} - cap ${urlParams.get('cap')}`; // Exemplo: meu-vizinho - cap 03
+      identificadorFinal = `${urlParams.get('obra')} - cap ${urlParams.get('cap')}`;
     } else if (urlParams.has('aba')) {
-      identificadorFinal = 'aba: ' + urlParams.get('aba'); // Exemplo: aba: obras, aba: favoritos, etc.
+      identificadorFinal = 'aba: ' + urlParams.get('aba');
     } else if (path === '/' || path.endsWith('index.html')) {
       identificadorFinal = 'pagina-inicial';
     } else {
@@ -1159,39 +1158,18 @@ function filtrarObrasPesquisa(termo) {
     }
 
     try {
-      // 1. Busca o total atual dessa obra/página específica
-      let resposta = await fetch(`${supabaseUrl}/rest/v1/contador_geral_obras?identificador=eq.${encodeURIComponent(identificadorFinal)}`, {
-        method: 'GET',
-        headers: {
-          'apikey': supabaseKey,
-          'Authorization': `Bearer ${supabaseKey}`
-        }
-      });
-
-      let dados = await resposta.json();
-      let novoTotal = 1;
-
-      if (dados && dados.length > 0) {
-        novoTotal = Number(dados[0].total) + 1;
-      }
-
-      // 2. Salva ou atualiza no Supabase de forma limpa
-      let respostaUpsert = await fetch(`${supabaseUrl}/rest/v1/contador_geral_obras`, {
+      let resposta = await fetch(`${supabaseUrl}/rest/v1/rpc/incrementar_visualizacao`, {
         method: 'POST',
         headers: {
           'apikey': supabaseKey,
           'Authorization': `Bearer ${supabaseKey}`,
-          'Content-Type': 'application/json',
-          'Prefer': 'resolution=merge-duplicates,return=minimal'
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          identificador: identificadorFinal,
-          total: novoTotal
-        })
+        body: JSON.stringify({ p_identificador: identificadorFinal })
       });
 
-      if (!respostaUpsert.ok) {
-        console.error("Erro ao salvar:", await respostaUpsert.text());
+      if (!resposta.ok) {
+        console.error("Erro ao incrementar:", await resposta.text());
       }
     } catch (e) {
       console.error("Erro de conexão:", e.message);
@@ -1200,6 +1178,7 @@ function filtrarObrasPesquisa(termo) {
 
   registrarVisualizacao();
 </script>
+
 
 
 
