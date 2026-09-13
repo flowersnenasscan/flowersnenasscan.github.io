@@ -972,7 +972,50 @@
         });
     </script>
 
-        
+    <script>
+  async function registrarVisualizacao() {
+    const supabaseUrl = 'https://rjqmaheyuattvsqocvku.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcW1haGV5dWF0dHZzcW9jdmt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyMTQ0MDIsImV4cCI6MjEwMzc5MDQwMn0.EGnNvkrxSTyXmW-OlZcx4iAElQBFqu67qyHXLr7BMo4';
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const path = window.location.pathname;
+    
+    let identificadorFinal = 'inicio';
+
+    if (path.includes('obra.html') && urlParams.has('nome')) {
+      identificadorFinal = 'obra: ' + urlParams.get('nome');
+    } else if (path.includes('ler.html') && urlParams.has('obra') && urlParams.has('cap')) {
+      identificadorFinal = `${urlParams.get('obra')} - cap ${urlParams.get('cap')}`;
+    } else if (urlParams.has('aba')) {
+      identificadorFinal = 'aba: ' + urlParams.get('aba');
+    } else if (path === '/' || path.endsWith('index.html')) {
+      identificadorFinal = 'pagina-inicial';
+    } else {
+      identificadorFinal = path.replace('/', '');
+    }
+
+    try {
+      let resposta = await fetch(`${supabaseUrl}/rest/v1/rpc/incrementar_visualizacao`, {
+        method: 'POST',
+        headers: {
+          'apikey': supabaseKey,
+          'Authorization': `Bearer ${supabaseKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ p_identificador: identificadorFinal })
+      });
+
+      if (!resposta.ok) {
+        console.error("Erro ao incrementar:", await resposta.text());
+      }
+    } catch (e) {
+      console.error("Erro de conexão:", e.message);
+    }
+  }
+
+  registrarVisualizacao();
+</script>
+    
         
   
 
