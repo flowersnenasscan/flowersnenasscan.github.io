@@ -1131,7 +1131,11 @@ function filtrarObrasPesquisa(termo) {
   }); 
 } 
 </script> 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+
+
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const SUPABASE_URL = 'https://rjqmaheyuattvsqocvku.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcW1haGV5dWF0dHZzcW9jdmt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyMTQ0MDIsImV4cCI6MjEwMzc5MDQwMn0.EGnNvkrxSTyXmW-OlZcx4iAElQBFqu67qyHXLr7BMo4';
@@ -1140,6 +1144,7 @@ function filtrarObrasPesquisa(termo) {
 
   async function incrementarVisualizacao(idUnico) {
     try {
+      // 1. Busca o total atual da obra/capítulo
       const { data: atual, error: erroSelect } = await supabase
         .from('contador_geral_obras')
         .select('total')
@@ -1148,12 +1153,12 @@ function filtrarObrasPesquisa(termo) {
 
       if (erroSelect) {
         console.error("Erro no Select:", erroSelect);
-        alert("Erro no Select: " + erroSelect.message);
         return;
       }
 
       const novoTotal = atual ? atual.total + 1 : 1;
 
+      // 2. Salva o novo valor incrementado
       const { error: erroUpsert } = await supabase
         .from('contador_geral_obras')
         .upsert([
@@ -1162,20 +1167,18 @@ function filtrarObrasPesquisa(termo) {
 
       if (erroUpsert) {
         console.error("Erro no Upsert:", erroUpsert);
-        alert("Erro no Supabase: " + erroUpsert.message);
       } else {
         console.log("Contado com sucesso!");
       }
     } catch (err) {
       console.error("Erro geral:", err);
-      alert("Erro geral no script: " + err.message);
     }
   }
 
+  // Executa o incremento para esta página
   incrementarVisualizacao('teste-obra-capitulo-1');
 </script>
-
-
+ 
 
 
   
