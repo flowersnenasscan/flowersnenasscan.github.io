@@ -1136,14 +1136,31 @@ function filtrarObrasPesquisa(termo) {
 
 
 <script>
-  async function testarContadorPuro() {
+  async function registrarVisualizacao() {
     const supabaseUrl = 'https://rjqmaheyuattvsqocvku.supabase.co';
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcW1haGV5dWF0dHZzcW9jdmt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyMTQ0MDIsImV4cCI6MjEwMzc5MDQwMn0.EGnNvkrxSTyXmW-OlZcx4iAElQBFqu67qyHXLr7BMo4';
-    const identificador = window.location.pathname;
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const path = window.location.pathname;
+    
+    let identificadorFinal = 'inicio';
+
+    // Identifica exatamente qual página é com base nas suas URLs
+    if (path.includes('obra.html') && urlParams.has('nome')) {
+      identificadorFinal = 'obra: ' + urlParams.get('nome'); // Exemplo: obra: meu-vizinho
+    } else if (path.includes('ler.html') && urlParams.has('obra') && urlParams.has('cap')) {
+      identificadorFinal = `${urlParams.get('obra')} - cap ${urlParams.get('cap')}`; // Exemplo: meu-vizinho - cap 03
+    } else if (urlParams.has('aba')) {
+      identificadorFinal = 'aba: ' + urlParams.get('aba'); // Exemplo: aba: obras, aba: favoritos, etc.
+    } else if (path === '/' || path.endsWith('index.html')) {
+      identificadorFinal = 'pagina-inicial';
+    } else {
+      identificadorFinal = path.replace('/', '');
+    }
 
     try {
-      // 1. Pega o valor atual do banco
-      let resposta = await fetch(`${supabaseUrl}/rest/v1/contador_geral_obras?identificador=eq.${encodeURIComponent(identificador)}`, {
+      // 1. Busca o total atual dessa obra/página específica
+      let resposta = await fetch(`${supabaseUrl}/rest/v1/contador_geral_obras?identificador=eq.${encodeURIComponent(identificadorFinal)}`, {
         method: 'GET',
         headers: {
           'apikey': supabaseKey,
@@ -1158,7 +1175,7 @@ function filtrarObrasPesquisa(termo) {
         novoTotal = Number(dados[0].total) + 1;
       }
 
-      // 2. Envia usando o Upsert correto do PostgREST com identificação de conflito
+      // 2. Salva ou atualiza no Supabase de forma limpa
       let respostaUpsert = await fetch(`${supabaseUrl}/rest/v1/contador_geral_obras`, {
         method: 'POST',
         headers: {
@@ -1168,24 +1185,22 @@ function filtrarObrasPesquisa(termo) {
           'Prefer': 'resolution=merge-duplicates,return=minimal'
         },
         body: JSON.stringify({
-          identificador: identificador,
+          identificador: identificadorFinal,
           total: novoTotal
         })
       });
 
-      if (respostaUpsert.ok) {
-        console.log("Contado com sucesso!");
-      } else {
-        let erroTexto = await respostaUpsert.text();
-        console.error("Erro:", erroTexto);
+      if (!respostaUpsert.ok) {
+        console.error("Erro ao salvar:", await respostaUpsert.text());
       }
     } catch (e) {
       console.error("Erro de conexão:", e.message);
     }
   }
 
-  testarContadorPuro();
+  registrarVisualizacao();
 </script>
+
 
 
 
