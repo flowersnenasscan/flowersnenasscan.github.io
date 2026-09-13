@@ -430,7 +430,7 @@ gtag('config', 'G-5HHMHEDSD0');
             <a href="#" class="btn-acao-custom">Leia mais &rarr;</a>
           </div>
           <p class="comunicado-texto">
-            Somos uma scan privada — nosso objetivo é continuar assim, trazendo conteúdos exclusivos e de qualidade para quem realmente acompanha e valoriza nosso trabalho.
+            Somos uma scan privada — nosso objetivo é continuar assim, trazendo conteúdos exclusivos e de qualidade para quem really acompanha e valoriza nosso trabalho.
           </p>
         </div>
 
@@ -476,7 +476,7 @@ gtag('config', 'G-5HHMHEDSD0');
             Para manter o projeto ativo e com a qualidade atual, disponibilizamos uma aba de suporte financeiro voluntário.
           </p>
           <p class="comunicado-texto" style="margin-bottom: 10px; background: rgba(212, 131, 180, 0.05); padding: 8px 10px; border-left: 2px solid #d483b4; border-radius: 4px;">
-            🌸 Esta contribuição <strong>não é obrigatória</strong>. Você poderá continuar acompanhando the atualizações normalmente. O envio serve apenas para incentivar e demonstrar carinho pelo empenho da nossa equipe. Qualquer valor nos auxilia imensamente na manutenção da estrutura do scan.
+            🌸 Esta contribuição <strong>não é obrigatória</strong>. Você poderá continuar acompanhando as atualizações normalmente. O envio serve apenas para incentivar e demonstrar carinho pelo empenho da nossa equipe. Qualquer valor nos auxilia imensamente na manutenção da estrutura do scan.
           </p>
           <p class="comunicado-texto">
             ✨ Ao apoiar, você pode sugerir obras que gostaria de ver por aqui. Todos os pedidos passam por uma avaliação cuidadosa da gerência (considerando tempo, hábil e disponibilidade).
@@ -573,6 +573,11 @@ let filtroBibAtual = 'todos';
 let generosExpandidos = false; 
 let filtroObrasStatusAtual = null; 
 let filtrosAtivos = { genero: null, status: null, tipo: null, classificacao: null }; 
+
+// Variáveis de controle para o carrosel automático e aleatório
+let carrosselSlides = [];
+let indiceSlideAtual = 0;
+let intervaloCarrossel = null;
 
 function criarSlug(texto) { 
   return String(texto || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-').replace(/[^\w-]/g, ''); 
@@ -698,14 +703,12 @@ function inicializarHome() {
 } 
 
 // CORREÇÃO DA CONTAGEM DE VISUALIZAÇÕES NO SUPABASE
-// Função robusta que incrementa o contador real na tabela ou insere um novo registro caso não exista.
 async function registrarVisualizacaoDireta() {
   try {
     const urlParams = new URLSearchParams(window.location.search);
     const slugObra = urlParams.get('obra') || urlParams.get('nome') || urlParams.get('slug');
     const slugCapitulo = urlParams.get('cap') || urlParams.get('capitulo');
     
-    // Identificador alvo para contagem (se tiver capítulo, conta o capítulo; senão, conta a obra)
     const alvoSlug = slugCapitulo ? `${slugObra}-${slugCapitulo}` : slugObra;
     if (!alvoSlug) return;
 
@@ -715,7 +718,6 @@ async function registrarVisualizacaoDireta() {
     if (typeof supabase === 'undefined') return;
     const clientTemp = supabase.createClient(supabaseUrl, supabaseKey);
 
-    // Verifica se já existe uma linha para esta obra/capítulo na tabela 'views' (assumindo colunas 'slug' e 'contador')
     let { data: existingData, error: fetchError } = await clientTemp
       .from('views')
       .select('*')
@@ -723,13 +725,11 @@ async function registrarVisualizacaoDireta() {
       .maybeSingle();
 
     if (existingData) {
-      // Se já existe, atualiza incrementando +1 no contador
       await clientTemp
         .from('views')
         .update({ contador: (existingData.contador || 0) + 1 })
         .eq('slug', alvoSlug);
     } else {
-      // Se não existe, cria a linha com contador inicial igual a 1
       await clientTemp
         .from('views')
         .insert([{ slug: alvoSlug, contador: 1 }]);
@@ -739,9 +739,7 @@ async function registrarVisualizacaoDireta() {
   }
 }
 
-
 async function incrementarVisualizacao(idUnico) {
-  // 1. Pega o valor atual do contador para esse identificador
   const { data } = await supabase
     .from('contador_geral_obras')
     .select('total')
@@ -750,7 +748,6 @@ async function incrementarVisualizacao(idUnico) {
 
   const novoTotal = data ? data.total + 1 : 1;
 
-  // 2. Salva o novo valor atualizado na tabela
   await supabase
     .from('contador_geral_obras')
     .upsert([
@@ -758,18 +755,6 @@ async function incrementarVisualizacao(idUnico) {
     ], { onConflict: 'identificador' });
 }
 
-
-
-
-
-
-
-
-
-
-
-  
-// Executa assim que a página carrega
 registrarVisualizacaoDireta();
 
 function verificarParametroUrl() { 
@@ -794,60 +779,58 @@ function mudarAbaVisual(idAba) {
   window.scrollTo({ top: 0, behavior: 'smooth' }); 
 } 
 
- let intervaloCarrossel = null;
-
+// CARROSSEL CORRIGIDO PARA ALEATÓRIO (MOSTRANDO VÁRIAS OBRAS EM LOOP)
 function renderizarCarrosselAleatorio() { 
   const carousel = document.getElementById('hero-carousel'); 
   if (!listaObras || listaObras.length === 0) return; 
   
-  // Sorteia as obras aleatoriamente
+  // Embaralha todas as obras de forma aleatória a cada atualização/recarregamento da página
   const copia = [...listaObras].sort(() => 0.5 - Math.random()); 
-  const destaques = copia.slice(0, 5); 
+  carrosselSlides = copia.slice(0, 5); // Pega até 5 obras aleatórias
   
   carousel.innerHTML = ''; 
-  destaques.forEach((obra, index) => { 
+  carrosselSlides.forEach((obra, index) => { 
     const ativa = index === 0 ? 'active' : ''; 
     const slugObra = obra.id || criarSlug(obra.titulo); 
-    
-    carousel.innerHTML += `
-      <div class="hero-slide ${ativa}" style="background-image: url('${obra.capa}');" data-slug="${slugObra}"> 
-        <div class="hero-content"> 
-          <div class="hero-title">${obra.titulo}</div> 
-          <div class="hero-synopsis">${obra.sinopse || 'Sem sinopse informada.'}</div> 
-        </div> 
-      </div>`; 
+    carousel.innerHTML += ` <div class="hero-slide ${ativa}" style="background-image: url('${obra.capa}');" data-slug="${slugObra}"> <div class="hero-content"> <div class="hero-title">${obra.titulo}</div> <div class="hero-synopsis">${obra.sinopse || 'Sem sinopse informada.'}</div> </div> </div> `; 
   }); 
 
-  // Inicia a troca automática de slides a cada 4 segundos
-  iniciarRotacaoCarrossel();
-}
+  indiceSlideAtual = 0;
+  if (carrosselSlides.length > 0) {
+    obraCarrosselAtualSlug = carrosselSlides[0].id || criarSlug(carrosselSlides[0].titulo);
+  }
 
-function iniciarRotacaoCarrossel() {
-  if (intervaloCarrossel) clearInterval(intervaloCarrossel);
+  // Limpa intervalo anterior se existir para evitar duplicações
+  if (intervaloCarrossel) {
+    clearInterval(intervaloCarrossel);
+  }
 
-  intervaloCarrossel = setInterval(() => {
-    const slides = document.querySelectorAll('.hero-slide');
-    if.slides.length <= 1 return;
+  // Passa para o próximo slide aleatório a cada 4 segundos
+  if (carrosselSlides.length > 1) {
+    intervaloCarrossel = setInterval(() => {
+      proximoSlideCarrossel();
+    }, 4000);
+  }
+} 
 
-    let indexAtual = Array.from(slides).findIndex(s => s.classList.contains('active'));
-    slides[indexAtual].classList.remove('active');
+function proximoSlideCarrossel() {
+  const slidesDOM = document.querySelectorAll('.hero-carousel .hero-slide');
+  if (slidesDOM.length === 0) return;
 
-    let proximoIndex = (indexAtual + 1) % slides.length;
-    slides[proximoIndex].classList.add('active');
-  }, 4000); // Muda a cada 4 segundos (você pode ajustar este valor se preferir)
-}
+  slidesDOM[indiceSlideAtual].classList.remove('active');
+  indiceSlideAtual = (indiceSlideAtual + 1) % slidesDOM.length;
+  slidesDOM[indiceSlideAtual].classList.add('active');
 
-function abrirObraDoCarrossel() { 
-  // Pega o slug da obra que está ativa no momento do clique
-  const slideAtivo = document.querySelector('.hero-slide.active');
-  if (slideAtivo) {
-    const slugObra = slideAtivo.getAttribute('data-slug');
-    if (slugObra) {
-      window.location.href = `obra.html?nome=${slugObra}`; 
-    }
+  if (carrosselSlides[indiceSlideAtual]) {
+    obraCarrosselAtualSlug = carrosselSlides[indiceSlideAtual].id || criarSlug(carrosselSlides[indiceSlideAtual].titulo);
   }
 }
 
+function abrirObraDoCarrossel() { 
+  if (obraCarrosselAtualSlug) { 
+    window.location.href = `obra.html?nome=${obraCarrosselAtualSlug}`; 
+  } 
+} 
 
 function renderizarAtualizacoes() { 
   const grid = document.getElementById('grid-atualizacoes'); 
@@ -1167,9 +1150,6 @@ function filtrarObrasPesquisa(termo) {
 } 
 </script> 
 
-
-
-
 <script>
   async function registrarVisualizacao() {
     const supabaseUrl = 'https://rjqmaheyuattvsqocvku.supabase.co';
@@ -1214,10 +1194,5 @@ function filtrarObrasPesquisa(termo) {
   registrarVisualizacao();
 </script>
 
-
-
-
-
-  
 </body> 
 </html>
