@@ -1133,6 +1133,8 @@ function filtrarObrasPesquisa(termo) {
 </script> 
 
 
+
+
 <script>
   async function testarContadorPuro() {
     const supabaseUrl = 'https://rjqmaheyuattvsqocvku.supabase.co';
@@ -1140,7 +1142,7 @@ function filtrarObrasPesquisa(termo) {
     const identificador = window.location.pathname;
 
     try {
-      // 1. Tenta buscar o valor atual
+      // 1. Pega o valor atual do banco
       let resposta = await fetch(`${supabaseUrl}/rest/v1/contador_geral_obras?identificador=eq.${encodeURIComponent(identificador)}`, {
         method: 'GET',
         headers: {
@@ -1153,17 +1155,17 @@ function filtrarObrasPesquisa(termo) {
       let novoTotal = 1;
 
       if (dados && dados.length > 0) {
-        novoTotal = dados[0].total + 1;
+        novoTotal = Number(dados[0].total) + 1;
       }
 
-      // 2. Salva o novo valor (Upsert)
+      // 2. Envia usando o Upsert correto do PostgREST com identificação de conflito
       let respostaUpsert = await fetch(`${supabaseUrl}/rest/v1/contador_geral_obras`, {
         method: 'POST',
         headers: {
           'apikey': supabaseKey,
           'Authorization': `Bearer ${supabaseKey}`,
           'Content-Type': 'application/json',
-          'Prefer': 'resolution=merge-duplicates'
+          'Prefer': 'resolution=merge-duplicates,return=minimal'
         },
         body: JSON.stringify({
           identificador: identificador,
@@ -1172,20 +1174,18 @@ function filtrarObrasPesquisa(termo) {
       });
 
       if (respostaUpsert.ok) {
-        alert("CONTOU COM SUCESSO! URL: " + identificador);
+        console.log("Contado com sucesso!");
       } else {
         let erroTexto = await respostaUpsert.text();
-        alert("Erro da API: " + erroTexto);
+        console.error("Erro:", erroTexto);
       }
     } catch (e) {
-      alert("Erro de conexão: " + e.message);
+      console.error("Erro de conexão:", e.message);
     }
   }
 
   testarContadorPuro();
 </script>
-
-
 
 
 
