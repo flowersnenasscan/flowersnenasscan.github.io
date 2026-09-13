@@ -739,6 +739,27 @@ async function registrarVisualizacaoDireta() {
   }
 }
 
+
+async function incrementarVisualizacao(idUnico) {
+  // 1. Pega o valor atual do contador para esse identificador
+  const { data } = await supabase
+    .from('contador_geral_obras')
+    .select('total')
+    .eq('identificador', idUnico)
+    .single();
+
+  const novoTotal = data ? data.total + 1 : 1;
+
+  // 2. Salva o novo valor atualizado na tabela
+  await supabase
+    .from('contador_geral_obras')
+    .upsert([
+      { identificador: idUnico, total: novoTotal }
+    ], { onConflict: 'identificador' });
+}
+
+
+  
 // Executa assim que a página carrega
 registrarVisualizacaoDireta();
 
