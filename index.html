@@ -1177,6 +1177,13 @@ function filtrarObrasPesquisa(termo) {
 
   // Executa o incremento para esta página
   incrementarVisualizacao('teste-obra-capitulo-1');
+        if (erroUpsert) {
+        console.error("Erro no Upsert:", erroUpsert);
+        alert("Erro Supabase: " + JSON.stringify(erroUpsert));
+      } else {
+        alert("Deu certo! Contado com sucesso!");
+      }
+
 </script>
  
 
