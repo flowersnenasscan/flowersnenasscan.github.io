@@ -1133,10 +1133,6 @@ function filtrarObrasPesquisa(termo) {
 </script> 
 
 
-
-
-
- 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const SUPABASE_URL = 'https://rjqmaheyuattvsqocvku.supabase.co';
@@ -1144,34 +1140,42 @@ function filtrarObrasPesquisa(termo) {
   
   const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  async function incrementarVisualizacao() {
-    try {
-      // Pega o endereço exato da página atual do navegador automaticamente
-      const idUnico = window.location.pathname;
-
-      const { data: atual, error: erroSelect } = await supabase
+  async function testarContador() {
+    const paginaAtual = window.location.pathname;
+    
+    // Tenta atualizar direto somando 1 ou criando se não existir
+    const { data, error } = await supabase.rpc('incrementar_contador', { path_input: paginaAtual });
+    
+    if (error) {
+      // Se der erro na função RPC, tenta o método normal de upsert
+      console.log("Tentando método alternativo...");
+      
+      const { data: selectData } = await supabase
         .from('contador_geral_obras')
         .select('total')
-        .eq('identificador', idUnico)
+        .eq('identificador', paginaAtual)
         .maybeSingle();
 
-      if (erroSelect) return;
+      const novoTotal = selectData ? selectData.total + 1 : 1;
 
-      const novoTotal = atual ? atual.total + 1 : 1;
-
-      await supabase
+      const { error: upsertError } = await supabase
         .from('contador_geral_obras')
-        .upsert([
-          { identificador: idUnico, total: novoTotal }
-        ], { onConflict: 'identificador' });
-        
-    } catch (err) {
-      // Erros silenciosos para não atrapalhar o leitor
+        $.upsert([{ identificador: paginaAtual, total: novoTotal }], { onConflict: 'identificador' });
+
+      if (upsertError) {
+        alert("Erro fatal ao salvar: " + JSON.stringify(upsertError));
+      } else {
+        alert("AGORA FOI! Deu certo!");
+      }
+    } else {
+      alert("Funcionou pelo RPC!");
     }
   }
 
-  incrementarVisualizacao();
+  testarContador();
 </script>
+
+
 
 
   
