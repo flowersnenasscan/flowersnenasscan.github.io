@@ -794,25 +794,60 @@ function mudarAbaVisual(idAba) {
   window.scrollTo({ top: 0, behavior: 'smooth' }); 
 } 
 
+ let intervaloCarrossel = null;
+
 function renderizarCarrosselAleatorio() { 
   const carousel = document.getElementById('hero-carousel'); 
   if (!listaObras || listaObras.length === 0) return; 
+  
+  // Sorteia as obras aleatoriamente
   const copia = [...listaObras].sort(() => 0.5 - Math.random()); 
   const destaques = copia.slice(0, 5); 
+  
   carousel.innerHTML = ''; 
   destaques.forEach((obra, index) => { 
     const ativa = index === 0 ? 'active' : ''; 
     const slugObra = obra.id || criarSlug(obra.titulo); 
-    if (index === 0) obraCarrosselAtualSlug = slugObra; 
-    carousel.innerHTML += ` <div class="hero-slide ${ativa}" style="background-image: url('${obra.capa}');" data-slug="${slugObra}"> <div class="hero-content"> <div class="hero-title">${obra.titulo}</div> <div class="hero-synopsis">${obra.sinopse || 'Sem sinopse informada.'}</div> </div> </div> `; 
+    
+    carousel.innerHTML += `
+      <div class="hero-slide ${ativa}" style="background-image: url('${obra.capa}');" data-slug="${slugObra}"> 
+        <div class="hero-content"> 
+          <div class="hero-title">${obra.titulo}</div> 
+          <div class="hero-synopsis">${obra.sinopse || 'Sem sinopse informada.'}</div> 
+        </div> 
+      </div>`; 
   }); 
-} 
+
+  // Inicia a troca automática de slides a cada 4 segundos
+  iniciarRotacaoCarrossel();
+}
+
+function iniciarRotacaoCarrossel() {
+  if (intervaloCarrossel) clearInterval(intervaloCarrossel);
+
+  intervaloCarrossel = setInterval(() => {
+    const slides = document.querySelectorAll('.hero-slide');
+    if.slides.length <= 1 return;
+
+    let indexAtual = Array.from(slides).findIndex(s => s.classList.contains('active'));
+    slides[indexAtual].classList.remove('active');
+
+    let proximoIndex = (indexAtual + 1) % slides.length;
+    slides[proximoIndex].classList.add('active');
+  }, 4000); // Muda a cada 4 segundos (você pode ajustar este valor se preferir)
+}
 
 function abrirObraDoCarrossel() { 
-  if (obraCarrosselAtualSlug) { 
-    window.location.href = `obra.html?nome=${obraCarrosselAtualSlug}`; 
-  } 
-} 
+  // Pega o slug da obra que está ativa no momento do clique
+  const slideAtivo = document.querySelector('.hero-slide.active');
+  if (slideAtivo) {
+    const slugObra = slideAtivo.getAttribute('data-slug');
+    if (slugObra) {
+      window.location.href = `obra.html?nome=${slugObra}`; 
+    }
+  }
+}
+
 
 function renderizarAtualizacoes() { 
   const grid = document.getElementById('grid-atualizacoes'); 
