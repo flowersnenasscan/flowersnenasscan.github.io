@@ -1131,36 +1131,52 @@ function filtrarObrasPesquisa(termo) {
   }); 
 } 
 </script> 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://rjqmaheyuattvsqocvku.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcW1haGV5dWF0dHZzcW9jdmt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyMTQ0MDIsImV4cCI6MjEwMzc5MDQwMn0.EGnNvkrxSTyXmW-OlZcx4iAElQBFqu67qyHXLr7BMo4';
+  
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  <!-- o resto do seu site aqui -->
-
-  <!-- COLE AQUI EMBAIXO, ANTES DE FECHAR O BODY -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
-    const SUPABASE_URL = 'https://rjqmaheyuattvsqocvku.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcW1haGV5dWF0dHZzcW9jdmt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyMTQ0MDIsImV4cCI6MjEwMzc5MDQwMn0.EGnNvkrxSTyXmW-OlZcx4iAElQBFqu67qyHXLr7BMo4';
-    
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-    async function incrementarVisualizacao(idUnico) {
-      const { data } = await supabase
+  async function incrementarVisualizacao(idUnico) {
+    try {
+      const { data: atual, error: erroSelect } = await supabase
         .from('contador_geral_obras')
         .select('total')
         .eq('identificador', idUnico)
-        .single();
+        .maybeSingle();
 
-      const novoTotal = data ? data.total + 1 : 1;
+      if (erroSelect) {
+        console.error("Erro no Select:", erroSelect);
+        alert("Erro no Select: " + erroSelect.message);
+        return;
+      }
 
-      await supabase
+      const novoTotal = atual ? atual.total + 1 : 1;
+
+      const { error: erroUpsert } = await supabase
         .from('contador_geral_obras')
         .upsert([
           { identificador: idUnico, total: novoTotal }
         ], { onConflict: 'identificador' });
-    }
 
-    incrementarVisualizacao('teste-obra-capitulo-1');
-  </script>
-</body>
+      if (erroUpsert) {
+        console.error("Erro no Upsert:", erroUpsert);
+        alert("Erro no Supabase: " + erroUpsert.message);
+      } else {
+        console.log("Contado com sucesso!");
+      }
+    } catch (err) {
+      console.error("Erro geral:", err);
+      alert("Erro geral no script: " + err.message);
+    }
+  }
+
+  incrementarVisualizacao('teste-obra-capitulo-1');
+</script>
+
+
+
 
   
 </body> 
