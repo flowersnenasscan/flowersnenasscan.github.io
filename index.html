@@ -1541,6 +1541,31 @@ function filtrarObrasPesquisa(termo) {
 </div>
 
 </div>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const imagens = document.querySelectorAll("img");
+
+  imagens.forEach(img => {
+    // Adiciona lazy loading automático se já não tiver
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", "lazy");
+    }
+
+    // Estilo para evitar o carregamento em "pedaços"
+    img.style.opacity = "0";
+    img.style.transition = "opacity 0.4s ease-in-out";
+
+    if (img.complete) {
+      img.style.opacity = "1";
+    } else {
+      img.addEventListener("load", function() {
+        img.style.opacity = "1";
+      });
+    }
+  });
+});
+</script>
+
 
   <!-- TELA DE SENHA ESTILIZADA - TRAVADA NO TOPO -->
 <div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPizRBEA6EgNotktGlEJSUsbM_S_aOcBLTAZnOeQO-EJjqFjWxPym-rHWLnRIjZky9dKd3DzrHpRq4FTrBK5lK2JLJ8HwfELnsnfzoketaGXIK9tsg9EKVLh2V-5cDAuK4u77ATnkW_pM_UIfN6zMQH3pp52o_AK_vWfksK6aQPHobrCG11pxZgtVHj_0/s16000/1000703798.png') no-repeat center center / cover !important; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); overflow: hidden;">
