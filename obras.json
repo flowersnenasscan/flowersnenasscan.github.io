@@ -196,12 +196,41 @@
       {"numero": "38", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
       {"numero": "37", "temporada": "Especiais", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
       {"numero": "36", "temporada": "Especiais", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
-      ...Array.from({length: 35}, (_, i) => ({
-        "numero": String(35 - i),
-        "temporada": "1ª Temporada",
-        "data": "",
-        "paginas": ["https://files.catbox.moe/ae205i.png"]
-      }))[0] // Expandido em lote no script original
+      {"numero": "35", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "34", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "33", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "32", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "31", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "30", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "29", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "28", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "27", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "26", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "25", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "24", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "23", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "22", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "21", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "20", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "19", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "18", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "17", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
     ]
   },
   {
@@ -963,7 +992,7 @@
     "sinopse": "Leia Ponto de impacto traduzido com exclusividade pela Flower's Nenasscan.",
     "capitulos": Array.from({length: 2}, (_, i) => ({
       "numero": String(2 - i),
-      "temporada": "1ª Temporada",
+      "temporada": "1ª Temporada",5
       "data": "",
       "paginas": ["https://files.catbox.moe/ae205i.png"]
     }))
@@ -1005,4 +1034,4 @@
       "paginas": ["https://files.catbox.moe/ae205i.png"]
     }))
   }
-];
+]
