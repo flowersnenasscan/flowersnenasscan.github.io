@@ -1,4 +1,4 @@
-[ 
+[
   {
     "id": "mignon",
     "titulo": "Mignon",
@@ -246,12 +246,38 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Achado não é roubado traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 30}, (_, i) => ({
-      "numero": String(30 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "30", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "29", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "28", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "27", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "26", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "25", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "24", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "23", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "22", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "21", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "20", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "19", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "18", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "17", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "mate-meu-amor",
@@ -266,12 +292,82 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Mate meu amor traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 74}, (_, i) => ({
-      "numero": String(74 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "74", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "73", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "72", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "71", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "70", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "69", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "68", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "67", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "66", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "65", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "64", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "63", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "62", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "61", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "60", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "59", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "58", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "57", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "56", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "55", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "54", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "53", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "52", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "51", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "50", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "49", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "48", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "47", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "46", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "45", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "44", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "43", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "42", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "41", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "40", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "39", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "38", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "37", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "36", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "35", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "34", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "33", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "32", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "31", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "30", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "29", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "28", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "27", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "26", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "25", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "24", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "23", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "22", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "21", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "20", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "19", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "18", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "17", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "meu-esper-meio-formado",
@@ -286,12 +382,22 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Meu esper meio formado traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 14}, (_, i) => ({
-      "numero": String(14 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "o-cordeiro-caido",
@@ -306,12 +412,17 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia O cordeiro caído traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 9}, (_, i) => ({
-      "numero": String(9 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "amor-no-inferno",
@@ -326,12 +437,12 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Amor no inferno traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 4}, (_, i) => ({
-      "numero": String(4 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "spray-de-chantilly",
@@ -346,12 +457,12 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Spray de chantilly traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 4}, (_, i) => ({
-      "numero": String(4 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "sorte-felina",
@@ -412,12 +523,38 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Início da falta traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 30}, (_, i) => ({
-      "numero": String(30 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "30", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "29", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "28", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "27", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "26", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "25", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "24", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "23", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "22", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "21", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "20", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "19", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "18", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "17", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "como-conquistar-um-amor-nao-correspondido",
@@ -432,12 +569,29 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Como conquistar um amor não correspondido traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 21}, (_, i) => ({
-      "numero": String(21 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "21", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "20", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "19", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "18", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "17", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "voce-e-o-meu-mundo",
@@ -452,12 +606,15 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Você é o meu mundo traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 7}, (_, i) => ({
-      "numero": String(7 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "na-casa-dos-condenados",
@@ -472,12 +629,24 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Na casa dos condenados traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 16}, (_, i) => ({
-      "numero": String(16 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "cada-um-com-o-seu-gosto",
@@ -492,12 +661,32 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Cada um com o seu gosto traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 24}, (_, i) => ({
-      "numero": String(24 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "24", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "23", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "22", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "21", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "20", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "19", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "18", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "17", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "meu-mestre-sadico",
@@ -514,12 +703,54 @@
     "sinopse": "Leia Meu mestre sádico traduzido com exclusividade pela Flower's Nenasscan.",
     "capitulos": [
       {"numero": "48.5", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
-      ...Array.from({length: 48}, (_, i) => ({
-        "numero": String(48 - i),
-        "temporada": i < 24 ? "1ª Temporada" : "2ª Temporada",
-        "data": "",
-        "paginas": ["https://files.catbox.moe/ae205i.png"]
-      }))
+      {"numero": "48", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "47", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "46", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "45", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "44", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "43", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "42", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "41", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "40", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "39", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "38", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "37", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "36", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "35", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "34", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "33", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "32", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "31", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "30", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "29", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "28", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "27", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "26", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "25", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "24", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "23", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "22", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "21", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "20", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "19", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "18", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "17", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
     ]
   },
   {
@@ -535,12 +766,13 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Um vínculo luminoso traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 5}, (_, i) => ({
-      "numero": String(5 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "autobahn-romance",
@@ -555,11 +787,39 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Autobahn romance traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 31}, (_, i) => {
-      let num = 31 - i;
-      let temp = num <= 23 ? "1ª Temporada" : "2ª Temporada";
-      return {"numero": String(num), "temporada": temp, "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]};
-    })
+    "capitulos": [
+      {"numero": "31", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "30", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "29", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "28", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "27", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "26", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "25", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "24", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "23", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "22", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "21", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "20", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "19", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "18", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "17", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "alfa-trauma",
@@ -574,11 +834,53 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Alfa trauma traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 45}, (_, i) => {
-      let num = 45 - i;
-      let temp = num <= 26 ? "1ª Temporada" : "2ª Temporada";
-      return {"numero": String(num), "temporada": temp, "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]};
-    })
+    "capitulos": [
+      {"numero": "45", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "44", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "43", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "42", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "41", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "40", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "39", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "38", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "37", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "36", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "35", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "34", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "33", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "32", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "31", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "30", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "29", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "28", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "27", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "26", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "25", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "24", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "23", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "22", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "21", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "20", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "19", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "18", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "17", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "flores-da-noite-branca",
@@ -610,12 +912,19 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Morrendo em meus braços traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 11}, (_, i) => ({
-      "numero": String(11 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "gravidez-acidental",
@@ -630,12 +939,21 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Gravidez acidental traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 13}, (_, i) => ({
-      "numero": String(13 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "confissao-amarga",
@@ -650,12 +968,15 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Confissão amarga traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 7}, (_, i) => ({
-      "numero": String(7 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "zona-acidental",
@@ -670,12 +991,23 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Zona acidental traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 15}, (_, i) => ({
-      "numero": String(15 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "one-room-ta",
@@ -690,12 +1022,16 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia One room TA traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 8}, (_, i) => ({
-      "numero": String(8 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "apaixonados",
@@ -710,12 +1046,11 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Apaixonados traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 3}, (_, i) => ({
-      "numero": String(3 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "meu-diario-fantasma",
@@ -730,12 +1065,10 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Meu diário fantasma traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 2}, (_, i) => ({
-      "numero": String(2 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "maus-amigos",
@@ -750,11 +1083,38 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Maus amigos traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 30}, (_, i) => {
-      let num = 30 - i;
-      let temp = num <= 22 ? "1ª Temporada" : "2ª Temporada";
-      return {"numero": String(num), "temporada": temp, "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]};
-    })
+    "capitulos": [
+      {"numero": "30", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "29", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "28", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "27", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "26", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "25", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "24", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "23", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "22", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "21", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "20", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "19", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "18", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "17", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "yang-ilwoo-e-eu",
@@ -769,11 +1129,39 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Yang ilwoo e eu traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 31}, (_, i) => {
-      let num = 31 - i;
-      let temp = num <= 18 ? "1ª Temporada" : "2ª Temporada";
-      return {"numero": String(num), "temporada": temp, "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]};
-    })
+    "capitulos": [
+      {"numero": "31", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "30", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "29", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "28", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "27", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "26", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "25", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "24", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "23", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "22", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "21", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "20", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "19", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "18", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "17", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "felizes-juntos",
@@ -790,11 +1178,41 @@
     "sinopse": "Leia Felizes juntos traduzido com exclusividade pela Flower's Nenasscan.",
     "capitulos": [
       {"numero": "24.5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
-      ...Array.from({length: 35}, (_, i) => {
-        let num = 35 - i;
-        let temp = num <= 24 ? "1ª Temporada" : "2ª Temporada";
-        return {"numero": String(num), "temporada": temp, "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]};
-      })
+      {"numero": "35", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "34", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "33", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "32", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "31", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "30", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "29", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "28", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "27", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "26", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "25", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "24", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "23", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "22", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "21", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "20", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "19", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "18", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "17", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
     ]
   },
   {
@@ -810,12 +1228,18 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Ahjussi dos sonhos traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 10}, (_, i) => ({
-      "numero": String(10 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "o-amor-chega-numa-noite-de-luar",
@@ -830,12 +1254,26 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia O amor chega numa noite de luar traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 18}, (_, i) => ({
-      "numero": String(18 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "18", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "17", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "febre-incontrolavel",
@@ -850,12 +1288,14 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Febre incontrolável traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 6}, (_, i) => ({
-      "numero": String(6 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "xx-cheio-de-segredos",
@@ -870,12 +1310,13 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Xx cheio de segredos traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 5}, (_, i) => ({
-      "numero": String(5 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "escolha-o-amor",
@@ -890,12 +1331,14 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Escolha o amor traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 6}, (_, i) => ({
-      "numero": String(6 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "meu-para-arruinar",
@@ -910,12 +1353,19 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Meu para arruinar traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 11}, (_, i) => ({
-      "numero": String(11 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "nebulosa",
@@ -930,12 +1380,18 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Nebulosa traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 10}, (_, i) => ({
-      "numero": String(10 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "desejo-devocao-prazer",
@@ -950,12 +1406,11 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Desejo devoção prazer traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 3}, (_, i) => ({
-      "numero": String(3 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "me-fde-com-forca",
@@ -970,12 +1425,23 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Me F*de com força traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 15}, (_, i) => ({
-      "numero": String(15 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "ponto-de-impacto",
@@ -990,12 +1456,10 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia Ponto de impacto traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 2}, (_, i) => ({
-      "numero": String(2 - i),
-      "temporada": "1ª Temporada",5
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   },
   {
     "id": "meu-vizinho-esta-sempre-me-observando",
@@ -1027,11 +1491,23 @@
     "ano": "2026",
     "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
     "sinopse": "Leia A Lenda do Dragão Amarelo traduzido com exclusividade pela Flower's Nenasscan.",
-    "capitulos": Array.from({length: 16}, (_, i) => ({
-      "numero": String(16 - i),
-      "temporada": "1ª Temporada",
-      "data": "",
-      "paginas": ["https://files.catbox.moe/ae205i.png"]
-    }))
+    "capitulos": [
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
   }
 ]
