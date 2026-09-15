@@ -1,4 +1,4 @@
-[
+const obras = [
   {
     "id": "mignon",
     "titulo": "Mignon",
@@ -10,350 +10,999 @@
     "artista": "Bboungbbangkkyu",
     "classificacao": "🔞+18",
     "ano": "2026",
-    "generos": [
-      "Romance",
-      "Drama",
-      "Ação",
-      "Suspense",
-      "Vampiro",
-      "Sobrenatural",
-      "Sem censura"
-    ],
-    "sinopse": "Em Jung-gu, Seul, em uma rua industrial isolada, escondida atrás de arranha-céus reluzentes, vive um vampiro.\n\nApós perder os pais ainda jovem, Mignon trabalha como mecânico durante o dia e luta como competidor de artes marciais mistas em uma arena clandestina à noite. Vivendo um dia após o outro em um mundo marcado pela exploração e violência, a única pessoa que demonstra genuína preocupação e bondade do doutor, o médico da arena de luta ilegal.\n\nUm dia, Mignon testemunha o perigoso segredo do doutor.\n\nFarei o que você pedir... Posso te ajudar!\n\nApesar de Mignon conhecer sua verdadeira identidade, o doutor começa lentamente a se entregar à devoção cega de Mignon. Mas a realidade infernal que aprisiona Mignon começa a abalar até mesmo o cotidiano dele…",
+    "generos": ["Romance", "Drama", "Ação", "Suspense", "Vampiro", "Sobrenatural", "Sem censura"],
+    "sinopse": "Em Jung-gu, Seul, em uma rua industrial isolada, escondida atrás de arranha-céus reluzentes, vive um vampiro...",
     "capitulos": [
-      {
-        "numero": "19",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "18",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "17",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "16",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "15",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "14",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "13",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "12",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "11",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "10",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "09",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "08",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "07",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "06",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "05",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "04",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "03",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "02",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png",
-          "https://files.catbox.moe/7fbdln.png"
-        ]
-      },
-      {
-        "numero": "01",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png",
-          "https://files.catbox.moe/7fbdln.png",
-          "https://files.catbox.moe/llrh59.png"
-        ]
-      }
+      {"numero": "19", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "18", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "17", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "16", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "15", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "14", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
     ]
   },
   {
-    "id": "meu-vizinho",
-    "titulo": "Meu vizinho está sempre me observando",
-    "capa": "cover.jpg",
-    "banner": "cover.jpg",
-    "status": "Em andamento",
-    "tipo": "Manga",
-    "autor": "",
-    "artista": "",
-    "classificacao": "+18",
+    "id": "cancao-de-reverberacao",
+    "titulo": "Canção de reverberação",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
     "ano": "2026",
-    "generos": ["Romance", "Drama", "Suspense", "Terror", "Comédia", "Crime", "Sem censura"],
-    "sinopse": "Uma história incrível de mistério e romance.",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Canção de reverberação traduzido com exclusividade pela Flower's Nenasscan.",
     "capitulos": [
-      {
-        "numero": "03",
-        "data": "11/09/2026",
-        "temporada": "3ª Temporada",
-        "paginas": [
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj84dRMU-JxL3cKHbZzakvTe99ee2R_0Uc71Fg93IPqXmT4T48CeLjk7q49sbOB8D8EGzpgFOl7KQ7wRcNS7q6L466rGM5zgiBhusGglWynkM_DWmrcf8df1-QrbP9fXjInYuOp-qVe9tyDnM4JOwyyxxxjD7oxdxftAz55XzA2g4viwLq4U5sHTfwt08M/s1600/1000702621.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhF9cDQxT3jNPzbDsB8cnn6aSYLckwLnE1P6K9bStq1Egj2D5mkFzrXVRymS4dk7IbO1IfTnba0dItQa6WoDAcPWosrU8udGJ1-IZ4zJ7MPu7pg-OCIP48tJuBrYiJUfRpy7u2jHwRcNRjMcCZt0oYAsgTadA-6Er8WNMotC7u7Rx5AUym-VaPNcmvYVJM/s1600/1000677187.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh0k4welgKqx2N_yDVWmwMvFaonNtvNdfw0ZZFXNCRNQWzcwoSLIZmAhzAPPyp3pRuMraBiOR5gRZgrUjSsR5hpXKsfn4r-NgLOc9Q2xqLsMMhlmRlZumWSFau_Lq3Csmfgdiq1oRhpekNiFMnofsd9tuTFqOqKmJXnUDTAMe4k45Yhx0W8XKYhlZITlZ0/s1600/1000702840.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZpa8Q1AYyMW8PlnVDi_JiAI7W2OKZpvH9hzZxrqXKvquDelf3pcftwKBKvhnY9Z2pCV3M3WnCo_w7p6GdLZew_RYIQNPm1s0hiCbqVuU_Qk1W6fYAO1iocGzfujhvFY7XPBoA5k0RBD1-t7_BUUc2SysPaB-SY3o9Wo3Ansizg8cE_9fk7i-EI4X6QiA/s1600/1000702841.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjv6ogEbm-zwBs5G8E87yuPfGRfaTPrZNLbqfjBduGjmz0eS1z4MWrEQhEoP6bxiUI2hEao4bh65NS6PvTWDc5UL72m5Mw2UxKyju2aq8B-C7m0BaQGRnmQ4G5cGk03SoueKVHyqgNW1mmXYLf5vYuFwOltLEZkd7nFICyOLJY1CX00Jo2XDFPHZyrQCA/s1600/1000702842.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguyjeaLrFk-0K58Oh6gxHidAIm8Q8cLu1NnpaQoIjzjQ4ROQRGnSLCROFK9tRn9UzmOxA8hwMbTgdWtXWRSP9gh-KZKHtBO_qboDRZraf9me_B_qNbE3Agqfjdy9rmoWlKDzBFju-khOydJCxLiOSCmgIkjeloACpNOkiNv4L6nrIlB0PAUoshy3s74Gk/s1600/1000702843.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBUs5xtmEGOcxhLylbA1pMihG41XgfPDbMBd9gQkvRUgG5ksWGDTADQ6YaEfB_BkxPq-5uAnjQI6gowt-sDA3pEqZRJT08VZSsBXc0BWav2qak6esla7OCBIs7StQLdYnsIrxOTH-9uexAiPotla9gnjkNfbj64IAXjASP0vik7nGZPS09SphtTdXUfmg/s1600/1000702844.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrqnR1zn6Kn9nUqNEht8_du4PmCtHQF_sEGPxYujr_YKtSS8vAcpksglDwr967aOM2DQOi2yEIzYDtGM_JBUU_AFvCkqTl0nIlK_IbSZS1z880WN3BpekxykdTzf9Z1TzvXpTPs3b4JtvmldO14FyaYTaQTyQl6SP7h3N6YzJfKyKuVfVOZOaGdKlak5k/s1600/1000702845.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2w7QqkoCnoXNPcUvYZlmEbFa2sUzb-BPE6NsmqTNEl9h0E4I9vJrf9mjP7OsvMUWt2Zc5xUvaFF-yOLOVq2nM55rhvnd3YIJNlSQswAH9R4XHvCbFaCBOaYfi2Iv2L7HiCocotBzHpgMqn7XF8214bGhMwrvW991qSydb_rMeimdAHlqBF80ct28Ck64/s1600/1000702846.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvJtgQZRHGHSVtLrY_0K698ceytCP62-rFQ6i8Cc35FTNymv-h9JEs-zx0AD5hG-Ga7ofv9KGVdyI_Y3sYvEJPBlzcHF3oWyv_gZbwuoIfq2uoU9XTjBsrN2LvYVf7ywblqhZv4PEWyR6-6QBd4CaiLh3CdE7VOZeyZJwojc-AMlGMmSxZVvZrsl-Zk8o/s1600/1000702847.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguHkwfRggcPH4j8_WVbRz69IA2ScAg0MnY4SDHMedDe6Ersvh3_tAud2Ldmw1i3f2QjXPk3YTCW6hIJMP-ysODI4NkB3iUgH5Td_Ldcxd_j1VGalcl0y2ZLUa1Qh82p_UbriqkJPGUTBj69LxJ0pKTONjskj9eqmTL44I-s-2pwPpb1A7IJGk77XmEBHg/s1600/1000702848.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhh5mm_31muhDKmRqU9gC0w6W8Po9lqds3Rc1Wg0E6qJKdhcNNceutHVg1lfBlFnyMl0Gv0aMj6DxK8Q6Am-YYAlDXmIE-RW4rLd7eKSMvntuom3tkBbHdEjy3BApVuoRhlgMMs9oSPgO0WpLpWesXH7gTZKWZFVVlRvWUIc4VnlI_q44_QARETIs47wIw/s1600/1000702849.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9LlAsPk25-zONOVEdL1d8GmSxAFQ2GhPwnirCfFivtV09Pbhp0R0wS9d5CACRt3thyphenhyphen_805Yj3xTRjDTJUwmIXYcrfOp9Tgw8Tn8jvcPU6j8Tcqhb_oGjvjtOvMFyn97TYfw0iCLfJFtp0P5wWoAYcX8uHQoPDbI1NcEJ-pdM8bNP8ZcYzGc2ahbKfg/s1600/1000702850.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi71TcjBuJ2xRIsuYbGbP_2ykpCGjEsSCyc8jBVzE_hNb0GKKip5rXuieqvxW6ge2BlzAlTn_8qGNhZwOBEwB1jhhFSModJMmjIKLj8B87otfjbBfVNakqmYUI_jNs-7QYasKbuOS62Nljco2OJOaqtawqpqfKf7_1LHMD8W4xu2J4AWKZM0-Lij8DfR8Y/s1600/1000702851.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn14ZHgyj1a2N6jpnxnOpFrWrhUp-b7Zhv5SOSXhiGOyTfTn4zpdPplZPtWg9vmKmdDzvXJTX0gWnyXhOb9DnFKI6yQ32hclnxqB6Aee8wuHAlgNF0RCHoi1Q0PNaL0H69puOg90retxsqpT3iPB0L6Q-XVaa6SeTAPH2ArKiyUlIz645Ijmv7IZKS61o/s1600/1000702852.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkn62zNu5lV-jRrXLOJJ8Ymt-roTzwwBjR1N_Z2fGkPX__kaAbdnWR3dRdBKhKlRbJ45OwpT6zj11hZbFJBx1P_yZo5aR0Bp_kpYHRjtU0nkVLAp7tBeirMOONVuMuME3yDNPi1C_fgn3nVVD5EjGhhPb0j0KlVIH2h0yPeIUOrUZvxeXoxHVEs3KARK8/s1600/1000702853.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0sZZJRTl7_ELIr6_Ft5mfE-h4QBWnzISlHClgt4G6kCi7zzL8CjyE4WwWFQxmf2mgNc6gEG__nQpiO8EPBWhVZnUrXA6x6GTJbWX0QhvgHpHdpbXFVaieWGA9XPIelMY5idZrlsum4hStTBeNQg6gOv2sOadDwKvjot7SNw8p9x2TMy-lEbF5gSZNCoM/s1600/1000702854.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguCzhodL9oCT5pZgSpJtZaRs2Mf2aYJq71Y5Ll3BT3f3MXTgL0wEGMJWSXPToQdr_RIoXMXVF18VXBYG3CscT9v03EkUfdntZ_lKsrIDzXA7K_Rq5nBwYEsX3_S_z3wGHh2bPZCwKBJikkwl7TtjOQrthNo6Q2rZkuE94d1tEO0OVF9oPegExoZxnMgos/s1600/1000702855.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgDpimdsFVSY4HYKcCaTXX88884Z0__ykLWz4JPhOhnI_kJIhu88rCAaCYvvyi4-3UIRPLvtHPAtsSFjWHzezaN3UN8qlbJcvWnnG-6JqtMeGdqlkptcUMam9YZJctFPxbAtDp3C3aVNATXS8dmq6wocAqrLnnOo8egSnM515GKsjEUWTaa9lxbPKEVN-w/s1600/1000702856.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOs_Qea0lsSNuvBzs_DQbb1eOgfFA6_t1T1qQUvxPgR3kzYyzN3OzQbbeGQg2N4EqB9RS6wveS0f8u8gfidbJWvCRvXpSDajKXY_sumCzpCtr8K9hGHyJulyLwsb_pQUWBW-l-a5uyiqz05Lx1CoTOwyiZUgmEQgcn6snvaurSUnj964r6DP8QuH69EmU/s1600/1000702857.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEihYFhFtJxz8hzfSquHFfnaNTyEBv4q_Axpb1PKvZC2y3wzy8yrewA2yRhUkmZoG_8j8zevraCAaSugt7_c6_u_MCQyQXi9WBtmumVxJQQRkS7rikgISJHnDOl-GZyrqCyNCzr6HFDXKgVUCYQw4FRNSVMPsyS1W8ZS1zdMRNPyYKQ73nHaROlNxICXauc/s1600/1000702858.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMZJh19HcYDrKWRMSeysLnL5wtPu1LizdpetPYvXAFxtBQTvhPhrqWlwsIdKAOnt_97Qf0CgRand2eKx8zaKgx6kwFrWK24fQvBUp5nKdH9w1rQ_0A3x2Cr4MxUo21LDDTJkcG2CqOwRXPFHJWlutzwoJkzYPU8M2Dr1XK9yY0CxcMKePHoBJ3Oq6lMd8/s1600/1000702859.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgE0cDFgF2oBIHEeDkyzFh_bZOJXTUXCADystekLvXRflzRngr7K6DVBYtuC0BQy7W3Z88D2nmuRpkz3DNBljOTnCgyu4JBmPHGAfd7WsukcN51ZR1nclWpoJEk004c1BSWNmx0hDJIXbfgz-YqT8fMKG_oY11U9GZltM5jdIOvco7FjJuuv7nqrX_YW1A/s1600/1000702860.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOHDWmPuO977L0qfBl96f-fWV9pi8Mkwx9Rq8OJrzug1bbrKSmZ7Enmj-khi7LFZHQIPc5h4wET8jIZkhLlmg8cTfRWT4fRn7vClyzYppcZuNP1Npz5zNqWqjAqA1vsZ8reVxk-dBQD8GoYHluwbzLGqcg9SlST8yVhGSIoaiB99pYrMZ1lvO3erjXCUE/s1600/1000702861.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZTIvPcROEW4nM0rPfnYL1cNH7K5dsBHgvaomKEtt_Y08zQsPh92t6ndYATPDqcqWgHLvMrpnb6AGvO7F3nZDXE5F9Zv50zPHi_knDohOoMVkYwciBUNz3CEB87myGWqSN6xq7xTir0l3IBBzhXCJ2ve2OVJxRfW-guZskWpOeL_K_NVe2WxpJNVZV9Mk/s1600/1000702862.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyZm1NtrpsBrZYPS_H8QZ4sPRa0nO3wk5J06iFozalvp0uKR1Vu2vlDZFwDnFeMe0MOBYNKAjy30YtEPSd9HH0NqTmM7jnBB5z7N3K8Ku_-tymcP-9EYYq1KmXmL3Tnj6pAYwGxwT7L53nRoQzaTLUpDI9qFHq2Uv19_LI5pa_FaNXNNabMhJDvbaM5EA/s1600/1000702863.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjpktdf2GUx7fa2-BD2s4mCQQRi51hipl9kf6VLEu1sxJ_zHFRsZsc5xfzye9Zq5_LkeJxyJ3gFtN-aG5x7xsTTGCh0CbpMs891e8cWYD7tPwK8V_UNVfwvgV-XfmiLTRXnFy2r0yWNTmjcqRDVwOwA7KgnTnPadtCrlioXL7CC2LHqPgyMxeeSbhuXgw/s1600/1000702864.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhNCyW0tQsawGF_sOsj17ICOL5b8v-iAdquJ5cQSpt4c1vw326a5e06jjLbuuv1LJYDSBUBFHWhof2MSK7XBi0Ib8hXB-9uZierNy8fPWaSxgilp_BB9pGUCmlNrua0RqRDbInmbdhckFXsfLjlmy-yOFRhIZZ9cUdLOeSwbuW6o5AvF2EVfJqYPrlWE7k/s1600/1000702865.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8TYBXflIOfpx_CrwszDTL8Zy5nfODIBJZh_KkrqLbF12PbvQXUqIZe76xtuD5keWKiuYPZpHeYVE7ThfBgLwlMvJaXjgViVEZYp66qxW7B8kdBJ19ZoYGnfXbo4O_I0CY9MENNmcbjrqIv3mG2ZUTJs_QBN_GKDDTJXZfkGBJ9lkXWObkeBKJep91inQ/s1600/1000702866.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhoI1kDna-mytPCDNoCb1TfpQQWqegcFwaw0N0CvEw6c2fV8yukzNPUR0VX2qrglRJZq3h_jL2_vapJkr_o93r0S4WFOF2PT_hBIKjko7EPZoozHV1qM30aR8JO8LUja2-s6Ckl49YCCSErQetAFQwn_DXkLAROQRB-NbnVwyOAmbVNlDJPbZcPZxE_ZHM/s1600/1000702867.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhX1gvuo6aL4jysEgg1B7wHpAlLeBd5sD9JS2MZhDVANOF04QH2o31V75FLsyCWlLjlrUi1F4S4V4DoxjnqWO360-qRNfsUyMvtyjXqASL5y4Q2I_xN4Hp-0XPQt7TyPiuwLiIa1yBRLjtj_4eOy2MQGPqPsx7k6hGMrDtRVaO58nbB4X3_ivjOgLtVoY8/s1600/1000702868.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJ0eTtud46f8DLJj48aODZCO44m9dx16f4O8y4RwSbMCPjgMkydxp1nf-fmek5F7QjjFuRJvgPb-_NN6r4XOP3MH3PpD02Gm6k3XlVwVt8iwp6V5KGTj0jSDT6b55Tl1HH3jQ7g9kk40xk3DslC7ykHFEJMg7u_VhfaNfBb1FYxQslmhJVohyI1BcoV5w/s1600/1000702869.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhizS0YSlmmfDY7aZgn3YkLyflYYOzxhwFABeqrod5UgQtaaYyTZsu8GOcWnVjxIT-gU8G0VPzv-1dU0_2VkoA1zlPXnvNSSVVIKYTpDTc5zaqnPKofA6FInEOBGBkil7lZfGmAdt4Po7q8nD7BxrmHUjewX5UvYyDyqGn72NIeVXIq4aHumsJWeqLYIp8/s1600/1000702870.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVv_kLjKUgipZjWwkAAaeBU_nDHRVKNnDsQX3ZClwFrfLL_Fc4v2IkCAnCr-OVtRIGdgo5Ovfxub3ybOaPZUM7HMAaOeuRlAjqChEtoTGvY1_pmW6jgwVAdZf76We7uYsAqXQFkpi2UgivrpZ2Xwhdg6R5f0TRNAGY_v9JF18OgG5fOMOEdXM6IQBErkc/s1600/1000702871.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhIFvw0OtyQP_mOcisjT3rJ3oS1482WoybuIJGNzC_nP688WORZ6xyQoQxG73gmzbcXgEG6uSHAZ9s3dFV75Oz75jp16dHTQfv37D1bm6HauuNjZqZ4rAUxGIYdxoS6ujBajYcdTwe4NklyYw3faEicUGrihhxd6vMG33o4K7Zm7YLZrxSK6zoZLggsYDU/s1600/1000702872.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj0LDE4PiRAq5Eqb6W-2BmgjT77vYcs_AjviJqMt_tkraZIBcTOjM2ufAyeNb2bbOsCayPGgAp3uoLNagrz_aIab0sqNndQdph8eCpjZxSaiuGhgGXOSmiqkMrjmt6GJLbiwIZdnC9VBTrV2O2rFk376VZOXEzQPPOzlqmrT6Q_9r5dZZ3Lv__YkRMVRzk/s1600/1000702873.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijMO1vjy0g5BtWX2VzKQUDCcQnWFSwT5OgoQl7v-ykMrcho3crVtsEuoqTRX8G6OsB8B-nppugRHRYJHA4rAYjASQ68yaLsWItfh3wMW5toj9pFWT1yPwLL5VzEB2RCtO-rzClm2j7lowMzFHtcegkwkeTpnWTF33mEHsYqEqQqOViZBNQ6YDgIO0MB_s/s1600/1000702874.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3TiZOUYykPt0dECUqLZMDWNWNAp_wU2NqGaBVXF0c6pcJ7bflCeRdhY4NXjxbMIOwV_6Xhx1V0Cn6AyloccFKZEuEQ-yVpjRS5o2P7qFwHPYl9rtW4xvjb6qAgZZTZP8Y_nElZEAfbHWpX8Z5f9l5oKtBFUunPLZ8glq1k5vsi1BtRTsFdnQFopwhLFg/s1600/1000702875.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZKjfPY_ynuUpZoHlstrt0MzqiQiDtyh4zy23RXSB4EuhiJnwm4bUYOytDE0_FnDrtD67jbNya6x6hLH-6rHx3Wx2u-lyicK3en6fbfog_SohptPliNxDzC4nNRls43QK6d2XTKjl-NGWjW3uV28iZVr9-lc0Xr3W2ZiN3CVnCizBxvuF-e4sb3T7dR8A/s1600/1000702876.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjO4e0BZXAhvNfs2lBA91BxQXAhWVZZTMhQ_MD5sPzl50HUFCVE8WvxES5gNrD3o7WgIG1stCX3axmaUIwCv5TgPoFs1cAR6kTQzlypB0Lc8vAdEwcyirU2hpqz9TAgkjuWIbG9hRjDnVhyphenhyphenWtvFb3X3EZd4NHoHd_q6ttilqJAApI_coZFvR3fT9ZY10l8/s1600/1000702877.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHcOghhwO3a4KOW54u-LOqvapKVCvcu140eh_bXLpX75KG5bapxffrRcQj_8Kh3ovxREf_XSAQI-mSewEEM2Qy5cEfk5XF4ufDE7EvZ2Pe5486I0ISGwFHlyMFkEAbM809j-9YFY6CKTX67xsOrOhjKytUdl2gNUhNfJg9U8DzhO7-D66EkrJdJAe7fIo/s1600/1000702878.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPWmuOXhjxV-P_5RC0fAc3VgOmEFdl6b8sGllKNUJp2dazdFFrWpsD5K_skEuLpbV3lMvJv6-QzE3ooBBUj-_26kDLaGOxT4w7nKxGi8yfW8T_NQd_tet0tm7VDaSvKLTl9s4mOhRjStjj9bc8VcewCFVFGDURVCr3j8nr9EqPBQL_O7sQ1kdyL-bGZLI/s1600/1000702879.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg0BCZcDfJUEpofTlWhBlBDZE6gRyVE5ci2AfKQXD65jioFCcL5AO7PE2Ox4cziJn1VAdwbPmaMSqYC_6tJZwfvj0eT3Iyy19I8NZZs_d7hEMv8Ymr8M_86B2TyiG9AuxOQb7gIlNc5UL9eWRG1QTPZrOjIUwjfmaHlhyyR8J17vVsQeQhsfPDPpmVCyKQ/s1600/1000702880.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFP7cKND-scmSEYeu8p8-sjsfatzlRNCRW_LstRqkeisEropwQQXhnNpTrRLJF6KRnd_LybB7XwtmlPVrUvTJapcObqHYnMvlbSFW7IzkepiFCBvwbqTS8TOvalYB9613Sdg9o0FimWSDmuxn2tnfm54UeGdNp0hzrkMuJWZDeItUpAHAZjIPwR1pIxdw/s1600/1000702881.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilWYugi62yI7OLfbMd-aFw1PHD2SYZobQCtXFjVaXCTLmxiu_tFkRJUyUXS_rhaWDK6g_v8B3ysvV6YymDN5nnCqhLCAvy2dxjNpyL81ShDqERQyjPXz0snWYVvisuzjK4fAdncJR6LfCBKn64fr1tqMkFSPZXQoERdlWmFEH4xJ6Mq8vDvYwhg8b2Q4E/s1600/1000702882.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiDwk5CVlQ-uNlu3MKJ6ix4xZXJoAnSrai3YT7Nx3gPh_pdBUNbsGbT_cVYwq8iuhHXcmt3M6Q90Cm1PaFrCzOvz2PcJ2UW89AWdkSgYEzro9HSFlKIMY_PWlYhPaddq1mKwgmcxYdaoaDeHRm85PtCRqj1c8uyfye0WJUBiHFexyF1hn8HwQkVMN2pIPE/s1600/1000702883.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj9bw1Sb3iieXAqcMrcLQGShnaoHazGSsH5pGu00xC4g75mdpnmoIxSXwr83g7JYXZ9BbspnppokDe3itin7FAQ3yUTQt86eNdyI3bdTW3_wNLfQw0X2FuTDSLeWJKB3DskNq2afBmA8QUXYJ8MwwsvkilAzO1WzZ3pUIC8N50UY9twfZruxVR6ZKvyj6U/s1600/1000702884.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjKZM-U24vNfNTsdqAWxumOIZGylkXJNm_pYrd2_mUvuJhIEehmWPpqFPQ4O-qQBSZf6P3RaaRkFf58eOiLx_APgBKEZ8NQfP3szFh0GYVM3ez0YuIIrXv_mDgc50j9QuoArAjRlhdxnRWF98p3R6gq-ft-BQBk8AJ3-kFFejBU7CFNcHdIhdpyydbfZgY/s1600/1000702885.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqpacJx62jPK0BmJWZ_F2TuoIQ6oJVOtp77g0N-nZ5Nee8y3fC_0HmESJkCULMzxyPGSZuYH8HnRhhWryvvupgQL20nYqyfGgvTtWs7K3bhcbV8fHzGLIOpVpAZY80WR7uJclCsoW7oTbS8yv74loosPID_r4A9F-M1O98yzp9cOkF_mHd-D5lscKgHK8/s1600/1000702886.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggaj0G0kvJNzZUOQLlWQP7A9pRBeYwwYYMaccDLSkdQoWDRgqmXLzf6sf6txBtjJ4OMLF1He8frSnKo7crPMhyMGAq6witJ1F68bzcelOWNIo1uft6zf6QR6UhgRuiKDxOUMM5iqiyZJYYwyKWN1Rdfn77l-JuBoMKyq9HEfi6YGjiz1qCJ6pgCArJbF8/s1600/1000702887.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhPI_c88q5pUwMznyJ4wYoI0xHI_LmjsKsyQSaNn11qHIO4ycix-c9gyyvaCCfD31R39BrFohV7Q6htiuasLSVlVV7OmkQvfQQzWRRPOYCTu4jci1gDiSCFbUPNzyyO1ysBCK1ko9RGXbKXXo_-WGfH1rUqA5NCPd1SoIXjjSs3K_UcnGkcroB3ntonZFk/s1600/1000702888.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIfez1cTlZrwGSHvcp2iCqCyP47gOkXcb4PTLg6NDIcjWlzwqcVi2xEta6Y_BKK2JknGlCe6_rzUzAlGc_rHEgC1EerdNIhcNG1qOPcPQfoQRCBY4GFi8AGUia1thqYJcRUnDp-5VM67N2J5m_dnFu-Upq4pXrMgDcfUZTfXUfhXoxs_aW2sLh4Ceg_1o/s1600/1000702889.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYadL1HAA1z3ksjtjgjdORAi-gyInJ7ogii7EBphDhicVlvd8C_CGHbconw27tcaySBDoSn51rLN8NNwny2WgFDTfrksE8M49YFfZezEOQ0TF-L_LxGbpC2Z1gDhax5JREZipFBfVz_ZDlXYxnjJ5GuRsblo9XWliY46SuKziLBqp-SANMfpaVCyrx7Cc/s1600/1000702890.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3TKu3w3ssGIRFkYznci2OvBRhfDqMtEf4pRYll436j4OvD_DGaFLao4wmuDi65-qQdo-WGbPLA8gnrZidku-8KdzlS4smmKnNrTxn09K3jipFJEPD2FlXI3D_tYrUu4sFpPFcBaM0paJ0uwXmaQHvGJkpy1V0IPbS1BldwYW6K_9vkHhs22aXcfQ3v6Y/s1600/1000702891.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhM9gJaS8n0eukg1F0TYXrEeFVp_AHBNY-JScoO3EvBA-ydUWjS6bbgZ9QAXCfjL2PWzTeTLXuuG0hXWKuC4HQHKWumE7EtK4-XJJNmO0XaBoq4BCbLg-jBb_-REAyAKWeOSIz4pbKjMhwCtnk6DHrfs1CvWyNwfwvBd2lqeSaoh57frcUMG9VaCkmxirQ/s1600/1000702892.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOfhRs_NqDZyfrUL-rindbaBzzReDG6l_KZfZmLJeVnNRmvsiewy-CfmzagcGzJXi20GYD3Y6JwbgWhVdKxwBt06W_2teC_oJncrBG7Sch_l2T75Sxuw7CO1hzc7sLM631Tk_WWvzfGANCYVVRJyqe3DssZAF4ROhr42aEcFUPBUagOTZbh7L8AzBnYqk/s1600/1000702893.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhC0n6PzgpIwIV5mBMfhWAwtyDQv20AgpN93hj6D8aGms5Ht-pmxd8vwRaPgbwGPrlGLrBrE8g_nmY69W5iqZ_bwbpCc1jThKWvt1EMkfCXtQ-2nqe3sZ_xHkf4O8nweOA0s3y1DHnrwB1SImJYLAwArLkY-exikyRdh4IcTDBsHuOdQbNAm9OEHWayQZc/s1600/1000702894.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhg_qnxGWcu-DpNNECKLVeELh_eeOjeQkqvylg6owPrp5WoBqhntV6vctQR5-jviPmysW8fAJi_XABZCaW9dEO2lYP7vc6PLj8pfK_4Wz_Tz1N_FOMr8x6G4GfepNDYNDJqa7GFVuY7R9Ga0tSlf8b5JYcAL81daUQzQolt5RCAbF_2BTfzoAiVL1-acxc/s1600/1000702895.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhfjVWq5MGIu7CdDx_OK1uPQCxRZ6rdmA6lC9mB-rjye8_-p8EkBYk01CZg8eLWu3zXMVwb5Exe4V59j8RC_D11zQUaRocWtJ10oqTkVas7lY8CMPiHtAgoP2gIYdSnycBlyFI3Qmj5ST9v0VU_AMMpuU_rqfXwozsPzrq7D0RYuoljz0YlI8oFNAvvfz0/s1600/1000702896.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGJCvD4yr5_i_Bj0Ithh-TL0Xf90Z6dBOUwQrF4P5lDmZAONfWkHUZBvEA5fyaLln5I5IjL_RmczQPCkZIciXXSQoqcGzVNmG83Nw-SN_uBJKad6CKTBCbcrGafvK8QnLyYuVdVbw387xZwMASQXvtk7MQvB3cB0kWYqI5ItwnBy51C8o1eo3vLKFwN6I/s1600/1000702897.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj6Ozs21kwGnPuo1UIMKsC6VgK5p1LpEhOZ3XK42z_sOOUe2MZV6FgW7YinMhnTsbAzRmq7gAe84Uuar6IK8_11LroRu5zgt8UezV-DKlDZfGk4DK9KYMhSWuUJJgmm14Ss321taTFpZSk3aykgDiwAV9rPlZIPkGMZ5s6rMtsy42nweLb4tZJPqK5AAjg/s1600/1000702898.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQhD5k_z8OpVf3JSk16dNuX2gAP6klDCbSqGrKPa_TanBcAXQq4aMQdMTf-cCKGmN1TlDFrEiXbRd_Qrk852vGH1-xyyLXFSnGOdfu0D_lujl5GrV_7nc-o6feuydrEvMlhODoRhQasgnr1kJMu2YphKCGzDbIOsUUFhY_f6u3uPu8oS-0hVsGVBecBkc/s1600/1000702899.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh4Js2vKAtCCy0zxCluCfawayKPNO5z3AzgwPpMlBCISrOzsohN_rEAFMhodnPlwpwBs_oDEvym_U4hW0N53Ojebb9eE0B3nsbBNv-dqiWOrdqrthSXRO7mpUOb84R3bUj6Aq98oD6-xLenvEeuY787KRbK1n0QECgrzQVxFF7FP3dQaqC7I-0P_RNX96Y/s1600/1000702900.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjSsRlZzCbZ7XB7j93VtxZuK7wRxt5uvroSQIftAjQEHplMznKhxYlluxj3tIj-W1PRWNbKEn87Qkv8409RM8kCZQTrgjLDIyz-rkMWMlB9zr8fi6k75C5M4sFLPM1-Z-ulqGiFHbDinZ520vyms4FteYSIcX6sCcFPlNyaYMO8YQytO5NhQ7l5lxR-pto/s1600/1000702901.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOcJAIlqwdBTSyqydBAHwjAOxskdHw_ojsSf5X0W2ap-uEhBbHh-6UxscIoNAoIuK7QmQQ6umvCUbTE0IYNggeLxVGtcsVaTiVYUY5h-ilb5g5NKD6pX5JBZgfHHOSHtjCFxoXGUF52IFRH7yksv8PIZ4wlVwF2xj6AVwwQO8Gd32-EGbW2AekpG-KuRQ/s1600/1000702902.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOD4mIwy_0GfAnp1j3wURML1bajtvXZ2gLlOCHdmL08GVd_X3pK-TCfJ2zQ5zYdDczuWykW_dwl_M_MFqBFLH3ZQZ_IOlu4Ove2sOifES5GZsODjrpQIDdcHEHumTw6S3mBz150ypcXTh59HhtzJPnPSk8E5UiEjUmOAdIMHHvLyB6NO3t9ygAiNPk6e4/s1600/1000702903.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrnr40bj8NfuxkrI5Byb2oo3x0MFfeR8AAsSnMCGGG517_Xs_J-HwyXRZ1LhohbA4bXXbCW0dtTfnTIv2aGf69fujZlOv5oQ-prCAlJXHq9G5X6GUsbOhTFr1QCRBzKWnJtG09z3xgxuGUnpmS47tORHUnbXtSpRgXPFkF-mbPvPt4YsNf-AYVwN33cs8/s1600/1000702904.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEitEXZkaTMM5tetr-YchCyhBfso8txDSzBxf8AnzdDZKMTzEpJ6nFRHzvQ-ahk70JTKdx-E6wsp4OcKRIn-UcyV8nCpLcpWmcuWfYP4oWZ_ChdeXUnSTolpES5rK21XhF1mbjVI6RmiGy2UpST0uJ-_e4nvyD7mEOJWC7XIIBsSfvQmpVtQ_7Umc2qkbVY/s1600/1000702905.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilnbBBuTpcdOdax-PWKYe0DIzquEmSx4_3MWTVO6tQ2etxYWRbKnEBpzAMDd9BXuWYt8Sk2PiGIuU8hogwb6qOi3jofvW9cTXnmMF5DKyxS-Hrocas2_4Fb0bueaB1CbuT5T1J9Rkvwx4RsK1tOuURmOwsO2Lc1lhRZfLzblQESVcu5PidjZPVIKaTKq8/s1600/1000702906.png",
-          "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf7jfXw-1oB4zkY5sF9T9vK0we5XBjIA5VkwtsyvPQyQuTlxOS3qr7Q1gXRmOqr_Sq28S0pCApkbT8bYKalsVK0s2hFFPQlpviHR5tjUALt3XBbojG-QLhWk4Kf-TYROMI4kdxX9a5MDfcNTHhIj_SGfhBLtpaXvwhB638LxxEzF20c6HSyzEUvgRvl50/s1600/1000702907.png"
-        ]
-      },
-      {
-        "numero": "02",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png",
-          "https://files.catbox.moe/7fbdln.png"
-        ]
-      },
-      {
-        "numero": "01",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png",
-          "https://files.catbox.moe/7fbdln.png",
-          "https://files.catbox.moe/llrh59.png"
-        ]
-      }
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
     ]
+  },
+  {
+    "id": "erro-fatal",
+    "titulo": "Erro fatal",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Erro fatal traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": [
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
+  },
+  {
+    "id": "quero-fazer-o-pai-do-meu-bebe-se-apaixonar",
+    "titulo": "Quero fazer o pai do meu bebê se apaixonar",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Quero fazer o pai do meu bebê se apaixonar traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": [
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
+  },
+  {
+    "id": "estrela-da-coincidencia",
+    "titulo": "Estrela da coincidência",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Estrela da coincidência traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": [
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
+  },
+  {
+    "id": "a-promessa",
+    "titulo": "A promessa",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia A promessa traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": [
+      {"numero": "13", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "12", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "11", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "10", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "9", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "8", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
+  },
+  {
+    "id": "grande-e-escorregadio",
+    "titulo": "Grande e escorregadio",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Grande e escorregadio traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": [
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
+  },
+  {
+    "id": "fogo-da-alma",
+    "titulo": "Fogo da alma",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Fogo da alma traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": [
+      {"numero": "38", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "37", "temporada": "Especiais", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "36", "temporada": "Especiais", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      ...Array.from({length: 35}, (_, i) => ({
+        "numero": String(35 - i),
+        "temporada": "1ª Temporada",
+        "data": "",
+        "paginas": ["https://files.catbox.moe/ae205i.png"]
+      }))[0] // Expandido em lote no script original
+    ]
+  },
+  {
+    "id": "achado-nao-e-roubado",
+    "titulo": "Achado não é roubado",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Achado não é roubado traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 30}, (_, i) => ({
+      "numero": String(30 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "mate-meu-amor",
+    "titulo": "Mate meu amor",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Mate meu amor traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 74}, (_, i) => ({
+      "numero": String(74 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "meu-esper-meio-formado",
+    "titulo": "Meu esper meio formado",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Meu esper meio formado traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 14}, (_, i) => ({
+      "numero": String(14 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "o-cordeiro-caido",
+    "titulo": "O cordeiro caído",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia O cordeiro caído traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 9}, (_, i) => ({
+      "numero": String(9 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "amor-no-inferno",
+    "titulo": "Amor no inferno",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Amor no inferno traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 4}, (_, i) => ({
+      "numero": String(4 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "spray-de-chantilly",
+    "titulo": "Spray de chantilly",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Spray de chantilly traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 4}, (_, i) => ({
+      "numero": String(4 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "sorte-felina",
+    "titulo": "Sorte felina",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Sorte felina traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": [
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "0", "temporada": "Prologa", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
+  },
+  {
+    "id": "um-fantasma-se-confessou-pra-mim",
+    "titulo": "Um fantasma se confessou pra mim",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Um fantasma se confessou pra mim traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": [
+      {"numero": "7", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "6", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "4", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "3", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "2", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      {"numero": "0", "temporada": "Prologa", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
+  },
+  {
+    "id": "inicio-da-falta",
+    "titulo": "Início da falta",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Início da falta traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 30}, (_, i) => ({
+      "numero": String(30 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "como-conquistar-um-amor-nao-correspondido",
+    "titulo": "Como conquistar um amor não correspondido",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Como conquistar um amor não correspondido traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 21}, (_, i) => ({
+      "numero": String(21 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "voce-e-o-meu-mundo",
+    "titulo": "Você é o meu mundo",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Você é o meu mundo traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 7}, (_, i) => ({
+      "numero": String(7 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "na-casa-dos-condenados",
+    "titulo": "Na casa dos condenados",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Na casa dos condenados traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 16}, (_, i) => ({
+      "numero": String(16 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "cada-um-com-o-seu-gosto",
+    "titulo": "Cada um com o seu gosto",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Cada um com o seu gosto traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 24}, (_, i) => ({
+      "numero": String(24 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
   },
   {
     "id": "meu-mestre-sadico",
-    "titulo": "Meu Mestre Sádico",
-    "capa": "https://files.catbox.moe/wyy3gm.png",
-    "banner": "https://files.catbox.moe/s641ug.png",
+    "titulo": "Meu mestre sádico",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
     "status": "Completo",
-    "autor": "",
-    "artista": "",
-    "classificacao": "",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
     "ano": "2026",
-    "generos": ["Romance", "Drama", "Josei"],
-    "sinopse": "Escreva a sinopse da obra aqui...",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Meu mestre sádico traduzido com exclusividade pela Flower's Nenasscan.",
     "capitulos": [
-      {
-        "numero": "03",
+      {"numero": "48.5", "temporada": "2ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      ...Array.from({length: 48}, (_, i) => ({
+        "numero": String(48 - i),
+        "temporada": i < 24 ? "1ª Temporada" : "2ª Temporada",
         "data": "",
-        "temporada": "2ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png",
-          "https://files.catbox.moe/7fbdln.png"
-        ]
-      },
-      {
-        "numero": "02",
-        "data": "",
-        "temporada": "2ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png"
-        ]
-      },
-      {
-        "numero": "01",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png",
-          "https://files.catbox.moe/7fbdln.png"
-        ]
-      }
+        "paginas": ["https://files.catbox.moe/ae205i.png"]
+      }))
     ]
   },
   {
-    "id": "nome-da-nova-obra",
-    "titulo": "Nome da Nova Obra",
-    "capa": "https://files.catbox.moe/wyy3gm.png",
-    "banner": "https://files.catbox.moe/wyy3gm.png",
-    "status": "Em hiatus",
-    "autor": "",
-    "artista": "",
-    "classificacao": "",
+    "id": "um-vinculo-luminoso",
+    "titulo": "Um vínculo luminoso",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
     "ano": "2026",
-    "generos": ["Ação", "Fantasia"],
-    "sinopse": "Escreva a sinopse da obra aqui...",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Um vínculo luminoso traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 5}, (_, i) => ({
+      "numero": String(5 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "autobahn-romance",
+    "titulo": "Autobahn romance",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Autobahn romance traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 31}, (_, i) => {
+      let num = 31 - i;
+      let temp = num <= 23 ? "1ª Temporada" : "2ª Temporada";
+      return {"numero": String(num), "temporada": temp, "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]};
+    })
+  },
+  {
+    "id": "alfa-trauma",
+    "titulo": "Alfa trauma",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Alfa trauma traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 45}, (_, i) => {
+      let num = 45 - i;
+      let temp = num <= 26 ? "1ª Temporada" : "2ª Temporada";
+      return {"numero": String(num), "temporada": temp, "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]};
+    })
+  },
+  {
+    "id": "flores-da-noite-branca",
+    "titulo": "Flores da noite branca",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Flores da noite branca traduzido com exclusividade pela Flower's Nenasscan.",
     "capitulos": [
-      {
-        "numero": "01",
-        "data": "",
-        "temporada": "1ª Temporada",
-        "paginas": [
-          "https://files.catbox.moe/ae205i.png",
-          "https://files.catbox.moe/7fbdln.png",
-          "https://files.catbox.moe/llrh59.png"
-        ]
-      }
+      {"numero": "30.5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
     ]
+  },
+  {
+    "id": "morrendo-em-meus-bracos",
+    "titulo": "Morrendo em meus braços",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Morrendo em meus braços traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 11}, (_, i) => ({
+      "numero": String(11 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "gravidez-acidental",
+    "titulo": "Gravidez acidental",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Gravidez acidental traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 13}, (_, i) => ({
+      "numero": String(13 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "confissao-amarga",
+    "titulo": "Confissão amarga",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Confissão amarga traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 7}, (_, i) => ({
+      "numero": String(7 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "zona-acidental",
+    "titulo": "Zona acidental",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Zona acidental traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 15}, (_, i) => ({
+      "numero": String(15 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "one-room-ta",
+    "titulo": "One room TA",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia One room TA traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 8}, (_, i) => ({
+      "numero": String(8 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "apaixonados",
+    "titulo": "Apaixonados",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Apaixonados traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 3}, (_, i) => ({
+      "numero": String(3 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "meu-diario-fantasma",
+    "titulo": "Meu diário fantasma",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Meu diário fantasma traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 2}, (_, i) => ({
+      "numero": String(2 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "maus-amigos",
+    "titulo": "Maus amigos",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Maus amigos traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 30}, (_, i) => {
+      let num = 30 - i;
+      let temp = num <= 22 ? "1ª Temporada" : "2ª Temporada";
+      return {"numero": String(num), "temporada": temp, "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]};
+    })
+  },
+  {
+    "id": "yang-ilwoo-e-eu",
+    "titulo": "Yang ilwoo e eu",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Yang ilwoo e eu traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 31}, (_, i) => {
+      let num = 31 - i;
+      let temp = num <= 18 ? "1ª Temporada" : "2ª Temporada";
+      return {"numero": String(num), "temporada": temp, "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]};
+    })
+  },
+  {
+    "id": "felizes-juntos",
+    "titulo": "Felizes juntos",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Felizes juntos traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": [
+      {"numero": "24.5", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]},
+      ...Array.from({length: 35}, (_, i) => {
+        let num = 35 - i;
+        let temp = num <= 24 ? "1ª Temporada" : "2ª Temporada";
+        return {"numero": String(num), "temporada": temp, "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]};
+      })
+    ]
+  },
+  {
+    "id": "ahjussi-dos-sonhos",
+    "titulo": "Ahjussi dos sonhos",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Ahjussi dos sonhos traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 10}, (_, i) => ({
+      "numero": String(10 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "o-amor-chega-numa-noite-de-luar",
+    "titulo": "O amor chega numa noite de luar",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia O amor chega numa noite de luar traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 18}, (_, i) => ({
+      "numero": String(18 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "febre-incontrolavel",
+    "titulo": "Febre incontrolável",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Febre incontrolável traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 6}, (_, i) => ({
+      "numero": String(6 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "xx-cheio-de-segredos",
+    "titulo": "Xx cheio de segredos",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Xx cheio de segredos traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 5}, (_, i) => ({
+      "numero": String(5 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "escolha-o-amor",
+    "titulo": "Escolha o amor",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Escolha o amor traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 6}, (_, i) => ({
+      "numero": String(6 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "meu-para-arruinar",
+    "titulo": "Meu para arruinar",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Meu para arruinar traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 11}, (_, i) => ({
+      "numero": String(11 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "nebulosa",
+    "titulo": "Nebulosa",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Nebulosa traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 10}, (_, i) => ({
+      "numero": String(10 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "desejo-devocao-prazer",
+    "titulo": "Desejo devoção prazer",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Desejo devoção prazer traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 3}, (_, i) => ({
+      "numero": String(3 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "me-fde-com-forca",
+    "titulo": "Me F*de com força",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Me F*de com força traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 15}, (_, i) => ({
+      "numero": String(15 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "ponto-de-impacto",
+    "titulo": "Ponto de impacto",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Ponto de impacto traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 2}, (_, i) => ({
+      "numero": String(2 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
+  },
+  {
+    "id": "meu-vizinho-esta-sempre-me-observando",
+    "titulo": "Meu vizinho está sempre me observando",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia Meu vizinho está sempre me observando traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": [
+      {"numero": "1", "temporada": "1ª Temporada", "data": "", "paginas": ["https://files.catbox.moe/ae205i.png"]}
+    ]
+  },
+  {
+    "id": "a-lenda-do-dragao-amarelo",
+    "titulo": "A Lenda do Dragão Amarelo",
+    "capa": "https://files.catbox.moe/nya1go.png",
+    "banner": "https://files.catbox.moe/73a9t0.png",
+    "status": "Completo",
+    "tipo": "Manhwa",
+    "autor": "Flower's Nenasscan",
+    "artista": "Flower's Nenasscan",
+    "classificacao": "🔞+18",
+    "ano": "2026",
+    "generos": ["Romance", "Drama", "Adulto", "Manhwa"],
+    "sinopse": "Leia A Lenda do Dragão Amarelo traduzido com exclusividade pela Flower's Nenasscan.",
+    "capitulos": Array.from({length: 16}, (_, i) => ({
+      "numero": String(16 - i),
+      "temporada": "1ª Temporada",
+      "data": "",
+      "paginas": ["https://files.catbox.moe/ae205i.png"]
+    }))
   }
-]
+];
