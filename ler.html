@@ -1077,7 +1077,44 @@
         }
     }
 </script>  
-  
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const imagens = document.querySelectorAll("img.pagina-leitura");
+
+  imagens.forEach(img => {
+    // Intercepta quando o usuário tenta salvar ou abrir o menu de contexto na imagem
+    img.addEventListener("contextmenu", function(e) {
+      e.preventDefault();
+      
+      // Cria um canvas minúsculo para corromper a qualidade no download
+      const canvas = document.createElement("canvas");
+      canvas.width = 100; // Baixa resolução de propósito
+      canvas.height = 150;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      
+      // Gera uma imagem borrada/pixelada para o arquivo baixado
+      const imagemRuim = canvas.toDataURL("image/jpeg", 0.1); // Qualidade péssima (10%)
+      
+      // Cria um link temporário forçando o download da versão borrada
+      const link = document.createElement("a");
+      link.href = imagemRuim;
+      link.download = "capitulo-protegido.jpg";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      alert("A imagem salva foi protegida e possui qualidade reduzida.");
+    });
+
+    // Bloqueia o arraste da imagem
+    img.addEventListener("dragstart", function(e) {
+      e.preventDefault();
+    });
+  });
+});
+</script>
+
 
 </body>
 </html>
