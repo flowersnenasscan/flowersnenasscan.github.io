@@ -1077,34 +1077,50 @@
         }
     }
 </script>  
-  <script>
+
+
+<script>
 document.addEventListener("DOMContentLoaded", function() {
   const imagens = document.querySelectorAll("img.pagina-leitura");
 
   imagens.forEach(img => {
-    // Intercepta quando o usuário tenta salvar ou abrir o menu de contexto na imagem
+    // Intercepta o clique direito ou segurar a tela
     img.addEventListener("contextmenu", function(e) {
       e.preventDefault();
       
-      // Cria um canvas minúsculo para corromper a qualidade no download
+      // Cria o canvas do tamanho real da imagem na tela
       const canvas = document.createElement("canvas");
-      canvas.width = 100; // Baixa resolução de propósito
-      canvas.height = 150;
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
       const ctx = canvas.getContext("2d");
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      // 1. Desenha a imagem perfeitamente nítida no canvas
+      ctx.drawImage(img, 0, 0);
+
+      // 2. A MÁGICA DA CORRUPÇÃO: Desenha uma grade de "chuviscos" aleatórios em cima
+      // Isso destrói a qualidade da imagem que vai ser baixada, criando uma textura granulada
+      ctx.fillStyle = "rgba(0,0,0,0.85)"; // Cor preta com alta densidade
+      const blockSize = 4; // Tamanho do pixel de corrupção (quanto maior, mais feio fica)
+      for (let y = 0; y < canvas.height; y += blockSize) {
+        for (let x = 0; x < canvas.width; x += blockSize) {
+            if (Math.random() > 0.3) { // Decide quais "pixels" corromper (aleatório)
+                ctx.fillRect(x, y, blockSize, blockSize);
+            }
+        }
+      }
+
+      // Gera a imagem final destruída com qualidade péssima
+      const imagemCorrompida = canvas.toDataURL("image/jpeg", 0.2); // Força compressão severa
       
-      // Gera uma imagem borrada/pixelada para o arquivo baixado
-      const imagemRuim = canvas.toDataURL("image/jpeg", 0.1); // Qualidade péssima (10%)
-      
-      // Cria um link temporário forçando o download da versão borrada
+      // Força o download da imagem corrompida
       const link = document.createElement("a");
-      link.href = imagemRuim;
-      link.download = "capitulo-protegido.jpg";
+      link.href = imagemCorrompida;
+      link.download = "capitulo_protegido_corrompido.jpg";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       
-      alert("A imagem salva foi protegida e possui qualidade reduzida.");
+      alert("A imagem baixada foi protegida e está corrompida com baixa qualidade.");
     });
 
     // Bloqueia o arraste da imagem
@@ -1114,7 +1130,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-
 
 </body>
 </html>
