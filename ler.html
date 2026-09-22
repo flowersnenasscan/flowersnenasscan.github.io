@@ -20,10 +20,6 @@
         margin: 0;
         padding: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
         -webkit-tap-highlight-color: transparent;
         outline: none;
     }
@@ -45,11 +41,6 @@
         padding: 0;
         border: none;
         outline: none;
-        -webkit-user-drag: none;
-        user-select: none;
-        -webkit-user-select: none;
-        -webkit-touch-callout: none;
-        pointer-events: none;
     }
 
     .barra-progresso-container {
@@ -405,7 +396,6 @@
         border-radius: 8px;
         flex-shrink: 0;
         margin-top: 1px;
-        pointer-events: none;
     }
 
     .item-reacao .texto-reacao {
@@ -523,7 +513,6 @@
         height: 100%;
         object-fit: contain;
         filter: drop-shadow(0 0 8px rgba(255, 153, 221, 0.7)) drop-shadow(0 0 3px rgba(255, 153, 221, 0.5));
-        pointer-events: none;
     }
 
     #giscus-container {
@@ -636,22 +625,6 @@
     </a>
 
     <script>
-        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
-        document.addEventListener('dragstart', function(e) { e.preventDefault(); });
-        document.addEventListener('copy', function(e) { e.preventDefault(); });
-        document.addEventListener('cut', function(e) { e.preventDefault(); });
-        document.addEventListener('selectstart', function(e) { e.preventDefault(); });
-
-        document.addEventListener('keydown', function(e) {
-            if (
-                e.key === 'F12' ||
-                (e.ctrlKey && (e.key === 'c' || e.key === 'C' || e.key === 'x' || e.key === 'X' || e.key === 'a' || e.key === 'A' || e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S'))
-            ) {
-                e.preventDefault();
-                return false;
-            }
-        });
-
         const SUPABASE_URL = 'https://rjqmaheyuattvsqocvku.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJqcW1haGV5dWF0dHZzcW9jdmt1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODgyMTQ0MDIsImV4cCI6MjEwMzc5MDQwMn0.EGnNvkrxSTyXmW-OlZcx4iAElQBFqu67qyHXLr7BMo4';
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -792,11 +765,6 @@
 
             const slugObraId = encodeURIComponent(obraSlugUrl);
 
-            // CORREÇÃO DOS BOTÕES DE NAVEGAÇÃO:
-            // Como no array os capítulos mais recentes costumam vir primeiro (índice 0 = cap 3, índice 1 = cap 2, etc.):
-            // - "Próximo" deve ir para o índice anterior (capítulo mais recente/número maior)
-            // - "Anterior" deve ir para o índice seguinte (capítulo mais antigo/número menor)
-            
             if (indexAtual > 0) {
                 let capProx = capitulos[indexAtual - 1];
                 let numProx = typeof capProx === 'object' ? capProx.numero : capProx;
@@ -849,11 +817,11 @@
                             const styleCustom = iframeDoc.createElement('style');
                             styleCustom.textContent = `
                                 main { color-scheme: dark; }
-                                body { background-color: #000000 !important; color: #FF99DD !important; user-select: none !important; -webkit-tap-highlight-color: transparent !important; }
+                                body { background-color: #000000 !important; color: #FF99DD !important; -webkit-tap-highlight-color: transparent !important; }
                                 .gsc-header { border-bottom-color: rgba(255, 153, 221, 0.2) !important; }
                                 a { color: #FF99DD !important; }
                                 .btn-primary, button[type="submit"] { background-color: #FF99DD !important; color: #000000 !important; border-color: #FF99DD !important; }
-                                .form-control, textarea, input { background-color: #111111 !important; color: #FF99DD !important; border-color: rgba(255, 153, 221, 0.4) !important; user-select: text !important; }
+                                .form-control, textarea, input { background-color: #111111 !important; color: #FF99DD !important; border-color: rgba(255, 153, 221, 0.4) !important; }
                                 .timeline-comment { background-color: #111111 !important; border-color: rgba(255, 153, 221, 0.2) !important; }
                             `;
                             iframeDoc.head.appendChild(styleCustom);
