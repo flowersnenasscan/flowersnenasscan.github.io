@@ -41,7 +41,6 @@
         padding: 0;
         border: none;
         outline: none;
-        /* Força o navegador a mostrar pixels estourados se tentar manipular/salvar em alta definição */
         image-rendering: pixelated;
         image-rendering: crisp-edges;
     }
@@ -762,32 +761,32 @@
                     img.alt = '';
                     img.setAttribute('referrerpolicy', 'no-referrer');
                     
-                    // Carrega a imagem original perfeitamente para leitura visual no site
+                    // Converte a imagem inteiramente para KB (baixa qualidade via canvas) no carregamento visual
                     const imgTemp = new Image();
                     imgTemp.crossOrigin = 'anonymous';
                     imgTemp.src = urlImg;
                     imgTemp.onload = function() {
-                        img.src = urlImg;
+                        const canvas = document.createElement('canvas');
+                        canvas.width = 450;  // Resolução limitada para garantir que fique em KB
+                        canvas.height = Math.floor(imgTemp.height * (450 / imgTemp.width));
+                        
+                        const ctx = canvas.getContext('2d');
+                        ctx.imageSmoothingEnabled = false;
+                        ctx.drawImage(imgTemp, 0, 0, canvas.width, canvas.height);
+
+                        // Gera o blob leve e define na imagem exibida na tela
+                        canvas.toBlob(function(blob) {
+                            img.src = URL.createObjectURL(blob);
+                        }, 'image/jpeg', 0.05); // Qualidade mínima de 5% (gera um arquivo de poucos KBs)
                     };
-                    img.onerror = function() {
+                    imgTemp.onerror = function() {
                         img.style.display = 'none';
                     };
 
-                    // Intercepta clique direito / menu de salvamento para injetar qualidade ruim (baixo KB)
+                    // Bloqueia qualquer tentativa de download original
                     img.addEventListener('contextmenu', function(e) {
                         e.preventDefault();
-                        baixarImagemRuim(imgTemp);
-                    });
-
-                    // Intercepta toque prolongado em dispositivos móveis (segurar o dedo na imagem)
-                    let touchTimer;
-                    img.addEventListener('touchstart', function(e) {
-                        touchTimer = setTimeout(() => {
-                            baixarImagemRuim(imgTemp);
-                        }, 600);
-                    });
-                    img.addEventListener('touchend', function(e) {
-                        clearTimeout(touchTimer);
+                        alert('Esta imagem está protegida e otimizada para ocupar apenas alguns KBs.');
                     });
 
                     img.addEventListener('dragstart', function(e) {
@@ -828,30 +827,6 @@
                 btnAnterior.href = '#';
                 btnAnterior.classList.add('disabled');
             }
-        }
-
-        // Função que gera a versão pixelada e de baixíssima qualidade (KB) para download/salvamento de página
-        function baixarImagemRuim(imgTemp) {
-            const canvas = document.createElement('canvas');
-            canvas.width = 250;  // Largura propositalmente pequena
-            canvas.height = 350; // Altura propositalmente pequena
-            
-            const ctx = canvas.getContext('2d');
-            ctx.imageSmoothingEnabled = false; // Deixa os pixels bem estourados
-            ctx.drawImage(imgTemp, 0, 0, canvas.width, canvas.height);
-
-            canvas.toBlob(function(blob) {
-                const urlBlob = URL.createObjectURL(blob);
-                const link = document.createElement('a');
-                link.href = urlBlob;
-                link.download = 'pagina-protegida.jpg';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                URL.revokeObjectURL(urlBlob);
-            }, 'image/jpeg', 0.03); // Qualidade extremamente baixa (3%) gerando arquivo em KB
-
-            alert('Esta imagem está protegida! O arquivo baixado foi reduzido para poucos KBs.');
         }
 
         function carregarGiscus(termId) {
