@@ -1078,58 +1078,38 @@
     }
 </script>  
 
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const imagens = document.querySelectorAll("img.pagina-leitura");
 
   imagens.forEach(img => {
-    // Intercepta o clique direito ou segurar a tela
-    img.addEventListener("contextmenu", function(e) {
-      e.preventDefault();
-      
-      // Cria o canvas do tamanho real da imagem na tela
-      const canvas = document.createElement("canvas");
-      canvas.width = img.naturalWidth;
-      canvas.height = img.naturalHeight;
-      const ctx = canvas.getContext("2d");
+    img.addEventListener("load", function() {
+      // Verifica a altura real da imagem
+      const alturaReal = img.naturalHeight;
+      const larguraReal = img.naturalWidth;
 
-      // 1. Desenha a imagem perfeitamente nítida no canvas
-      ctx.drawImage(img, 0, 0);
-
-      // 2. A MÁGICA DA CORRUPÇÃO: Desenha uma grade de "chuviscos" aleatórios em cima
-      // Isso destrói a qualidade da imagem que vai ser baixada, criando uma textura granulada
-      ctx.fillStyle = "rgba(0,0,0,0.85)"; // Cor preta com alta densidade
-      const blockSize = 4; // Tamanho do pixel de corrupção (quanto maior, mais feio fica)
-      for (let y = 0; y < canvas.height; y += blockSize) {
-        for (let x = 0; x < canvas.width; x += blockSize) {
-            if (Math.random() > 0.3) { // Decide quais "pixels" corromper (aleatório)
-                ctx.fillRect(x, y, blockSize, blockSize);
-            }
-        }
+      // Se a imagem for considerada "muito longa" (ex: altura maior que 3000 pixels)
+      if (alturaReal > 3000) {
+        // Cria um canvas para forçar o redimensionamento pixelado de baixa qualidade
+        const canvas = document.createElement("canvas");
+        const fatorReducao = 0.25; // Reduz drasticamente a resolução para pixelar
+        canvas.width = larguraReal * fatorReducao;
+        canvas.height = alturaReal * fatorReducao;
+        
+        const ctx = canvas.getContext("2d");
+        // Desativa a suavização de pixels para garantir o efeito pixelado clássico (estilo 8-bit)
+        ctx.imageSmoothingEnabled = false;
+        
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        
+        // Substitui a imagem original alta por essa versão forçadamente pixelada
+        img.src = canvas.toDataURL("image/jpeg", 0.5);
       }
-
-      // Gera a imagem final destruída com qualidade péssima
-      const imagemCorrompida = canvas.toDataURL("image/jpeg", 0.2); // Força compressão severa
-      
-      // Força o download da imagem corrompida
-      const link = document.createElement("a");
-      link.href = imagemCorrompida;
-      link.download = "capitulo_protegido_corrompido.jpg";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      alert("A imagem baixada foi protegida e está corrompida com baixa qualidade.");
-    });
-
-    // Bloqueia o arraste da imagem
-    img.addEventListener("dragstart", function(e) {
-      e.preventDefault();
     });
   });
 });
 </script>
+
 
 </body>
 </html>
