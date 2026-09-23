@@ -41,8 +41,6 @@
         padding: 0;
         border: none;
         outline: none;
-        image-rendering: pixelated;
-        image-rendering: crisp-edges;
     }
 
     .barra-progresso-container {
@@ -761,37 +759,26 @@
                     img.alt = '';
                     img.setAttribute('referrerpolicy', 'no-referrer');
                     
-                    // Converte a imagem inteiramente para KB (baixa qualidade via canvas) no carregamento visual
+                    // Renderiza com alta nitidez visual para leitura perfeita
                     const imgTemp = new Image();
                     imgTemp.crossOrigin = 'anonymous';
                     imgTemp.src = urlImg;
                     imgTemp.onload = function() {
                         const canvas = document.createElement('canvas');
-                        canvas.width = 450;  // Resolução limitada para garantir que fique em KB
-                        canvas.height = Math.floor(imgTemp.height * (450 / imgTemp.width));
+                        canvas.width = imgTemp.naturalWidth;
+                        canvas.height = imgTemp.naturalHeight;
                         
                         const ctx = canvas.getContext('2d');
-                        ctx.imageSmoothingEnabled = false;
-                        ctx.drawImage(imgTemp, 0, 0, canvas.width, canvas.height);
+                        ctx.drawImage(imgTemp, 0, 0);
 
-                        // Gera o blob leve e define na imagem exibida na tela
+                        // Compacta para JPEG mantendo alta nitidez (0.9), resultando em poucos KBs eficientes
                         canvas.toBlob(function(blob) {
                             img.src = URL.createObjectURL(blob);
-                        }, 'image/jpeg', 0.05); // Qualidade mínima de 5% (gera um arquivo de poucos KBs)
+                        }, 'image/jpeg', 0.9);
                     };
                     imgTemp.onerror = function() {
                         img.style.display = 'none';
                     };
-
-                    // Bloqueia qualquer tentativa de download original
-                    img.addEventListener('contextmenu', function(e) {
-                        e.preventDefault();
-                        alert('Esta imagem está protegida e otimizada para ocupar apenas alguns KBs.');
-                    });
-
-                    img.addEventListener('dragstart', function(e) {
-                        e.preventDefault();
-                    });
 
                     containerPaginas.appendChild(img);
                 });
