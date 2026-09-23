@@ -759,25 +759,30 @@
                     img.alt = '';
                     img.setAttribute('referrerpolicy', 'no-referrer');
                     
-                    // Renderiza com alta nitidez visual para leitura perfeita
+                    // 1. NA TELA: Mantém a imagem original com 100% de nitidez para leitura perfeita
+                    img.src = urlImg;
+
+                    // 2. AO TENTAR BAIXAR/SALVAR: Substitui por uma versão totalmente borrada e pixelada de péssima qualidade
                     const imgTemp = new Image();
                     imgTemp.crossOrigin = 'anonymous';
                     imgTemp.src = urlImg;
                     imgTemp.onload = function() {
                         const canvas = document.createElement('canvas');
-                        canvas.width = imgTemp.naturalWidth;
-                        canvas.height = imgTemp.naturalHeight;
+                        // Reduz drasticamente o tamanho (ex: 20% da largura original) para ficar pixelado
+                        canvas.width = Math.max(100, Math.floor(imgTemp.naturalWidth * 0.2));
+                        canvas.height = Math.max(100, Math.floor(imgTemp.naturalHeight * 0.2));
                         
                         const ctx = canvas.getContext('2d');
-                        ctx.drawImage(imgTemp, 0, 0);
+                        ctx.drawImage(imgTemp, 0, 0, canvas.width, canvas.height);
 
-                        // Compacta para JPEG mantendo alta nitidez (0.9), resultando em poucos KBs eficientes
+                        // Qualidade mínima (0.01) para estourar o arquivo e ficar ilegível ao baixar
                         canvas.toBlob(function(blob) {
-                            img.src = URL.createObjectURL(blob);
-                        }, 'image/jpeg', 0.9);
-                    };
-                    imgTemp.onerror = function() {
-                        img.style.display = 'none';
+                            const blobUrl = URL.createObjectURL(blob);
+                            img.addEventListener('contextmenu', function(e) {
+                                // Força o elemento a usar a versão borrada se tentarem puxar/salvar
+                                img.src = blobUrl;
+                            });
+                        }, 'image/jpeg', 0.01);
                     };
 
                     containerPaginas.appendChild(img);
