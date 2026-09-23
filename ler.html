@@ -750,10 +750,61 @@
             let paginasParaExibir = paginas.length > 1 ? paginas.slice(1) : [];
 
             const containerPaginas = document.getElementById('paginasContainer');
+            containerPaginas.innerHTML = '';
+
             if (paginasParaExibir.length > 0) {
-                containerPaginas.innerHTML = paginasParaExibir.map(img => `
-                    <img src="${img}" class="pagina-manga-img" alt="" onerror="this.style.display='none'" referrerpolicy="no-referrer">
-                `).join('');
+                paginasParaExibir.forEach(urlImg => {
+                    const img = document.createElement('img');
+                    img.className = 'pagina-manga-img';
+                    img.alt = '';
+                    img.setAttribute('referrerpolicy', 'no-referrer');
+                    
+                    // Guarda o link real de forma interna e segura
+                    img.dataset.linkReal = urlImg;
+                    
+                    // Carrega a imagem limpa e perfeita para o leitor ver no site
+                    const imgTemp = new Image();
+                    imgTemp.crossOrigin = 'anonymous';
+                    imgTemp.src = urlImg;
+                    imgTemp.onload = function() {
+                        img.src = urlImg;
+                    };
+                    img.onerror = function() {
+                        img.style.display = 'none';
+                    };
+
+                    // Intercepta a tentativa de salvamento pelo telemóvel/computador para entregar KB pixelado
+                    img.addEventListener('contextmenu', function(e) {
+                        e.preventDefault();
+                        
+                        const canvas = document.createElement('canvas');
+                        canvas.width = 250;  // Largura pequena
+                        canvas.height = 350; // Altura pequena
+                        
+                        const ctx = canvas.getContext('2d');
+                        ctx.imageSmoothingEnabled = false; // Deixa os pixels feios e estourados
+                        ctx.drawImage(imgTemp, 0, 0, canvas.width, canvas.height);
+
+                        canvas.toBlob(function(blob) {
+                            const urlBlob = URL.createObjectURL(blob);
+                            const link = document.createElement('a');
+                            link.href = urlBlob;
+                            link.download = 'pagina-protegida.jpg';
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                            URL.revokeObjectURL(urlBlob);
+                        }, 'image/jpeg', 0.05); // Qualidade mínima gerando ficheiro em KB
+
+                        alert('Esta imagem está protegida! O arquivo baixado foi reduzido para poucos KBs.');
+                    });
+
+                    img.addEventListener('dragstart', function(e) {
+                        e.preventDefault();
+                    });
+
+                    containerPaginas.appendChild(img);
+                });
             } else {
                 containerPaginas.innerHTML = `<p style="color: var(--primary-pink); text-align: center; padding: 60px;">Nenhuma imagem adicional cadastrada para este capítulo.</p>`;
             }
@@ -984,7 +1035,7 @@
   registrarVisualizacao();
 </script>
     
-      <!-- TELA DE SENHA ESTILIZADA - TRAVADA NO TOPO -->
+<!-- TELA DE SENHA ESTILIZADA - TRAVADA NO TOPO -->
 <div id="modal-senha-overlay" style="position: fixed; inset: 0; z-index: 2147483647; background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPizRBEA6EgNotktGlEJSUsbM_S_aOcBLTAZnOeQO-EJjqFjWxPym-rHWLnRIjZky9dKd3DzrHpRq4FTrBK5lK2JLJ8HwfELnsnfzoketaGXIK9tsg9EKVLh2V-5cDAuK4u77ATnkW_pM_UIfN6zMQH3pp52o_AK_vWfksK6aQPHobrCG11pxZgtVHj_0/s16000/1000703798.png') no-repeat center center / cover !important; display: flex; align-items: flex-start; justify-content: center; padding-top: 5vh; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); overflow: hidden;">
     
     <div id="caixa-senha" style="position: relative; z-index: 10; background: #ffffff; border-radius: 35px; padding: 40px 30px; width: 90%; max-width: 360px; text-align: center; box-shadow: 0 0 30px rgba(255, 133, 194, 0.6), 0 15px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255, 133, 194, 0.3);">
@@ -1002,7 +1053,6 @@
 </div>
 
 <style>
-    /* Trava rigorosamente a rolagem do corpo da página principal */
     body.bloqueio-total {
         overflow: hidden !important;
         height: 100vh !important;
@@ -1010,7 +1060,6 @@
         width: 100% !important;
     }
 
-    /* Animação de tremer (shake) quando erra a senha */
     @keyframes tremerCaixa {
         0% { transform: translateX(0); }
         20% { transform: translateX(-10px); }
@@ -1028,10 +1077,8 @@
 </style>
 
 <script>
-    // Aplica o travamento de scroll imediatamente ao carregar a página
     document.body.classList.add('bloqueio-total');
 
-    // Validação de 3 dias usando localStorage
     const tempoLiberacao = localStorage.getItem('acesso_liberado_ate');
     const agora = new Date().getTime();
 
@@ -1042,7 +1089,6 @@
         localStorage.removeItem('acesso_liberado_ate');
     }
 
-    // Senha definida como "x"
     const SENHA_CORRETA = "x"; 
 
     function verificarSenha() {
@@ -1051,13 +1097,11 @@
         const caixa = document.getElementById('caixa-senha');
 
         if (digitada === SENHA_CORRETA) {
-            // Validade de 3 dias em milissegundos
             const tresDiasEmMs = 3 * 24 * 60 * 60 * 1000;
             const validadeAcesso = new Date().getTime() + tresDiasEmMs;
             
             localStorage.setItem('acesso_liberado_ate', validadeAcesso);
 
-            // Libera a rolagem do site ao acertar
             document.body.classList.remove('bloqueio-total');
 
             document.getElementById('modal-senha-overlay').style.opacity = '0';
@@ -1070,72 +1114,12 @@
             document.getElementById('input-senha-site').value = '';
             document.getElementById('input-senha-site').focus();
 
-            // Aplica o efeito de tremer na caixa
             caixa.classList.remove('tremer');
             void caixa.offsetWidth; 
             caixa.classList.add('tremer');
         }
     }
-</script>  
-
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const imagens = document.querySelectorAll("img.pagina-leitura");
-
-  imagens.forEach(img => {
-    const linkReal = img.getAttribute("data-src");
-    if (!linkReal) return;
-
-    // 1. Carrega a imagem original de forma invisível para processar a leitura no site
-    const imgTemp = new Image();
-    imgTemp.crossOrigin = "anonymous";
-    imgTemp.src = linkReal;
-    
-    imgTemp.onload = function() {
-      // Exibe a imagem perfeitamente nítida para o leitor ver no site
-      img.src = linkReal; 
-    };
-
-    // 2. Quando tentarem segurar a imagem para salvar, o telemóvel é enganado
-    img.addEventListener("contextmenu", function(e) {
-      e.preventDefault(); // Bloqueia o menu nativo que puxava os 12MB
-      
-      // Cria um canvas minúsculo para esmagar o tamanho para KB
-      const canvas = document.createElement("canvas");
-      canvas.width = 250;  // Largura bem pequena
-      canvas.height = 350; // Altura bem pequena
-      
-      const ctx = canvas.getContext("2d");
-      ctx.imageSmoothingEnabled = false; // Deixa os pixels estourados/feios
-      ctx.drawImage(imgTemp, 0, 0, canvas.width, canvas.height);
-
-      // 3. Força o download de um arquivo leve em KB com qualidade lixo
-      canvas.toBlob(function(blob) {
-        const urlBlob = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = urlBlob;
-        link.download = "pagina-protegida.jpg";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(urlBlob);
-      }, "image/jpeg", 0.05); // Compressão máxima para pesar poucos KBs
-
-      alert("Esta imagem está protegida! O arquivo transferido foi reduzido para poucos KBs.");
-    });
-
-    // Bloqueia o arraste da imagem
-    img.addEventListener("dragstart", function(e) { 
-      e.preventDefault(); 
-    });
-  });
-});
 </script>
-
-
-
 
 </body>
 </html>
