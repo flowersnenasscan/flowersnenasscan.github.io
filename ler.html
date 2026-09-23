@@ -1078,39 +1078,42 @@
     }
 </script>  
 
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const imagens = document.querySelectorAll("img.pagina-leitura");
 
   imagens.forEach(img => {
-    // Intercepta o clique direito ou o ato de segurar a imagem para salvar no telemóvel
     img.addEventListener("contextmenu", function(e) {
-      e.preventDefault(); // Bloqueia o menu nativo original
+      e.preventDefault(); // Bloqueia o menu nativo limpo
 
-      // Cria um canvas para corromper a qualidade só no arquivo de saída
+      // Cria um canvas para forçar a proporção espremida e borrada no arquivo baixado
       const canvas = document.createElement("canvas");
-      const largura = img.naturalWidth || img.width;
-      const altura = img.naturalHeight || img.height;
+      const larguraOriginal = img.naturalWidth || img.width;
+      const alturaOriginal = img.naturalHeight || img.height;
 
-      // Reduz drasticamente a resolução do arquivo gerado para o download sair pixelado
-      const escala = 0.25; 
-      canvas.width = largura * escala;
-      canvas.height = altura * escala;
+      // Define uma largura menor e espremida artificialmente (igual ao print)
+      canvas.width = larguraOriginal * 0.45; // Reduz a largura para 45%
+      canvas.height = alturaOriginal;
 
       const ctx = canvas.getContext("2d");
-      ctx.imageSmoothingEnabled = false; // Força o pixelado feio
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      
+      // Desenha a imagem espremida no canvas, gerando as tarjas e a distorção
+      ctx.drawImage(img, (canvas.width - larguraOriginal) / 2, 0, larguraOriginal, alturaOriginal);
 
-      // Gera o link de download com a imagem estragada/pixelada
-      const link = document.createElement("a");
-      link.href = canvas.toDataURL("image/jpeg", 0.3);
-      link.download = "pagina-protegida.jpg";
-      
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      alert("A imagem transferida foi protegida contra cópia.");
+      // Converte o canvas manipulado num ficheiro de download corrompido
+      canvas.toBlob(function(blob) {
+        const urlBlob = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = urlBlob;
+        link.download = "pagina_capitulo_protegida.jpg";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(urlBlob);
+      }, "image/jpeg", 0.4); // Qualidade baixa para estragar o ficheiro
+
+      alert("A imagem transferida foi protegida e guardada com qualidade reduzida.");
     });
 
     img.addEventListener("dragstart", function(e) {
