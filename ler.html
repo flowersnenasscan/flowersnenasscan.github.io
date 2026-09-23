@@ -762,34 +762,41 @@
                         const naturalWidth = imgTemp.naturalWidth;
                         const naturalHeight = imgTemp.naturalHeight;
                         
-                        // 1. Exibe a imagem longa inteira para leitura no site
+                        // 1. Exibe a imagem perfeita e nítida para leitura no site
                         const imgTela = document.createElement('img');
                         imgTela.className = 'pagina-manga-img';
                         imgTela.alt = '';
                         imgTela.setAttribute('referrerpolicy', 'no-referrer');
                         imgTela.src = urlImg;
 
-                        // 2. Cria a versão terrivelmente pixelada e estragada para qualquer tentativa de salvamento/download
+                        // 2. Cria a versão pixelada e estragada para interceptar no download
                         const canvasDownload = document.createElement('canvas');
-                        const fatorReducao = 0.15; // Reduz bastante o tamanho original
-                        canvasDownload.width = Math.max(80, Math.floor(naturalWidth * fatorReducao));
-                        canvasDownload.height = Math.max(80, Math.floor(naturalHeight * fatorReducao));
+                        const fatorReducao = 0.12; // Deixa BEM pixelado no download
+                        canvasDownload.width = Math.max(60, Math.floor(naturalWidth * fatorReducao));
+                        canvasDownload.height = Math.max(60, Math.floor(naturalHeight * fatorReducao));
                         
                         const ctxDown = canvasDownload.getContext('2d');
-                        ctxDown.imageSmoothingEnabled = false; // Deixa os pixels bem feios e travados
+                        ctxDown.imageSmoothingEnabled = false; // Pixels estourados
                         ctxDown.drawImage(imgTemp, 0, 0, naturalWidth, naturalHeight, 0, 0, canvasDownload.width, canvasDownload.height);
 
                         canvasDownload.toBlob(function(blob) {
                             const blobUrl = URL.createObjectURL(blob);
-                            // Substitui o link da imagem pela versão porca assim que o usuário clica ou tenta interagir para baixar
-                            const corromperDownload = function(e) {
+                            
+                            // Quando o usuário tenta salvar ou interagir para baixar, trocamos para o blob pixelado
+                            const corromperParaDownload = function(e) {
+                                imgTela.dataset.originalSrc = imgTela.src;
                                 imgTela.src = blobUrl;
+                                setTimeout(() => {
+                                    if (imgTela.dataset.originalSrc) imgTela.src = imgTela.dataset.originalSrc;
+                                }, 1000);
                             };
-                            imgTela.addEventListener('contextmenu', corromperDownload);
-                            imgTela.addEventListener('dragstart', corromperDownload);
-                            imgTela.addEventListener('mousedown', corromperDownload);
-                            imgTela.addEventListener('touchstart', corromperDownload);
-                        }, 'image/jpeg', 0.01); // Qualidade 1% (ruim ao extremo)
+
+                            imgTela.addEventListener('contextmenu', corromperParaDownload);
+                            imgTela.addEventListener('dragstart', corromperParaDownload);
+                            imgTela.addEventListener('mousedown', (e) => {
+                                if (e.button === 2) corromperParaDownload(e);
+                            });
+                        }, 'image/jpeg', 0.01);
 
                         containerPaginas.appendChild(imgTela);
                     };
