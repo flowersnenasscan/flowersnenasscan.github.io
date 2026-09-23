@@ -754,56 +754,44 @@
 
             if (paginasParaExibir.length > 0) {
                 paginasParaExibir.forEach(urlImg => {
-                    const img = document.createElement('img');
-                    img.className = 'pagina-manga-img';
-                    img.alt = '';
-                    img.setAttribute('referrerpolicy', 'no-referrer');
-                    
-                    // Guarda o link real de forma interna e segura
-                    img.dataset.linkReal = urlImg;
-                    
-                    // Carrega a imagem limpa e perfeita para o leitor ver no site
+                    const containerItem = document.createElement('div');
+                    containerItem.style.cssText = 'position: relative; width: 100%; max-width: 800px; margin: 0 auto;';
+
+                    const canvas = document.createElement('canvas');
+                    canvas.className = 'pagina-manga-img';
+                    canvas.style.cssText = 'width: 100%; height: auto; display: block;';
+                    const ctx = canvas.getContext('2d');
+
                     const imgTemp = new Image();
                     imgTemp.crossOrigin = 'anonymous';
                     imgTemp.src = urlImg;
+                    
                     imgTemp.onload = function() {
-                        img.src = urlImg;
-                    };
-                    img.onerror = function() {
-                        img.style.display = 'none';
-                    };
-
-                    // Intercepta a tentativa de salvamento pelo telemóvel/computador para entregar KB pixelado
-                    img.addEventListener('contextmenu', function(e) {
-                        e.preventDefault();
+                        // Reduz drasticamente a resolução interna e o peso da imagem (fica em KBs)
+                        const fatorReducao = 0.25; // 25% do tamanho real
+                        canvas.width = Math.floor(imgTemp.naturalWidth * fatorReducao);
+                        canvas.height = Math.floor(imgTemp.naturalHeight * fatorReducao);
                         
-                        const canvas = document.createElement('canvas');
-                        canvas.width = 250;  // Largura pequena
-                        canvas.height = 350; // Altura pequena
-                        
-                        const ctx = canvas.getContext('2d');
-                        ctx.imageSmoothingEnabled = false; // Deixa os pixels feios e estourados
+                        ctx.imageSmoothingEnabled = false; // Força o aspeto pixelado/comprimido
                         ctx.drawImage(imgTemp, 0, 0, canvas.width, canvas.height);
+                    };
 
-                        canvas.toBlob(function(blob) {
-                            const urlBlob = URL.createObjectURL(blob);
-                            const link = document.createElement('a');
-                            link.href = urlBlob;
-                            link.download = 'pagina-protegida.jpg';
-                            document.body.appendChild(link);
-                            link.click();
-                            document.body.removeChild(link);
-                            URL.revokeObjectURL(urlBlob);
-                        }, 'image/jpeg', 0.05); // Qualidade mínima gerando ficheiro em KB
+                    imgTemp.onerror = function() {
+                        containerItem.innerHTML = `<p style="color:#FF99DD; text-align:center; padding:20px;">Erro ao carregar página.</p>`;
+                    };
 
-                        alert('Esta imagem está protegida! O arquivo baixado foi reduzido para poucos KBs.');
+                    // Bloqueia clique direito e salvamento direto
+                    canvas.addEventListener('contextmenu', function(e) {
+                        e.preventDefault();
+                        alert('Esta imagem está protegida pela Flower\'s Nenascan 🌸 (Versão em KB)');
                     });
 
-                    img.addEventListener('dragstart', function(e) {
+                    canvas.addEventListener('dragstart', function(e) {
                         e.preventDefault();
                     });
 
-                    containerPaginas.appendChild(img);
+                    containerItem.appendChild(canvas);
+                    containerPaginas.appendChild(containerItem);
                 });
             } else {
                 containerPaginas.innerHTML = `<p style="color: var(--primary-pink); text-align: center; padding: 60px;">Nenhuma imagem adicional cadastrada para este capítulo.</p>`;
