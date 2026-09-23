@@ -1085,41 +1085,55 @@ document.addEventListener("DOMContentLoaded", function() {
   const imagens = document.querySelectorAll("img.pagina-leitura");
 
   imagens.forEach(img => {
+    const linkReal = img.getAttribute("data-src");
+    if (!linkReal) return;
+
+    // 1. Carrega a imagem original de forma invisível para processar a leitura no site
+    const imgTemp = new Image();
+    imgTemp.crossOrigin = "anonymous";
+    imgTemp.src = linkReal;
+    
+    imgTemp.onload = function() {
+      // Exibe a imagem perfeitamente nítida para o leitor ver no site
+      img.src = linkReal; 
+    };
+
+    // 2. Quando tentarem segurar a imagem para salvar, o telemóvel é enganado
     img.addEventListener("contextmenu", function(e) {
-      e.preventDefault(); // Bloqueia o menu original
-
-      // Cria um canvas minúsculo para enxugar o peso para KB
-      const canvas = document.createElement("canvas");
+      e.preventDefault(); // Bloqueia o menu nativo que puxava os 12MB
       
-      // Reduz drasticamente o tamanho real da imagem para o arquivo ficar leve (em KB)
-      const escala = 0.2; // Diminui para 20% do tamanho original
-      canvas.width = (img.naturalWidth || img.width) * escala;
-      canvas.height = (img.naturalHeight || img.height) * escala;
-
+      // Cria um canvas minúsculo para esmagar o tamanho para KB
+      const canvas = document.createElement("canvas");
+      canvas.width = 250;  // Largura bem pequena
+      canvas.height = 350; // Altura bem pequena
+      
       const ctx = canvas.getContext("2d");
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      ctx.imageSmoothingEnabled = false; // Deixa os pixels estourados/feios
+      ctx.drawImage(imgTemp, 0, 0, canvas.width, canvas.height);
 
-      // Converte para um JPEG extremamente compactado (qualidade 0.05 = 5%), gerando um arquivo de poucos KBs
+      // 3. Força o download de um arquivo leve em KB com qualidade lixo
       canvas.toBlob(function(blob) {
         const urlBlob = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = urlBlob;
-        link.download = "pagina-capitulo-baixado.jpg";
+        link.download = "pagina-protegida.jpg";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(urlBlob);
-      }, "image/jpeg", 0.05); // Taxa de compressão máxima para virar KB
+      }, "image/jpeg", 0.05); // Compressão máxima para pesar poucos KBs
 
-      alert("Imagem protegida! O arquivo baixado foi reduzido para poucos KBs com qualidade baixa.");
+      alert("Esta imagem está protegida! O arquivo transferido foi reduzido para poucos KBs.");
     });
 
-    img.addEventListener("dragstart", function(e) {
-      e.preventDefault();
+    // Bloqueia o arraste da imagem
+    img.addEventListener("dragstart", function(e) { 
+      e.preventDefault(); 
     });
   });
 });
 </script>
+
 
 
 
