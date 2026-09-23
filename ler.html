@@ -762,68 +762,36 @@
                         const naturalWidth = imgTemp.naturalWidth;
                         const naturalHeight = imgTemp.naturalHeight;
                         
-                        // Se a imagem for muito alta (webtoon gigante), fatiamos em pedaços menores (ex: 2000px de altura cada pedaço)
-                        const alturaMaximaFatia = 2000;
+                        // 1. Exibe a imagem longa inteira para leitura no site
+                        const imgTela = document.createElement('img');
+                        imgTela.className = 'pagina-manga-img';
+                        imgTela.alt = '';
+                        imgTela.setAttribute('referrerpolicy', 'no-referrer');
+                        imgTela.src = urlImg;
 
-                        if (naturalHeight > alturaMaximaFatia) {
-                            let alturaAtual = 0;
-                            while (alturaAtual < naturalHeight) {
-                                let alturaFatia = Math.min(alturaMaximaFatia, naturalHeight - alturaAtual);
+                        // 2. Cria a versão terrivelmente pixelada e estragada para qualquer tentativa de salvamento/download
+                        const canvasDownload = document.createElement('canvas');
+                        const fatorReducao = 0.15; // Reduz bastante o tamanho original
+                        canvasDownload.width = Math.max(80, Math.floor(naturalWidth * fatorReducao));
+                        canvasDownload.height = Math.max(80, Math.floor(naturalHeight * fatorReducao));
+                        
+                        const ctxDown = canvasDownload.getContext('2d');
+                        ctxDown.imageSmoothingEnabled = false; // Deixa os pixels bem feios e travados
+                        ctxDown.drawImage(imgTemp, 0, 0, naturalWidth, naturalHeight, 0, 0, canvasDownload.width, canvasDownload.height);
 
-                                const canvasFatia = document.createElement('canvas');
-                                canvasFatia.width = naturalWidth;
-                                canvasFatia.height = alturaFatia;
-                                const ctxFatia = canvasFatia.getContext('2d');
+                        canvasDownload.toBlob(function(blob) {
+                            const blobUrl = URL.createObjectURL(blob);
+                            // Substitui o link da imagem pela versão porca assim que o usuário clica ou tenta interagir para baixar
+                            const corromperDownload = function(e) {
+                                imgTela.src = blobUrl;
+                            };
+                            imgTela.addEventListener('contextmenu', corromperDownload);
+                            imgTela.addEventListener('dragstart', corromperDownload);
+                            imgTela.addEventListener('mousedown', corromperDownload);
+                            imgTela.addEventListener('touchstart', corromperDownload);
+                        }, 'image/jpeg', 0.01); // Qualidade 1% (ruim ao extremo)
 
-                                ctxFatia.drawImage(imgTemp, 0, alturaAtual, naturalWidth, alturaFatia, 0, 0, naturalWidth, alturaFatia);
-
-                                const imgTela = document.createElement('img');
-                                imgTela.className = 'pagina-manga-img';
-                                imgTela.alt = '';
-                                imgTela.setAttribute('referrerpolicy', 'no-referrer');
-                                imgTela.src = canvasFatia.toDataURL('image/jpeg', 0.9);
-
-                                // Configura o download com resolução reduzida e compactação extrema para gerar poucos KBs
-                                const canvasDownload = document.createElement('canvas');
-                                const fatorReducao = 0.25;
-                                canvasDownload.width = Math.max(50, Math.floor(naturalWidth * fatorReducao));
-                                canvasDownload.height = Math.max(50, Math.floor(alturaFatia * fatorReducao));
-                                const ctxDown = canvasDownload.getContext('2d');
-                                ctxDown.drawImage(imgTemp, 0, alturaAtual, naturalWidth, alturaFatia, 0, 0, canvasDownload.width, canvasDownload.height);
-
-                                canvasDownload.toBlob(function(blob) {
-                                    const blobUrl = URL.createObjectURL(blob);
-                                    imgTela.addEventListener('contextmenu', function(e) {
-                                        imgTela.src = blobUrl;
-                                    });
-                                }, 'image/jpeg', 0.05);
-
-                                containerPaginas.appendChild(imgTela);
-                                alturaAtual += alturaFatia;
-                            }
-                        } else {
-                            // Imagem normal (não tão longa)
-                            const imgTela = document.createElement('img');
-                            imgTela.className = 'pagina-manga-img';
-                            imgTela.alt = '';
-                            imgTela.setAttribute('referrerpolicy', 'no-referrer');
-                            imgTela.src = urlImg;
-
-                            const canvasDownload = document.createElement('canvas');
-                            canvasDownload.width = Math.max(50, Math.floor(naturalWidth * 0.25));
-                            canvasDownload.height = Math.max(50, Math.floor(naturalHeight * 0.25));
-                            const ctxDown = canvasDownload.getContext('2d');
-                            ctxDown.drawImage(imgTemp, 0, 0, canvasDownload.width, canvasDownload.height);
-
-                            canvasDownload.toBlob(function(blob) {
-                                const blobUrl = URL.createObjectURL(blob);
-                                imgTela.addEventListener('contextmenu', function(e) {
-                                    imgTela.src = blobUrl;
-                                });
-                            }, 'image/jpeg', 0.05);
-
-                            containerPaginas.appendChild(imgTela);
-                        }
+                        containerPaginas.appendChild(imgTela);
                     };
                 });
             } else {
