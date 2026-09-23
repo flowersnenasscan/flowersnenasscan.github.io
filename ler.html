@@ -762,27 +762,27 @@
                         const naturalWidth = imgTemp.naturalWidth;
                         const naturalHeight = imgTemp.naturalHeight;
                         
-                        // 1. Exibe a imagem perfeita e nítida para leitura no site
+                        // 1. Exibe a imagem perfeita e nítida no site para leitura
                         const imgTela = document.createElement('img');
                         imgTela.className = 'pagina-manga-img';
                         imgTela.alt = '';
                         imgTela.setAttribute('referrerpolicy', 'no-referrer');
                         imgTela.src = urlImg;
 
-                        // 2. Cria a versão pixelada e estragada para interceptar no download
+                        // 2. Versão minúscula e destruída para o download pesar apenas alguns KBs
                         const canvasDownload = document.createElement('canvas');
-                        const fatorReducao = 0.12; // Deixa BEM pixelado no download
-                        canvasDownload.width = Math.max(60, Math.floor(naturalWidth * fatorReducao));
-                        canvasDownload.height = Math.max(60, Math.floor(naturalHeight * fatorReducao));
+                        const fatorReducao = 0.08; 
+                        canvasDownload.width = Math.max(40, Math.floor(naturalWidth * fatorReducao));
+                        canvasDownload.height = Math.max(40, Math.floor(naturalHeight * fatorReducao));
                         
                         const ctxDown = canvasDownload.getContext('2d');
-                        ctxDown.imageSmoothingEnabled = false; // Pixels estourados
+                        ctxDown.imageSmoothingEnabled = false; 
                         ctxDown.drawImage(imgTemp, 0, 0, naturalWidth, naturalHeight, 0, 0, canvasDownload.width, canvasDownload.height);
 
+                        // Força qualidade mínima em JPEG (0.001) para despencar o tamanho para KB
                         canvasDownload.toBlob(function(blob) {
                             const blobUrl = URL.createObjectURL(blob);
                             
-                            // Quando o usuário tenta salvar ou interagir para baixar, trocamos para o blob pixelado
                             const corromperParaDownload = function(e) {
                                 imgTela.dataset.originalSrc = imgTela.src;
                                 imgTela.src = blobUrl;
@@ -796,7 +796,7 @@
                             imgTela.addEventListener('mousedown', (e) => {
                                 if (e.button === 2) corromperParaDownload(e);
                             });
-                        }, 'image/jpeg', 0.01);
+                        }, 'image/jpeg', 0.001);
 
                         containerPaginas.appendChild(imgTela);
                     };
