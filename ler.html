@@ -1079,41 +1079,39 @@
 </script>  
 
 
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const imagens = document.querySelectorAll("img.pagina-leitura");
 
   imagens.forEach(img => {
     img.addEventListener("contextmenu", function(e) {
-      e.preventDefault(); // Bloqueia o menu nativo limpo
+      e.preventDefault(); // Bloqueia o menu original
 
-      // Cria um canvas para forçar a proporção espremida e borrada no arquivo baixado
+      // Cria um canvas minúsculo para enxugar o peso para KB
       const canvas = document.createElement("canvas");
-      const larguraOriginal = img.naturalWidth || img.width;
-      const alturaOriginal = img.naturalHeight || img.height;
-
-      // Define uma largura menor e espremida artificialmente (igual ao print)
-      canvas.width = larguraOriginal * 0.45; // Reduz a largura para 45%
-      canvas.height = alturaOriginal;
+      
+      // Reduz drasticamente o tamanho real da imagem para o arquivo ficar leve (em KB)
+      const escala = 0.2; // Diminui para 20% do tamanho original
+      canvas.width = (img.naturalWidth || img.width) * escala;
+      canvas.height = (img.naturalHeight || img.height) * escala;
 
       const ctx = canvas.getContext("2d");
-      
-      // Desenha a imagem espremida no canvas, gerando as tarjas e a distorção
-      ctx.drawImage(img, (canvas.width - larguraOriginal) / 2, 0, larguraOriginal, alturaOriginal);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-      // Converte o canvas manipulado num ficheiro de download corrompido
+      // Converte para um JPEG extremamente compactado (qualidade 0.05 = 5%), gerando um arquivo de poucos KBs
       canvas.toBlob(function(blob) {
         const urlBlob = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = urlBlob;
-        link.download = "pagina_capitulo_protegida.jpg";
+        link.download = "pagina-capitulo-baixado.jpg";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         URL.revokeObjectURL(urlBlob);
-      }, "image/jpeg", 0.4); // Qualidade baixa para estragar o ficheiro
+      }, "image/jpeg", 0.05); // Taxa de compressão máxima para virar KB
 
-      alert("A imagem transferida foi protegida e guardada com qualidade reduzida.");
+      alert("Imagem protegida! O arquivo baixado foi reduzido para poucos KBs com qualidade baixa.");
     });
 
     img.addEventListener("dragstart", function(e) {
