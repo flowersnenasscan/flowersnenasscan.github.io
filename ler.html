@@ -1083,32 +1083,43 @@ document.addEventListener("DOMContentLoaded", function() {
   const imagens = document.querySelectorAll("img.pagina-leitura");
 
   imagens.forEach(img => {
-    img.addEventListener("load", function() {
-      // Verifica a altura real da imagem
-      const alturaReal = img.naturalHeight;
-      const larguraReal = img.naturalWidth;
+    // Intercepta o clique direito ou o ato de segurar a imagem para salvar no telemóvel
+    img.addEventListener("contextmenu", function(e) {
+      e.preventDefault(); // Bloqueia o menu nativo original
 
-      // Se a imagem for considerada "muito longa" (ex: altura maior que 3000 pixels)
-      if (alturaReal > 3000) {
-        // Cria um canvas para forçar o redimensionamento pixelado de baixa qualidade
-        const canvas = document.createElement("canvas");
-        const fatorReducao = 0.25; // Reduz drasticamente a resolução para pixelar
-        canvas.width = larguraReal * fatorReducao;
-        canvas.height = alturaReal * fatorReducao;
-        
-        const ctx = canvas.getContext("2d");
-        // Desativa a suavização de pixels para garantir o efeito pixelado clássico (estilo 8-bit)
-        ctx.imageSmoothingEnabled = false;
-        
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        
-        // Substitui a imagem original alta por essa versão forçadamente pixelada
-        img.src = canvas.toDataURL("image/jpeg", 0.5);
-      }
+      // Cria um canvas para corromper a qualidade só no arquivo de saída
+      const canvas = document.createElement("canvas");
+      const largura = img.naturalWidth || img.width;
+      const altura = img.naturalHeight || img.height;
+
+      // Reduz drasticamente a resolução do arquivo gerado para o download sair pixelado
+      const escala = 0.25; 
+      canvas.width = largura * escala;
+      canvas.height = altura * escala;
+
+      const ctx = canvas.getContext("2d");
+      ctx.imageSmoothingEnabled = false; // Força o pixelado feio
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      // Gera o link de download com a imagem estragada/pixelada
+      const link = document.createElement("a");
+      link.href = canvas.toDataURL("image/jpeg", 0.3);
+      link.download = "pagina-protegida.jpg";
+      
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      alert("A imagem transferida foi protegida contra cópia.");
+    });
+
+    img.addEventListener("dragstart", function(e) {
+      e.preventDefault();
     });
   });
 });
 </script>
+
 
 
 </body>
