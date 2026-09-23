@@ -32,7 +32,6 @@
         max-width: 100vw;
     }
 
-    /* Imagem limpa e perfeita para leitura na tela */
     .pagina-manga-img {
         width: 100vw;
         max-width: 800px;
@@ -42,25 +41,9 @@
         padding: 0;
         border: none;
         outline: none;
-        -webkit-touch-callout: default; /* Permite menu de toque mas interceptamos o save */
-    }
-
-    /* Camada invisível de proteção anti-arraste */
-    .pagina-wrapper {
-        position: relative;
-        width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .camada-invisivel {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 10;
-        background: transparent;
+        /* Força o navegador a mostrar pixels estourados se tentar manipular/salvar em alta definição */
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
     }
 
     .barra-progresso-container {
@@ -555,7 +538,7 @@
             <!-- Botão Voltar -->
             <a href="#" class="btn-voltar-obra" id="btnVoltarObra" onclick="irParaDetalhes(event)">❀ Voltar</a>
             
-            <!-- Botão da Casinha -->
+            <!-- Botão da Casinha (Sem borda, centralizado e maior) -->
             <a href="./" class="btn-casinha" title="Início">
                 <svg viewBox="0 0 24 24">
                     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
@@ -774,28 +757,44 @@
 
             if (paginasParaExibir.length > 0) {
                 paginasParaExibir.forEach(urlImg => {
-                    const wrapper = document.createElement('div');
-                    wrapper.className = 'pagina-wrapper';
-
-                    // Imagem limpa para leitura normal (qualidade alta no ecra)
                     const img = document.createElement('img');
                     img.className = 'pagina-manga-img';
-                    img.src = urlImg;
-                    img.alt = `Página do Capítulo ${numCap}`;
-                    img.referrerPolicy = 'no-referrer';
-                    img.crossOrigin = 'anonymous';
-
-                    // Camada transparente por cima para bloquear o clique direito de salvar a imagem limpa
-                    const camada = document.createElement('div');
-                    camada.className = 'camada-invisivel';
+                    img.alt = '';
+                    img.setAttribute('referrerpolicy', 'no-referrer');
                     
-                    // Se tentarem segurar/arrastar ou clicar com botão direito na camada
-                    camada.addEventListener('contextmenu', e => e.preventDefault());
-                    camada.addEventListener('dragstart', e => e.preventDefault());
+                    // Carrega a imagem original perfeitamente para leitura visual no site
+                    const imgTemp = new Image();
+                    imgTemp.crossOrigin = 'anonymous';
+                    imgTemp.src = urlImg;
+                    imgTemp.onload = function() {
+                        img.src = urlImg;
+                    };
+                    img.onerror = function() {
+                        img.style.display = 'none';
+                    };
 
-                    wrapper.appendChild(img);
-                    wrapper.appendChild(camada);
-                    containerPaginas.appendChild(wrapper);
+                    // Intercepta clique direito / menu de salvamento para injetar qualidade ruim (baixo KB)
+                    img.addEventListener('contextmenu', function(e) {
+                        e.preventDefault();
+                        baixarImagemRuim(imgTemp);
+                    });
+
+                    // Intercepta toque prolongado em dispositivos móveis (segurar o dedo na imagem)
+                    let touchTimer;
+                    img.addEventListener('touchstart', function(e) {
+                        touchTimer = setTimeout(() => {
+                            baixarImagemRuim(imgTemp);
+                        }, 600);
+                    });
+                    img.addEventListener('touchend', function(e) {
+                        clearTimeout(touchTimer);
+                    });
+
+                    img.addEventListener('dragstart', function(e) {
+                        e.preventDefault();
+                    });
+
+                    containerPaginas.appendChild(img);
                 });
             } else {
                 containerPaginas.innerHTML = `<p style="color: var(--primary-pink); text-align: center; padding: 60px;">Nenhuma imagem adicional cadastrada para este capítulo.</p>`;
@@ -831,30 +830,29 @@
             }
         }
 
-        // Intercepta tentativas de download global e estraga a imagem gerando uma versão podre/pixelizada via canvas
-        document.addEventListener('dragstart', function(e) {
-            if (e.target.tagName === 'IMG') {
-                e.preventDefault();
-            }
-        });
+        // Função que gera a versão pixelada e de baixíssima qualidade (KB) para download/salvamento de página
+        function baixarImagemRuim(imgTemp) {
+            const canvas = document.createElement('canvas');
+            canvas.width = 250;  // Largura propositalmente pequena
+            canvas.height = 350; // Altura propositalmente pequena
+            
+            const ctx = canvas.getContext('2d');
+            ctx.imageSmoothingEnabled = false; // Deixa os pixels bem estourados
+            ctx.drawImage(imgTemp, 0, 0, canvas.width, canvas.height);
 
-        // Intercepta clique direito em imagens para corromper o download
-        document.addEventListener('contextmenu', function(e) {
-            if (e.target.tagName === 'IMG') {
-                // Deixa o menu abrir, mas se tentarem salvar, trocamos temporariamente por uma versão baixíssima resolução comprimida
-                let imgOriginal = e.target;
-                if (!imgOriginal.dataset.corrompida) {
-                    let canvas = document.createElement('canvas');
-                    let ctx = canvas.getContext('2d');
-                    canvas.width = Math.floor(imgOriginal.naturalWidth * 0.2); // Reduz para 20%
-                    canvas.height = Math.floor(imgOriginal.naturalHeight * 0.2);
-                    ctx.imageSmoothingEnabled = false;
-                    ctx.drawImage(imgOriginal, 0, 0, canvas.width, canvas.height);
-                    imgOriginal.src = canvas.toDataURL('image/jpeg', 0.2); // Qualidade lixo de 20%
-                    imgOriginal.dataset.corrompida = "true";
-                }
-            }
-        });
+            canvas.toBlob(function(blob) {
+                const urlBlob = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = urlBlob;
+                link.download = 'pagina-protegida.jpg';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(urlBlob);
+            }, 'image/jpeg', 0.03); // Qualidade extremamente baixa (3%) gerando arquivo em KB
+
+            alert('Esta imagem está protegida! O arquivo baixado foi reduzido para poucos KBs.');
+        }
 
         function carregarGiscus(termId) {
             const container = document.getElementById('giscus-container');
