@@ -32,7 +32,8 @@
         max-width: 100vw;
     }
 
-    .pagina-manga-img {
+    /* O canvas que estraga a qualidade para quem tenta baixar, mantendo legível */
+    .pagina-manga-canvas {
         width: 100vw;
         max-width: 800px;
         height: auto;
@@ -41,6 +42,9 @@
         padding: 0;
         border: none;
         outline: none;
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
     }
 
     .barra-progresso-container {
@@ -535,7 +539,7 @@
             <!-- Botão Voltar -->
             <a href="#" class="btn-voltar-obra" id="btnVoltarObra" onclick="irParaDetalhes(event)">❀ Voltar</a>
             
-            <!-- Botão da Casinha (Sem borda, centralizado e maior) -->
+            <!-- Botão da Casinha -->
             <a href="./" class="btn-casinha" title="Início">
                 <svg viewBox="0 0 24 24">
                     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
@@ -754,44 +758,25 @@
 
             if (paginasParaExibir.length > 0) {
                 paginasParaExibir.forEach(urlImg => {
-                    const containerItem = document.createElement('div');
-                    containerItem.style.cssText = 'position: relative; width: 100%; max-width: 800px; margin: 0 auto;';
-
                     const canvas = document.createElement('canvas');
-                    canvas.className = 'pagina-manga-img';
-                    canvas.style.cssText = 'width: 100%; height: auto; display: block;';
+                    canvas.className = 'pagina-manga-canvas';
+                    containerPaginas.appendChild(canvas);
+
                     const ctx = canvas.getContext('2d');
-
-                    const imgTemp = new Image();
-                    imgTemp.crossOrigin = 'anonymous';
-                    imgTemp.src = urlImg;
+                    const img = new Image();
+                    img.crossOrigin = "anonymous";
+                    img.referrerPolicy = 'no-referrer';
                     
-                    imgTemp.onload = function() {
-                        // Reduz drasticamente a resolução interna e o peso da imagem (fica em KBs)
-                        const fatorReducao = 0.25; // 25% do tamanho real
-                        canvas.width = Math.floor(imgTemp.naturalWidth * fatorReducao);
-                        canvas.height = Math.floor(imgTemp.naturalHeight * fatorReducao);
+                    img.onload = function() {
+                        // Reduz drasticamente a resolução interna para estragar o download e compactar
+                        const fatorReducao = 0.30; 
+                        canvas.width = Math.floor(img.width * fatorReducao);
+                        canvas.height = Math.floor(img.height * fatorReducao);
                         
-                        ctx.imageSmoothingEnabled = false; // Força o aspeto pixelado/comprimido
-                        ctx.drawImage(imgTemp, 0, 0, canvas.width, canvas.height);
+                        ctx.imageSmoothingEnabled = false;
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
                     };
-
-                    imgTemp.onerror = function() {
-                        containerItem.innerHTML = `<p style="color:#FF99DD; text-align:center; padding:20px;">Erro ao carregar página.</p>`;
-                    };
-
-                    // Bloqueia clique direito e salvamento direto
-                    canvas.addEventListener('contextmenu', function(e) {
-                        e.preventDefault();
-                        alert('Esta imagem está protegida pela Flower\'s Nenascan 🌸 (Versão em KB)');
-                    });
-
-                    canvas.addEventListener('dragstart', function(e) {
-                        e.preventDefault();
-                    });
-
-                    containerItem.appendChild(canvas);
-                    containerPaginas.appendChild(containerItem);
+                    img.src = urlImg;
                 });
             } else {
                 containerPaginas.innerHTML = `<p style="color: var(--primary-pink); text-align: center; padding: 60px;">Nenhuma imagem adicional cadastrada para este capítulo.</p>`;
